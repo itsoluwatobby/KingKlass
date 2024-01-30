@@ -1,5 +1,6 @@
 import { AboutUs } from "../../utility/constants";
 import { Buttons } from "../appComponents/Buttons";
+import { DesignImage } from "../appComponents/Image";
 
 
 export default function About() {
@@ -25,9 +26,10 @@ export default function About() {
       </div>
 
       <div className="flex items-center w-full h-full">
-        <figure className="flex-none w-1/2 h-full bg-gray-300 rounded-l-md">
-          <img src="/machine.png" alt="" className="w-full h-full rounded-l-md object-cover" />
-        </figure>
+        <DesignImage 
+          image={'/machine.png'} classNames='w-1/2 h-64'
+          rounded='rounded-l-md'
+        />
 
         <div className="py-6 px-4 flex flex-col justify-around items-center w-full h-full">
           <h1 className="text-start text-3xl whitespace-pre-wrap font-medium">

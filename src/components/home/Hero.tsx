@@ -1,5 +1,6 @@
 import { Motto } from "../../svgs/Motto"
 import { Buttons } from "../appComponents/Buttons"
+import { DesignImage } from "../appComponents/Image"
 
 export const Hero = () => {
 
@@ -23,9 +24,10 @@ export const Hero = () => {
         </Buttons>
       </div>
 
-      <figure className="flex-none w-1/2 h-full bg-gray-300 rounded-l-md">
-        <img src="/HeroImage.png" alt="" className="w-full h-full rounded-l-md object-cover" />
-      </figure>
+      <DesignImage 
+        image={'/HeroImage.png'} classNames='w-1/2 h-full'
+        rounded='rounded-l-md'
+      />
 
       <div className="absolute w-fit bottom-2 left-[42%] md:left-[47%]">
         <Motto size={{ width: "90", height: "89" }} />

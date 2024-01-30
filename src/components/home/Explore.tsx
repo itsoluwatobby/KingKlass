@@ -1,5 +1,6 @@
 import React from 'react'
 import { Motto } from '../../svgs/Motto';
+import { DesignImage } from '../appComponents/Image';
 
 type Props = {}
 
@@ -15,15 +16,15 @@ export default function Explore({}: Props) {
         <Motto size={{ width: "90", height: "89" }} />
       </div>
       <DesignSamples 
-        image='' description='We intertwine timeless craftsmanship with personalized elegance, crafting bespoke garments that tell a story of enduring style.' 
+        image='/image1.png' description='We intertwine timeless craftsmanship with personalized elegance, crafting bespoke garments that tell a story of enduring style.' 
       />
       <DesignSamples 
-        image='' description='We intertwine timeless craftsmanship with personalized elegance, crafting bespoke garments that tell a story of enduring style.' 
+        image='/image2.png' description='We intertwine timeless craftsmanship with personalized elegance, crafting bespoke garments that tell a story of enduring style.' 
         flexDirection='flex-row-reverse'
         textDirection='text-start'
       />
       <DesignSamples 
-        image='' description='We intertwine timeless craftsmanship with personalized elegance, crafting bespoke garments that tell a story of enduring style.'
+        image='/image3.png' description='We intertwine timeless craftsmanship with personalized elegance, crafting bespoke garments that tell a story of enduring style.'
       />
     </section>
   )
@@ -40,9 +41,10 @@ const DesignSamples = ({ image, description, flexDirection="flex-row", textDirec
 
   return (
     <div className={`flex-none h-64 flex ${flexDirection} items-center w-full h-full`}>
-      <figure className="flex-none w-1/2 h-full bg-gray-300 rounded-l-md">
-        <img src={image} alt="" className="w-full h-full rounded-l-md object-cover" />
-      </figure>
+      <DesignImage 
+        image={image} classNames='w-1/2 h-full'
+        rounded='rounded-l-md'
+      />
     
       <p className={`p-3 ${textDirection} font-medium text-xs whitespace-pre-wrap`}>
        {description}
