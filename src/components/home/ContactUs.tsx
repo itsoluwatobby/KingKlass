@@ -53,7 +53,7 @@ export const ContactUs = () => {
     style={setCustomBackgroundImage(
       '/background.png'
     )}
-    className="bg-gray-50 text-white px-3 flex flex-col gap-y-5 w-full pt-4 pb-2 min-h-[58vh]">
+    className="bg-gray-50 text-white px-3 flex flex-col gap-y-5 w-full pt-4 pb-2 mobile:min-h-[48vh] min-h-[58vh]">
       <h1 className="text-3xl font-semibold text-center">Contact Us</h1>
 
       <div className="flex flex-col gap-y-4 md:self-start md:w-[55%] md:border p-3">
@@ -78,8 +78,8 @@ export const ContactUs = () => {
         
         <Buttons
         onClick={handleSubmit}
-        py='py-2' px='px-10' isLoading={isLoading}
-        classNames="bg-gray-300 w-fit self-center text-[#452125] font-medium"
+        py='py-2' px='px-14' isLoading={isLoading}
+        classNames="bg-gray-300 w-fit self-center text-[#452125] font-medium rounded-sm"
         >
           Send
         </Buttons>

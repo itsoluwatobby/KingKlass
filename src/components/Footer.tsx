@@ -6,7 +6,7 @@ export const Footer = () => {
   const { QuickLinks, Support } = FooterLinks;
 
   return (
-    <footer className="flex flex-col gap-y-5 text-xs font-sans font-medium w-full p-4 pb-4 min-h-[60vh]">
+    <footer className="flex flex-col gap-y-5 text-xs font-sans font-medium w-full p-4 pb-4 min-h-[60vh] mobile:min-h-[50vh]">
       <KingKlassStretch size={{width: '118', height: '23'}} />
 
       <div className='flex flex-col gap-y-2.5'>

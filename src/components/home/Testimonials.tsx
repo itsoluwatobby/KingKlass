@@ -15,7 +15,7 @@ export default function Testimonials() {
   }
 
   return (
-    <section className='bg-gray-100 px-3 flex flex-col gap-y-1 w-full pt-1 pb-4 min-h-[50vh]'>
+    <section className='bg-gray-100 px-3 flex flex-col gap-y-1 w-full pt-1 pb-4 mobile:min-h-[43vh] min-h-[50vh]'>
       <div className='rounded-md relative w-full p-4 pb-2 h-24 flex flex-col items-center bg-[#311807]'>
         <div
           style={setCustomBackgroundImage(
