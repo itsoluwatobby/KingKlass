@@ -45,7 +45,7 @@ export default function About() {
 
           <Buttons
             onClick={() => { }}
-            pl='px-8' py='py-3'
+            px='px-8' py='py-3'
             classNames="text-[#842415] font-medium text-black bg-[#fffff5] border border-[#481225]"
           >
             Our Story

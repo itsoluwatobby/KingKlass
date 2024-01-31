@@ -1,3 +1,8 @@
+export const MagicNumbers = {
+  maxTextLength: 150,
+  minTextLength: 135,
+} as const;
+
 export const AboutUs = [
   {
     image: '',
@@ -15,7 +20,6 @@ export const AboutUs = [
     content: "Embrace the convenience of online ordering without compromising on the quality of traditional craftsmanship. Our online platform seamlessly integrates with our atelier, providing you with a modern, user-friendly experience."
   }
 ]
-
 
 export const HowKingClassWorks = [
   {
@@ -95,5 +99,3 @@ export const FooterLinks = {
     ]
   }
 }
-
-// const samePage = ['Home', 'About Us', 'Products']

@@ -55,14 +55,14 @@ export default function Testimonials() {
         <div className='flex items-center gap-x-4'>
           <Buttons
             onClick={() => toggleScroll('LEFT')}
-            pl='' py=''
+            px='' py=''
             classNames='rounded-full grid place-content-center w-8 h-8 bg-white hover:bg-gray-200 active:bg-gray-100 transition-colors'
           >
             <SlArrowLeft className='text-xl' />
           </Buttons>
           <Buttons
             onClick={() => toggleScroll('RIGHT')}
-            pl='' py=''
+            px='' py=''
             classNames='rounded-full grid place-content-center w-8 h-8 bg-white hover:bg-gray-200 active:bg-gray-100 transition-colors'
           >
             <SlArrowRight className='text-xl' />

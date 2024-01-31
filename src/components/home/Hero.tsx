@@ -17,7 +17,7 @@ export const Hero = () => {
 
         <Buttons
           onClick={() => {}}
-          pl='px-8' py='py-3'
+          px='px-8' py='py-3'
           classNames="text-white bg-[#842415] rounded-md"
         >
           Discover

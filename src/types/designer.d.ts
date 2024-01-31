@@ -12,3 +12,9 @@ type Size = {
 type DesignerContextProps = {
 
 }
+
+type AppStateType = {
+  isLoading: boolean;
+  isError: boolean;
+  error: any;
+}
