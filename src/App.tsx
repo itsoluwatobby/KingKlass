@@ -7,9 +7,8 @@ import { ToastContainer } from 'react-toastify';
 
 function App() {
 
-
   return (
-    <main className='w-[80%] midscreen:w-full md:m-auto h-screen scroll-smooth overflow-y-scroll'>
+    <main className='w-[70%] midscreen:w-full md:m-auto h-scre scroll-smooth overflow-y-scroll'>
       <Routes>
         <Route path='/' element={<DesignerLayout />}>
           <Route index element={<Home />} />
