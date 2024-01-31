@@ -3,7 +3,7 @@ import { UserFeedback } from '../../utility/constants';
 import { setCustomBackgroundImage } from '../../utility/setBackGroundImage'
 import { Buttons } from '../appComponents/Buttons';
 import { SlArrowLeft, SlArrowRight } from "react-icons/sl";
-import { useRef } from 'react';
+// import { useRef } from 'react';
 
 
 export default function Testimonials() {
