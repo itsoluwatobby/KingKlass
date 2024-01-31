@@ -60,5 +60,40 @@ export const UserFeedback = [
     Comment: "I'm impressed by the level of personalization offered. My native attire was tailored to perfection, capturing the essence of Nigerian tradition with a modern twist. The communication throughout the process was excellent. I'll definitely be a repeat customer.",
     location: "Abuja",
     date: new Date().toUTCString()
-  }
+  },
+  {
+    author: "Mark Daniel",
+    Comment: "I'm impressed by the level of personalization offered. My native attire was tailored to perfection, capturing the essence of Nigerian tradition with a modern twist. The communication throughout the process was excellent. I'll definitely be a repeat customer.",
+    location: "Lokoja",
+    date: new Date().toUTCString()
+  },
+  {
+    author: "Joseph Obimba",
+    Comment: "I'm impressed by the level of personalization offered. My native attire was tailored to perfection, capturing the essence of Nigerian tradition with a modern twist. The communication throughout the process was excellent. I'll definitely be a repeat customer.",
+    location: "Lagos",
+    date: new Date().toUTCString()
+  },
 ]
+
+export const FooterLinks = {
+  QuickLinks: {
+    name: "Quick Links",
+    values: [
+      { name: 'Home', link: '/' },
+      { name: 'Products', link: '/products' },
+      { name: 'About Us', link: '#aboutUs' },
+      { name: 'Contact Us', link: '#contactUs' },
+      { name: 'Account', link: '/account' },
+    ]
+  }, 
+  Support: {
+    name: "Support",
+    values: [
+      { name: 'Privacy Policy', link: '/privacyPolicy' },
+      { name: 'Return & Refund Policy', link: '/refund' },
+      { name: 'FAQ', link: '/faq' }
+    ]
+  }
+}
+
+// const samePage = ['Home', 'About Us', 'Products']

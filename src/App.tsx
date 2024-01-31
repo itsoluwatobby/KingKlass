@@ -3,6 +3,7 @@ import { DesignerLayout } from './layout/DesignerLayout';
 import { Home } from './pages/Home';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
+import NotFound from './pages/NotFound';
 
 
 function App() {
@@ -13,7 +14,7 @@ function App() {
         <Route path='/' element={<DesignerLayout />}>
           <Route index element={<Home />} />
         </Route>
-        <Route path='*' element={<h1>NOT FOUND</h1>} />
+        <Route path='*' element={<NotFound />} />
       </Routes>
 
       <ToastContainer />

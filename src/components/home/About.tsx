@@ -8,7 +8,9 @@ export default function About() {
 
   // min-h-[88vh]
   return (
-    <section className="px-4 py-6 overflow-y-scroll flex flex-col gap-y-6 items-center flex-none h-[minmax-(25vh,35vh)] w-full">
+    <section 
+    id='aboutUs'
+    className="px-4 py-6 overflow-y-scroll flex flex-col gap-y-6 items-center flex-none h-[minmax-(25vh,35vh)] w-full">
       <div className="px-4 p-1 overflow-y-scroll flex items-center gap-x-3 min-h- w-full">
         {
           AboutUs.map(about => (
@@ -26,10 +28,6 @@ export default function About() {
       </div>
 
       <div className="flex-none flex items-center w-full h-1/2">
-        {/* <DesignImage 
-          image={'/machine.png'} classNames='w-1/2 h-[minmax(5rem,6rem)]'
-          rounded='rounded-l-md'
-        /> */}
         <div
           style={setCustomBackgroundImage(
             '/machine.png'
@@ -47,8 +45,8 @@ export default function About() {
 
           <Buttons
             onClick={() => { }}
-            pl='px-8' py='py-3' bgColor="bg-[#fffff5]"
-            classNames="text-[#842415] font-medium text-black border border-[#481225]"
+            pl='px-8' py='py-3'
+            classNames="text-[#842415] font-medium text-black bg-[#fffff5] border border-[#481225]"
           >
             Our Story
           </Buttons>
