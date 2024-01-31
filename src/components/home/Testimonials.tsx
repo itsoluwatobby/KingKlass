@@ -7,7 +7,7 @@ import { useRef } from 'react';
 
 
 export default function Testimonials() {
-  const refContainer = useRef<HTMLDivElement>(null);
+  // const refContainer = useRef<HTMLDivElement>(null);
 
   // const toggleRight = () => {
   //   if (!refContainer.current) return;
