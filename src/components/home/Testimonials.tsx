@@ -9,10 +9,10 @@ import { useRef } from 'react';
 export default function Testimonials() {
   const refContainer = useRef<HTMLDivElement>(null);
 
-  const toggleRight = () => {
-    if (!refContainer.current) return;
-    refContainer.current.scrollLeft += 100
-  }
+  // const toggleRight = () => {
+  //   if (!refContainer.current) return;
+  //   refContainer.current.scrollLeft += 100
+  // }
 
   return (
     <section className='bg-gray-100 px-3 flex flex-col gap-y-2 w-full pt-1 pb-4 min-h-[50vh]'>

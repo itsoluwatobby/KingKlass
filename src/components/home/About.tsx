@@ -1,6 +1,5 @@
 import { AboutUs } from "../../utility/constants";
 import { Buttons } from "../appComponents/Buttons";
-import { DesignImage } from "../appComponents/Image";
 import { setCustomBackgroundImage } from '../../utility/setBackGroundImage'
 
 
