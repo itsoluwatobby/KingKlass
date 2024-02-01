@@ -99,3 +99,11 @@ export const FooterLinks = {
     ]
   }
 }
+
+export const UserNavigation = [
+  { name: "My Measurement", link: "/measurement" },
+  { name: "Notifications", link: "/notifications" },
+  { name: "Edit Profile", link: "/profile" },
+  { name: "Settings", link: "/settings" },
+  { name: "Logout", link: "logout" }
+]

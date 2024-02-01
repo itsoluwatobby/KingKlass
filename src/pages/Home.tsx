@@ -12,9 +12,9 @@ export const Home = () => {
   return (
     <main className="w-full h-full flex flex-col mt-16">
       <Hero />
-      <About />
-      <Explore />
       <HowItWorks />
+      <Explore />
+      <About />
       <Testimonials />
       <ContactUs />
     </main>

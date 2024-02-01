@@ -6,7 +6,7 @@ export default function Explore() {
 
   // min-h-[100vh]
   return (
-    <section className='relative p-4 flex flex-col gap-y-8 min-h-[80vh]'>
+    <section className='relative py-4 flex flex-col gap-y-8 min-h-[80vh]'>
       <div className="absolute w-fit top-[19rem] z-10 left-[44%] maxmobile:left-[40%] md:left-[44%]">
         <Motto size={{ width: "90", height: "89" }} />
       </div>

@@ -1,9 +1,35 @@
-import { HowKingClassWorks } from "../../utility/constants";
+import { KingKlass } from "../../svgs/Logo";
+import { AboutUs, HowKingClassWorks } from "../../utility/constants";
 
 
 export default function HowItWorks() {
   return (
     <section className="relative p-4 flex flex-col gap-y-10 min-h-[75vh]">
+
+       <div className="flex flex-col items-center gap-x-3 w-full">
+        <div className="px-4 p-1 overflow-y-scroll flex items-center gap-x-3 min-h- w-full">
+          {
+            AboutUs.map(about => (
+              <article key={about.title} className="flex-none min-h-48 bg-gray-100 w-[21rem] flex flex-col items-center justify-between p-6 rounded-md">
+                {/* <figure className="bg-gray-400 w-10 h-8 rounded-sm">
+
+                </figure> */}
+                <h3 className="tracking-wide font-medium text-sm whitespace-nowrap text-center p-3">{about.title}</h3>
+                <p className="text-xs text-center tracking-wide">
+                  {about.content}
+                </p>
+              </article>
+            ))
+          }
+          </div>
+        <div className={`self-center relative min-w-2 min-h-2 bg-slate-300 rounded-full before:absolute before:content-[""] before:bg-slate-800 before:-left-8 before:w-2 before:h-2 before:rounded-full after:absolute after:content-[""] after:bg-slate-300 after:-right-8 after:w-2 after:h-2 after:rounded-full`} />
+      </div>
+
+      <KingKlass 
+        size={{width: '165', height: '85'}} 
+        classNames="opacity-20 self-center"
+      />
+
       <h1 className="text-3xl font-bold text-center">How It Works</h1>
       {
         HowKingClassWorks.map((howTo, index) => (

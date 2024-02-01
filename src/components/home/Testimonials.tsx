@@ -4,19 +4,20 @@ import { setCustomBackgroundImage } from '../../utility/setBackGroundImage'
 import { Buttons } from '../appComponents/Buttons';
 import { SlArrowLeft, SlArrowRight } from "react-icons/sl";
 import { useRef } from 'react';
+import { getInitials } from '../../utility/getInitials';
 
 
 export default function Testimonials() {
   const refContainer = useRef<HTMLDivElement>(null);
 
-  const toggleScroll = (direction: 'RIGHT'|'LEFT') => {
+  const toggleScroll = (direction: 'RIGHT' | 'LEFT') => {
     if (!refContainer.current) return;
     direction === 'LEFT' ? refContainer.current.scrollLeft -= 400 : refContainer.current.scrollLeft += 400
   }
 
   return (
-    <section className='bg-gray-100 px-3 flex flex-col gap-y-1 w-full pt-1 pb-4 mobile:min-h-[43vh] min-h-[50vh]'>
-      <div className='rounded-md relative w-full p-4 pb-2 h-24 flex flex-col items-center bg-[#311807]'>
+    <section className='bg-gray-100 flex flex-col gap-y-1 w-full pb-4 mobile:min-h-[43vh] min-h-[50vh]'>
+      <div className='rounded-sm relative w-full p-4 pb-2 h-24 flex flex-col items-center bg-[#311807]'>
         <div
           style={setCustomBackgroundImage(
             '/quotes.png',
@@ -32,9 +33,9 @@ export default function Testimonials() {
       </div>
 
       {/* COMMENTS */}
-      <div 
-      ref={refContainer}
-      className='scroll-smooth p-3 flex items-center gap-x-4 overflow-x-scroll'>
+      <div
+        ref={refContainer}
+        className='scroll-smooth p-3 flex items-center gap-x-4 overflow-x-scroll'>
         {
           UserFeedback.map((feedback, index) => (
             <FeedBacks key={index}
@@ -45,7 +46,7 @@ export default function Testimonials() {
           ))
         }
       </div>
-      
+
       <div className='w-full flex items-center justify-between px-3'>
         <p className='flex items-center font-semibold'>
           <span className='text-[#176BEF]'>G</span><span className='text-[#FF3E30]'>o</span><span className='text-[#F7B529]'>o</span><span className='text-[#176BEF]'>g</span>
@@ -85,8 +86,8 @@ const FeedBacks = ({ author, comment, location, date }: FeedBacksProps) => {
   return (
     <div className='flex-none flex flex-col gap-y-3 maxmobile:w-full w-[23rem]'>
       <div className='capitalize font-semibold text-sm flex items-center gap-x-3'>
-        <h3 className='flex-none w-8 h-8 grid place-content-center bg-[#F2DDB1] font-bold rounded-full p-2'>{author.substring(0, 1)}</h3>
-        <h3 className=''>{firstName} &nbsp;{lastName.substring(0, 1)}</h3>
+        <h3 className='flex-none w-8 h-8 grid place-content-center bg-[#F2DDB1] font-bold rounded-full p-2'>{getInitials(firstName)}</h3>
+        <h3 className=''>{firstName} &nbsp;{getInitials(lastName)}</h3>
       </div>
 
       <p className='text-xs'>{comment}</p>
