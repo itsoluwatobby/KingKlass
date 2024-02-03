@@ -114,7 +114,7 @@ export const UserNavModal = () => {
           <Buttons
             onClick={handleSubmit}
             px='' py='' isLoading={isLoading}
-            classNames='absolute left-3 bottom-16 rounded-md mt-10 font-semibold bg-gray-100 text-orange-700 grid place-content-center w-[95%] md:w-1/2 py-3 hover:bg-gray-200 active:bg-gray-100 transition-colors'
+            classNames='absolute left-3 bottom-28 rounded-md mt-10 font-semibold bg-gray-100 text-orange-700 grid place-content-center w-[95%] md:w-1/2 py-3 hover:bg-gray-200 active:bg-gray-100 transition-colors'
           >
             Save
           </Buttons>
