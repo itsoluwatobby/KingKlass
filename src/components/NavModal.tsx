@@ -13,7 +13,7 @@ export const NavModal = () => {
 
 
   return (
-    <section className={`${toggleNav.isToggled.openNavModal ? 'fixed' : 'hidden'} bg-white midscreen:w-full w-full md:w-[60%] min-h-[90vh] mt-14 z-50 duration-300`}>
+    <section className={`${toggleNav.isToggled.openNavModal ? 'fixed' : 'hidden'} bg-white midscreen:w-full w-full md:w-[60%] min-h-[95vh] mt-14 z-50 duration-300`}>
       <div className={`px-3 py-1 relative flex flex-col w-full min-h-[88vh]`}>
         <header className="flex items-center justify-between">
           <div className="flex items-center gap-x-2">
