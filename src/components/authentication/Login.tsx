@@ -60,7 +60,7 @@ void(handleSubmit)
         <div className="w-full flex flex-col py-8 items-center gap-y-5">
           <h3 className="font-medium text-xl">Login</h3>
 
-          <div className="self-start text-xs text-gray-800">
+          <div className="self-start text-[13px] text-gray-800">
             <span>Don't have an account yet? </span>
             <button 
             onClick={() => setAppModals({ signup: 'OPEN', signin: 'CLOSE' })}
@@ -77,7 +77,7 @@ void(handleSubmit)
             setUserDetails={setUserCredentials} type='password'
           />
 
-          <div className="flex flex-col w-full gap-y-7 mt-2">
+          <div className="flex flex-col w-full gap-y-5 mt-2">
             <div className="flex items-center w-full justify-between text-xs">
               <div className="flex items-center gap-x-2">
                 <input type="checkbox" 
@@ -103,7 +103,7 @@ void(handleSubmit)
             <Buttons
               onClick={handleSubmit}
               px='' py='' isLoading={isLoading}
-              classNames='self-center rounded-sm font-semibold bg-blue-700 text-white w-[95%] md:w-1/2 py-2 hover:bg-blue-700 grid place-content-center active:bg-blue-800 transition-colors'
+              classNames='self-center rounded-sm font-semibold bg-blue-600 text-white w-[95%] md:w-1/2 py-2 hover:bg-blue-700 grid place-content-center active:bg-blue-800 transition-colors'
             >
               <div className="flex items-center gap-x-4 text-xs">
                 <FcGoogle className="text-xl" /> 

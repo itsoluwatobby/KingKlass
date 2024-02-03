@@ -29,3 +29,7 @@ export const initNavModals: ToggleOption = {
 export const initUserDetail: UserDetails = {
   name: '', username: '', email: '', password: '', mobileNumber: ''
 }
+
+export const inputValidation: Validations = {
+  validEmail: false, validPassword: false, matchingPassword: false
+}

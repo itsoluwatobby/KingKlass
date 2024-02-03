@@ -42,3 +42,9 @@ type UserDetails = Omit<UserInfo, 'confirm_password'> & {
   username: string;
   mobileNumber: string;
 }
+
+type Validations = {
+  validEmail: boolean;
+  validPassword: boolean; 
+  matchingPassword: boolean;
+}

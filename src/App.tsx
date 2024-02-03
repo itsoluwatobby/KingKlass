@@ -12,6 +12,7 @@ import { UserNavModal } from './components/UserNavModal';
 import { Login } from './components/authentication/Login';
 import { Registration } from './components/authentication/Registration';
 import { initNavModals } from './utility/initialVariables';
+import Products from './pages/Products';
 
 
 let prevPathname = '/';
@@ -53,8 +54,7 @@ function App() {
       <Routes>
         <Route path='/' element={<DesignerLayout />}>
           <Route index element={<Home />} />
-          {/* <Route path='signIn' element={<Login />} />
-          <Route path='signUp' element={<Registration />} /> */}
+          <Route path='products' element={<Products />} />
         </Route>
         <Route path='*' element={<NotFound />} />
       </Routes>

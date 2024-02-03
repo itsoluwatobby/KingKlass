@@ -1,3 +1,6 @@
+import { useDesignerContext } from "../../hooks/useDesignerContext";
+import { WarningTexts } from "../../utility/regexExpConfig";
+import Warning from "./Warning";
 
 type InputTextProps<T> = {
   value: string;
@@ -7,29 +10,40 @@ type InputTextProps<T> = {
   required?: boolean;
   classNames?: string;
   pattern?: string;
+  validEmail?: boolean;
   disabled?: boolean;
   setInputText: React.Dispatch<React.SetStateAction<T>>
 }
 
-export default function InputText<K>({ value, pattern, placeholder, classNames, name, setInputText, required = false, type = 'text', disabled = false }: InputTextProps<K>) {
+export default function InputText<K>({ value, pattern, placeholder, classNames, name, setInputText, required = false, type = 'text', disabled = false, validEmail }: InputTextProps<K>) {
+  const { appModals } = useDesignerContext() as DesignerContextProps;
 
   const defaultClassNames = classNames ?? 'p-2 border-gray-300'
-
+  const textMsg = !validEmail ? 'invalid-email': 'conflict';
+console.log(type)
   return (
-    <input
-      type={type}
-      id={name}
-      name={name}
-      value={value}
-      placeholder={placeholder}
-      pattern={pattern ?? ''}
-      required={required}
-      autoComplete="off"
-      disabled={disabled}
-      className={`text-[13px] bg-inherit focus:outline-0 border placeholder:text-gray-400 ${defaultClassNames} p-2`}
-      onChange={e => setInputText((prev: any) => (
-        { ...prev, [e.target.name]: e.target.value })
-      )}
-    />
+    <div className="w-full relative">
+      <input
+        type={type}
+        id={name}
+        name={name}
+        value={value}
+        placeholder={placeholder}
+        pattern={pattern ?? ''}
+        required={required}
+        autoComplete="off"
+        disabled={disabled}
+        className={`w-full text-[13px] bg-inherit focus:outline-0 border placeholder:text-gray-400 ${defaultClassNames} p-2`}
+        onChange={e => setInputText((prev: any) => (
+          { ...prev, [e.target.name]: e.target.value })
+        )}
+      />
+
+      {
+        (type === 'email' && appModals.signup === 'OPEN' && value && !validEmail) ?
+          <Warning text={WarningTexts[textMsg]} />
+          : null
+      }
+    </div>
   )
 }
