@@ -63,7 +63,7 @@ void(handleSubmit)
           <div className="self-start text-xs text-gray-800">
             <span>Don't have an account yet? </span>
             <button 
-            onClick={() => setAppModals(prev => ({ ...prev, signin: 'CLOSE' }))}
+            onClick={() => setAppModals({ signup: 'OPEN', signin: 'CLOSE' })}
             className="border-0 focus:outline-0 hover:opacity-90 underline underline-offset-2">Register</button>
           </div>
 
