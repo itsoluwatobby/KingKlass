@@ -8,7 +8,7 @@ type SeacrhBarProps = {
 export default function SearchBar({ search }: SeacrhBarProps) {
   
   return (
-    <div className="w-full rounded-[3px] bg-slate-200 relative">
+    <div className="w-full rounded-[3px] bg-slate-100 relative">
       <input type="text" 
         value={search}
         placeholder="Search"

@@ -20,6 +20,8 @@ type ToggleOption = {
 type DesignerContextProps = {
   appModals: AppModals;
   toggleNav: ToggleOption;
+  starRating: number[];
+  setStarRating: React.Dispatch<React.SetStateAction<number[]>>;
   setAppModals: React.Dispatch<React.SetStateAction<AppModals>>;
   setToggleNav: React.Dispatch<React.SetStateAction<ToggleOption>>;
 }
@@ -42,6 +44,8 @@ type UserDetails = Omit<UserInfo, 'confirm_password'> & {
   username: string;
   mobileNumber: string;
 }
+
+type UserRole = 'ADMIN' | 'USER';
 
 type Validations = {
   validEmail: boolean;

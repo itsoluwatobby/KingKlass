@@ -1,12 +1,16 @@
+import { useLocation, useParams } from "react-router-dom";
 import { KingKlassStretch } from "../svgs/LogoStretch"
 import { FooterLinks } from "../utility/constants"
 
 
 export const Footer = () => {
   const { QuickLinks, Support } = FooterLinks;
+  const { pathname } = useLocation();
+  const { productId } = useParams();
+  const noFooterRoutes = ['/products', `/products/${productId}`];
 
   return (
-    <footer className="flex flex-col gap-y-5 text-xs font-sans font-medium w-full p-4 pb-10 min-h-[60vh] mobile:min-h-[50vh]">
+    <footer className={`${noFooterRoutes.includes(pathname) ? 'hidden' : 'flex'} flex-col gap-y-5 text-xs font-sans font-medium w-full p-4 pb-10 min-h-[60vh] mobile:min-h-[50vh]`}>
       <KingKlassStretch size={{width: '118', height: '23'}} />
 
       <div className='flex flex-col gap-y-2.5'>

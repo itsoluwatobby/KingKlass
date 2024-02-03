@@ -13,6 +13,7 @@ import { Login } from './components/authentication/Login';
 import { Registration } from './components/authentication/Registration';
 import { initNavModals } from './utility/initialVariables';
 import Products from './pages/Products';
+import ProductPage from './pages/ProductPage';
 
 
 let prevPathname = '/';
@@ -55,6 +56,7 @@ function App() {
         <Route path='/' element={<DesignerLayout />}>
           <Route index element={<Home />} />
           <Route path='products' element={<Products />} />
+          <Route path='products/:productId' element={<ProductPage />} />
         </Route>
         <Route path='*' element={<NotFound />} />
       </Routes>

@@ -4,9 +4,9 @@
  * @Return returns formatted price
  */
 
-export const formatPrice = (price:number=0) => {
+export const formatPrice = (price: (number | string)) => {
   let formattedPrice;
-  const priceToString = price?.toString()
+  const priceToString =typeof price === 'number' ? price?.toString() : price;
   const length = priceToString?.length
   length === 4 
       ? formattedPrice = `${priceToString?.substring(0,1)},${priceToString?.substring(1)}` 
