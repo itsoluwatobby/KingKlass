@@ -19,7 +19,6 @@ size={ row: 4, col: 5}
   const defaultClassNames = classNames ?? 'p-2 border-gray-300'
   const { col, row } = size;
   
-  
   return (
     <div className="flex flex-col gap-y-1 w-full">
       <textarea 
@@ -28,6 +27,7 @@ size={ row: 4, col: 5}
       cols={col} rows={row}
       placeholder={placeholder}
       required={required}
+      maxLength={maxTextLength}
       className={`text-[13px] focus:outline-0 resize-none bg-inherit border placeholder:text-gray-300 ${defaultClassNames} p-1`}
       onChange={e => setInputText((prev: any) => (
         { ...prev, [e.target.name]: e.target.value})

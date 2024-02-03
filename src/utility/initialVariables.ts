@@ -1,5 +1,5 @@
 export const initContactVar: Record<string, string> = {
-  name: '', email: '', message:''
+  name: '', emails: '', message:''
 }
 
 export const initAppState: AppStateType = {
@@ -11,7 +11,7 @@ export const initSignUpInfo: UserInfo = {
 }
 
 export const initSignInInfo: UserInfo = {
-  email: '', password: ''
+  email: '', password: '', remember_me: false
 }
 
 const CLOSE = 'CLOSE' as Toggle;
@@ -24,4 +24,8 @@ export const initNavModals: ToggleOption = {
     openNavModal: false, 
     userNavModal: false
   }
+}
+
+export const initUserDetail: UserDetails = {
+  name: '', username: '', email: '', password: '', mobileNumber: ''
 }

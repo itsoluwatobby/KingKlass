@@ -22,7 +22,7 @@ export default function About() {
             Our Journey So Far
           </h1>
           <p className="text-start font-medium text-xs whitespace-pre-wrap">
-            We intertwine timeless craftsmanship with personalized elegance, crafting bespoke garments that tell a story of enduring style.
+            From bespoke suits to trend-setting designs, we ensure every stitch reflects sophistication. Join us on a journey of elegance and individuality - because at Kingsklass designs, your style reigns supreme.
           </p>
 
           <Buttons

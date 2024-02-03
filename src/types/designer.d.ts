@@ -35,4 +35,10 @@ type UserInfo = {
   email: string;
   password: string;
   confirm_password?: string;
+  remember_me?: boolean;
+}
+
+type UserDetails = Omit<UserInfo, 'confirm_password'> & { 
+  username: string;
+  mobileNumber: string;
 }

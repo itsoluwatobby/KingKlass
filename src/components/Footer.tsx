@@ -6,15 +6,18 @@ export const Footer = () => {
   const { QuickLinks, Support } = FooterLinks;
 
   return (
-    <footer className="flex flex-col gap-y-5 text-xs font-sans font-medium w-full p-4 pb-4 min-h-[60vh] mobile:min-h-[50vh]">
+    <footer className="flex flex-col gap-y-5 text-xs font-sans font-medium w-full p-4 pb-10 min-h-[60vh] mobile:min-h-[50vh]">
       <KingKlassStretch size={{width: '118', height: '23'}} />
 
       <div className='flex flex-col gap-y-2.5'>
         <p className="flex flex-col">
-          <span>123 Main Street Aba, Abia State</span>
-          <span>Nigeria</span>
+          <span>23 Faulks road Aba,</span>
+          <span>Abia, Nigeria</span>
         </p>
-        <p>+234901230902</p>
+        <div className="flex flex-col gap-1 w-fit">
+          <a href="tel:+234901230902" className="hover:underline transition-all">+2348138771855</a>
+          <a href="tel:+234901230902" className="hover:underline transition-all">+2348024086830</a>
+        </div>
         <p className="text-[11px]">shop@kigklass.nigeria</p>
       </div>
 

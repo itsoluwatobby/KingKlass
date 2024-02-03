@@ -2,8 +2,7 @@
 type InputTextProps<T> = {
   value: string;
   name: string;
-  placeholder: string;
-  type?: 'name' | 'text' | 'email' | 'tel';
+  type?: 'text' | 'password';
   required?: boolean;
   classNames?: string;
   pattern?: string;
@@ -11,18 +10,17 @@ type InputTextProps<T> = {
   setInputText: React.Dispatch<React.SetStateAction<T>>
 }
 
-export default function InputText<K>({ value, pattern, placeholder, classNames, name, setInputText, required = false, type = 'text', disabled = false }: InputTextProps<K>) {
+export default function PasswordInput<K>({ value, pattern, classNames, name, setInputText, required = false, type = 'password', disabled=false }: InputTextProps<K>) {
 
   const defaultClassNames = classNames ?? 'p-2 border-gray-300'
 
   return (
     <input
       type={type}
-      id={name}
       name={name}
       value={value}
-      placeholder={placeholder}
-      pattern={pattern ?? ''}
+      placeholder='*********************'
+      pattern={(pattern ?? '')}
       required={required}
       autoComplete="off"
       disabled={disabled}

@@ -12,7 +12,7 @@ export const Hero = () => {
           CRAFTING IDENTITY
         </h1>
         <p className="text-center text-sm whitespace-pre-wrap">
-          We are masters at blending tradition and contemporary flair, crafting bespoke garments that embodies timeless elegance
+          We masterfully blend tradition and contemporary flair, crafting bespoke garments that embodies timeless elegance
         </p>
 
         <Buttons

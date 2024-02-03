@@ -9,12 +9,15 @@ import { useDesignerContext } from './hooks/useDesignerContext';
 import { useEffect } from 'react';
 import { switchModals, toggleAttributes } from './utility/toggleModalStates';
 import { UserNavModal } from './components/UserNavModal';
+import { Login } from './components/authentication/Login';
+import { Registration } from './components/authentication/Registration';
+import { initNavModals } from './utility/initialVariables';
 
 
 let prevPathname = '/';
 function App() {
   const { pathname } = useLocation();
-  const { appModals, setAppModals } = useDesignerContext() as DesignerContextProps;
+  const { appModals, setAppModals, setToggleNav } = useDesignerContext() as DesignerContextProps;
 
   const { signin, signup } = appModals;
 
@@ -25,8 +28,14 @@ function App() {
         setAppModals(prev => toggleAttributes(prev, 'CLOSE') as AppModals)
         prevPathname = pathname
       }
-      else if (signin === 'OPEN') setAppModals(switchModals['signin'])
-      else if (signup === 'OPEN') setAppModals(switchModals['signup'])
+      else if (signin === 'OPEN') {
+        setAppModals(switchModals['signin'])
+        setToggleNav(initNavModals);
+      }
+      else if (signup === 'OPEN') {
+        setAppModals(switchModals['signup'])
+        setToggleNav(initNavModals);
+      }
     }
     return () => {
       isMounted = false
@@ -34,9 +43,12 @@ function App() {
   }, [pathname, signin, signup, setAppModals])
 
   return (
-    <main className='w-[70%] midscreen:w-full md:m-auto h-scre scroll-smooth overflow-y-scroll'>
+    <main className='w-[60%] midscreen:w-full md:m-auto h-scre scroll-smooth overflow-y-scroll'>
       <UserNavModal />
-      <NavModal />
+      <NavModal /> 
+
+      <Login />
+      <Registration />
 
       <Routes>
         <Route path='/' element={<DesignerLayout />}>

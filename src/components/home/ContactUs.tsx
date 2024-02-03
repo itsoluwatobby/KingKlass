@@ -11,15 +11,15 @@ export const ContactUs = () => {
   const [appState, setAppState] = useState<AppStateType>(initAppState)
   const [contactMessage, setContactMessage] = useState<typeof initContactVar>(initContactVar);
 
-  const { name, email, message } = contactMessage
+  const { name, emails, message } = contactMessage
   const { isLoading, isError } = appState;
-  const canSubmit = [email, message].every(Boolean)
+  const canSubmit = [emails, message].every(Boolean)
 
   const handleSubmit = () => {
     if (!canSubmit || isLoading) return
     setAppState(prev => ({ ...prev, loading: true }))
     try {
-      const userDetails = sanitizeEntries({ email, name, message });
+      const userDetails = sanitizeEntries({ emails, name, message });
       console.log(userDetails)
 
       setAppState(prev => ({ ...prev, success: true }))
@@ -66,7 +66,7 @@ export const ContactUs = () => {
         <InputText
         placeholder="Email" 
         classNames="rounded-sm border-gray-400"
-        name='email' value={email}
+        name='emails' value={emails}
         setInputText={setContactMessage}
         />
 
