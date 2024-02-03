@@ -61,19 +61,31 @@ export const Registration = () => {
           <h3 className="font-medium text-xl">Register</h3>
 
           <div className="self-start text-xs text-gray-800">
-            <span>Don't have an account yet? </span>
+            <span>Do you have an account? </span>
             <button
-              onClick={() => setAppModals(prev => ({ ...prev, signin: 'CLOSE' }))}
+              onClick={() => setAppModals({ signup: 'CLOSE', signin: 'OPEN' })}
               className="border-0 focus:outline-0 hover:opacity-90 underline underline-offset-2">Sign in</button>
           </div>
+
+          <UserInputDetails
+            placeholder="Full Name"
+            title="Name" value={name} name='name' disabled={false}
+            setUserDetails={setUserCredentials} type='text'
+          />
 
           <UserInputDetails
             placeholder="iamuser@jj.com"
             title="Email" value={email} name='email' disabled={false}
             setUserDetails={setUserCredentials} type='email'
           />
+          
           <UserInputDetails
             title="Password" value={password} name='password' disabled={false}
+            setUserDetails={setUserCredentials} type='password'
+          />
+          
+          <UserInputDetails
+            title="Confirm Password" value={confirm_password} name='confirm_password' disabled={false}
             setUserDetails={setUserCredentials} type='password'
           />
 
