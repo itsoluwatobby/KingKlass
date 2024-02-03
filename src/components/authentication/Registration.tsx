@@ -126,7 +126,7 @@ export const Registration = () => {
         </div>
 
         <LiaTimesSolid
-          onClick={() => setAppModals({ signup: 'CLOSE' })}
+          onClick={() => setAppModals(prev => ({ ...prev, signup: 'CLOSE' }))}
           className='absolute -right-2 -top-2 p-0.5 font-bold bg-white shadow-sm shadow-slate-500 rounded-full text-2xl hover:text-gray-700 active:text-gray-900 cursor-pointer transition-colors'
         />
 
