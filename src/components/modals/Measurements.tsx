@@ -1,7 +1,7 @@
 import { useDesignerContext } from "../../hooks/useDesignerContext";
 import { CiEdit } from "react-icons/ci";
 import { MeasurementMetrics } from "../../utility/constants";
-import { initMeasurementParams) } from "../../utility/initVariables";
+import { initMeasurementParams } from "../../utility/initVariables";
 import { useState } from 'react'
 
 
