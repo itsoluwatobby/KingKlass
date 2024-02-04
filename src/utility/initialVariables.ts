@@ -31,18 +31,6 @@ export const inputValidation: Validations = {
   validEmail: false, validPassword: false, matchingPassword: false
 }
 
-// export const initMeasurements: MeasurementProps = { 
-//   "Chest/Bust": { name: "Chest/Bust", value: "" }, 
-//   "Stomach": { name: "Stomach", value: "" }, 
-//   "Top Length": { name: "Top Length", value: "" }, 
-//   "Shoulder": { name: "Shoulder", value: "" }, 
-//   "Sleeve Length": { name: "Sleeve Length", value: "" }, 
-//   "Neck": { name: "Neck", value: "" },
-//   "Muscle": { name: "Muscle", value: "" }, 
-//   "Waist": { name: "Waist", value: "" }, 
-//   "Laps": { name: "Laps", value: "" }, 
-//   "Knee": { name: "Knee", value: "" }
-// }
 export const initMeasurements: MeasurementProps = { 
   "Chest/Bust": "", 
   "Stomach": "" , 

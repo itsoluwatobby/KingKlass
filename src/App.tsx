@@ -16,6 +16,7 @@ import { Notifications } from './components/modals/Notiications';
 import { Registration } from './components/authentication/Registration';
 import { switchModals, toggleAttributes } from './utility/toggleModalStates';
 import { Measurements } from './components/modals/Measurements';
+import { Carts } from './components/modals/Cart';
 
 
 let prevPathname = '/';
@@ -53,6 +54,7 @@ function App() {
       <NavModal />
       <Notifications />
       <Measurements />
+      <Carts />
 
       {/* Authentication Modals */}
       <Login />

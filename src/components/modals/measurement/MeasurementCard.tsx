@@ -25,7 +25,7 @@ export const MeasurementCard = ({ keyName, value, setUserMeasurements }: Measure
         name={keyName}
         value={value}
         min={0}
-        placeholder="__cm"
+        placeholder="--cm"
         onChange={handleEntry}
         className={`border-0 focus:outline-0 self-start placeholder:text-gray-900 placeholder:text-xs w-12 px-1 py-0.5`}
       />

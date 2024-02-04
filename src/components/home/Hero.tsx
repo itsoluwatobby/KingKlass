@@ -18,7 +18,7 @@ export const Hero = () => {
         <Buttons
           onClick={() => {}}
           px='px-8' py='py-3'
-          classNames="text-white bg-[#842415] rounded-md"
+          classNames="text-white maxmobile:self-start bg-[#842415] rounded-[3px]"
         >
           Discover
         </Buttons>

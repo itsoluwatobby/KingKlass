@@ -42,7 +42,7 @@ const Notification = ({ notificationObj }: NotificationProps) => {
     <Link to={''} className="hover:opacity-80 transition-opacity font-sans flex flex-col border-0 border-b-[1px] py-2 even:bg-slate-50 odd:bg-slate-100 gap-y-3 font-semibold text-[12px] w-full">
       <p className="font-normal indent-5">{notificationObj.name}</p>
      
-      <div className="flex items-center gap-x-4">
+      <div className="flex items-center gap-x-3 px-3">
         <div className="bg-pink-800 bg-opacity-15 w-fit p-1 rounded-full h-6 grid place-content-center">
           <MiniLogo 
           size={{width: '18', height: '8'}}

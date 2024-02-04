@@ -1,58 +1,39 @@
 import { KingKlass } from '../../svgs/Logo';
 import { Motto } from '../../svgs/Motto';
 import { setCustomBackgroundImage } from '../../utility/setBackGroundImage';
+import { Icon1 } from './icons/Icon1';
 
 
 export default function Explore() {
 
   // min-h-[100vh]
   return (
-    <section className='relative py-4 flex flex-col gap-y-6 min-h-[80vh]'>
-      <div className="absolute w-fit top-[19rem] z-10 left-[44%] maxmobile:left-[40%] md:left-[44%]">
-        <Motto size={{ width: "90", height: "89" }} />
+    <section className='py-4 flex flex-col gap-y-2 min-h-[80vh]'>
+
+      <div className='flex flex-col gap-1 items-center p-2 p4-3'>
+        <h3 className="text-[#842415] text-sm">GALLERY</h3>
+        <h4 className='font-semibold text-sm'>WHY CUSTOME TAILORING?</h4>
+        <p className='text-center text-[13px]'>Choose custom tailoring for a perfect fit, unique style expression, unparalleled craftsmanship, and an enduring wardrobe investment.</p>
       </div>
-      <div className="absolute w-fit bottom-[19.8rem] left-[44%] maxmobile:left-[40%] md:left-[44%]">
-        <KingKlass 
-          size={{width: '95', height: '65'}} 
-          classNames="opacity-20 self-center"
+
+      <div className='relative flex-auto w-[75%] self-center'>
+        <div
+          style={setCustomBackgroundImage('/image1.png')}
+          className='absolute shadow-md flex-none z-10 top-0 left-[20%] w-32 h-36 rounded-[3px]'
+        />
+        <div
+          style={setCustomBackgroundImage('/image3.png')}
+          className='absolute shadow-md flex-none z-10 bottom-5 left-[8%] w-44 h-48 rounded-[3px]'
+        />
+        <div
+          className='absolute shadow-md flex-none bg-gray-300 z-0 top-[5.5rem] right-[15%] bg-opacity-50 w-44 h-48 rounded-[3px]'
+        />
+        <div
+          style={setCustomBackgroundImage('/image2.png')}
+          className='absolute shadow-md flex-none top-20 right-[12%] w-44 h-48 rounded-[3px]'
         />
       </div>
-      <DesignSamples
-        image='/image1.png' description='Each Agbada is a work of art, blending cultural richness with contemporary elegance. Embrace the essence of tradition and sophistication as you make a statement at every celebration and gathering. '
-      />
-      <DesignSamples
-        image='/image2.png' description='We intertwine timeless craftsmanship with personalized elegance, crafting bespoke garments that tell a story of enduring style.'
-        flexDirection='flex-row-reverse'
-        textDirection='text-start'
-      />
-      <DesignSamples
-        image='/image3.png' description='We intertwine timeless craftsmanship with personalized elegance, crafting bespoke garments that tell a story of enduring style.'
-      />
+
     </section>
-  )
-}
-
-
-type DesignSampleProps = {
-  image: string;
-  description: string;
-  flexDirection?: string;
-  textDirection?: string;
-}
-const DesignSamples = ({ image, description, flexDirection = "flex-row", textDirection = 'text-end' }: DesignSampleProps) => {
-
-  return (
-    <div className={`flex-none h-64 flex ${flexDirection} items-center w-full h-full`}>
-      <div
-      style={setCustomBackgroundImage(
-        image
-      )} 
-      className="flex-none min-h-[20rem] rounded-l-md w-1/2"
-      ></div>
-
-      <p className={`p-3 ${textDirection} font-medium text-xs whitespace-pre-wrap`}>
-        {description}
-      </p>
-    </div>
   )
 }

@@ -17,7 +17,7 @@ export default function Testimonials() {
 
   return (
     <section className='bg-gray-100 flex flex-col gap-y-1 w-full pb-4 mobile:min-h-[43vh] min-h-[50vh]'>
-      <div className='rounded-sm relative w-full p-4 pb-2 h-24 flex flex-col items-center bg-[#311807]'>
+      <div className='rounded-sm relative w-full p-4 py-1 pb-2 h-24 flex flex-col items-center bg-[#311807]'>
         <div
           style={setCustomBackgroundImage(
             '/quotes.png',
@@ -26,9 +26,10 @@ export default function Testimonials() {
               backgroundPosition: '10%',
             }
           )}
-          className='flex w-full z-20 text-white items-end flex-col gap-y-4'>
+          className='flex w-full z-20 text-white items-end flex-col gap-y-1'>
+          <span className='text-gray-300'>Testimonials</span>
           <h2 className='w-fit text-white text-3xl'>Our Happy Clients</h2>
-          <p className='text-xs'>What Our Clients Say About Theur Tailoring Experience</p>
+          <p className='text-xs text-gray-400'>What Our Clients Say About Their Tailoring Experience</p>
         </div>
       </div>
 

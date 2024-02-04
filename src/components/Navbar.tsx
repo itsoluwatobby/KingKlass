@@ -42,7 +42,9 @@ export default function Navbar() {
       <Link to={'/'}>
         <KingKlass size={{width: '65', height: '35'}} />
       </Link>
-      <BsCart3 className={`${toggleNav.modalType !== "notifications" ? 'visible' : 'invisible'} cursor-pointer text-3xl hover:opacity-70 active:opacity-100 transition-opacity flex-none`} />
+      <BsCart3 
+      onClick={() => setToggleNav({ modalType: "carts" })}
+      className={`${toggleNav.modalType !== "notifications" ? 'visible' : 'invisible'} cursor-pointer text-3xl hover:opacity-70 active:opacity-100 transition-opacity flex-none`} />
     </header>
   )
 }

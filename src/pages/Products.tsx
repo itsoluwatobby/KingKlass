@@ -19,7 +19,7 @@ export default function Products() {
             [...Array(25).keys()].map(index => (
               <DisplayCard key={index}
                 designInfo={{
-                  image: '', price: 10_500,
+                  image: `/image${index}.png`, price: 10_500,
                   createdAt: new Date().toUTCString(),
                   name: "King Klass trouser, custom"
                 }}

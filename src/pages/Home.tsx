@@ -1,9 +1,10 @@
-import About from "../components/home/About"
+// import About from "../components/home/About"
 import { ContactUs } from "../components/home/ContactUs"
 import Explore from "../components/home/Explore"
 import { Hero } from "../components/home/Hero"
 import HowItWorks from "../components/home/HowItWorks"
 import Testimonials from "../components/home/Testimonials"
+import WhatWeOffer from "../components/home/WhatWeOffer"
 
 
 export const Home = () => {
@@ -14,7 +15,8 @@ export const Home = () => {
       <Hero />
       <HowItWorks />
       <Explore />
-      <About />
+      {/* <About /> */}
+      <WhatWeOffer />
       <Testimonials />
       <ContactUs />
     </main>
