@@ -1,7 +1,4 @@
-import { KingKlass } from '../../svgs/Logo';
-import { Motto } from '../../svgs/Motto';
 import { setCustomBackgroundImage } from '../../utility/setBackGroundImage';
-import { Icon1 } from './icons/Icon1';
 
 
 export default function Explore() {
