@@ -50,3 +50,7 @@ type Reviews = {
   author: string;
   createdAt: string;
 }
+type MeasurementProps = {
+  name: string;
+  value: string;
+}
