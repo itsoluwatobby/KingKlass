@@ -101,8 +101,8 @@ export const FooterLinks = {
 }
 
 export const UserNavigation = [
-  { name: "My Measurement", link: "/measurement" },
-  { name: "Notifications", link: "/notifications" },
+  { name: "My Measurement", link: "" },
+  { name: "Notifications", link: "" },
   { name: "Settings", link: "/settings" },
 ]
 
@@ -112,4 +112,9 @@ export const NavLinks = [
   { name: 'Orders', link: '/orders' },
   { name: 'About Us', link: '#aboutUs' },
   { name: 'Contact Us', link: '#contactUs' },
+]
+
+export const MeasurementMetrics = [
+  "Chest/Bust", "Stomach", "Top Length", "Shoulder", "Sleeve Length", "Neck",
+  "Muscle", "Waist", "Laps", "Knee"
 ]

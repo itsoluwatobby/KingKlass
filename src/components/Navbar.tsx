@@ -5,6 +5,7 @@ import { useCallback } from 'react';
 import { useDesignerContext } from '../hooks/useDesignerContext';
 import { LiaTimesCircle } from 'react-icons/lia';
 import { initAppModals } from '../utility/initialVariables';
+import { Link } from 'react-router-dom';
 
 
 export default function Navbar() {
@@ -38,8 +39,10 @@ export default function Navbar() {
           className={iconClass()} 
         />
       }
-      <KingKlass size={{width: '65', height: '35'}} />
-      <BsCart3 className={iconClass()} />
+      <Link to={'/'}>
+        <KingKlass size={{width: '65', height: '35'}} />
+      </Link>
+      <BsCart3 className={`${toggleNav.modalType !== "notifications" ? 'visible' : 'invisible'} cursor-pointer text-3xl hover:opacity-70 active:opacity-100 transition-opacity flex-none`} />
     </header>
   )
 }

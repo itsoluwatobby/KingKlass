@@ -26,6 +26,13 @@ export const RouteLinks = ({ values }: RouteLinksProps) => {
                   <span className="w-1.5 h-1.5 rounded-full bg-red-700" />
                 </p>
                 :
+              link.name === 'My Measurement' ?
+                <p 
+                onClick={() => setToggleNav({ modalType: "measurements" })}
+                className="flex hover:bg-gray-100 transition-colors py-1 items-center justify-between cursor-pointer">  
+                  {link.name}
+                </p>
+                :
                 <Link to={link.link} className="">{link.name}</Link>
               }
           </div>

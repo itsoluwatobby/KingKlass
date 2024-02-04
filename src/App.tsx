@@ -15,6 +15,7 @@ import { UserNavModal } from './components/modals/UserNavModal';
 import { Notifications } from './components/modals/Notiications';
 import { Registration } from './components/authentication/Registration';
 import { switchModals, toggleAttributes } from './utility/toggleModalStates';
+import { Measurements } from './components/modals/Measurements';
 
 
 let prevPathname = '/';
@@ -47,9 +48,11 @@ function App() {
 
   return (
     <main className='w-[60%] midscreen:w-full md:m-auto h-scre scroll-smooth overflow-y-scroll'>
+      {/* APP MODALS */}
       <UserNavModal />
       <NavModal />
       <Notifications />
+      <Measurements />
 
       {/* Authentication Modals */}
       <Login />
