@@ -44,7 +44,7 @@ export const Measurements = () => {
   }, [isError])
 
   return (
-    <section className={`${toggleNav.modalType !== "measurements" ? 'fixed' : 'hidden'} bg-white midscreen:w-full w-full md:w-[60%] min-h-[95vh] mt-14 z-50 duration-300`}>
+    <section className={`${toggleNav.modalType === "measurements" ? 'fixed' : 'hidden'} bg-white midscreen:w-full w-full md:w-[60%] min-h-[95vh] mt-14 z-50 duration-300`}>
       <div className={`px-3 py-2 relative flex flex-col gap-y-6 w-full min-h-[88vh]`}>
         <div className="flex items-center justify-between py-2 font-semibold">
           <span
