@@ -1,17 +1,17 @@
 import { useDesignerContext } from "../../hooks/useDesignerContext";
 import { CiEdit } from "react-icons/ci";
-import { MeasurementMetrics } from "../../utility/constants";
-import { initMeasurementParams } from "../../utility/initVariables";
+// import { MeasurementMetrics } from "../../utility/constants";
+import { initMeasurementParams } from "../../utility/initialVariables";
 import { useState } from 'react'
 
 
 export const Measurements = () => {
-  const [userMeasurement, setUserMeasurement] = useState<MeasurementProps[]>(initMeasurementParams);
+  const [userMeasurements, setUserMeasurements] = useState<MeasurementProps[]>(initMeasurementParams);
   const { toggleNav, setToggleNav } = useDesignerContext() as DesignerContextProps;
 
   const handleSave = () => {
     try {
-      console.log(userMeasureme)
+      console.log(userMeasurements)
     }
     catch (error: any) {
       console.log(error)
@@ -34,7 +34,7 @@ export const Measurements = () => {
                   name: measure.name,
                   value: measure.value
                 }}
-                setUserMeasurement={setUserMeasurement}
+                setUserMeasurements={setUserMeasurements}
               />
             ))
           }
@@ -50,9 +50,9 @@ type MeasurementProps = {
     name: string;
     value: string;
   };
-  setUserMeasurement: React.Dispatch<React.SetStateAction<MeasurementProps[]>>
+  setUserMeasurements: React.Dispatch<React.SetStateAction<MeasurementProps[]>>
 }
-const Measurement = ({ measurementObj, setUserMeasurement }: MeasurementProps) => {
+const Measurement = ({ measurementObj, setUserMeasurements }: MeasurementProps) => {
 
   return (
     <div className="font-sans border rounded-[3px] flex flex-col p-1.5 even:bg-slate-50 odd:bg-slate-100 gap-y-3 font-semibold text-[12px] w-full">
@@ -68,7 +68,7 @@ const Measurement = ({ measurementObj, setUserMeasurement }: MeasurementProps) =
         placeholder="__cm"
         onChange={e => {
           if (e.target.name === measurementObj.name) {
-            setUserMeasurement(prev => ({ ...prev, value: e.target.value }))
+            setUserMeasurements(prev => ({ ...prev, value: e.target.value }))
           }}
         }
         className={`border-0 focus:outline-0 self-start placeholder:text-gray-900 placeholder:text-xs w-10 px-1`}
