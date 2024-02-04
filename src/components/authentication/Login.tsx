@@ -43,7 +43,7 @@ export const Login = () => {
       setAppState(prev => ({ ...prev, loading: false }))
     }
   }
-  void (handleSubmit)
+
   useEffect(() => {
     if (!isError) return
     const timeoutId = setTimeout(() => {

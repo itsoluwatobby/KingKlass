@@ -113,8 +113,3 @@ export const NavLinks = [
   { name: 'About Us', link: '#aboutUs' },
   { name: 'Contact Us', link: '#contactUs' },
 ]
-
-export const MeasurementMetrics = [
-  "Chest/Bust", "Stomach", "Top Length", "Shoulder", "Sleeve Length", "Neck",
-  "Muscle", "Waist", "Laps", "Knee"
-]

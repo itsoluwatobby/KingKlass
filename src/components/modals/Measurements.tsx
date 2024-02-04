@@ -1,80 +1,79 @@
 import { useDesignerContext } from "../../hooks/useDesignerContext";
-import { CiEdit } from "react-icons/ci";
-// import { MeasurementMetrics } from "../../utility/constants";
-import { initMeasurementParams } from "../../utility/initialVariables";
-import { useState } from 'react'
+import { initAppState, initMeasurements } from "../../utility/initialVariables";
+import { useEffect, useState } from 'react'
+import { MeasurementCard } from "./measurement/MeasurementCard";
+import { Buttons } from "../appComponents/Buttons";
+import { toast } from "react-toastify";
+import { sanitizeEntries } from "../../utility/sanitizeEntries";
 
 
 export const Measurements = () => {
-  const [userMeasurements, setUserMeasurements] = useState<MeasurementProps[]>(initMeasurementParams);
+  const [appState, setAppState] = useState<AppStateType>(initAppState)
+  const [userMeasurements, setUserMeasurements] = useState<MeasurementProps>(initMeasurements);
   const { toggleNav, setToggleNav } = useDesignerContext() as DesignerContextProps;
+
+  const { isLoading, isError } = appState;
 
   const handleSave = () => {
     try {
-      console.log(userMeasurements)
+      const newMeasurementEntries = sanitizeEntries(userMeasurements);
+      console.log(newMeasurementEntries)
+
+      setAppState(prev => ({ ...prev, success: true }))
+      setToggleNav({ modalType: "userNavModal" })
+      toast.success('Measurement Added!')
     }
     catch (error: any) {
       console.log(error)
+      setAppState(prev => ({ ...prev, isError: true }))
+      toast.error('error message')
+    }
+    finally {
+      setAppState(prev => ({ ...prev, loading: false }))
     }
   }
-  void(handleSave)
-  
+
+  useEffect(() => {
+    if (!isError) return
+    const timeoutId = setTimeout(() => {
+      setAppState(prev => ({ ...prev, isError: false }))
+    }, 5000)
+    return () => {
+      clearTimeout(timeoutId)
+    }
+  }, [isError])
+
   return (
     <section className={`${toggleNav.modalType !== "measurements" ? 'fixed' : 'hidden'} bg-white midscreen:w-full w-full md:w-[60%] min-h-[95vh] mt-14 z-50 duration-300`}>
       <div className={`px-3 py-2 relative flex flex-col gap-y-6 w-full min-h-[88vh]`}>
-        <span 
-        onClick={() => setToggleNav({ modalType: "userNavModal" })}
-        className="text-sm hover:underline cursor-pointer font-semibold">Back</span>
-        
-        <div className="w-full grid grid-cols-2 gap-4">
+        <div className="flex items-center justify-between py-2 font-semibold">
+          <span
+            onClick={() => setToggleNav({ modalType: "userNavModal" })}
+            className="text-sm hover:underline cursor-pointer font-semibold">Return</span>
+          <h3 className="text-sm bg-slate-100 shadow-md p-0.5">Your Measurements</h3>
+        </div>
+
+        <div className="w-full grid grid-cols-2 md:grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 gap-4 transition-all">
           {
-            userMeasurements.map(measure => (
-              <Measurement key={measure.name}
-                measurementObj={{
-                  name: measure.name,
-                  value: measure.value
-                }}
+            Object.entries(userMeasurements).map(([key, value]) => (
+              <MeasurementCard key={key}
+                keyName={key as MEASUREMENT_METRICS}
+                value={value}
                 setUserMeasurements={setUserMeasurements}
               />
             ))
           }
         </div>
+
+        <Buttons
+          onClick={handleSave}
+          px='' py='' isLoading={isLoading}
+          classNames='self-center mt-6 rounded-sm font-semibold bg-orange-800 bg-opacity-95 text-xs text-white w-[95%] tracking-wide md:w-1/2 py-3 hover:bg-orange-700 active:bg-orange-800 transition-colors'
+        >
+          Save and Exit
+        </Buttons>
       </div>
+
     </section>
-  )
-}
-
-
-type MeasurementProps = {
-  measurementObj: {
-    name: string;
-    value: string;
-  };
-  setUserMeasurements: React.Dispatch<React.SetStateAction<MeasurementProps[]>>
-}
-const Measurement = ({ measurementObj, setUserMeasurements }: MeasurementProps) => {
-
-  return (
-    <div className="font-sans border rounded-[3px] flex flex-col p-1.5 even:bg-slate-50 odd:bg-slate-100 gap-y-3 font-semibold text-[12px] w-full">
-      <div className="flex items-center justify-between">
-        <p className="font-medium">{measurementObj.name}</p>
-        <CiEdit className="text-xl cursor-pointer" />
-      </div>
-    
-      <input type="tel" 
-        inputMode='numeric'
-        name={measurementObj.name}
-        value={measurementObj.value}
-        placeholder="__cm"
-        onChange={e => {
-          if (e.target.name === measurementObj.name) {
-            setUserMeasurements(prev => ([...prev, 
-                                          { name: e.target.name, value: e.target.value 
-                                          }]))
-          }}
-        }
-        className={`border-0 focus:outline-0 self-start placeholder:text-gray-900 placeholder:text-xs w-10 px-1`}
-      />
-    </div>
   )
 }

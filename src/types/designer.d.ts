@@ -50,7 +50,8 @@ type Reviews = {
   author: string;
   createdAt: string;
 }
-type MeasurementProps = {
-  name: string;
-  value: string;
-}
+
+type MEASUREMENT_METRICS = "Chest/Bust" | "Stomach" | "Top Length" | "Shoulder" | "Sleeve Length" | "Neck" |
+  "Muscle" | "Waist" | "Laps" | "Knee";
+
+type MeasurementProps = Record<MEASUREMENT_METRICS, string>;

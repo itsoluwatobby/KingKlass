@@ -31,9 +31,27 @@ export const inputValidation: Validations = {
   validEmail: false, validPassword: false, matchingPassword: false
 }
 
-export const initMeasurementParams: MeasurementProps[] = [
-  { name: "Chest/Bust", value: "" }, { name: "Stomach", value: "" }, { name: "Top Length", value: "" }, 
-  { name: "Shoulder", value: "" }, { name: "Sleeve Length", value: "" }, { name: "Neck", value: "" },
-  { name: "Muscle", value: "" }, { name: "Waist", value: "" }, { name: "Laps", value: "" }, 
-  { name: "Knee", value: "" }
-]
+// export const initMeasurements: MeasurementProps = { 
+//   "Chest/Bust": { name: "Chest/Bust", value: "" }, 
+//   "Stomach": { name: "Stomach", value: "" }, 
+//   "Top Length": { name: "Top Length", value: "" }, 
+//   "Shoulder": { name: "Shoulder", value: "" }, 
+//   "Sleeve Length": { name: "Sleeve Length", value: "" }, 
+//   "Neck": { name: "Neck", value: "" },
+//   "Muscle": { name: "Muscle", value: "" }, 
+//   "Waist": { name: "Waist", value: "" }, 
+//   "Laps": { name: "Laps", value: "" }, 
+//   "Knee": { name: "Knee", value: "" }
+// }
+export const initMeasurements: MeasurementProps = { 
+  "Chest/Bust": "", 
+  "Stomach": "" , 
+  "Top Length": "" , 
+  "Shoulder": "" , 
+  "Sleeve Length": "", 
+  "Neck": "",
+  "Muscle": "", 
+  "Waist": "", 
+  "Laps": "", 
+  "Knee": ""
+}
