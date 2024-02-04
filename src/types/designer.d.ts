@@ -51,6 +51,6 @@ type Reviews = {
   createdAt: string;
 }
 type MeasurementProps = {
-  [x: string]: string;
   name: string;
+  value: string;
 }
