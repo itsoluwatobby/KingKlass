@@ -18,3 +18,11 @@ export const formatPrice = (price: (number | string)) => {
                           :  formattedPrice = `${priceToString}`
   return formattedPrice
 }
+
+export const refindedReview = <T>(reviews: T[], count=2): T[][] => {
+    const refindedResult = [];
+    for (let index = 0; index < reviews?.length; index += count) {
+        refindedResult.push(reviews.slice(index, index+count));
+    }
+    return refindedResult;
+}

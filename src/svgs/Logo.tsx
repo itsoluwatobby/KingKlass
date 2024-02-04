@@ -1,9 +1,9 @@
 
-type LogoProps = {
+type KingKlassProps = {
   size: Size;
   classNames?: string;
 }
-export const KingKlass = ({ size, classNames='' }: LogoProps) => {
+export const KingKlass = ({ size, classNames='' }: KingKlassProps) => {
 
   const { width, height } = size;
 

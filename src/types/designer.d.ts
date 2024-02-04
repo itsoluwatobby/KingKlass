@@ -1,21 +1,17 @@
 // @types designer.d.ts
-
 type ChildrenNode = {
   children: React.ReactNode;
 }
 type Toggle = 'OPEN' | 'CLOSE';
-
 type Size = { 
   width: string; 
   height: string; 
 }
-
 type AppModalTypes = 'signin' | 'signup';
-type ToggleNav = 'openNavModal' | 'userNavModal';
+type ToggleNav = 'openNavModal' | 'userNavModal' | 'notifications' | 'pass';
 type AppModals = Record<AppModalTypes, Toggle>
-
 type ToggleOption = {
-  isToggled: Record<ToggleNav, boolean>;
+  modalType: ToggleNav;
 }
 type DesignerContextProps = {
   appModals: AppModals;
@@ -25,13 +21,11 @@ type DesignerContextProps = {
   setAppModals: React.Dispatch<React.SetStateAction<AppModals>>;
   setToggleNav: React.Dispatch<React.SetStateAction<ToggleOption>>;
 }
-
 type AppStateType = {
   isLoading: boolean;
   isError: boolean;
   error: any;
 }
-
 type UserInfo = {
   name?: string,
   email: string;
@@ -39,16 +33,20 @@ type UserInfo = {
   confirm_password?: string;
   remember_me?: boolean;
 }
-
 type UserDetails = Omit<UserInfo, 'confirm_password'> & { 
   username: string;
   mobileNumber: string;
 }
-
 type UserRole = 'ADMIN' | 'USER';
-
 type Validations = {
   validEmail: boolean;
   validPassword: boolean; 
   matchingPassword: boolean;
+}
+type Reviews = {
+  id?: number;
+  rating: number[];
+  content: string;
+  author: string;
+  createdAt: string;
 }

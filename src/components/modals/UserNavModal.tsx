@@ -1,13 +1,13 @@
 import { SlArrowLeft } from "react-icons/sl";
-import { UserNavigation } from "../utility/constants"
-import { Buttons } from "./appComponents/Buttons";
-import { useDesignerContext } from "../hooks/useDesignerContext";
+import { UserNavigation } from "../../utility/constants"
+import { Buttons } from "../appComponents/Buttons";
+import { useDesignerContext } from "../../hooks/useDesignerContext";
 import { useEffect, useState } from "react";
-import { initAppModals, initAppState, initUserDetail } from "../utility/initialVariables";
+import { initAppModals, initAppState, initUserDetail } from "../../utility/initialVariables";
 import { RouteLinks } from "./userModal/RouteLinks";
 import { CiEdit } from "react-icons/ci";
 import UserDetailForm from "./userModal/UserDetailForm";
-import { sanitizeEntries } from "../utility/sanitizeEntries";
+import { sanitizeEntries } from "../../utility/sanitizeEntries";
 import { toast } from "react-toastify";
 
 
@@ -53,7 +53,7 @@ export const UserNavModal = () => {
   }, [isError])
 
   return (
-    <section className={`${toggleNav.isToggled.userNavModal ? 'fixed' : 'hidden'} bg-white midscreen:w-full w-full md:w-[60%] min-h-[95vh] mt-14 z-50 duration-300`}>
+    <section className={`${toggleNav.modalType === "userNavModal" ? 'fixed' : 'hidden'} bg-white midscreen:w-full w-full md:w-[60%] min-h-[95vh] mt-14 z-50 duration-300`}>
       <div className={`relative flex flex-col gap-y-4 w-full min-h-[90vh]`}>
         <header className="relative flex items-center justify-center w-full bg-opacity-95 bg-[#EEE3DC] pt-3 p-2">
           {
@@ -68,11 +68,7 @@ export const UserNavModal = () => {
               :
               <Buttons
                 onClick={() => {
-                  setToggleNav(prev => ({
-                    ...prev, isToggled: {
-                      openNavModal: true, userNavModal: false
-                    }
-                  }))
+                  setToggleNav({ modalType: "openNavModal" })
                   setAppModals(initAppModals);
                 }}
                 px='' py=''
@@ -85,9 +81,9 @@ export const UserNavModal = () => {
           <h3 className="text-base text-center font-semibold w-fit leading-5">{toggleModal === 'Profile' ? 'Profile' : 'Menu'}</h3>
         </header>
 
-        <div 
-        onClick={() => setToggleModal('Profile')}
-        className={`${toggleModal === 'Profile' ? 'hidden' : 'block'} absolute right-2 top-11 hover:bg-slate-200 active:bg-inherit transition-colors p-1 cursor-default rounded-sm font-semibold flex items-center w-fit`}>
+        <div
+          onClick={() => setToggleModal('Profile')}
+          className={`${toggleModal === 'Profile' ? 'hidden' : 'block'} absolute right-2 top-11 hover:bg-slate-200 active:bg-inherit transition-colors p-1 cursor-default rounded-sm font-semibold flex items-center w-fit`}>
           <span className="underline text-xs">Edit</span>
           <CiEdit className="text-lg" />
         </div>
@@ -109,19 +105,19 @@ export const UserNavModal = () => {
           }
         </div>
 
-      { 
-          toggleModal === 'Profile' ? 
-          <Buttons
-            onClick={handleSubmit}
-            px='' py='' isLoading={isLoading}
-            classNames='absolute left-3 bottom-28 rounded-md mt-10 font-semibold bg-gray-100 text-orange-700 grid place-content-center w-[95%] md:w-1/2 py-3 hover:bg-gray-200 active:bg-gray-100 transition-colors'
-          >
-            Save
-          </Buttons>
-        :
-          <RouteLinks
-            values={UserNavigation}
-          />
+        {
+          toggleModal === 'Profile' ?
+            <Buttons
+              onClick={handleSubmit}
+              px='' py='' isLoading={isLoading}
+              classNames='absolute left-3 bottom-28 rounded-md mt-10 font-semibold bg-gray-100 text-orange-700 grid place-content-center w-[95%] md:w-1/2 py-3 hover:bg-gray-200 active:bg-gray-100 transition-colors'
+            >
+              Save
+            </Buttons>
+            :
+            <RouteLinks
+              values={UserNavigation}
+            />
         }
       </div>
     </section>

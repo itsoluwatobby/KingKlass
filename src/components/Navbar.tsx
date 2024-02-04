@@ -16,14 +16,10 @@ export default function Navbar() {
 
   const toggleModal = (type: 'open'|'close') => {
     if (type === 'open') {
-      setToggleNav(prev => ({ ...prev, isToggled: {
-        openNavModal: true, userNavModal: false } 
-      }))
+      setToggleNav({ modalType: "openNavModal" })
     }
     else {
-      setToggleNav(prev => ({ ...prev, isToggled: {
-        openNavModal: false, userNavModal: false } 
-      }))
+      setToggleNav({ modalType: "pass" })
     }
     setAppModals(initAppModals);
   }
@@ -31,7 +27,7 @@ export default function Navbar() {
   return (
     <header className="z-30 bg-white shadow-sm rounded-b-sm midscreen:w-full w-[60%] px-6 pt-4 pb-2 fixed top-0 flex items-end justify-between">
       {
-        toggleNav.isToggled.openNavModal ? 
+        toggleNav.modalType === 'openNavModal' ? 
         <LiaTimesCircle 
           onClick={() => toggleModal('close')}
           className={iconClass()} 

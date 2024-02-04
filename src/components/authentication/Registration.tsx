@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 import { useDesignerContext } from "../../hooks/useDesignerContext";
 import { LiaTimesSolid } from "react-icons/lia";
 import { Buttons } from "../appComponents/Buttons";
-import UserInputDetails from "../userModal/UserInputDetails";
+import UserInputDetails from "../modals/userModal/UserInputDetails";
 import { FcGoogle } from "react-icons/fc";
 import { Validation_RegExp } from "../../utility/regexExpConfig";
 
@@ -21,7 +21,7 @@ export const Registration = () => {
   const { validEmail, validPassword, matchingPassword } = validation;
 
   const { isLoading, isError } = appState;
-  const canSubmit = [email, password, confirm_password, validEmail, validPassword, matchingPassword ].every(Boolean);
+  const canSubmit = [email, password, confirm_password, validEmail, validPassword, matchingPassword].every(Boolean);
 
   const handleSubmit = () => {
     if (!canSubmit || isLoading) return
@@ -48,16 +48,16 @@ export const Registration = () => {
 
   useEffect(() => {
     if (email) {
-      setValidation(prev => ({...prev, validEmail: Validation_RegExp['EMAIL_REG'].test(email) }))
+      setValidation(prev => ({ ...prev, validEmail: Validation_RegExp['EMAIL_REG'].test(email) }))
     }
     else if (password) {
-      setValidation(prev => ({...prev, validPassword: Validation_RegExp['PASS_REG'].test(password) }))
+      setValidation(prev => ({ ...prev, validPassword: Validation_RegExp['PASS_REG'].test(password) }))
     }
   }, [email, password])
-  
+
   useEffect(() => {
     if (password && confirm_password) {
-      setValidation(prev => ({...prev, matchingPassword: password === confirm_password }))
+      setValidation(prev => ({ ...prev, matchingPassword: password === confirm_password }))
     }
   }, [password, confirm_password])
 
@@ -86,8 +86,8 @@ export const Registration = () => {
 
           <UserInputDetails
             placeholder="Username"
-            title="Username (optional)" 
-            value={name as string} 
+            title="Username (optional)"
+            value={name as string}
             name='name' disabled={false}
             setUserDetails={setUserCredentials} type='text'
           />
@@ -97,15 +97,15 @@ export const Registration = () => {
             title="Email" value={email} name='email' disabled={false}
             setUserDetails={setUserCredentials} type='email'
           />
-          
+
           <UserInputDetails
             title="Password" value={password} name='password' disabled={false}
             setUserDetails={setUserCredentials} type='password'
             validPassword={validPassword}
           />
-          
+
           <UserInputDetails
-            title="Confirm Password" value={confirm_password as string} name='confirm_password' disabled={false} 
+            title="Confirm Password" value={confirm_password as string} name='confirm_password' disabled={false}
             matchingPassword={matchingPassword}
             setUserDetails={setUserCredentials} type='password'
           />

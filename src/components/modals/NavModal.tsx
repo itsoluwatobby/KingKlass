@@ -1,9 +1,9 @@
 import { SlArrowRight } from "react-icons/sl";
-import { NavLinks } from "../utility/constants"
-import { getInitials } from "../utility/getInitials";
-import { Buttons } from "./appComponents/Buttons";
-import { useDesignerContext } from "../hooks/useDesignerContext";
-import { useSignout } from "../hooks/useSignout";
+import { NavLinks } from "../../utility/constants"
+import { getInitials } from "../../utility/getInitials";
+import { Buttons } from "../appComponents/Buttons";
+import { useDesignerContext } from "../../hooks/useDesignerContext";
+import { useSignout } from "../../hooks/useSignout";
 
 
 export const NavModal = () => {
@@ -13,7 +13,7 @@ export const NavModal = () => {
 
 
   return (
-    <section className={`${toggleNav.isToggled.openNavModal ? 'fixed' : 'hidden'} bg-white midscreen:w-full w-full md:w-[60%] min-h-[95vh] mt-14 z-50 duration-300`}>
+    <section className={`${toggleNav.modalType === "openNavModal" ? 'fixed' : 'hidden'} bg-white midscreen:w-full w-full md:w-[60%] min-h-[95vh] mt-14 z-50 duration-300`}>
       <div className={`px-3 py-1 relative flex flex-col w-full min-h-[88vh]`}>
         <header className="flex items-center justify-between">
           <div className="flex items-center gap-x-2">
@@ -24,9 +24,7 @@ export const NavModal = () => {
             </div>
           </div>
           <Buttons
-            onClick={() => setToggleNav(prev => ({ ...prev, isToggled: {
-              openNavModal: false, userNavModal: true }
-            }))}
+            onClick={() => setToggleNav({ modalType: "userNavModal" })}
             px='' py=''
             classNames='rounded-full grid place-content-center w-8 h-8 hover:bg-gray-200 active:bg-gray-100 transition-colors'
           >
@@ -34,7 +32,7 @@ export const NavModal = () => {
           </Buttons>
         </header>
         <RouteLinks
-        values={NavLinks}
+          values={NavLinks}
         />
         <Buttons
           onClick={signout}
@@ -61,7 +59,7 @@ const RouteLinks = ({ values }: RouteLinksProps) => {
     <div className="flex flex-col gap-y-3 font-semibold text-[12px] mt-5 w-full">
       {
         values?.map(link => (
-          <a href={link.link} key={link.name}  className="hover:scale-[0.99] transition-all w-full p-3 pr-0 border-0 border-b border-b-gray-300">{link.name}</a>
+          <a href={link.link} key={link.name} className="hover:scale-[0.99] transition-all w-full p-3 pr-0 border-0 border-b border-b-gray-300">{link.name}</a>
         ))
       }
     </div>

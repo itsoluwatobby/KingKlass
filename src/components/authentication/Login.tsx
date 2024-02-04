@@ -6,7 +6,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useDesignerContext } from "../../hooks/useDesignerContext";
 import { Buttons } from "../appComponents/Buttons";
 import { LiaTimesSolid } from "react-icons/lia";
-import UserInputDetails from "../userModal/UserInputDetails";
+import UserInputDetails from "../modals/userModal/UserInputDetails";
 import { FcGoogle } from "react-icons/fc";
 
 
@@ -43,7 +43,7 @@ export const Login = () => {
       setAppState(prev => ({ ...prev, loading: false }))
     }
   }
-void(handleSubmit)
+  void (handleSubmit)
   useEffect(() => {
     if (!isError) return
     const timeoutId = setTimeout(() => {
@@ -62,9 +62,9 @@ void(handleSubmit)
 
           <div className="self-start text-[13px] text-gray-800">
             <span>Don't have an account yet? </span>
-            <button 
-            onClick={() => setAppModals({ signup: 'OPEN', signin: 'CLOSE' })}
-            className="border-0 focus:outline-0 hover:opacity-90 underline underline-offset-2">Register</button>
+            <button
+              onClick={() => setAppModals({ signup: 'OPEN', signin: 'CLOSE' })}
+              className="border-0 focus:outline-0 hover:opacity-90 underline underline-offset-2">Register</button>
           </div>
 
           <UserInputDetails
@@ -80,10 +80,10 @@ void(handleSubmit)
           <div className="flex flex-col w-full gap-y-5 mt-2">
             <div className="flex items-center w-full justify-between text-xs">
               <div className="flex items-center gap-x-2">
-                <input type="checkbox" 
+                <input type="checkbox"
                   name="remember_me"
                   checked={remember_me}
-                  onChange={e => setUserCredentials(prev => ({...prev, remember_me: e.target.checked}))}
+                  onChange={e => setUserCredentials(prev => ({ ...prev, remember_me: e.target.checked }))}
                 />
                 <span>Stay signed in</span>
               </div>
@@ -106,7 +106,7 @@ void(handleSubmit)
               classNames='self-center rounded-sm font-semibold bg-blue-600 text-white w-[95%] md:w-1/2 py-2 hover:bg-blue-700 grid place-content-center active:bg-blue-800 transition-colors'
             >
               <div className="flex items-center gap-x-4 text-xs">
-                <FcGoogle className="text-xl" /> 
+                <FcGoogle className="text-xl" />
                 <span>Continue with Google</span>
               </div>
             </Buttons>
@@ -119,7 +119,7 @@ void(handleSubmit)
         />
 
       </div>
-        
+
     </section>
   )
 }

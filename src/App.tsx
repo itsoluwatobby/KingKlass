@@ -1,19 +1,20 @@
-import { Routes, Route, useLocation } from 'react-router-dom';
-import { DesignerLayout } from './layout/DesignerLayout';
-import { Home } from './pages/Home';
-import 'react-toastify/dist/ReactToastify.css';
-import { ToastContainer } from 'react-toastify';
-import NotFound from './pages/NotFound';
-import { NavModal } from './components/NavModal';
-import { useDesignerContext } from './hooks/useDesignerContext';
 import { useEffect } from 'react';
-import { switchModals, toggleAttributes } from './utility/toggleModalStates';
-import { UserNavModal } from './components/UserNavModal';
-import { Login } from './components/authentication/Login';
-import { Registration } from './components/authentication/Registration';
-import { initNavModals } from './utility/initialVariables';
+import { Home } from './pages/Home';
+import NotFound from './pages/NotFound';
 import Products from './pages/Products';
 import ProductPage from './pages/ProductPage';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
+import { NavModal } from './components/modals/NavModal';
+import { DesignerLayout } from './layout/DesignerLayout';
+import { Login } from './components/authentication/Login';
+import { initNavModals } from './utility/initialVariables';
+import { Routes, Route, useLocation } from 'react-router-dom';
+import { useDesignerContext } from './hooks/useDesignerContext';
+import { UserNavModal } from './components/modals/UserNavModal';
+import { Notifications } from './components/modals/Notiications';
+import { Registration } from './components/authentication/Registration';
+import { switchModals, toggleAttributes } from './utility/toggleModalStates';
 
 
 let prevPathname = '/';
@@ -47,8 +48,10 @@ function App() {
   return (
     <main className='w-[60%] midscreen:w-full md:m-auto h-scre scroll-smooth overflow-y-scroll'>
       <UserNavModal />
-      <NavModal /> 
+      <NavModal />
+      <Notifications />
 
+      {/* Authentication Modals */}
       <Login />
       <Registration />
 
