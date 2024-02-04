@@ -68,7 +68,9 @@ const Measurement = ({ measurementObj, setUserMeasurements }: MeasurementProps) 
         placeholder="__cm"
         onChange={e => {
           if (e.target.name === measurementObj.name) {
-            setUserMeasurements(prev => ({ ...prev, value: e.target.value }))
+            setUserMeasurements(prev => ([...prev, 
+                                          { name: e.target.name, value: e.target.value 
+                                          }]))
           }}
         }
         className={`border-0 focus:outline-0 self-start placeholder:text-gray-900 placeholder:text-xs w-10 px-1`}
