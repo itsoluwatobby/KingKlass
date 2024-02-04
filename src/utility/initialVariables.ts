@@ -30,3 +30,10 @@ export const initUserDetail: UserDetails = {
 export const inputValidation: Validations = {
   validEmail: false, validPassword: false, matchingPassword: false
 }
+
+export const initMeasurementParams: MeasurementProps[] = [
+  { name: "Chest/Bust", value: "" }, { name: "Stomach", value: "" }, { name: "Top Length", value: "" }, 
+  { name: "Shoulder", value: "" }, { name: "Sleeve Length", value: "" }, { name: "Neck", value: "" },
+  { name: "Muscle", value: "" }, { name: "Waist", value: "" }, { name: "Laps", value: "" }, 
+  { name: "Knee", value: "" }
+]
