@@ -11,7 +11,7 @@ export default function HowItWorks() {
   ]
   //75vh
   return (
-    <section className="relative md:mt-10 lg:px-44 md:px-32 p-4 flex flex-col gap-y-6 min-h-">
+    <section className="relative md:mt-10 lg:px-44 md:px-32 p-4 flex flex-col gap-y-6 transition-all min-h-">
 
       <div className="relative flex flex-col items-center gap-y-2 w-full">
           <h3 className="text-[#842415] text-sm">TAILORED ASSISTANCE</h3>

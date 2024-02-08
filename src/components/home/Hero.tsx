@@ -6,7 +6,7 @@ export const Hero = () => {
 
   // min-h-[90vh]
   return (
-    <section className="relative flex items-cente w-full flex-none h-[90%]">
+    <section className="relative flex items-cente w-full flex-none transition-all h-[90%]">
       <div className="md:mt-24 py-6 px-4 md:px-16 lg:px-28 flex flex-col gap-y-8 mobile:gap-y-4 items-center md:items-start w-full h-full">
         <h1 className="text-center md:text-start mobile:text-2xl text-3xl whitespace-pre-wrap font-bold">
           CRAFTING IDENTITY

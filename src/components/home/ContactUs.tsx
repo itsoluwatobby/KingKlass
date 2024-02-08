@@ -53,9 +53,9 @@ export const ContactUs = () => {
     style={setCustomBackgroundImage(
       '/background.png'
     )}
-    className="bg-gray-50 text-white px-3 flex flex-col gap-y-5 w-full pt-4 pb-2 mobile:min-h-[48vh] min-h-[58vh]">
+    className="bg-gray-50 text-white px-3 flex flex-col gap-y-5 w-full pt-4 pb-2 md:p-0 transition-all mobile:min-h-[48vh] min-h-[58vh]">
 
-      <div className="md:self-end md:bg-[#311807] flex flex-col gap-y-4 md:w-[55%] rounded-md p-3">
+      <div className="md:self-end md:bg-[#311807] flex flex-col gap-y-4 md:w-[55%] xl:w-1/2 md:h-full rounded-md p-3 md:p-10 md:px-12">
         <h1 className="text-3xl font-semibold text-center">Contact Us</h1>
         <InputText
         placeholder="Name (optional)" 

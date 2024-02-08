@@ -10,30 +10,34 @@ export const Footer = () => {
   const noFooterRoutes = ['/products', `/products/${productId}`];
 
   return (
-    <footer className={`${noFooterRoutes.includes(pathname) ? 'hidden' : 'flex'} flex-col gap-y-5 text-xs font-sans font-medium w-full p-4 pb-10 min-h-[60vh] mobile:min-h-[50vh]`}>
-      <KingKlassStretch size={{width: '118', height: '23'}} />
+    <footer className={`${noFooterRoutes.includes(pathname) ? 'hidden' : 'flex'} flex-col gap-y-5 text-xs font-sans font-medium w-full p-4 pb-10  transition-all min-h-[60vh mobile:min-h-[50vh`}>
 
-      <div className='flex flex-col gap-y-2.5'>
-        <p className="flex flex-col">
-          <span>23 Faulks road Aba,</span>
-          <span>Abia, Nigeria</span>
-        </p>
-        <div className="flex flex-col gap-1 w-fit">
-          <a href="tel:+234901230902" className="hover:underline transition-all">+2348138771855</a>
-          <a href="tel:+234901230902" className="hover:underline transition-all">+2348024086830</a>
+      <div className='md:p-5 flex flex-col gap-y-5 w-full md:justify-between md:flex-row'>
+        <div className="flex flex-col gap-y-5 gap-5">
+          <KingKlassStretch size={{width: '134', height: '26'}} />
+          <div className='flex flex-col gap-y-2.5'>
+            <p className="flex flex-col">
+              <span>23 Faulks road Aba,</span>
+              <span>Abia, Nigeria</span>
+            </p>
+            <div className="flex flex-col gap-1 w-fit">
+              <a href="tel:+234901230902" className="hover:underline transition-all">+2348138771855</a>
+              <a href="tel:+234901230902" className="hover:underline transition-all">+2348024086830</a>
+            </div>
+            <p className="text-[11px]">shop@kigklass.nigeria</p>
+          </div>
         </div>
-        <p className="text-[11px]">shop@kigklass.nigeria</p>
-      </div>
 
-      <div className="flex justify-between pr-6">
-        <RouteLinks 
-        name={QuickLinks.name} 
-        values={QuickLinks.values}
-        />
-        <RouteLinks 
-        name={Support.name} 
-        values={Support.values}
-        />
+        <div className="md:flex-none flex justify-between pr-6 md:w-[55%]">
+          <RouteLinks
+          name={QuickLinks.name}
+          values={QuickLinks.values}
+          />
+          <RouteLinks
+          name={Support.name}
+          values={Support.values}
+          />
+        </div>
       </div>
 
       <div className="w-full h-[2px] bg-gray-400" />

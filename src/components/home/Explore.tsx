@@ -6,7 +6,7 @@ export default function Explore() {
 
   // min-h-[100vh]
   return (
-    <section className='py-4 flex flex-col md:flex-row-reverse gap-y-2 min-h-[75vh] md:text-sm'>
+    <section className='py-4 flex flex-col md:flex-row-reverse gap-y-2 min-h-[75vh] transition-all md:text-sm'>
 
       <div className='md:hidden flex flex-col gap-1 items-center p-2 p4-3'>
         <h3 className="text-[#842415] md:text-xl text-2xl">GALLERY</h3>

@@ -7,7 +7,7 @@ import { Icon4 } from "./icons/Icon4";
 
 export default function WhatWeOffer() {
   return (
-    <div className='lg:pl-16 md:pl-10 h-80 flex flex-col w-full'>
+    <div className='lg:pl-16 md:pl-10 h-80 flex flex-col w-full transition-all'>
 
       <div className='hidden md:flex flex-col gap-1 p-2 p4-3'>
         <h3 className="text-[#842415] md:text-xl text-2xl">GALLERY</h3>

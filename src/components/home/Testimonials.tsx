@@ -85,7 +85,7 @@ const FeedBacks = ({ author, comment, location, date }: FeedBacksProps) => {
   const [firstName, lastName] = author.split(' ', 2);
 
   return (
-    <div className='md:border-0 md:border-r-2 md:last:border-r-0 px-2 md:pr-4 flex-none flex flex-col gap-y-3 maxmobile:w-full w-[23rem]'>
+    <div className='md:border-0 md:border-r-2 md:last:border-r-0 px-2 md:pr-4 flex-none flex flex-col gap-y-3 maxmobile:w-full w-[23rem] transition-all'>
       <div className='capitalize font-semibold text-sm flex items-center gap-x-3'>
         <h3 className='flex-none w-8 h-8 grid place-content-center bg-[#F2DDB1] font-bold rounded-full p-2'>{getInitials(firstName)}</h3>
         <h3 className=''>{firstName} &nbsp;{getInitials(lastName)}</h3>
