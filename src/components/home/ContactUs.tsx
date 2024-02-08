@@ -54,9 +54,9 @@ export const ContactUs = () => {
       '/background.png'
     )}
     className="bg-gray-50 text-white px-3 flex flex-col gap-y-5 w-full pt-4 pb-2 mobile:min-h-[48vh] min-h-[58vh]">
-      <h1 className="text-3xl font-semibold text-center">Contact Us</h1>
 
-      <div className="flex flex-col gap-y-4 md:self-start md:w-[55%] md:border p-3">
+      <div className="md:self-end md:bg-[#311807] flex flex-col gap-y-4 md:w-[55%] rounded-md p-3">
+        <h1 className="text-3xl font-semibold text-center">Contact Us</h1>
         <InputText
         placeholder="Name (optional)" 
         name='name' value={name}

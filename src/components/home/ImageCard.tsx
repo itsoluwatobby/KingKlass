@@ -7,7 +7,7 @@ type DesignSampleProps = {
 export const ImageCard = ({ image, title }: DesignSampleProps) => {
 
   return (
-    <article className={`rounded-[3px] flex-none bg-pink-200 bg-opacity-80 h-60 flex flex-col items-center w-[33.3%]`}>
+    <article className={`rounded-[3px] flex-none bg-pink-200 bg-opacity-80 h-60 flex flex-col items-center w-48 maxmobile:w-36`}>
       <div
       style={setCustomBackgroundImage(image)} 
       className="flex-none min-h-[90%] rounded-l-[2px] w-full rounded-[3px]"

@@ -11,14 +11,14 @@ export default function HowItWorks() {
   ]
   //75vh
   return (
-    <section className="relative p-4 flex flex-col gap-y-6 min-h-">
+    <section className="relative md:mt-10 lg:px-44 md:px-32 p-4 flex flex-col gap-y-6 min-h-">
 
       <div className="relative flex flex-col items-center gap-y-2 w-full">
           <h3 className="text-[#842415] text-sm">TAILORED ASSISTANCE</h3>
 
           <h4 className="font-semibold text-xl">HOW CAN WE HELP YOU?</h4>
 
-        <div className="px-4 p-1 overflow-y-scroll flex items-center gap-x-2 w-full">
+        <div className="relative px-4 p-1 overflow-x-scroll flex items-center md:justify-center gap-x-7 maxmobile:gap-x-2 w-full lg:gap-x-10">
           {
             Previews.map(preview => (
               <ImageCard key={preview.title} 
@@ -26,12 +26,10 @@ export default function HowItWorks() {
               />
             ))
           }
-          </div>
-
-          <div className="absolute w-fit bottom-2 left-[28%] maxmobile:left-[25%] md:left-[28%]">
+          <div className="absolute w-fit bottom-2 left-[28%] maxmobile:left-[34%] md:left-[28%]">
             <Motto size={{ width: "90", height: "89" }} />
           </div>
-        {/* <div className={`self-center relative min-w-2 min-h-2 bg-slate-300 rounded-full before:absolute before:content-[""] before:bg-slate-800 before:-left-8 before:w-2 before:h-2 before:rounded-full after:absolute after:content-[""] after:bg-slate-300 after:-right-8 after:w-2 after:h-2 after:rounded-full`} /> */}
+        </div>
       </div>
 
       {/* <KingKlass 
@@ -44,7 +42,7 @@ export default function HowItWorks() {
         <h1 className="text-3xl font-bold text-center">How It Works</h1>
       </div>
 
-      <div className='flex flex-col gap-y-10'>
+      <div className='lg:px-36 flex flex-col gap-y-10'>
         {
           HowKingClassWorks.map((howTo, index) => (
             <Steps key={index}
@@ -73,8 +71,8 @@ type StepsProps = {
 const Steps = ({ index, title, content, textDirection, position, padding }: StepsProps) => {
 
   return (
-    <article className={`relative flex flex-col gap-y-2 ${textDirection} ${padding}`}>
-      <div className={`absolute -top-5 ${position} border-[1px] border-gray-300 font-sans rounded-sm text-2xl text-gray-400 py-0.5 px-2.5`}>
+    <article className={`midscreen:relative flex flex-col  md:items-center gap-y-2 ${textDirection} ${padding}`}>
+      <div className={`midscreen:absolute w-fit -top-5 ${position} border-[1px] border-gray-300 font-sans rounded-sm text-2xl text-gray-400 py-0.5 px-2.5`}>
         {index}
       </div>
       <h4 className="z-20 font-medium text-xl capitalize">{title}</h4>

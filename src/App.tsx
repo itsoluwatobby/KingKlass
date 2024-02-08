@@ -48,7 +48,7 @@ function App() {
   }, [pathname, signin, signup, setAppModals])
 
   return (
-    <main className='w-[60%] midscreen:w-full md:m-auto h-scre scroll-smooth overflow-y-scroll'>
+    <main className='w-full md:m-auto h-scre scroll-smooth overflow-y-scroll'>
       {/* APP MODALS */}
       <UserNavModal />
       <NavModal />

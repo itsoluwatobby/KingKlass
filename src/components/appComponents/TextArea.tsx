@@ -34,7 +34,7 @@ size={ row: 4, col: 5}
         )}
       />
 
-      <span className={`font-sans tracking-wider self-end font-medium ${(value?.length >= (minTextLength as number) && value?.length !== maxTextLength) ? 'text-red-400' : value?.length === maxTextLength ? 'text-red-600' : ''} transition-colors`}>
+      <span className={`font-sans tracking-wider self-end font-medium ${(value?.length >= (minTextLength as number) && value?.length !== maxTextLength) ? 'text-red-400' : value?.length === maxTextLength ? 'text-red-600' : ''} transition-colors text-[13px]`}>
         {value?.length ?? 0}/{maxTextLength}
       </span>
     </div>

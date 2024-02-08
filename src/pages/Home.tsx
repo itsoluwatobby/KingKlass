@@ -16,7 +16,7 @@ export const Home = () => {
       <HowItWorks />
       <Explore />
       {/* <About /> */}
-      <WhatWeOffer />
+      {/* <WhatWeOffer /> */}
       <Testimonials />
       <ContactUs />
     </main>

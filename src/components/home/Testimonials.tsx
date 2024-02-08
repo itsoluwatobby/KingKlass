@@ -17,7 +17,7 @@ export default function Testimonials() {
 
   return (
     <section className='bg-gray-100 flex flex-col gap-y-1 w-full pb-4 mobile:min-h-[43vh] min-h-[50vh]'>
-      <div className='rounded-sm relative w-full p-4 py-1 pb-2 h-24 flex flex-col items-center bg-[#311807]'>
+      <div className='rounded-sm relative w-full p-4 pr-14 maxmobile:pr-7 py-1 pb-2 h-24 flex flex-col items-center bg-[#311807]'>
         <div
           style={setCustomBackgroundImage(
             '/quotes.png',
@@ -85,7 +85,7 @@ const FeedBacks = ({ author, comment, location, date }: FeedBacksProps) => {
   const [firstName, lastName] = author.split(' ', 2);
 
   return (
-    <div className='flex-none flex flex-col gap-y-3 maxmobile:w-full w-[23rem]'>
+    <div className='md:border-0 md:border-r-2 md:last:border-r-0 px-2 md:pr-4 flex-none flex flex-col gap-y-3 maxmobile:w-full w-[23rem]'>
       <div className='capitalize font-semibold text-sm flex items-center gap-x-3'>
         <h3 className='flex-none w-8 h-8 grid place-content-center bg-[#F2DDB1] font-bold rounded-full p-2'>{getInitials(firstName)}</h3>
         <h3 className=''>{firstName} &nbsp;{getInitials(lastName)}</h3>
