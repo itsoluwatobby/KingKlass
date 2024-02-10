@@ -6,13 +6,13 @@ import { Buttons } from "../appComponents/Buttons";
 import ModalLayout from "../../layout/ModalLayout";
 
 
-export const Carts = () => {
+export const CartPreview = () => {
   const { toggleNav } = useDesignerContext() as DesignerContextProps;
 
   return (
     <ModalLayout
     modalType={toggleNav.modalType}
-    expected="carts"
+    expected="cartPreview"
     classNames="p-3"
     >
       <div className={`py-4 relative flex flex-col justify-between w-full min-h-[88vh]`}>

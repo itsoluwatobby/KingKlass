@@ -11,6 +11,8 @@ import { SlArrowLeft, SlArrowRight } from "react-icons/sl";
 import DisplayCard from "../components/DisplayCard";
 // import { reviews } from '../utility/dummy';
 import { useRef, useState } from "react";
+import { useDesignerContext } from "../hooks/useDesignerContext";
+import PurchasePrompt from "../components/modalPrompts/PurchasePrompt";
 
 
 export default function ProductPage() {
@@ -74,18 +76,8 @@ export default function ProductPage() {
     }
   ]
   const [userReviews] = useState<Reviews[][]>(refindedReview(reviews))
-  // const userReviews = refindedReview(reviews);
-
-  // useEffect(() => {
-  //   let isMounted = true;
-  //   if (isMounted) {
-  //     setUserReviews(refindedReview(reviews as Reviews[]));
-  //   }
-  //   return () => {
-  //     isMounted = false;
-  //   }
-  // }, [reviews])
-  // console.log(reviews)
+  const { setToggleNav } = useDesignerContext() as DesignerContextProps;
+  const [openPurchasePrompt, setOpenPurchasePrompt] = useState<Toggle>('CLOSE')
 
   const toggleScroll = (direction: 'RIGHT' | 'LEFT') => {
     if (!refContainer.current) return;
@@ -103,7 +95,7 @@ export default function ProductPage() {
             className="flex-none h-full w-full bg-slate-200 rounded-sm"
           >
           </div>
-          <span className="bg-gray-600 bg-opacity-40 text-white font-medium text-xs absolute bottom-5 right-4 font-sans rounded-sm px-2.5 p-0.5">1/2</span>
+          <span className="bg-gray-600 bg-opacity-40 text-white font-medium text-xs absolute bottom-5 right-4 font-sans rounded-sm px-2.5 p-0.5">1/1</span>
         </article>
 
         <div className="px-3 flex flex-col gap-y-1.5">
@@ -125,16 +117,16 @@ export default function ProductPage() {
             <Buttons
               onClick={() => toggleScroll('LEFT')}
               px='' py='py-2'
-              classNames="font-medium text-black bg-[#fffff5] border-2 border-orange-700 text-orange-700 border-opacity-30 w-36 rounded-sm cursor-pointer"
+              classNames="font-medium bg-[#fffff5] border-[1px] border-[#8B4213] text-[#8B4513] w-36 rounded-sm cursor-pointer"
             >
               Inquire
             </Buttons>
             <Buttons
-              onClick={() => toggleScroll('RIGHT')}
+              onClick={() => setOpenPurchasePrompt('OPEN')}
               px='' py='py-2'
-              classNames="font-medium text-black bg-[#fffff5] border-2 bg-orange-800 text-white border-opacity-30 w-36 rounded-sm cursor-pointer"
+              classNames="font-medium text-black bg-[#8B4513] border-2 text-white hover:opacity-95 active:opacity-100 transition-opacity border-opacity-30 w-36 rounded-md cursor-pointer"
             >
-              Inquire
+              Buy now
             </Buttons>
           </div>
 
@@ -187,9 +179,9 @@ export default function ProductPage() {
             </div>
           </div>
 
-          <div className="flex flex-col gap-y-2 items-start">
+          <div className="flex flex-col items-start">
             <h3 className="font-bold text-sm">Popular</h3>
-            <div className="px-4 p-1 overflow-x-scroll flex items-center gap-x-3 min-h-52 w-full">
+            <div className="px-3 overflow-x-scroll flex items-center gap-x-3 flex-none h-56 w-full">
               {
                 [1, 2, 5, 5, 5, 5].map(index => (
                   <DisplayCard key={index}
@@ -205,6 +197,12 @@ export default function ProductPage() {
           </div>
 
         </div>
+
+        <PurchasePrompt 
+          productName=""
+          openPurchasePrompt={openPurchasePrompt}
+          setOpenPurchasePrompt={setOpenPurchasePrompt}
+        />
       </div>
     </HomeLayout>
   )

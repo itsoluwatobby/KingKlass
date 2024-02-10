@@ -9,6 +9,7 @@ import { Buttons } from "../appComponents/Buttons";
 import UserInputDetails from "../modals/userModal/UserInputDetails";
 import { FcGoogle } from "react-icons/fc";
 import { Validation_RegExp } from "../../utility/regexExpConfig";
+import FadedBGWrapper from "../../layout/FadedBGWrapper";
 
 
 export const Registration = () => {
@@ -72,7 +73,10 @@ export const Registration = () => {
   }, [isError])
 
   return (
-    <section className={`${appModals.signup === 'OPEN' ? 'fixed' : 'hidden'} bg-gray-700 bg-opacity-40 midscreen:w-full w-full md:w-[60%] min-h-[95vh] mt-14 z-50 duration-300 p-4`}>
+    <FadedBGWrapper
+    modalType={appModals.signup}
+    expected="OPEN"
+    >
       <div className={`m-auto relative bg-white w-[90%] sm:w-[70%] rounded-md p-5 min-h-[85vh] max-h-[85vh]`}>
         <div className="w-full flex flex-col py-3 items-center gap-y-3">
           <h3 className="font-medium text-xl">Register</h3>
@@ -140,7 +144,6 @@ export const Registration = () => {
         />
 
       </div>
-
-    </section>
+    </FadedBGWrapper>
   )
 }

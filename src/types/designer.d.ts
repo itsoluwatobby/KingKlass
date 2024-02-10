@@ -8,7 +8,7 @@ type Size = {
   height: string; 
 }
 type AppModalTypes = 'signin' | 'signup';
-type ToggleNav = 'openNavModal' | 'userNavModal' | 'notifications' | 'measurements' | 'carts' | 'pass';
+type ToggleNav = 'openNavModal' | 'userNavModal' | 'notifications' | 'measurements' | 'carts' | 'cartPreview' | 'pass';
 type AppModals = Record<AppModalTypes, Toggle>
 type ToggleOption = {
   modalType: ToggleNav;
