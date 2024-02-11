@@ -72,12 +72,14 @@ export const Registration = () => {
     }
   }, [isError])
 
+  // min-h-[85vh] max-h-[85vh]
   return (
     <FadedBGWrapper
     modalType={appModals.signup}
     expected="OPEN"
+    enlarge={true}
     >
-      <div className={`m-auto relative bg-white w-[90%] sm:w-[70%] rounded-md p-5 min-h-[85vh] max-h-[85vh]`}>
+      <div className={`mx-auto mt-20 relative bg-white w-[90%] sm:w-[25rem] rounded-md p-5 h-fit`}>
         <div className="w-full flex flex-col py-3 items-center gap-y-3">
           <h3 className="font-medium text-xl">Register</h3>
 
@@ -114,7 +116,7 @@ export const Registration = () => {
             setUserDetails={setUserCredentials} type='password'
           />
 
-          <div className="flex flex-col w-full gap-y-4 mt-2">
+          <div className="flex flex-col w-full gap-y-3 mt-2">
             <Buttons
               onClick={handleSubmit} disabled={!canSubmit}
               px='' py='' isLoading={isLoading}

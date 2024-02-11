@@ -39,7 +39,7 @@ export const Carts = () => {
             onClick={() => {}}
             px='' py='' 
             // isLoading={isLoading}
-            classNames='self-center rounded-sm font-semibold bg-orange-800 text-xs text-white w-[95%] md:w-1/2 py-3 hover:bg-orange-700 active:bg-orange-800 transition-colors'
+            classNames='self-center rounded-sm font-semibold bg-[#8B4513] text-xs text-white w-[95%] md:w-1/2 py-3 hover:bg-orange-700 active:bg-orange-800 transition-colors'
           >
             Checkout
           </Buttons>

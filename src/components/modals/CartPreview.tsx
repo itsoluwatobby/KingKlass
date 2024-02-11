@@ -4,10 +4,11 @@ import { formatPrice } from "../../utility/formatPrice";
 import { CiTrash } from "react-icons/ci";
 import { Buttons } from "../appComponents/Buttons";
 import ModalLayout from "../../layout/ModalLayout";
+import { FaCheck } from "react-icons/fa6";
 
 
 export const CartPreview = () => {
-  const { toggleNav } = useDesignerContext() as DesignerContextProps;
+  const { toggleNav, setToggleNav } = useDesignerContext() as DesignerContextProps;
 
   return (
     <ModalLayout
@@ -16,32 +17,42 @@ export const CartPreview = () => {
     classNames="p-3"
     >
       <div className={`py-4 relative flex flex-col justify-between w-full min-h-[88vh]`}>
-        <div className="w-full flex flex-col gap-y-1">
-          {
-            [0,1,2,3,4,].map(i => (
-              <Cart key={i}
-                cartObj={{
-                  productName: 'Gown',
-                  image: "new Date('2024 01 25')",
-                  price: 10_500
-                }}
-              />
-            ))
-          }
+        <div className="flex flex-col gap-y-5">
+          <div className="flex items-center gap-x-4">
+            <FaCheck className="text-4xl bg-[#DBC5B6] rounded-full p-2 text-[#8B4513]" />
+            <span className="text-[#8B4513] text-sm">Item added to Cart</span>
+          </div>
+          <div className="w-full flex flex-col gap-y-1">
+            {
+              [0,1,2].map(i => (
+                <Cart key={i}
+                  cartObj={{
+                    productName: 'Gown',
+                    image: "new Date('2024 01 25')",
+                    price: 10_500
+                  }}
+                />
+              ))
+            }
+          </div>
         </div>
 
-        <div className="border border-gray-300 rounded-sm flex flex-col gap-y-8 items-center py-5">
-          <div className="px-6 font-bold flex items-center justify-between text-xs w-full">
-            <span>Total</span>
-            <span className="font-sans">#{formatPrice(20_400)}.00</span>
-          </div>
+        <div className="rounded-sm flex flex-col gap-y-4 items-center py-5">
           <Buttons
-            onClick={() => {}}
+            onClick={() => setToggleNav({ modalType: 'carts' })}
             px='' py='' 
             // isLoading={isLoading}
-            classNames='self-center rounded-sm font-semibold bg-orange-800 text-xs text-white w-[95%] md:w-1/2 py-3 hover:bg-orange-700 active:bg-orange-800 transition-colors'
+            classNames='self-center rounded-sm font-semibold bg-[#8B4513] text-xs text-white w-[95%] md:w-1/2 py-3 hover:bg-[#8B4513] active:bg-[#8B4513] transition-colors'
           >
-            Checkout
+            View cart
+          </Buttons>
+          <Buttons
+            onClick={() => setToggleNav({ modalType: 'pass' })}
+            px='' py='' 
+            // isLoading={isLoading}
+            classNames='self-center rounded-sm font-semibold border-[1px] border-[#8B4513] text-sm text-[#8B4513] w-[95%] md:w-1/2 py-2.5 hover:bg-opacity-95 active:bg-opacity-100 transition-opacity'
+          >
+            Continue Shopping
           </Buttons>
         </div>
       </div>
@@ -62,7 +73,7 @@ const Cart = ({ cartObj }: CartProps) => {
   return (
     <div className="hover:opacity-80 transition-opacity font-sans flex items-center p-2 border-[1px] even:bg-slate-50 odd:bg-slate-100 justify-between text-[12px] w-full">
       <Link to={``} className="flex-none w-[85%] flex items-center">
-        <figure className="w-10 h-10 rounded-[3px] flex-none">
+        <figure className="w-10 h-10 rounded-[3px] flex-none border">
           <img src={cartObj.image} alt={cartObj.productName} className="object-cover h-full w-full rounded-[3px]" />
         </figure>
         <div className="flex items-center flex-col gap-y-1 px-3">

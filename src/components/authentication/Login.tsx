@@ -55,12 +55,14 @@ export const Login = () => {
     }
   }, [isError])
 
+  // min-h-[85vh] max-h-[85vh]
   return (
     <FadedBGWrapper
     modalType={appModals.signin}
     expected="OPEN"
+    enlarge={true}
     >
-      <div className={`m-auto relative bg-white flex flex-col gap-y-4 w-[90%] sm:w-[70%] rounded-md p-5 min-h-[85vh] max-h-[85vh]`}>
+      <div className={`mx-auto mt-20 relative bg-white flex flex-col gap-y-4 w-[90%] sm:w-[25rem] rounded-md p-5 h-fit`}>
         <div className="w-full flex flex-col py-8 items-center gap-y-5">
           <h3 className="font-medium text-xl">Login</h3>
 

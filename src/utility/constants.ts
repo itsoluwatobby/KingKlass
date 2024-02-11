@@ -79,16 +79,18 @@ export const UserFeedback = [
   },
 ]
 
+export const NavLinks = [
+  { name: 'Home', link: '/' },
+  { name: 'Products', link: '/products' },
+  { name: 'Orders', link: '/orders' },
+  { name: 'About Us', link: '/aboutus' },
+  { name: 'Contact Us', link: '#contactUs' },
+]
+
 export const FooterLinks = {
   QuickLinks: {
     name: "Quick Links",
-    values: [
-      { name: 'Home', link: '/' },
-      { name: 'Products', link: '/products' },
-      { name: 'About Us', link: '#aboutUs' },
-      { name: 'Contact Us', link: '#contactUs' },
-      { name: 'Account', link: '/account' },
-    ]
+    values: [...NavLinks]
   }, 
   Support: {
     name: "Support",
@@ -106,10 +108,16 @@ export const UserNavigation = [
   { name: "Settings", link: "/settings" },
 ]
 
-export const NavLinks = [
+export const HomeNavLinks = [
   { name: 'Home', link: '/' },
   { name: 'Products', link: '/products' },
-  { name: 'Orders', link: '/orders' },
-  { name: 'About Us', link: '#aboutUs' },
+  { name: 'About Us', link: '/aboutus' },
   { name: 'Contact Us', link: '#contactUs' },
+]
+
+export const DesktopDropdown = [
+  ...NavLinks,
+  { name: "My Measurement", link: "" },
+  { name: "Notifications", link: "" },
+  { name: "Logout", link: "" },
 ]

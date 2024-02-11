@@ -20,7 +20,7 @@ export default function InputText<K>({ value, pattern, placeholder, classNames, 
 
   const defaultClassNames = classNames ?? 'p-2 border-gray-300'
   const textMsg = !validEmail ? 'invalid-email': 'conflict';
-console.log(type)
+
   return (
     <div className="w-full relative">
       <input

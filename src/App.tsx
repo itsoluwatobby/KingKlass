@@ -18,6 +18,8 @@ import { switchModals, toggleAttributes } from './utility/toggleModalStates';
 import { Measurements } from './components/modals/Measurements';
 import { Carts } from './components/modals/Cart';
 import { CartPreview } from './components/modals/CartPreview';
+import PaymentPrompt from './components/modalPrompts/PaymentPrompt';
+import AboutUs from './pages/AboutUs';
 
 
 let prevPathname = '/';
@@ -64,12 +66,13 @@ function App() {
       <Registration />
 
       {/* Modal Prompts */}
-      
+      <PaymentPrompt />
 
       {/* ROUTES */}
       <Routes>
         <Route path='/' element={<DesignerLayout />}>
           <Route index element={<Home />} />
+          <Route path='aboutus' element={<AboutUs />} />
           <Route path='products' element={<Products />} />
           <Route path='products/:productId' element={<ProductPage />} />
         </Route>

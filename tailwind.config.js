@@ -2,7 +2,25 @@
 export default {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      Keyframes: {
+        rollout: {
+          "0% 15% 30% 45% 60% 75% 90% 100%": {
+            transform: 'translateZ(100%)'
+          }
+        },
+        rollin: {
+          "0% 15% 30% 45% 60% 75% 90% 100%": {
+            transform: 'translateZ(-100%)'
+          }
+        }
+      },
+      animation: {
+        rollout: 'rollout 3s linear 1',
+        rollin: 'rollin 3s linear 1',
+        floatRight: 'floatRight 1s ease-in-out forwards',
+      },
+    },
     screens:{
       'sm': '640px',
       // => @media (min-width: 640px) { ... }

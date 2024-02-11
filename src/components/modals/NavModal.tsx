@@ -8,7 +8,7 @@ import ModalLayout from "../../layout/ModalLayout";
 
 
 export const NavModal = () => {
-  const isSignedIn = false;
+  const isSignedIn = true;
   const [signout] = useSignout();
   const { toggleNav, setToggleNav, setAppModals } = useDesignerContext() as DesignerContextProps;
   const username = "Okereke";
