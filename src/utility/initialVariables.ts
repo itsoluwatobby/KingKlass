@@ -24,7 +24,11 @@ export const initNavModals: ToggleOption = {
 }
 
 export const initUserDetail: UserDetails = {
-  name: '', username: '', email: '', password: '', mobileNumber: ''
+  name: '', username: '', email: '', password: '', mobileNumber: '', file: ''
+}
+
+export const initUser: User = {
+  isSignedIn: true, isAdmin: true, token: '', id: ''
 }
 
 export const inputValidation: Validations = {
@@ -32,14 +36,14 @@ export const inputValidation: Validations = {
 }
 
 export const initMeasurements: MeasurementProps = { 
-  "Chest/Bust": "", 
-  "Stomach": "" , 
-  "Top Length": "" , 
-  "Shoulder": "" , 
-  "Sleeve Length": "", 
-  "Neck": "",
-  "Muscle": "", 
-  "Waist": "", 
-  "Laps": "", 
-  "Knee": ""
+  "chest/bust": "", 
+  "stomach": "" , 
+  "top length": "" , 
+  "shoulder": "" , 
+  "sleeve length": "", 
+  "neck": "",
+  "muscle": "", 
+  "waist": "", 
+  "laps": "", 
+  "knee": ""
 }

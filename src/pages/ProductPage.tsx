@@ -11,7 +11,7 @@ import { SlArrowLeft, SlArrowRight } from "react-icons/sl";
 import DisplayCard from "../components/DisplayCard";
 // import { reviews } from '../utility/dummy';
 import { useRef, useState } from "react";
-import { useDesignerContext } from "../hooks/useDesignerContext";
+// import { useDesignerContext } from "../hooks/useDesignerContext";
 import PurchasePrompt from "../components/modalPrompts/PurchasePrompt";
 
 
@@ -76,7 +76,7 @@ export default function ProductPage() {
     }
   ]
   const [userReviews] = useState<Reviews[][]>(refindedReview(reviews))
-  const { setToggleNav } = useDesignerContext() as DesignerContextProps;
+  // const { setToggleNav } = useDesignerContext() as DesignerContextProps;
   const [openPurchasePrompt, setOpenPurchasePrompt] = useState<Toggle>('CLOSE')
 
   const toggleScroll = (direction: 'RIGHT' | 'LEFT') => {

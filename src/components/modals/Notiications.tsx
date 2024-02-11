@@ -12,9 +12,10 @@ export const Notifications = () => {
     <ModalLayout
     modalType={toggleNav.modalType}
     expected="notifications"
+    enlarge={true}
     >
 
-      <div className={`px-3 py-2 relative flex flex-col gap-y-6 w-full min-h-[88vh]`}>
+      <div className={`flex-none -mt-7 md:-mt-4 min-h-fit sm:rounded-md mx-auto sm:w-[25rem] bg-white px-3 py-2 relative flex flex-col gap-y-6 w-full`}>
         <h2 className="text-xl font-semibold">Notifications</h2>
         
         <div className="w-full flex flex-col gap-y-1">

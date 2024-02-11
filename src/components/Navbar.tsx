@@ -10,13 +10,14 @@ import { HomeNavLinks } from '../utility/constants';
 import { getInitials } from '../utility/getInitials';
 import { MdKeyboardArrowDown } from 'react-icons/md';
 import { DropdownModal } from './DropdownMenu';
+import { GoBell } from 'react-icons/go';
 
 
 export default function Navbar() {
   const username = "Okereke Ugo";
   const { pathname } = useLocation();
   const [openDropdown, setOpenDropdown] = useState<boolean>(false)
-  const { toggleNav, setToggleNav, setAppModals } = useDesignerContext() as DesignerContextProps;
+  const { toggleNav, user, setToggleNav, setAppModals } = useDesignerContext() as DesignerContextProps;
 
   const iconClass = useCallback((type: 'Burger' | 'Cancel') => {
     return `${type} cursor-pointer text-3xl hover:opacity-70 active:opacity-100 transition-opacity flex-none md:hidden`
@@ -67,6 +68,16 @@ export default function Navbar() {
       </div>
 
       <div className="hidden relative md:flex items-center">
+       {
+          user.isAdmin ?
+          <GoBell
+          onClick={() => setToggleNav({ modalType: "notifications" })}
+          className={`md:hidden ${toggleNav.modalType !== "notifications" ? 'visible' : 'invisible'} cursor-pointer text-3xl hover:opacity-70 active:opacity-100 transition-opacity flex-none`} />
+        :
+          <BsCart3
+          onClick={() => setToggleNav({ modalType: "carts" })}
+          className={`md:hidden ${toggleNav.modalType !== "notifications" ? 'visible' : 'invisible'} cursor-pointer text-3xl hover:opacity-70 active:opacity-100 transition-opacity flex-none`} />
+        }
         <p className={`relative after:absolute after:bg-red-700 after:content-[""] after:w-2 after:h-2 after:rounded-full after:right-0.5 after:top-1 font-bold text-xl bg-[#8B4513] text-white rounded-full w-10 h-10 grid place-content-center`}>{getInitials(username)}</p>
         <MdKeyboardArrowDown 
         onClick={() => setOpenDropdown(prev => !prev)}

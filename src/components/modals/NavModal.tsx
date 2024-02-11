@@ -1,5 +1,5 @@
 import { SlArrowRight } from "react-icons/sl";
-import { NavLinks } from "../../utility/constants"
+import { AdminNavLinks, NavLinks } from "../../utility/constants"
 import { getInitials } from "../../utility/getInitials";
 import { Buttons } from "../appComponents/Buttons";
 import { useDesignerContext } from "../../hooks/useDesignerContext";
@@ -8,9 +8,8 @@ import ModalLayout from "../../layout/ModalLayout";
 
 
 export const NavModal = () => {
-  const isSignedIn = true;
   const [signout] = useSignout();
-  const { toggleNav, setToggleNav, setAppModals } = useDesignerContext() as DesignerContextProps;
+  const { toggleNav, user, setToggleNav, setAppModals } = useDesignerContext() as DesignerContextProps;
   const username = "Okereke";
 
   const actionButton = (type: 'LOGIN' | 'REGISTER') => {
@@ -23,10 +22,11 @@ export const NavModal = () => {
     <ModalLayout
     modalType={toggleNav.modalType}
     expected="openNavModal"
+    enlarge={true}
     >
 
-      <div className={`px-3 py-1 relative flex flex-col w-full min-h-[92vh]`}>
-        <header className={`${isSignedIn ? 'flex' : 'hidden'} items-center justify-between`}>
+      <div className={`flex-none -mt-7 md:-mt-4 sm:rounded-md mx-auto sm:w-[25rem] px-3 py-1 relative flex flex-col w-full min-h-fit bg-white`}>
+        <header className={`${user.isSignedIn ? 'flex' : 'hidden'} items-center justify-between`}>
           <div className="flex items-center gap-x-2">
             <p className={`relative after:absolute after:bg-[#FF3E30] after:content-[""] after:w-2 after:h-2 after:rounded-full after:right-1 after:top-1 font-bold text-3xl bg-[#D69203] text-white rounded-full w-14 h-14 grid place-content-center`}>{getInitials(username)}</p>
             <div className="flex flex-col font-semibold gap-y-0.5">
@@ -43,16 +43,23 @@ export const NavModal = () => {
           </Buttons>
         </header>
 
-        <RouteLinks
-          values={NavLinks}
-        />
+        {
+          user.isAdmin ? 
+            <RouteLinks
+              values={AdminNavLinks}
+            />
+          :
+            <RouteLinks
+              values={NavLinks}
+            />
+        }
 
         {
-          isSignedIn ?
+          user.isSignedIn ?
           <Buttons
             onClick={signout}
             px='' py=''
-            classNames='absolute left-3 bottom-16 rounded-[3px] mt-10 font-semibold bg-[#8B4513] text-white grid place-content-center w-[95%] md:w-1/2 py-3 hover:bg-[#8B4413] active:bg-[#8B4513] transition-colors'
+            classNames='self-center mt-32 rounded-[3px] font-semibold bg-[#8B4513] text-white grid place-content-center w-[95%] md:w-1/2 py-3 hover:bg-[#8B4413] active:bg-[#8B4513] transition-colors'
             >
             Sign out
           </Buttons>

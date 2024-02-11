@@ -15,8 +15,9 @@ export const CartPreview = () => {
     modalType={toggleNav.modalType}
     expected="cartPreview"
     classNames="p-3"
+    enlarge={true}
     >
-      <div className={`py-4 relative flex flex-col justify-between w-full min-h-[88vh]`}>
+      <div className={`flex-none -mt-7 md:-mt-4 min-h-fit sm:rounded-md mx-auto sm:w-[25rem] bg-white py-4 relative flex flex-col justify-between w-full`}>
         <div className="flex flex-col gap-y-5">
           <div className="flex items-center gap-x-4">
             <FaCheck className="text-4xl bg-[#DBC5B6] rounded-full p-2 text-[#8B4513]" />

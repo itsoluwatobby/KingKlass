@@ -29,7 +29,7 @@ export const Registration = () => {
     setAppState(prev => ({ ...prev, loading: true }))
     try {
       const userDetails = sanitizeEntries(
-        { email, name, password, confirm_password });
+        { email, firstName: name, password, confirm_password });
       console.log(userDetails)
       setAppState(prev => ({ ...prev, success: true }))
       setUserCredentials(initSignUpInfo)

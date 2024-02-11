@@ -48,8 +48,9 @@ export const Measurements = () => {
     <ModalLayout
     modalType={toggleNav.modalType}
     expected="measurements"
+    enlarge={true}
     >
-      <div className={`px-3 py-2 relative flex flex-col gap-y-6 w-full min-h-[88vh]`}>
+      <div className={`flex-none -mt-7 md:-mt-4 min-h-fit sm:rounded-md mx-auto sm:w-[25rem] bg-white px-3 py-2 relative flex flex-col gap-y-6 w-full`}>
         <div className="flex items-center justify-between py-2 font-semibold">
           <span
             onClick={() => setToggleNav({ modalType: "userNavModal" })}
