@@ -20,6 +20,7 @@ import { Carts } from './components/modals/Cart';
 import { CartPreview } from './components/modals/CartPreview';
 import PaymentPrompt from './components/modalPrompts/PaymentPrompt';
 import AboutUs from './pages/AboutUs';
+import { AdminAccountSetting } from './components/modals/AdminAccountSetting';
 
 
 let prevPathname = '/';
@@ -60,6 +61,7 @@ function App() {
       <Measurements />
       <Carts />
       <CartPreview />
+      <AdminAccountSetting />
 
       {/* Authentication Modals */}
       <Login />

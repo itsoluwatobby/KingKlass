@@ -13,9 +13,10 @@ export const Notifications = () => {
     modalType={toggleNav.modalType}
     expected="notifications"
     enlarge={true}
+    extraClasses="px-3 py-2 gap-y-6"
     >
 
-      <div className={`flex-none -mt-7 md:-mt-4 min-h-fit sm:rounded-md mx-auto sm:w-[25rem] bg-white px-3 py-2 relative flex flex-col gap-y-6 w-full`}>
+      {/* <div className={`flex-none -mt-7 md:-mt-4 min-h-fit sm:rounded-md mx-auto sm:w-[25rem] bg-white px-3 py-2 relative flex flex-col gap-y-6 w-full`}> */}
         <h2 className="text-xl font-semibold">Notifications</h2>
         
         <div className="w-full flex flex-col gap-y-1">
@@ -30,7 +31,7 @@ export const Notifications = () => {
             ))
           }
         </div>
-      </div>
+      {/* </div> */}
     </ModalLayout>
   )
 }

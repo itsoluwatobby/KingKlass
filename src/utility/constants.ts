@@ -2,6 +2,8 @@ export const MagicNumbers = {
   maxTextLength: 150,
   minTextLength: 135,
   imageSize: 1_400_000,
+  timeout: 5_000,
+  max_timeout: 8_000,
 } as const;
 
 export const AboutUs = [

@@ -16,8 +16,9 @@ export const CartPreview = () => {
     expected="cartPreview"
     classNames="p-3"
     enlarge={true}
+    extraClasses="py-4 justify-between"
     >
-      <div className={`flex-none -mt-7 md:-mt-4 min-h-fit sm:rounded-md mx-auto sm:w-[25rem] bg-white py-4 relative flex flex-col justify-between w-full`}>
+      {/* <div className={`flex-none -mt-7 md:-mt-4 min-h-fit sm:rounded-md mx-auto sm:w-[25rem] bg-white py-4 relative flex flex-col justify-between w-full`}> */}
         <div className="flex flex-col gap-y-5">
           <div className="flex items-center gap-x-4">
             <FaCheck className="text-4xl bg-[#DBC5B6] rounded-full p-2 text-[#8B4513]" />
@@ -56,7 +57,7 @@ export const CartPreview = () => {
             Continue Shopping
           </Buttons>
         </div>
-      </div>
+      {/* </div> */}
     </ModalLayout>
   )
 }

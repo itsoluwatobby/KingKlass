@@ -8,7 +8,7 @@ type Size = {
   height: string; 
 }
 type AppModalTypes = 'signin' | 'signup';
-type ToggleNav = 'openNavModal' | 'userNavModal' | 'notifications' | 'measurements' | 'carts' | "paymentPrompt" | 'cartPreview' | 'pass';
+type ToggleNav = 'openNavModal' | 'userNavModal' | 'notifications' | 'measurements' | 'carts' | "paymentPrompt" | 'cartPreview' | 'adminAccountSetting' | 'pass';
 type AppModals = Record<AppModalTypes, Toggle>
 type ToggleOption = {
   modalType: ToggleNav;
@@ -26,7 +26,9 @@ type DesignerContextProps = {
   appModals: AppModals;
   toggleNav: ToggleOption;
   starRating: number[];
+  triggerWarning: string;
   setUser: React.Dispatch<React.SetStateAction<User>>;
+  setTriggerWarning: React.Dispatch<React.SetStateAction<string>>;
   setStarRating: React.Dispatch<React.SetStateAction<number[]>>;
   setAppModals: React.Dispatch<React.SetStateAction<AppModals>>;
   setToggleNav: React.Dispatch<React.SetStateAction<ToggleOption>>;

@@ -15,8 +15,9 @@ export const Carts = () => {
     expected="carts"
     classNames="p-3"
     enlarge={true}
+    extraClasses="justify-between py-4"
     >
-      <div className={`flex-none -mt-7 md:-mt-4 min-h-fit sm:rounded-md mx-auto sm:w-[25rem] py-4 bg-white relative flex flex-col justify-between w-full`}>
+      {/* <div className={`flex-none -mt-7 md:-mt-4 min-h-fit sm:rounded-md mx-auto sm:w-[25rem] py-4 bg-white relative flex flex-col justify-between w-full`}> */}
         <div className="w-full flex flex-col gap-y-1">
           {
             [0,1,2,3,4,].map(i => (
@@ -45,7 +46,7 @@ export const Carts = () => {
             Checkout
           </Buttons>
         </div>
-      </div>
+      {/* </div> */}
     </ModalLayout>
   )
 }

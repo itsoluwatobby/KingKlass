@@ -20,24 +20,23 @@ export const UserNavModal = () => {
   const [userDetails, setUserDetails] = useState<UserDetails>(initUserDetail);
   const [toggleModal, setToggleModal] = useState<ActiveModalType>('UserNavModal');
 
-  const handleFile = async(event: ChangeEvent<HTMLInputElement>) => {
+  const handleFile = (event: ChangeEvent<HTMLInputElement>) => {
     const dp = (event.target.files as FileList)[0]
     if (dp.size > MagicNumbers.imageSize) {
       alert(`MAX ALLOWED FILE SIZE 1.4mb`)
     }
     else {
       // upload image
-      const res = await imageUpload(dp, 'displayPictures')
-      if (res.status === 'success') {
+      imageUpload(dp, 'displayPictures')
+      .then(async (res) => {
         if (userDetails.file) {
-          //delete image
-          await deleteImage(userDetails.file, 'displayPictures')
+          await deleteImage(userDetails.file, 'displayPictures') //delete image existing image
         }
         setUserDetails(prev => ({ ...prev, file: res.url }));
-      }
-      else {
+      })
+      .catch(() => {
         alert('ERROR UPLOADING IMAGE')
-      }
+      })
     }
   }
 
@@ -81,7 +80,7 @@ export const UserNavModal = () => {
       expected="userNavModal"
       enlarge={true}
     >
-      <div className={`flex-none -mt-7 md:-mt-4 min-h-fit sm:rounded-md mx-auto sm:w-[25rem] bg-white relative flex flex-col gap-y-4 w-full`}>
+      {/* <div className={`flex-none -mt-7 md:-mt-4 min-h-fit sm:rounded-md mx-auto sm:w-[25rem] bg-white relative flex flex-col gap-y-4 w-full`}> */}
         <header className="relative flex items-center justify-center w-full bg-opacity-95 bg-[#EEE3DC] pt-3 p-2">
           {
             toggleModal === 'Profile' ?
@@ -168,7 +167,7 @@ export const UserNavModal = () => {
               values={UserNavigation}
             />
         }
-      </div>
+      {/* </div> */}
     </ModalLayout>
   )
 }

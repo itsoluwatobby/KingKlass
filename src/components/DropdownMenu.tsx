@@ -3,6 +3,7 @@ import { DesktopDropdown } from "../utility/constants";
 import { reduceTextLength } from "../utility/truncateTextLength";
 import { useDesignerContext } from "../hooks/useDesignerContext";
 import { Link } from "react-router-dom";
+import { useSignout } from "../hooks/useSignout";
 
 
 type DropdownModalProps = {
@@ -20,10 +21,9 @@ export const DropdownModal = ({ isSignedIn, openDropdown, username }: DropdownMo
   //   else return
   // }
 
-
   return (
-    <div className={`${openDropdown ? '' : ''} absolute top-12 -right-5 px-3 py-1 flex bg-white flex-col w-60 h-fit rounded-bl-lg shadow-lg`}>
-      <header className={`border-0 border-b-[1px] py-3 ${isSignedIn ? 'flex' : 'hidden'} items-center justify-between`}>
+    <div className={`${openDropdown ? 'flex' : 'hidden'} animate-rollin absolute top-12 -right-5 px-3 py-1 bg-white flex-col w-60 rounded-bl-lg shadow-lg transition-all duration-300`}>
+      <header className={`cursor-default border-0 border-b-[1px] border-gray-300 py-3 ${isSignedIn ? 'flex' : 'hidden'} items-center justify-between`}>
         <div className="flex items-center gap-x-2">
           <p className={`relative after:absolute after:bg-[#FF3E30] after:content-[""] after:w-2 after:h-2 after:rounded-full after:right-1 after:top-1 font-bold text-2xl bg-[#D69203] text-white rounded-full w-12 h-12 grid place-content-center`}>{getInitials(username)}</p>
           <div className="flex flex-col font-semibold gap-y-0.5">
@@ -31,7 +31,6 @@ export const DropdownModal = ({ isSignedIn, openDropdown, username }: DropdownMo
             <span className="font-normal text-xs">Welcome back</span>
           </div>
         </div>
-
       </header>
 
       <RouteLinks
@@ -48,6 +47,7 @@ type RouteLinksProps = {
   }[];
 }
 const RouteLinks = ({ values }: RouteLinksProps) => {
+  const [signout] = useSignout();
   const { setToggleNav } = useDesignerContext() as DesignerContextProps;
 
   return (
@@ -55,7 +55,7 @@ const RouteLinks = ({ values }: RouteLinksProps) => {
       {
         values?.map(link => (
           <div key={link.name}
-            className={`hover:pl-[0.5px] transition-all ${link.name === 'Contact Us' ? 'border-0 border-b-[1px] pb-4' : ''}`}
+            className={`hover:pl-[0.5px] transition-all ${link.name === 'Contact Us' ? 'border-0 border-b-[1px] border-gray-300 pb-4' : ''}`}
           >
             {
               link.name === 'Notifications' ?
@@ -68,14 +68,23 @@ const RouteLinks = ({ values }: RouteLinksProps) => {
                   <span className="w-1.5 h-1.5 rounded-full bg-red-700" />
                 </p>
                 :
-                link.name === 'My Measurement' ?
+                link.name === 'Logout' ?
                   <p
-                    onClick={() => setToggleNav({ modalType: "measurements" })}
+                    onClick={signout}
                     className="flex hover:bg-gray-100 transition-colors items-center justify-between cursor-pointer">
-                    {link.name}
+                    <span>
+                      {link.name}
+                    </span>
                   </p>
                   :
-                  <Link to={'/' + link.link} className="">{link.name}</Link>
+                  link.name === 'My Measurement' ?
+                    <p
+                      onClick={() => setToggleNav({ modalType: "measurements" })}
+                      className="flex hover:bg-gray-100 transition-colors items-center justify-between cursor-pointer">
+                      {link.name}
+                    </p>
+                    :
+                    <Link to={link.link} className="hover:bg-gray-100 w-full">{link.name}</Link>
             }
           </div>
         ))

@@ -49,8 +49,9 @@ export const Measurements = () => {
     modalType={toggleNav.modalType}
     expected="measurements"
     enlarge={true}
+    extraClasses="px-3 py-2 gap-y-6"
     >
-      <div className={`flex-none -mt-7 md:-mt-4 min-h-fit sm:rounded-md mx-auto sm:w-[25rem] bg-white px-3 py-2 relative flex flex-col gap-y-6 w-full`}>
+      {/* <div className={`flex-none -mt-7 md:-mt-4 min-h-fit sm:rounded-md mx-auto sm:w-[25rem] bg-white px-3 py-2 relative flex flex-col gap-y-6 w-full`}> */}
         <div className="flex items-center justify-between py-2 font-semibold">
           <span
             onClick={() => setToggleNav({ modalType: "userNavModal" })}
@@ -77,7 +78,7 @@ export const Measurements = () => {
         >
           Save and Exit
         </Buttons>
-      </div>
+      {/* </div> */}
 
     </ModalLayout>
   )

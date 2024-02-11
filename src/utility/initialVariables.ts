@@ -36,14 +36,10 @@ export const inputValidation: Validations = {
 }
 
 export const initMeasurements: MeasurementProps = { 
-  "chest/bust": "", 
-  "stomach": "" , 
-  "top length": "" , 
-  "shoulder": "" , 
-  "sleeve length": "", 
-  "neck": "",
-  "muscle": "", 
-  "waist": "", 
-  "laps": "", 
-  "knee": ""
+  "chest/bust": "", "stomach": "" , "top length": "" , "shoulder": "" , 
+  "sleeve length": "", "neck": "", "muscle": "", "waist": "", "laps": "", "knee": ""
+}
+
+export const initAccountInfo: Record<string, string> = {
+  accountNumber: '', bankName: '', accountName: ''
 }

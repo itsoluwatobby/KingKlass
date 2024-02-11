@@ -23,9 +23,10 @@ export const NavModal = () => {
     modalType={toggleNav.modalType}
     expected="openNavModal"
     enlarge={true}
+    extraClasses="px-3 py-1"
     >
 
-      <div className={`flex-none -mt-7 md:-mt-4 sm:rounded-md mx-auto sm:w-[25rem] px-3 py-1 relative flex flex-col w-full min-h-fit bg-white`}>
+      {/* <div className={`flex-none -mt-7 md:-mt-4 sm:rounded-md mx-auto sm:w-[25rem] px-3 py-1 relative flex flex-col w-full min-h-fit bg-white`}> */}
         <header className={`${user.isSignedIn ? 'flex' : 'hidden'} items-center justify-between`}>
           <div className="flex items-center gap-x-2">
             <p className={`relative after:absolute after:bg-[#FF3E30] after:content-[""] after:w-2 after:h-2 after:rounded-full after:right-1 after:top-1 font-bold text-3xl bg-[#D69203] text-white rounded-full w-14 h-14 grid place-content-center`}>{getInitials(username)}</p>
@@ -81,7 +82,7 @@ export const NavModal = () => {
             </Buttons>
           </div>
         }
-      </div>
+      {/* </div> */}
     </ModalLayout>
   )
 }
