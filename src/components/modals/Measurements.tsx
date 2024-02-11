@@ -5,6 +5,7 @@ import { MeasurementCard } from "./measurement/MeasurementCard";
 import { Buttons } from "../appComponents/Buttons";
 import { toast } from "react-toastify";
 import { sanitizeEntries } from "../../utility/sanitizeEntries";
+import ModalLayout from "../../layout/ModalLayout";
 
 
 export const Measurements = () => {
@@ -44,7 +45,10 @@ export const Measurements = () => {
   }, [isError])
 
   return (
-    <section className={`${toggleNav.modalType === "measurements" ? 'fixed' : 'hidden'} bg-white midscreen:w-full w-full md:w-[60%] min-h-[95vh] mt-14 z-50 duration-300`}>
+    <ModalLayout
+    modalType={toggleNav.modalType}
+    expected="measurements"
+    >
       <div className={`px-3 py-2 relative flex flex-col gap-y-6 w-full min-h-[88vh]`}>
         <div className="flex items-center justify-between py-2 font-semibold">
           <span
@@ -74,6 +78,6 @@ export const Measurements = () => {
         </Buttons>
       </div>
 
-    </section>
+    </ModalLayout>
   )
 }

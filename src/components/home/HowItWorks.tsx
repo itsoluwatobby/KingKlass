@@ -1,6 +1,7 @@
 import { Motto } from "../../svgs/Motto";
 import { HowKingClassWorks } from "../../utility/constants";
 import { ImageCard } from "./ImageCard";
+import { Buttons } from '../appComponents/Buttons';
 
 
 export default function HowItWorks() {
@@ -55,6 +56,14 @@ export default function HowItWorks() {
            ))
         }
       </div>
+
+      <Buttons
+        onClick={() => { }}
+        px='' py='py-3'
+        classNames="text-[#842415] font-medium text-black bg-[#fffff5] border-2 border-orange-700 border-opacity-40 w-36 rounded-md cursor-default"
+      >
+        Get Started
+      </Buttons>
     </section>
   )
 }

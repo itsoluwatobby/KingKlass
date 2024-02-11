@@ -8,6 +8,7 @@ import { Buttons } from "../appComponents/Buttons";
 import { LiaTimesSolid } from "react-icons/lia";
 import UserInputDetails from "../modals/userModal/UserInputDetails";
 import { FcGoogle } from "react-icons/fc";
+import FadedBGWrapper from "../../layout/FadedBGWrapper";
 
 
 export const Login = () => {
@@ -54,9 +55,14 @@ export const Login = () => {
     }
   }, [isError])
 
+  // min-h-[85vh] max-h-[85vh]
   return (
-    <section className={`${appModals.signin === 'OPEN' ? 'fixed' : 'hidden'} bg-gray-700 bg-opacity-40 midscreen:w-full w-full md:w-[60%] min-h-[95vh] mt-14 z-50 duration-300 p-4`}>
-      <div className={`m-auto relative bg-white flex flex-col gap-y-4 w-[90%] sm:w-[70%] rounded-md p-5 min-h-[85vh] max-h-[85vh]`}>
+    <FadedBGWrapper
+    modalType={appModals.signin}
+    expected="OPEN"
+    enlarge={true}
+    >
+      <div className={`mx-auto mt-20 relative bg-white flex flex-col gap-y-4 w-[90%] sm:w-[25rem] rounded-md p-5 h-fit`}>
         <div className="w-full flex flex-col py-8 items-center gap-y-5">
           <h3 className="font-medium text-xl">Login</h3>
 
@@ -119,7 +125,6 @@ export const Login = () => {
         />
 
       </div>
-
-    </section>
+    </FadedBGWrapper>
   )
 }

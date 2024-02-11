@@ -1,9 +1,9 @@
 // import { Outlet } from "react-router-dom"
 
-type NavLayoutProps = {
+type HomeLayoutProps = {
   children: JSX.Element;
 }
-export default function HomeLayout({ children }: NavLayoutProps) {
+export default function HomeLayout({ children }: HomeLayoutProps) {
   return (
     <main className="w-full flex flex-col gap-y-4 mt-16 pt-2 pb-24">
       {children}

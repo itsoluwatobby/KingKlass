@@ -9,6 +9,7 @@ import { CiEdit } from "react-icons/ci";
 import UserDetailForm from "./userModal/UserDetailForm";
 import { sanitizeEntries } from "../../utility/sanitizeEntries";
 import { toast } from "react-toastify";
+import ModalLayout from "../../layout/ModalLayout";
 
 
 type ActiveModalType = 'UserNavModal' | 'Profile'
@@ -53,8 +54,11 @@ export const UserNavModal = () => {
   }, [isError])
 
   return (
-    <section className={`${toggleNav.modalType === "userNavModal" ? 'fixed' : 'hidden'} bg-white midscreen:w-full w-full md:w-[60%] min-h-[95vh] mt-14 z-50 duration-300`}>
-      <div className={`relative flex flex-col gap-y-4 w-full min-h-[90vh]`}>
+    <ModalLayout
+    modalType={toggleNav.modalType}
+    expected="userNavModal"
+    >
+      <div className={`relative flex flex-col gap-y-5 w-full min-h-[90vh]`}>
         <header className="relative flex items-center justify-center w-full bg-opacity-95 bg-[#EEE3DC] pt-3 p-2">
           {
             toggleModal === 'Profile' ?
@@ -120,6 +124,6 @@ export const UserNavModal = () => {
             />
         }
       </div>
-    </section>
+    </ModalLayout>
   )
 }

@@ -2,13 +2,18 @@ import { format } from "timeago.js";
 import { Link } from "react-router-dom";
 import MiniLogo from "../../svgs/MiniLogo";
 import { useDesignerContext } from "../../hooks/useDesignerContext";
+import ModalLayout from "../../layout/ModalLayout";
 
 
 export const Notifications = () => {
   const { toggleNav } = useDesignerContext() as DesignerContextProps;
 
   return (
-    <section className={`${toggleNav.modalType === "notifications" ? 'fixed' : 'hidden'} bg-white midscreen:w-full w-full md:w-[60%] min-h-[95vh] mt-14 z-50 duration-300`}>
+    <ModalLayout
+    modalType={toggleNav.modalType}
+    expected="notifications"
+    >
+
       <div className={`px-3 py-2 relative flex flex-col gap-y-6 w-full min-h-[88vh]`}>
         <h2 className="text-xl font-semibold">Notifications</h2>
         
@@ -25,7 +30,7 @@ export const Notifications = () => {
           }
         </div>
       </div>
-    </section>
+    </ModalLayout>
   )
 }
 

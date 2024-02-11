@@ -3,13 +3,18 @@ import { useDesignerContext } from "../../hooks/useDesignerContext";
 import { formatPrice } from "../../utility/formatPrice";
 import { CiTrash } from "react-icons/ci";
 import { Buttons } from "../appComponents/Buttons";
+import ModalLayout from "../../layout/ModalLayout";
 
 
 export const Carts = () => {
   const { toggleNav } = useDesignerContext() as DesignerContextProps;
 
   return (
-    <section className={`${toggleNav.modalType === "carts" ? 'fixed' : 'hidden'} bg-white midscreen:w-full w-full md:w-[60%] min-h-[95vh] mt-14 z-50 duration-300 p-3`}>
+    <ModalLayout
+    modalType={toggleNav.modalType}
+    expected="carts"
+    classNames="p-3"
+    >
       <div className={`py-4 relative flex flex-col justify-between w-full min-h-[88vh]`}>
         <div className="w-full flex flex-col gap-y-1">
           {
@@ -25,8 +30,7 @@ export const Carts = () => {
           }
         </div>
 
-
-        <div className="flex flex-col gap-y-8 items-center py-5">
+        <div className="border border-gray-300 rounded-sm flex flex-col gap-y-8 items-center py-5">
           <div className="px-6 font-bold flex items-center justify-between text-xs w-full">
             <span>Total</span>
             <span className="font-sans">#{formatPrice(20_400)}.00</span>
@@ -35,13 +39,13 @@ export const Carts = () => {
             onClick={() => {}}
             px='' py='' 
             // isLoading={isLoading}
-            classNames='self-center rounded-sm font-semibold bg-orange-800 text-xs text-white w-[95%] md:w-1/2 py-3 hover:bg-orange-700 active:bg-orange-800 transition-colors'
+            classNames='self-center rounded-sm font-semibold bg-[#8B4513] text-xs text-white w-[95%] md:w-1/2 py-3 hover:bg-orange-700 active:bg-orange-800 transition-colors'
           >
             Checkout
           </Buttons>
         </div>
       </div>
-    </section>
+    </ModalLayout>
   )
 }
 

@@ -17,6 +17,9 @@ import { Registration } from './components/authentication/Registration';
 import { switchModals, toggleAttributes } from './utility/toggleModalStates';
 import { Measurements } from './components/modals/Measurements';
 import { Carts } from './components/modals/Cart';
+import { CartPreview } from './components/modals/CartPreview';
+import PaymentPrompt from './components/modalPrompts/PaymentPrompt';
+import AboutUs from './pages/AboutUs';
 
 
 let prevPathname = '/';
@@ -31,6 +34,7 @@ function App() {
     if (isMounted) {
       if (pathname !== prevPathname) {
         setAppModals(prev => toggleAttributes(prev, 'CLOSE') as AppModals)
+        setToggleNav(initNavModals);
         prevPathname = pathname
       }
       else if (signin === 'OPEN') {
@@ -55,14 +59,20 @@ function App() {
       <Notifications />
       <Measurements />
       <Carts />
+      <CartPreview />
 
       {/* Authentication Modals */}
       <Login />
       <Registration />
 
+      {/* Modal Prompts */}
+      <PaymentPrompt />
+
+      {/* ROUTES */}
       <Routes>
         <Route path='/' element={<DesignerLayout />}>
           <Route index element={<Home />} />
+          <Route path='aboutus' element={<AboutUs />} />
           <Route path='products' element={<Products />} />
           <Route path='products/:productId' element={<ProductPage />} />
         </Route>
