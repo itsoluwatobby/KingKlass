@@ -11,11 +11,12 @@ type InputTextProps<T> = {
   classNames?: string;
   pattern?: string;
   validEmail?: boolean;
+  id: string
   disabled?: boolean;
   setInputText: React.Dispatch<React.SetStateAction<T>>
 }
 
-export default function InputText<K>({ value, pattern, placeholder, classNames, name, setInputText, required = false, type = 'text', disabled = false, validEmail }: InputTextProps<K>) {
+export default function InputText<K>({ value, id, pattern, placeholder, classNames, name, setInputText, required = false, type = 'text', disabled = false, validEmail }: InputTextProps<K>) {
   const { appModals } = useDesignerContext() as DesignerContextProps;
 
   const defaultClassNames = classNames ?? 'p-2 border-gray-300'
@@ -25,7 +26,7 @@ export default function InputText<K>({ value, pattern, placeholder, classNames, 
     <div className="w-full relative">
       <input
         type={type}
-        id={name}
+        id={id}
         name={name}
         value={value}
         placeholder={placeholder}

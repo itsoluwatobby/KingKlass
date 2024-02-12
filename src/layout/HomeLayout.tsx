@@ -1,7 +1,7 @@
 // import { Outlet } from "react-router-dom"
 
 type HomeLayoutProps = {
-  children: JSX.Element;
+  children: React.ReactNode;
 }
 export default function HomeLayout({ children }: HomeLayoutProps) {
   return (

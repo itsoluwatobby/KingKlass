@@ -93,26 +93,26 @@ export const Registration = () => {
           <UserInputDetails
             placeholder="Username"
             title="Username (optional)"
-            value={name as string}
+            value={name as string} id='username'
             name='name' disabled={false}
             setUserDetails={setUserCredentials} type='text'
           />
 
           <UserInputDetails
-            placeholder="iamuser@jj.com" validEmail={validEmail}
+            placeholder="iamuser@jj.com" id='registerEmail' validEmail={validEmail}
             title="Email" value={email} name='email' disabled={false}
             setUserDetails={setUserCredentials} type='email'
           />
 
           <UserInputDetails
-            title="Password" value={password} name='password' disabled={false}
+            title="Password" value={password} name='password' disabled={false} id='password'
             setUserDetails={setUserCredentials} type='password'
             validPassword={validPassword}
           />
 
           <UserInputDetails
             title="Confirm Password" value={confirm_password as string} name='confirm_password' disabled={false}
-            matchingPassword={matchingPassword}
+            matchingPassword={matchingPassword} id='confirm_password'
             setUserDetails={setUserCredentials} type='password'
           />
 
