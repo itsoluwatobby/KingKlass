@@ -1,6 +1,9 @@
 export const MagicNumbers = {
   maxTextLength: 150,
   minTextLength: 135,
+  imageSize: 1_400_000,
+  timeout: 5_000,
+  max_timeout: 8_000,
 } as const;
 
 export const AboutUs = [
@@ -113,6 +116,13 @@ export const HomeNavLinks = [
   { name: 'Products', link: '/products' },
   { name: 'About Us', link: '/aboutus' },
   { name: 'Contact Us', link: '#contactUs' },
+]
+
+export const AdminNavLinks = [
+  { name: 'Dasboard', link: '/dashboard' },
+  { name: 'Upload product', link: '/uploadProduct' },
+  { name: 'Manage orders', link: '/manageOrder' },
+  { name: 'Contacts', link: '#contactUs' },
 ]
 
 export const DesktopDropdown = [

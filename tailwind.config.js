@@ -5,20 +5,17 @@ export default {
     extend: {
       Keyframes: {
         rollout: {
-          "0% 15% 30% 45% 60% 75% 90% 100%": {
-            transform: 'translateZ(100%)'
-          }
+          "0%": { transform: 'translateY(100%)' },
+          "100%": { transform: 'translateY(0)' }
         },
         rollin: {
-          "0% 15% 30% 45% 60% 75% 90% 100%": {
-            transform: 'translateZ(-100%)'
-          }
+          "0%": { transform: 'translateY(0)' },
+          "100%": { transform: 'translateY(100%)' }
         }
       },
       animation: {
-        rollout: 'rollout 3s linear 1',
-        rollin: 'rollin 3s linear 1',
-        floatRight: 'floatRight 1s ease-in-out forwards',
+        rollout: 'rollout 1s ease-in-out 1',
+        rollin: 'rollin 1s ease-in-out 1'
       },
     },
     screens:{
@@ -50,4 +47,3 @@ export default {
   },
   plugins: [],
 }
-

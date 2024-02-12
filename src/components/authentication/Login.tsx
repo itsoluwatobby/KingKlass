@@ -27,7 +27,7 @@ export const Login = () => {
     if (!canSubmit || isLoading) return
     setAppState(prev => ({ ...prev, loading: true }))
     try {
-      const userDetails = sanitizeEntries({ email, password, remember_me });
+      const userDetails = sanitizeEntries({ email, password });
       console.log(userDetails)
 
       setAppState(prev => ({ ...prev, success: true }))

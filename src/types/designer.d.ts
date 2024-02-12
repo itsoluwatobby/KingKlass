@@ -8,15 +8,33 @@ type Size = {
   height: string; 
 }
 type AppModalTypes = 'signin' | 'signup';
-type ToggleNav = 'openNavModal' | 'userNavModal' | 'notifications' | 'measurements' | 'carts' | "paymentPrompt" | 'cartPreview' | 'pass';
+type ToggleNav = 'openNavModal' | 'userNavModal' | 'notifications' | 'measurements' | 'carts' | "paymentPrompt" | 'cartPreview' | 'paymentCheckout' | 'purchasePrompt' | 'adminAccountSetting' | 'pass';
 type AppModals = Record<AppModalTypes, Toggle>
 type ToggleOption = {
   modalType: ToggleNav;
+  prevModal?: ToggleNav;
 }
+
+type User = {
+  isSignedIn: boolean;
+  isAdmin: boolean;
+  token?: string;
+  id?: string
+}
+
+type ProgressType = 'pending' | 'comfirmed';
+type PaymentProgress = {
+  progress: ProgressType;
+}
+
 type DesignerContextProps = {
+  user: User;
   appModals: AppModals;
   toggleNav: ToggleOption;
   starRating: number[];
+  paymentProgress: PaymentProgress;
+  setUser: React.Dispatch<React.SetStateAction<User>>;
+  setPaymentProgress: React.Dispatch<React.SetStateAction<PaymentProgress>>;
   setStarRating: React.Dispatch<React.SetStateAction<number[]>>;
   setAppModals: React.Dispatch<React.SetStateAction<AppModals>>;
   setToggleNav: React.Dispatch<React.SetStateAction<ToggleOption>>;
@@ -34,6 +52,7 @@ type UserInfo = {
   remember_me?: boolean;
 }
 type UserDetails = Omit<UserInfo, 'confirm_password'> & { 
+  file?: string;
   username: string;
   mobileNumber: string;
 }
@@ -51,7 +70,10 @@ type Reviews = {
   createdAt: string;
 }
 
-type MEASUREMENT_METRICS = "Chest/Bust" | "Stomach" | "Top Length" | "Shoulder" | "Sleeve Length" | "Neck" |
-  "Muscle" | "Waist" | "Laps" | "Knee";
+type MEASUREMENT_METRICS = "chest/bust" | "stomach" | "top length" | "shoulder" | "sleeve length" | "neck" |
+  "muscle" | "waist" | "laps" | "knee";
 
 type MeasurementProps = Record<MEASUREMENT_METRICS, string>;
+
+type ImageReturnType = { status: string, url: string };
+type STORAGES = 'displayPictures' | 'products' | 'receipts';

@@ -21,7 +21,7 @@ export const Measurements = () => {
       console.log(newMeasurementEntries)
 
       setAppState(prev => ({ ...prev, success: true }))
-      setToggleNav({ modalType: "userNavModal" })
+      setToggleNav({ modalType: toggleNav.prevModal as ToggleNav })
       toast.success('Measurement Added!')
     }
     catch (error: any) {
@@ -48,11 +48,12 @@ export const Measurements = () => {
     <ModalLayout
     modalType={toggleNav.modalType}
     expected="measurements"
+    enlarge={true}
+    extraClasses="px-3 py-2 gap-y-6"
     >
-      <div className={`px-3 py-2 relative flex flex-col gap-y-6 w-full min-h-[88vh]`}>
         <div className="flex items-center justify-between py-2 font-semibold">
           <span
-            onClick={() => setToggleNav({ modalType: "userNavModal" })}
+            onClick={() => setToggleNav(prev => ({...prev, modalType: prev.prevModal as ToggleNav }))}
             className="text-sm hover:underline cursor-pointer font-semibold">Return</span>
           <h3 className="text-sm bg-slate-100 shadow-md p-0.5">Your Measurements</h3>
         </div>
@@ -76,8 +77,6 @@ export const Measurements = () => {
         >
           Save and Exit
         </Buttons>
-      </div>
-
     </ModalLayout>
   )
 }

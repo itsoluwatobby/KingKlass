@@ -1,8 +1,8 @@
 import { SlArrowLeft } from "react-icons/sl";
-import { UserNavigation } from "../../utility/constants"
+import { MagicNumbers, UserNavigation } from "../../utility/constants"
 import { Buttons } from "../appComponents/Buttons";
 import { useDesignerContext } from "../../hooks/useDesignerContext";
-import { useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { initAppModals, initAppState, initUserDetail } from "../../utility/initialVariables";
 import { RouteLinks } from "./userModal/RouteLinks";
 import { CiEdit } from "react-icons/ci";
@@ -10,14 +10,35 @@ import UserDetailForm from "./userModal/UserDetailForm";
 import { sanitizeEntries } from "../../utility/sanitizeEntries";
 import { toast } from "react-toastify";
 import ModalLayout from "../../layout/ModalLayout";
+import { deleteImage, imageUpload } from "../../utility/imageMutation";
 
 
 type ActiveModalType = 'UserNavModal' | 'Profile'
 export const UserNavModal = () => {
-  const { toggleNav, setToggleNav, setAppModals } = useDesignerContext() as DesignerContextProps;
+  const { toggleNav, user, setToggleNav, setAppModals } = useDesignerContext() as DesignerContextProps;
   const [appState, setAppState] = useState<AppStateType>(initAppState)
   const [userDetails, setUserDetails] = useState<UserDetails>(initUserDetail);
   const [toggleModal, setToggleModal] = useState<ActiveModalType>('UserNavModal');
+
+  const handleFile = (event: ChangeEvent<HTMLInputElement>) => {
+    const dp = (event.target.files as FileList)[0]
+    if (dp.size > MagicNumbers.imageSize) {
+      alert(`MAX ALLOWED FILE SIZE 1.4mb`)
+    }
+    else {
+      // upload image
+      imageUpload(dp, 'displayPictures')
+      .then(async (res) => {
+        if (userDetails.file) {
+          await deleteImage(userDetails.file, 'displayPictures') //delete image existing image
+        }
+        setUserDetails(prev => ({ ...prev, file: res.url }));
+      })
+      .catch(() => {
+        alert('ERROR UPLOADING IMAGE')
+      })
+    }
+  }
 
   const { isLoading, isError } = appState;
 
@@ -55,10 +76,11 @@ export const UserNavModal = () => {
 
   return (
     <ModalLayout
-    modalType={toggleNav.modalType}
-    expected="userNavModal"
+      modalType={toggleNav.modalType}
+      expected="userNavModal"
+      enlarge={true}
     >
-      <div className={`relative flex flex-col gap-y-5 w-full min-h-[90vh]`}>
+      {/* <div className={`flex-none -mt-7 md:-mt-4 min-h-fit sm:rounded-md mx-auto sm:w-[25rem] bg-white relative flex flex-col gap-y-4 w-full`}> */}
         <header className="relative flex items-center justify-center w-full bg-opacity-95 bg-[#EEE3DC] pt-3 p-2">
           {
             toggleModal === 'Profile' ?
@@ -92,7 +114,29 @@ export const UserNavModal = () => {
           <CiEdit className="text-lg" />
         </div>
 
-        <div className="flex flex-col gap-y-3 p-3 text-[13px] font-medium">
+        <div className="flex flex-col gap-y-3 px-3 py-1 text-[13px] font-medium">
+          {user.isAdmin ?
+            <>
+              <label htmlFor={toggleModal === 'Profile' ? 'adminProfile' : ''} className="mb-4 self-center relative  rounded-full">
+                <figure className={`relative ${toggleModal === 'Profile' ? 'cursor-pointer' : ''} w-16 h-16 rounded-full flex-none bg-gray-100 shadow-md`}>
+                  {
+                    userDetails.file ?
+                      <img src={userDetails.file as string} alt="admin dp" className="w-full h-full rounded-full object-cover" /> : null
+                  }
+                  <caption className="-bottom-5 whitespace-nowrap absolute">{toggleModal === 'Profile' ? <span className="text-gray-600 underline cursor-pointer">edit photo</span> : 'King Klass'}</caption>
+                </figure>
+                {
+                  toggleModal === 'Profile' ?
+                    <input type="file" id="adminProfile"
+                      onChange={handleFile}
+                      accept="image/*"
+                      hidden className="absolute top-5" />
+                    : null
+                }
+              </label>
+            </>
+            : null
+          }
           {
             toggleModal === 'Profile' ?
               // for Edit profile view
@@ -114,7 +158,7 @@ export const UserNavModal = () => {
             <Buttons
               onClick={handleSubmit}
               px='' py='' isLoading={isLoading}
-              classNames='absolute left-3 bottom-28 rounded-md mt-10 font-semibold bg-gray-100 text-orange-700 grid place-content-center w-[95%] md:w-1/2 py-3 hover:bg-gray-200 active:bg-gray-100 transition-colors'
+              classNames={`absolute left-3 ${user.isAdmin ? 'bottom-14' : 'bottom-28'} rounded-[3px] mt-10 h-12 font-semibold bg-[#8B4513] text-white grid place-content-center w-[95%] md:w-1/2 py-3`}
             >
               Save
             </Buttons>
@@ -123,7 +167,7 @@ export const UserNavModal = () => {
               values={UserNavigation}
             />
         }
-      </div>
+      {/* </div> */}
     </ModalLayout>
   )
 }

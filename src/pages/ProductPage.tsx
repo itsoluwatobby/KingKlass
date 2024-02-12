@@ -9,10 +9,9 @@ import { Buttons } from "../components/appComponents/Buttons";
 import Ratings from "../components/Ratings";
 import { SlArrowLeft, SlArrowRight } from "react-icons/sl";
 import DisplayCard from "../components/DisplayCard";
-// import { reviews } from '../utility/dummy';
 import { useRef, useState } from "react";
-import { useDesignerContext } from "../hooks/useDesignerContext";
 import PurchasePrompt from "../components/modalPrompts/PurchasePrompt";
+import { useDesignerContext } from "../hooks/useDesignerContext";
 
 
 export default function ProductPage() {
@@ -77,7 +76,6 @@ export default function ProductPage() {
   ]
   const [userReviews] = useState<Reviews[][]>(refindedReview(reviews))
   const { setToggleNav } = useDesignerContext() as DesignerContextProps;
-  const [openPurchasePrompt, setOpenPurchasePrompt] = useState<Toggle>('CLOSE')
 
   const toggleScroll = (direction: 'RIGHT' | 'LEFT') => {
     if (!refContainer.current) return;
@@ -122,7 +120,7 @@ export default function ProductPage() {
               Inquire
             </Buttons>
             <Buttons
-              onClick={() => setOpenPurchasePrompt('OPEN')}
+              onClick={() => setToggleNav({ modalType: "purchasePrompt" })}
               px='' py='py-2'
               classNames="font-medium text-black bg-[#8B4513] border-2 text-white hover:opacity-95 active:opacity-100 transition-opacity border-opacity-30 w-36 rounded-md cursor-pointer"
             >
@@ -200,8 +198,6 @@ export default function ProductPage() {
 
         <PurchasePrompt 
           productName=""
-          openPurchasePrompt={openPurchasePrompt}
-          setOpenPurchasePrompt={setOpenPurchasePrompt}
         />
       </div>
     </HomeLayout>
