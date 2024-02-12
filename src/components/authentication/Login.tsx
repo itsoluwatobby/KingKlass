@@ -74,12 +74,12 @@ export const Login = () => {
           </div>
 
           <UserInputDetails
-            placeholder="iamuser@jj.com"
+            placeholder="iamuser@jj.com" id="loginEmail"
             title="Email" value={email} name='email' disabled={false}
             setUserDetails={setUserCredentials} type='email'
           />
           <UserInputDetails
-            title="Password" value={password} name='password' disabled={false}
+            title="Password" value={password} name='password' disabled={false} id='loginPassword'
             setUserDetails={setUserCredentials} type='password'
           />
 

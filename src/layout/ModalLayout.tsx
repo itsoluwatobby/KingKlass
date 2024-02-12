@@ -21,7 +21,7 @@ export default function ModalLayout({ children, modalType, expected, classNames,
 
   useEffect(() => {
     let isMounted = true;
-    console.log(isAdminPage)
+    // console.log(isAdminPage)
     if (isMounted && isAdminPage && !user.isAdmin) {
       toast.warn('UnAuthorized')
       navigate('/')

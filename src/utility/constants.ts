@@ -131,3 +131,9 @@ export const DesktopDropdown = [
   { name: "Notifications", link: "" },
   { name: "Logout", link: "" },
 ]
+
+export const OrderStatus: Record<OrderStatusType, OrderStatusType> = {
+  'Pending': 'Pending',
+  'In progress': 'In progress',
+  'Completed': 'Completed'
+}

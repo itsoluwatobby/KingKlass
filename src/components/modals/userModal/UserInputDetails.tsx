@@ -7,6 +7,7 @@ type UserInputDetailsProps<T> = {
   placeholder?: string;
   value: string;
   disabled: boolean;
+  id: string;
   validPassword?: boolean;
   validEmail?: boolean;
   matchingPassword?: boolean;
@@ -14,7 +15,7 @@ type UserInputDetailsProps<T> = {
   setUserDetails: React.Dispatch<React.SetStateAction<T>>
 }
 
-export default function UserInputDetails<T>({ name, title, setUserDetails, type, placeholder, value, disabled, validPassword, matchingPassword, validEmail }: UserInputDetailsProps<T>) {
+export default function UserInputDetails<T>({ name, id, title, setUserDetails, type, placeholder, value, disabled, validPassword, matchingPassword, validEmail }: UserInputDetailsProps<T>) {
 
   return (
     <div className="flex flex-col gap-y-0.5 w-full">
@@ -29,7 +30,7 @@ export default function UserInputDetails<T>({ name, title, setUserDetails, type,
           />
           :
           <InputText
-            type={type} name={name}
+            type={type} name={name} id={id}
             placeholder={placeholder ?? title}
             disabled={disabled} validEmail={validEmail}
             value={value} setInputText={setUserDetails} classNames="border-gray-200"

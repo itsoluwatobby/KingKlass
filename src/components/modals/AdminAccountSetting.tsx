@@ -61,15 +61,15 @@ export const AdminAccountSetting = () => {
       <div className="font-sans mt-12 flex flex-col gap-y-3 px-3 py-1 text-[13px] font-medium">
         <UserInputDetails
           title="Account Number" value={accountNumber} name='accountNumber' type='tel' disabled={false}
-          setUserDetails={setAccountDetails}
+          setUserDetails={setAccountDetails} id='accountNumber'
         />
         <UserInputDetails
-          title="Bank Name" value={bankName} name='bankName' type='text' disabled={false}
+          title="Bank Name" value={bankName} name='bankName' type='text' disabled={false} id='bankName'
           setUserDetails={setAccountDetails}
         />
         <UserInputDetails
           title="Account Name" value={accountName} name='accountName' type='text' disabled={false}
-          setUserDetails={setAccountDetails}
+          setUserDetails={setAccountDetails} id='accountName'
         />
       </div>
 

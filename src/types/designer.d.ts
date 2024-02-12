@@ -22,7 +22,7 @@ type User = {
   id?: string
 }
 
-type ProgressType = 'pending' | 'comfirmed';
+type ProgressType = 'pending' | 'completed';
 type PaymentProgress = {
   progress: ProgressType;
 }
@@ -77,3 +77,5 @@ type MeasurementProps = Record<MEASUREMENT_METRICS, string>;
 
 type ImageReturnType = { status: string, url: string };
 type STORAGES = 'displayPictures' | 'products' | 'receipts';
+
+type OrderStatusType = 'Pending' | 'In progress' | 'Completed';

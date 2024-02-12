@@ -5,17 +5,18 @@ type CopyComponentProps = {
   text: string
   element?: React.ReactNode;
   classNames: string;
+  msg: string;
 }
-export const CopyComponent = ({ text, element, classNames }: CopyComponentProps) => {
+export const CopyComponent = ({ text, element, msg, classNames }: CopyComponentProps) => {
 
   const copyText = async(amount: string) => {
     if (!navigator.clipboard) return alert('Unable to copy')
     await navigator.clipboard.writeText(amount)
-    toast.info('Amount copied', {delay: 2000})
+    toast.info(msg, {delay: 2000})
   }
 
   return (
-    <div className={`flex mobile:text-xl items-center gap-x-2 font-sans`}>
+    <div className={`flex mobile:text-xl items-center gap-x-4 font-sans`}>
       <h4 className={`${classNames}`}>{element ?? text}</h4>
       <GoCopy 
       title="copy"

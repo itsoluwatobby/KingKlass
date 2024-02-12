@@ -7,7 +7,7 @@ import ModalLayout from "../../layout/ModalLayout";
 
 
 export const Carts = () => {
-  const { toggleNav } = useDesignerContext() as DesignerContextProps;
+  const { toggleNav, setToggleNav } = useDesignerContext() as DesignerContextProps;
 
   return (
     <ModalLayout
@@ -15,7 +15,7 @@ export const Carts = () => {
     expected="carts"
     classNames="p-3"
     enlarge={true}
-    extraClasses="justify-between py-4"
+    extraClasses="justify-between py-4 px-2"
     >
       {/* <div className={`flex-none -mt-7 md:-mt-4 min-h-fit sm:rounded-md mx-auto sm:w-[25rem] py-4 bg-white relative flex flex-col justify-between w-full`}> */}
         <div className="w-full flex flex-col gap-y-1">
@@ -35,10 +35,10 @@ export const Carts = () => {
         <div className="border border-gray-300 rounded-sm flex flex-col gap-y-8 items-center py-5">
           <div className="px-6 font-bold flex items-center justify-between text-xs w-full">
             <span>Total</span>
-            <span className="font-sans">#{formatPrice(20_400)}.00</span>
+            <span className="font-sans">&#x20A6;{formatPrice(20_400)}.00</span>
           </div>
           <Buttons
-            onClick={() => {}}
+            onClick={() => setToggleNav({ modalType: "paymentCheckout" })}
             px='' py='' 
             // isLoading={isLoading}
             classNames='self-center rounded-sm font-semibold bg-[#8B4513] text-xs text-white w-[95%] md:w-1/2 py-3 hover:bg-orange-700 active:bg-orange-800 transition-colors'
@@ -69,7 +69,7 @@ const Cart = ({ cartObj }: CartProps) => {
         </figure>
         <div className="flex items-center flex-col gap-y-1 px-3">
           <span>{cartObj.productName}</span>
-          <span className="font-sans font-semibold text-[12px]">#{formatPrice(cartObj.price)}</span>
+          <span className="font-sans font-semibold text-[12px]">&#x20A6;{formatPrice(cartObj.price)}</span>
         </div>
       </Link>
      
