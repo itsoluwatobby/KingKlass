@@ -30,7 +30,7 @@ export default function DisplayCard({ designInfo }: DisplayCardProps) {
         </div>
         <div className="text-xs w-full flex flex-col gap-y-1 font-sans">
           <div className="flex items-center justify-between">
-            <span className="font-medium">#{formatPrice(price)}</span>
+            <span className="font-medium">&#x20A6;{formatPrice(price)}</span>
             <p className="flex items-center text-[11px]">
               <PiTimer />
               <span>{reduceTextLength(format(createdAt), 10)}</span>

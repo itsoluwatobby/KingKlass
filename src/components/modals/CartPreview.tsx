@@ -5,6 +5,7 @@ import { CiTrash } from "react-icons/ci";
 import { Buttons } from "../appComponents/Buttons";
 import ModalLayout from "../../layout/ModalLayout";
 import { FaCheck } from "react-icons/fa6";
+import { LiaTimesSolid } from "react-icons/lia";
 
 
 export const CartPreview = () => {
@@ -16,9 +17,13 @@ export const CartPreview = () => {
     expected="cartPreview"
     classNames="p-3"
     enlarge={true}
+    noFullScreen={true}
     extraClasses="py-4 justify-between"
     >
-      {/* <div className={`flex-none -mt-7 md:-mt-4 min-h-fit sm:rounded-md mx-auto sm:w-[25rem] bg-white py-4 relative flex flex-col justify-between w-full`}> */}
+      <LiaTimesSolid
+          onClick={() => setToggleNav({ modalType: "pass" })}
+          className='absolute -right-2 -top-2 p-0.5 font-bold bg-white shadow-sm shadow-slate-500 rounded-full text-2xl hover:text-gray-700 active:text-gray-900 cursor-pointer transition-colors'
+        />
         <div className="flex flex-col gap-y-5">
           <div className="flex items-center gap-x-4">
             <FaCheck className="text-4xl bg-[#DBC5B6] rounded-full p-2 text-[#8B4513]" />
@@ -41,7 +46,7 @@ export const CartPreview = () => {
 
         <div className="rounded-sm flex flex-col gap-y-4 items-center py-5">
           <Buttons
-            onClick={() => setToggleNav({ modalType: 'carts' })}
+            onClick={() => setToggleNav(prev => ({...prev, modalType: 'carts', prevModal: "cartPreview" }))}
             px='' py='' 
             // isLoading={isLoading}
             classNames='self-center rounded-sm font-semibold bg-[#8B4513] text-xs text-white w-[95%] md:w-1/2 py-3 hover:bg-[#8B4513] active:bg-[#8B4513] transition-colors'
@@ -57,7 +62,6 @@ export const CartPreview = () => {
             Continue Shopping
           </Buttons>
         </div>
-      {/* </div> */}
     </ModalLayout>
   )
 }

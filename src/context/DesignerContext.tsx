@@ -8,10 +8,10 @@ export const DesignerDataProvider = ({ children }: ChildrenNode) => {
   const [appModals, setAppModals] = useState<AppModals>(initAppModals);
   const [toggleNav, setToggleNav] = useState<ToggleOption>(initNavModals);
   const [user, setUser] = useState<User>(initUser);
-  const [triggerWarning, setTriggerWarning] = useState<string>('')
+  const [paymentProgress, setPaymentProgress] = useState<PaymentProgress>({ progress: 'pending' })
 
   const value = {
-    appModals, setAppModals, user, setUser, toggleNav, setToggleNav, starRating, setStarRating, triggerWarning, setTriggerWarning
+    appModals, setAppModals, user, setUser, toggleNav, setToggleNav, starRating, setStarRating, paymentProgress, setPaymentProgress
   }
   return (
     <DesignerContext.Provider value={value}>

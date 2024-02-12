@@ -18,7 +18,7 @@ export const RouteLinks = ({ values }: RouteLinksProps) => {
             {
               link.name === 'Notifications' ?
                 <p 
-                onClick={() => setToggleNav({ modalType: "notifications" })}
+                onClick={() => setToggleNav(prev => ({...prev, modalType: "notifications", prevModal: "userNavModal" }))}
                 className={`${user.isAdmin ? 'hidden' : 'flex'} hover:bg-gray-100 transition-colors py-1 items-center justify-between cursor-pointer`}>
                   <span>
                     {link.name}
@@ -28,8 +28,15 @@ export const RouteLinks = ({ values }: RouteLinksProps) => {
                 :
               link.name === 'My Measurement' ?
                 <p 
-                onClick={() => setToggleNav({ modalType: "measurements" })}
-                className={`${user.isAdmin ? 'hidden' : 'flex'} flex hover:bg-gray-100 transition-colors py-1 items-center justify-between cursor-pointer`}>  
+                onClick={() => setToggleNav(prev => ({...prev, modalType: "measurements", prevModal: "userNavModal" }))}
+                className={`${user.isAdmin ? 'hidden' : 'flex'} hover:bg-gray-100 transition-colors py-1 items-center justify-between cursor-pointer`}>  
+                  {link.name}
+                </p>
+                :
+              link.name === 'Settings' ?
+                <p 
+                onClick={() => setToggleNav(prev => ({...prev, modalType: "adminAccountSetting", prevModal: "userNavModal" }))}
+                className={`flex hover:bg-gray-100 transition-colors py-1 items-center justify-between cursor-pointer`}>  
                   {link.name}
                 </p>
                 :

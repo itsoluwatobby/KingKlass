@@ -9,7 +9,7 @@ import UserInputDetails from "./userModal/UserInputDetails";
 
 
 export const AdminAccountSetting = () => {
-  const { toggleNav, user } = useDesignerContext() as DesignerContextProps;
+  const { toggleNav, setToggleNav, user } = useDesignerContext() as DesignerContextProps;
   const [appState, setAppState] = useState<AppStateType>(initAppState)
   const [accountDetails, setAccountDetails] = useState<typeof initAccountInfo>(initAccountInfo);
 
@@ -52,31 +52,34 @@ export const AdminAccountSetting = () => {
       modalType={toggleNav.modalType}
       expected="adminAccountSetting"
       enlarge={true}
-      isAdminPage={true}
     >   
+      <span
+        onClick={() => setToggleNav(prev => ({...prev, modalType: prev.prevModal as ToggleNav }))}
+        className="absolute left-3 top-1 text-sm hover:underline cursor-pointer font-semibold">Return
+      </span>
 
-        <div className="font-sans mt-12 flex flex-col gap-y-3 px-3 py-1 text-[13px] font-medium">
-          <UserInputDetails
-            title="Account Number" value={accountNumber} name='accountNumber' type='tel' disabled={false}
-            setUserDetails={setAccountDetails}
-          />
-          <UserInputDetails
-            title="Bank Name" value={bankName} name='bankName' type='text' disabled={false}
-            setUserDetails={setAccountDetails}
-          />
-          <UserInputDetails
-            title="Account Name" value={accountName} name='accountName' type='text' disabled={false}
-            setUserDetails={setAccountDetails}
-          />
-        </div>
+      <div className="font-sans mt-12 flex flex-col gap-y-3 px-3 py-1 text-[13px] font-medium">
+        <UserInputDetails
+          title="Account Number" value={accountNumber} name='accountNumber' type='tel' disabled={false}
+          setUserDetails={setAccountDetails}
+        />
+        <UserInputDetails
+          title="Bank Name" value={bankName} name='bankName' type='text' disabled={false}
+          setUserDetails={setAccountDetails}
+        />
+        <UserInputDetails
+          title="Account Name" value={accountName} name='accountName' type='text' disabled={false}
+          setUserDetails={setAccountDetails}
+        />
+      </div>
 
-        <Buttons
-          onClick={handleSubmit}
-          px='' py='' isLoading={isLoading}
-          classNames={`absolute left-3 ${user.isAdmin ? 'bottom-14' : 'bottom-28'} rounded-[3px] mt-10 h-12 font-semibold bg-[#8B4513] text-white grid place-content-center w-[95%] md:w-1/2 py-3`}
-        >
-          Save
-        </Buttons>   
+      <Buttons
+        onClick={handleSubmit}
+        px='' py='' isLoading={isLoading}
+        classNames={`absolute left-3 ${user.isAdmin ? 'bottom-14' : 'bottom-28'} rounded-[3px] mt-10 h-12 font-semibold bg-[#8B4513] text-white grid place-content-center w-[95%] md:w-1/2 py-3`}
+      >
+        Save
+      </Buttons>   
     </ModalLayout>
   )
 }

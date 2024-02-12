@@ -8,10 +8,11 @@ type Size = {
   height: string; 
 }
 type AppModalTypes = 'signin' | 'signup';
-type ToggleNav = 'openNavModal' | 'userNavModal' | 'notifications' | 'measurements' | 'carts' | "paymentPrompt" | 'cartPreview' | 'adminAccountSetting' | 'pass';
+type ToggleNav = 'openNavModal' | 'userNavModal' | 'notifications' | 'measurements' | 'carts' | "paymentPrompt" | 'cartPreview' | 'paymentCheckout' | 'purchasePrompt' | 'adminAccountSetting' | 'pass';
 type AppModals = Record<AppModalTypes, Toggle>
 type ToggleOption = {
   modalType: ToggleNav;
+  prevModal?: ToggleNav;
 }
 
 type User = {
@@ -21,14 +22,19 @@ type User = {
   id?: string
 }
 
+type ProgressType = 'pending' | 'comfirmed';
+type PaymentProgress = {
+  progress: ProgressType;
+}
+
 type DesignerContextProps = {
   user: User;
   appModals: AppModals;
   toggleNav: ToggleOption;
   starRating: number[];
-  triggerWarning: string;
+  paymentProgress: PaymentProgress;
   setUser: React.Dispatch<React.SetStateAction<User>>;
-  setTriggerWarning: React.Dispatch<React.SetStateAction<string>>;
+  setPaymentProgress: React.Dispatch<React.SetStateAction<PaymentProgress>>;
   setStarRating: React.Dispatch<React.SetStateAction<number[]>>;
   setAppModals: React.Dispatch<React.SetStateAction<AppModals>>;
   setToggleNav: React.Dispatch<React.SetStateAction<ToggleOption>>;

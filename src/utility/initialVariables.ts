@@ -20,7 +20,7 @@ export const initAppModals: AppModals = {
 }
 
 export const initNavModals: ToggleOption = {
-  modalType: 'pass'
+  modalType: 'pass', prevModal: 'pass'
 }
 
 export const initUserDetail: UserDetails = {

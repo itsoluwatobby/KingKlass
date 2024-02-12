@@ -51,15 +51,19 @@ export default function Navbar() {
         <KingKlass size={{ width: '65', height: '35' }} />
       </Link>
       {
-        user.isAdmin ? 
-        <GoBell
-          onClick={() => setToggleNav({ modalType: "notifications" })}
-          className={`mr-2.5 cursor-pointer text-2xl hover:opacity-70 active:opacity-100 transition-opacity flex-none`} />
-        :
-        <BsCart3
-        onClick={() => setToggleNav({ modalType: "carts" })}
-        className={`md:hidden ${toggleNav.modalType !== "notifications" ? 'visible' : 'invisible'} cursor-pointer text-3xl hover:opacity-70 active:opacity-100 transition-opacity flex-none`} />
-        }
+        user.isSignedIn ? 
+        (
+          user.isAdmin ?
+            <GoBell
+              onClick={() => setToggleNav(prev => ({ modalType: prev.modalType === "notifications" ? "pass" : "notifications" }))}
+              className={`mr-2.5 cursor-pointer text-2xl hover:opacity-70 active:opacity-100 transition-opacity flex-none`} />
+            :
+            <BsCart3
+              onClick={() => setToggleNav(prev => ({ modalType: prev.modalType === "carts" ? "pass" : "carts" }))}
+              className={`md:hidden ${toggleNav.modalType !== "notifications" ? 'visible' : 'invisible'} cursor-pointer text-3xl hover:opacity-70 active:opacity-100 transition-opacity flex-none`} 
+            />
+        ) : <div />
+      }
 
       <div className='hidden md:flex justify-between items-center flex-none w-[55%] text-sm'>
         {
@@ -68,29 +72,32 @@ export default function Navbar() {
               className={`hover:text-gray-600 flex flex-col items-center font-medium ${pathname === nav.link ? 'font-bold' : ''}`}
             >
               {nav.name}
-              <div className={`${pathname === nav.link ? 'scale-[1]' : 'scale-0'} w-1.5 h-1.5 rounded-full bg-red-700`}/>
+              <div className={`${pathname === nav.link ? 'scale-[1]' : 'scale-0'} w-1.5 h-1.5 rounded-full bg-red-700`} />
             </Link>
           ))
         }
       </div>
 
       <div className="hidden relative md:flex items-center">
-       {
-          user.isAdmin ?
-          <GoBell
-          onClick={() => setToggleNav({ modalType: "notifications" })}
-          className={`mr-2.5 cursor-pointer text-2xl hover:opacity-70 active:opacity-100 transition-opacity flex-none`} />
-        :
-          <BsCart3
-          onClick={() => setToggleNav({ modalType: "carts" })}
-          className={`${toggleNav.modalType !== "notifications" ? 'visible' : 'invisible'} cursor-pointer text-3xl hover:opacity-70 active:opacity-100 transition-opacity flex-none`} />
+        {
+          user.isSignedIn ? 
+          (
+            user.isAdmin ?
+              <GoBell
+                onClick={() => setToggleNav(prev => ({ modalType: prev.modalType === "notifications" ? "pass" : "notifications" }))}
+                className={`md:mr-2.5 cursor-pointer text-2xl hover:opacity-70 active:opacity-100 transition-opacity flex-none`} />
+              :
+              <BsCart3
+                onClick={() => setToggleNav(prev => ({ modalType: prev.modalType === "carts" ? "pass" : "carts" }))}
+                className={`md:mr-2.5 ${toggleNav.modalType !== "notifications" ? 'visible' : 'invisible'} cursor-pointer text-3xl hover:opacity-70 active:opacity-100 transition-opacity flex-none`} />
+          ) : <div />
         }
         <p className={`relative after:absolute after:bg-red-700 after:content-[""] after:w-2 after:h-2 after:rounded-full after:right-0 after:top-1 font-bold text-xl bg-[#8B4513] text-white rounded-full w-10 h-10 grid place-content-center`}>{getInitials(username)}</p>
-        <MdKeyboardArrowDown 
-        onClick={() => setOpenDropdown(prev => !prev)}
-        className={`text-3xl hover:bg-gray-200 transition-colors cursor-pointer rounded-full ${openDropdown ? 'rotate-180' : ''} transition-transform p-0.5`} />
+        <MdKeyboardArrowDown
+          onClick={() => setOpenDropdown(prev => !prev)}
+          className={`text-3xl hover:bg-gray-200 transition-colors cursor-pointer rounded-full ${openDropdown ? 'rotate-180' : ''} transition-transform p-0.5`} />
 
-        <DropdownModal 
+        <DropdownModal
           openDropdown={openDropdown}
           username={username}
           isSignedIn={true}

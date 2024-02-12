@@ -21,6 +21,7 @@ import { CartPreview } from './components/modals/CartPreview';
 import PaymentPrompt from './components/modalPrompts/PaymentPrompt';
 import AboutUs from './pages/AboutUs';
 import { AdminAccountSetting } from './components/modals/AdminAccountSetting';
+import { PaymentCheckout } from './components/modals/PaymentCheckout';
 
 
 let prevPathname = '/';
@@ -62,6 +63,7 @@ function App() {
       <Carts />
       <CartPreview />
       <AdminAccountSetting />
+      <PaymentCheckout />
 
       {/* Authentication Modals */}
       <Login />
