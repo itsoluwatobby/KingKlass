@@ -1,7 +1,6 @@
-import { Link } from "react-router-dom";
 import { useDesignerContext } from "../../hooks/useDesignerContext";
 import { formatPrice } from "../../utility/formatPrice";
-import { CiCloud, CiTrash } from "react-icons/ci";
+import { CiCloud } from "react-icons/ci";
 import { Buttons } from "../appComponents/Buttons";
 import ModalLayout from "../../layout/ModalLayout";
 import { BsBank } from "react-icons/bs";
@@ -36,8 +35,7 @@ export const PaymentCheckout = () => {
         }
         setReceipt(res.url);
       })
-      .catch((err) => {
-        console.log(err)
+      .catch(() => {
         alert('ERROR UPLOADING IMAGE')
       })
     }
