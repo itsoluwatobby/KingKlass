@@ -14,7 +14,7 @@ export const MeasurementCard = ({ keyName, value, setUserMeasurements }: Measure
   }
 
   return (
-    <div className="font-sans border rounded-[3px] flex flex-col p-1.5 bg-slate-200 gap-y-3 font-semibold text-[12px] w-full">
+    <div className="font-sans border rounded-[3px] flex flex-col p-1.5 bg-slate-100 gap-y-3 font-semibold text-[12px] w-full">
       <div className="flex items-center justify-between">
         <p className="font-medium capitalize">{keyName}</p>
         <CiEdit className="text-xl cursor-pointer" />

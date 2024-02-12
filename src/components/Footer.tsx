@@ -7,7 +7,7 @@ export const Footer = () => {
   const { QuickLinks, Support } = FooterLinks;
   const { pathname } = useLocation();
   const { productId } = useParams();
-  const noFooterRoutes = ['/products', `/products/${productId}`];
+  const noFooterRoutes = ['/products', `/products/${productId}`, '/orders'];
 
   return (
     <footer className={`${noFooterRoutes.includes(pathname) ? 'hidden' : 'flex'} flex-col gap-y-5 text-xs font-sans font-medium w-full p-4 pb-10  transition-all min-h-[60vh mobile:min-h-[50vh`}>

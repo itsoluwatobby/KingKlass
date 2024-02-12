@@ -59,12 +59,12 @@ export const ContactUs = () => {
         <h1 className="text-3xl font-semibold text-center">Contact Us</h1>
         <InputText
         placeholder="Name (optional)" 
-        name='name' value={name}
+        name='name' value={name} id="yourName"
         classNames="rounded-sm border-gray-400"
         setInputText={setContactMessage}
         />
         <InputText
-        placeholder="Email" 
+        placeholder="Email" id="yourEmail"
         classNames="rounded-sm border-gray-400"
         name='emails' value={emails}
         setInputText={setContactMessage}

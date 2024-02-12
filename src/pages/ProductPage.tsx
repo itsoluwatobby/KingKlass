@@ -84,57 +84,60 @@ export default function ProductPage() {
 
   return (
     <HomeLayout>
-      <div className="flex flex-col gap-y-4">
-        <article className="shadow-sm flex-none cursor-default transition-all h-96 w-full relative flex flex-col gap-y-2"
-        >
-          <span className="bg-red-300 bg-opacity-40 text-red-600 font-medium text-xs absolute top-4 left-4 rounded-sm p-1 px-3">New</span>
-          <div
-            style={setCustomBackgroundImage('')}
-            className="flex-none h-full w-full bg-slate-200 rounded-sm"
+      <div className="flex flex-col gap-y-4 md:px-7">
+        <div className="flex flex-col gap-y-4 md:flex-row md:gap-x-2">
+          <article className="shadow-sm flex-none md:w-1/2 cursor-default transition-all h-96 w-full relative flex flex-col gap-y-2"
           >
-          </div>
-          <span className="bg-gray-600 bg-opacity-40 text-white font-medium text-xs absolute bottom-5 right-4 font-sans rounded-sm px-2.5 p-0.5">1/1</span>
-        </article>
+            <span className="bg-red-300 bg-opacity-40 text-red-600 font-medium text-xs absolute top-4 left-4 rounded-sm p-1 px-3">New</span>
+            <div
+              style={setCustomBackgroundImage('')}
+              className="flex-none h-full w-full bg-slate-200 rounded-sm"
+            >
+            </div>
+            <span className="bg-gray-600 bg-opacity-40 text-white font-medium text-xs absolute bottom-5 right-4 font-sans rounded-sm px-2.5 p-0.5">1/1</span>
+          </article>
 
-        <div className="px-3 flex flex-col gap-y-1.5">
-          <p className="text-sm">KingKlass Trouser and Shirt and blue cap with..</p>
-          <span className="font-sans font-medium text-xs">#{formatPrice(10_500)}</span>
+          <div className="flex-none md:w-[50%] flex flex-col gap-y-4 w-full">
+            <div className="px-3 flex flex-col gap-y-1.5">
+              <p className="text-sm">KingKlass Trouser and Shirt and blue cap with..</p>
+              <span className="font-sans font-medium text-xs">#{formatPrice(10_500)}</span>
+              <div className="flex items-center justify-between">
+                <p className="flex items-center text-[11px]">
+                  <PiTimer />
+                  <span>{reduceTextLength(format(new Date()), 10)}</span>
+                </p>
+                {/* make it copy product link */}
+                <IoShareSocialOutline className="text-2xl" />
+              </div>
+            </div>
 
-          <div className="flex items-center justify-between">
-            <p className="flex items-center text-[11px]">
-              <PiTimer />
-              <span>{reduceTextLength(format(new Date()), 10)}</span>
-            </p>
-            {/* make it copy product link */}
-            <IoShareSocialOutline className="text-2xl" />
+            <div className="flex w-full items-center justify-around px-3 text-xs">
+              <Buttons
+                onClick={() => toggleScroll('LEFT')}
+                px='' py='py-2'
+                classNames="font-medium bg-[#fffff5] border-[1px] border-[#8B4213] text-[#8B4513] w-36 rounded-sm cursor-pointer"
+              >
+                Inquire
+              </Buttons>
+              <Buttons
+                onClick={() => setToggleNav({ modalType: "purchasePrompt" })}
+                px='' py='py-2'
+                classNames="font-medium text-black bg-[#8B4513] border-2 text-white hover:opacity-95 active:opacity-100 transition-opacity border-opacity-30 w-36 rounded-md cursor-pointer"
+              >
+                Buy now
+              </Buttons>
+            </div>
+
+            <div className="flex flex-col px-3 text-xs">
+              <h4 className="font-semibold text-[13px]">Description</h4>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam architecto nostrum veniam suscipit deserunt possimus, ea ipsam incidunt laboriosam cupiditate, nemo qui eum eos, quasi velit veritatis numquam a quod.
+              </p>
+            </div>
           </div>
         </div>
 
-        <div className="flex flex-col gap-y-4 px-3 text-xs">
-          <div className="flex w-full items-center justify-around">
-            <Buttons
-              onClick={() => toggleScroll('LEFT')}
-              px='' py='py-2'
-              classNames="font-medium bg-[#fffff5] border-[1px] border-[#8B4213] text-[#8B4513] w-36 rounded-sm cursor-pointer"
-            >
-              Inquire
-            </Buttons>
-            <Buttons
-              onClick={() => setToggleNav({ modalType: "purchasePrompt" })}
-              px='' py='py-2'
-              classNames="font-medium text-black bg-[#8B4513] border-2 text-white hover:opacity-95 active:opacity-100 transition-opacity border-opacity-30 w-36 rounded-md cursor-pointer"
-            >
-              Buy now
-            </Buttons>
-          </div>
-
-          <div className="flex flex-col">
-            <h4 className="font-semibold text-[13px]">Description</h4>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam architecto nostrum veniam suscipit deserunt possimus, ea ipsam incidunt laboriosam cupiditate, nemo qui eum eos, quasi velit veritatis numquam a quod.
-            </p>
-          </div>
-
+        <div className="flex flex-col gap-y-4 midscreen:px-3 text-xs">
           <div className="flex flex-col gap-y-3">
             <h4 className="text-[13px] font-semibold">Reviews</h4>
             <div className="flex items-center gap-x-1 text-xs border-0 border-b-2 pb-0.5">
@@ -147,7 +150,7 @@ export default function ProductPage() {
               className='px-2 scroll-smooth flex items-center gap-x-4 overflow-x-scroll'>
               {
                 userReviews?.map((splittedReviews, index) => (
-                  <div key={index} className="flex flex-col min-w-full">
+                  <div key={index} className="flex flex-col min-w-full md:flex-row md:gap-x-4">
                     {
                       splittedReviews?.map((eachReview) => (
                         <Reviews key={eachReview["id"]}
@@ -179,7 +182,7 @@ export default function ProductPage() {
 
           <div className="flex flex-col items-start">
             <h3 className="font-bold text-sm">Popular</h3>
-            <div className="px-3 overflow-x-scroll flex items-center gap-x-3 flex-none h-56 w-full">
+            <div className="px-3 overflow-x-scroll flex items-center gap-x-3 flex-none h-[14.5rem] w-full">
               {
                 [1, 2, 5, 5, 5, 5].map(index => (
                   <DisplayCard key={index}
@@ -196,10 +199,10 @@ export default function ProductPage() {
 
         </div>
 
+      </div>
         <PurchasePrompt 
           productName=""
         />
-      </div>
     </HomeLayout>
   )
 }
@@ -216,7 +219,7 @@ type ReviewsProps = {
 const Reviews = ({ review }: ReviewsProps) => {
 
   return (
-    <div className="w-full flex items-start flex-col gap-y-2 border-0 border-b-2 py-1">
+    <div className="w-full flex items-start flex-col gap-y-2 border-0 midscreen:border-b-2 md:border-r-2 md:pr-2 py-1">
       <Ratings
         addScore={false} ratedStars={review["rating"]}
         type="rate"
