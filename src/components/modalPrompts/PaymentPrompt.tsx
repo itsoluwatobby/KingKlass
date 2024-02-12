@@ -31,7 +31,7 @@ export default function PaymentPrompt() {
             Continue Shopping
           </Buttons>
           <Buttons
-            onClick={() => setToggleNav({ modalType: 'carts' })}
+            onClick={() => navigate('/orders')}
             px='' py=''
             // isLoading={isLoading}
             classNames='self-center whitespace-nowrap rounded-sm font-semibold border-[1px] border-[#8B4513] text-sm text-[#8B4513] w-full py-2.5 hover:bg-opacity-95 active:bg-opacity-100 transition-opacity'

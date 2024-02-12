@@ -1,33 +1,59 @@
 import { Link } from "react-router-dom";
-import { useDesignerContext } from "../hooks/useDesignerContext";
 import { formatPrice } from "../utility/formatPrice";
-import { Buttons } from "../components/appComponents/Buttons";
 import HomeLayout from "../layout/HomeLayout";
-import { OrderStatus } from "../utility/constants";
+import { OrderStatus, orderProps } from "../utility/constants";
+import { format } from "timeago.js";
 
 
 export const Orders = () => {
-  const { toggleNav } = useDesignerContext() as DesignerContextProps;
+
+  const orders = [
+    {
+      orderId: '#Order785445',
+      productName: 'Gown',
+      image: "",
+      date: "new Date('2024 01 25')",
+      price: 10_500,
+      status: 'Pending' as OrderStatusType
+    },
+    {
+      orderId: '#Order125435',
+      productName: 'White Iro and Buba',
+      image: "",
+      date: "new Date('2024 01 25')",
+      price: 8_200,
+      status: 'In progress' as OrderStatusType
+    },
+    {
+      orderId: '#Order335445',
+      productName: 'T-Shirt',
+      image: "",
+      date: "new Date('2024 01 25')",
+      price: 12_000,
+      status: 'Completed' as OrderStatusType
+    },
+    {
+      orderId: '#Order987645',
+      productName: 'White Agbada with one Kufi cap',
+      image: "",
+      date: "new Date('2024 01 25')",
+      price: 25_000,
+      status: 'Completed' as OrderStatusType
+    },
+  ]
 
   return (
     <HomeLayout
     >
-      {/* <div className={`flex-none -mt-7 md:-mt-4 min-h-fit sm:rounded-md mx-auto sm:w-[25rem] py-4 bg-white relative flex flex-col justify-between w-full`}> */}
-        <div className="w-full flex flex-col gap-y-1">
-          {
-            [0,1,2,3,4,].map(i => (
-              <Order key={i}
-                orderObj={{
-                  orderId: '#Order785445',
-                  productName: 'Gown',
-                  image: "new Date('2024 01 25')",
-                  price: 10_500,
-                  status: 'Pending'
-                }}
-              />
-            ))
-          }
-        </div>
+      <div className="w-full flex flex-col gap-y-2 px-3">
+        {
+          orders.map((order) => (
+            <Order key={order.orderId}
+              orderObj={order}
+            />
+          ))
+        }
+      </div>
     </HomeLayout>
   )
 }
@@ -37,6 +63,7 @@ type OrderProps = {
     orderId: string;
     image: string;
     productName: string;
+    date: string;
     price: string | number;
     status: OrderStatusType;
   };
@@ -44,26 +71,35 @@ type OrderProps = {
 const Order = ({ orderObj }: OrderProps) => {
 
   return (
-    <div className="hover:opacity-80 transition-opacity font-sans flex flex-col border-[1px] bg-slate-100 p-2 text-[12px] w-full">
-      <h3>{orderObj.orderId}</h3>
-      <div className="flex flex-col py-2 justify-between w-[95%] border-0 border-b-[2px] h-full">
-        <Link to={``} className="flex-none w-[85%] flex items-center">
-          <figure className="w-10 h-10 rounded-[3px] flex-none">
-            <img src={orderObj.image} alt={orderObj.productName} className="object-cover h-full w-full rounded-[3px]" />
+    <div className="hover:opacity-80 transition-opacity font-sans flex flex-col border-[1px] bg-slate-50 p-2 text-[12px] w-full">
+      <h3 className="font-medium">{orderObj.orderId}</h3>
+      <div className="flex flex-col gap-y-2 py-2 justify-between w-[95%] h-full">
+        <Link to={``} className="flex-none w-[85%] flex">
+          <figure className="w-12 h-12 rounded-[3px] flex-none bg-slate-100">
+            {
+              orderObj.image ?
+              <img src={orderObj.image} alt={orderObj.productName} className="object-cover h-full w-full rounded-[3px]" />
+              : null  
+            }
           </figure>
-          <div className="flex items-center flex-col gap-y-1 px-3">
+          <div className="flex flex-col gap-y-1 px-3">
             <span>{orderObj.productName}</span>
             <span className="font-sans font-semibold text-[12px]">&#x20A6;{formatPrice(orderObj.price)}</span>
           </div>
         </Link>
 
-        <div>
-          <div>
-            <span className={`${''} w-2 h-2 rounded-full `}/>
-            <span>{OrderStatus[orderObj.status]}</span>
+        <div className="w-full flex items-center justify-between">
+          <div className="text-gray-700 bg-gray-200 p-0.5 rounded-sm flex items-center gap-x-2 w-fit pr-3">
+            <span className={`${orderProps[orderObj.status].bgColor} w-[6px] h-[6px] rounded-full `}/>
+            <span className={`text-xs ${orderProps[orderObj.status].color}`}>{OrderStatus[orderObj.status]}</span>
           </div>
-
+          
+          <span className="text-gray-600">{format(orderObj.date)}</span>
         </div>
+      </div>
+
+      <div className="w-full bg-gray-200 h-[2px]">
+        <div className={`${orderProps[orderObj.status].bgColor} w-full h-full ${orderProps[orderObj.status].width} transition-all`} />
       </div>
     </div>
   )
