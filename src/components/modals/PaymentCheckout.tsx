@@ -104,30 +104,3 @@ export const PaymentCheckout = () => {
     </ModalLayout>
   )
 }
-
-
-type CartProps = {
-  cartObj: {
-    image: string;
-    productName: string;
-    price: string | number;
-  };
-}
-const Cart = ({ cartObj }: CartProps) => {
-
-  return (
-    <div className="hover:opacity-80 transition-opacity font-sans flex items-center p-2 border-[1px] even:bg-slate-50 odd:bg-slate-100 justify-between text-[12px] w-full">
-      <Link to={``} className="flex-none w-[85%] flex items-center">
-        <figure className="w-10 h-10 rounded-[3px] flex-none border">
-          <img src={cartObj.image} alt={cartObj.productName} className="object-cover h-full w-full rounded-[3px]" />
-        </figure>
-        <div className="flex items-center flex-col gap-y-1 px-3">
-          <span>{cartObj.productName}</span>
-          <span className="font-sans font-semibold text-[12px]">#{formatPrice(cartObj.price)}</span>
-        </div>
-      </Link>
-     
-      <CiTrash className="text-xl cursor-pointer hover::sacle-[1.002] active:scale-[1] transition-transform" />
-    </div>
-  )
-}
