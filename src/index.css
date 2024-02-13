@@ -23,3 +23,14 @@ p {
 body {
   font-family: 'Playfair Display', serif;
 }
+
+@media ( min-width: 760px ) {
+  .scrollbar::-webkit-scrollbar {
+    background-color: #bebdbd;
+    width: 4px;
+    padding: 1px;
+  }
+  .scrollbar::-webkit-scrollbar-thumb {
+    background-color: #8B4513;
+  }
+}
