@@ -24,6 +24,15 @@ body {
   font-family: 'Playfair Display', serif;
 }
 
+.globalScrollbar::-webkit-scrollbar {
+  background-color: #bebdbd;
+  width: 4px;
+  padding: 1px;
+}
+.globalScrollbar::-webkit-scrollbar-thumb {
+  background-color: #6e645e;
+}
+
 @media ( min-width: 760px ) {
   .scrollbar::-webkit-scrollbar {
     background-color: #bebdbd;

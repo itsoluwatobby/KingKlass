@@ -25,14 +25,14 @@ export const CartPreview = () => {
         onClick={() => setToggleNav({ modalType: "pass" })}
         className='absolute -right-2 -top-2 p-0.5 font-bold bg-white shadow-sm shadow-slate-500 rounded-full text-2xl hover:text-gray-700 active:text-gray-900 cursor-pointer transition-colors'
       />
-      <div className="flex flex-col gap-y-5">
+      <div className="flex flex-col gap-y-5 max-h-[75%]">
         <div className="flex items-center gap-x-4">
           <FaCheck className="text-4xl bg-[#DBC5B6] rounded-full p-2 text-[#8B4513]" />
           <span className="text-[#8B4513] text-sm">Item added to Cart</span>
         </div>
-        <div className="w-full flex flex-col gap-y-1">
+        <div className="globalScrollbar w-full flex flex-col gap-y-1 max-h-[80%] overflow-y-scroll px-1 pb-4">
           {
-            [0, 1, 2].map(i => (
+            [0,1,2,3].map(i => (
               <Cart key={i}
                 cartObj={{
                   productName: 'Gown',
@@ -45,7 +45,7 @@ export const CartPreview = () => {
         </div>
       </div>
 
-      <div className="rounded-sm flex flex-col gap-y-4 items-center py-5">
+      <div className="flex-none rounded-sm flex flex-col gap-y-4 items-center py-5">
         <Buttons
           onClick={() => setToggleNav(prev => ({ ...prev, modalType: 'carts', prevModal: "cartPreview" }))}
           px='' py=''
