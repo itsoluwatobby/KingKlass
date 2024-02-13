@@ -19,6 +19,8 @@ export default {
       },
     },
     screens:{
+      'xsm': '580px',
+      // => @media (min-width: 580px) { ... }
       'sm': '640px',
       // => @media (min-width: 640px) { ... }
 
