@@ -138,16 +138,16 @@ export const OrderStatus: Record<OrderStatusType, OrderStatusType> = {
   'Completed': 'Completed'
 }
 
-export const orderProps: Record<OrderStatusType, { bgColor: string, color: string, width: string }> = {
+export const orderProps: OrderPropsTypes = {
   "Pending": {
     bgColor: "bg-[#6E6E6E]",
     color: "text-[#6E6E6E]",
-    width: "w-[2%]"
+    width: "w-[0%]"
   },
   "In progress": {
     bgColor: "bg-[#E28835]",
     color: "text-[#E28835]",
-    width: "w-[35%]"
+    width: "w-[36%]"
   },
   "Completed": {
     bgColor: "bg-[#138F27]",

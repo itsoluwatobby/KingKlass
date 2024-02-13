@@ -8,7 +8,7 @@ type Size = {
   height: string; 
 }
 type AppModalTypes = 'signin' | 'signup';
-type ToggleNav = 'openNavModal' | 'userNavModal' | 'notifications' | 'measurements' | 'carts' | "paymentPrompt" | 'cartPreview' | 'paymentCheckout' | 'purchasePrompt' | 'adminAccountSetting' | 'pass';
+type ToggleNav = 'openNavModal' | 'userNavModal' | 'notifications' | 'measurements' | 'carts' | "paymentPrompt" | 'cartPreview' | 'paymentCheckout' | 'purchasePrompt' | 'adminAccountSetting' | 'orderProgress' | 'pass';
 type AppModals = Record<AppModalTypes, Toggle>
 type ToggleOption = {
   modalType: ToggleNav;
@@ -79,3 +79,6 @@ type ImageReturnType = { status: string, url: string };
 type STORAGES = 'displayPictures' | 'products' | 'receipts';
 
 type OrderStatusType = 'Pending' | 'In progress' | 'Completed';
+
+type OrderPropsTypes = Record<OrderStatusType, { 
+  bgColor: string, color: string, width: string }>;
