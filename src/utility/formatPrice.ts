@@ -15,7 +15,10 @@ export const formatPrice = (price: (number | string)) => {
                   : length === 7 ? formattedPrice = `${priceToString?.substring(0,1)},${priceToString?.substring(1,4)},${priceToString?.substring(4)}`
                       : length === 8 ? formattedPrice = `${priceToString?.substring(0,2)},${priceToString?.substring(2,5)},${priceToString?.substring(5)}`
                           : length === 9 ? formattedPrice = `${priceToString?.substring(0,3)},${priceToString?.substring(3,6)},${priceToString?.substring(6)}`
-                          :  formattedPrice = `${priceToString}`
+                            : length === 10 ? formattedPrice = `${priceToString?.substring(0,1)},${priceToString?.substring(1,4)},${priceToString?.substring(4,7)},${priceToString?.substring(7)}`
+                               : length === 11 ? formattedPrice = `${priceToString?.substring(0,2)},${priceToString?.substring(2,5)},${priceToString?.substring(5,8)},${priceToString?.substring(8)}`
+                                  : length === 12 ? formattedPrice = `${priceToString?.substring(0,3)},${priceToString?.substring(3,6)},${priceToString?.substring(6,9)},${priceToString?.substring(9)}`
+                                      :  formattedPrice = `${priceToString}`
   return formattedPrice
 }
 

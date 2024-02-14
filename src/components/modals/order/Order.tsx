@@ -39,7 +39,7 @@ export const Order = ({ orderObj }: OrderProps) => {
   return (
     <article 
     onClick={() => setToggleNav({ modalType: "orderProgress" })}
-    className="rounded-[3px] cursor-default hover:opacity-70 transition-opacity font-sans flex flex-col border-[1px] bg-slate-50 p-2 text-[12px] w-full">
+    className="rounded-[3px] cursor-default hover:opacity-90 transition-opacity font-sans flex flex-col border-[1px] bg-slate-50 p-2 text-[12px] w-full">
       <h3 className="font-medium">{orderObj.orderId}</h3>
       <div className="flex flex-col gap-y-2 py-2 justify-between w-[95%] h-full">
         <div className="flex-none w-[85%] flex">

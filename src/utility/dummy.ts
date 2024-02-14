@@ -77,80 +77,66 @@ export const reviews: Reviews[] = [
       "createdAt": "2024-01-05, 05:45"
     }
   ]
-  // {
-  //   "id": 11,
-  //   "rating": [0,1],
-  //   "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam architecto nostrum veniam suscipit deserunt possimus, ea ipsam incidunt laboriosam cupiditate, nemo qui eum eos, quasi velit veritatis numquam a quod.",
-  //   "author": "Mark",
-  //   "createdAt": "2024-01-05, 05:45"
-  // },
-  // {
-  //   "id": 12,
-  //   "rating": [0,1,2,3,4],
-  //   "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam architecto nostrum veniam suscipit deserunt possimus, ea ipsam incidunt laboriosam cupiditate, nemo qui eum eos, quasi velit veritatis numquam a quod.",
-  //   "author": "Obi",
-  //   "createdAt": "2024-01-05, 05:45"
-  // },
-  // {
-  //   "id": 13,
-  //   "rating": [0,1,2],
-  //   "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam architecto nostrum veniam suscipit deserunt possimus, ea ipsam incidunt laboriosam cupiditate, nemo qui eum eos, quasi velit veritatis numquam a quod.",
-  //   "author": "Fatima",
-  //   "createdAt": "2024-01-05, 05:45"
-  // },
-  // {
-  //   "id": 14,
-  //   "rating": [0],
-  //   "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam architecto nostrum veniam suscipit deserunt possimus, ea ipsam incidunt laboriosam cupiditate, nemo qui eum eos, quasi velit veritatis numquam a quod.",
-  //   "author": "Mark",
-  //   "createdAt": "2024-01-15, 02:05"
-  // },
-  // {
-  //   "id": 15,
-  //   "rating": [0,1,2,3],
-  //   "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam architecto nostrum veniam suscipit deserunt possimus, ea ipsam incidunt laboriosam cupiditate, nemo qui eum eos, quasi velit veritatis numquam a quod.",
-  //   "author": "Daniel",
-  //   "createdAt": "2024-01-05, 05:45"
-  // },
-  // {
-  //   "id": 16,
-  //   "rating": [0,1],
-  //   "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam architecto nostrum veniam suscipit deserunt possimus, ea ipsam incidunt laboriosam cupiditate, nemo qui eum eos, quasi velit veritatis numquam a quod.",
-  //   "author": "David",
-  //   "createdAt": "2023-11-05, 15:45"
-  // },
-  // {
-  //   "id": 17,
-  //   "rating": [0,1,2,3],
-  //   "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam architecto nostrum veniam suscipit deserunt possimus, ea ipsam incidunt laboriosam cupiditate, nemo qui eum eos, quasi velit veritatis numquam a quod.",
-  //   "author": "Mark",
-  //   "createdAt": "2024-01-05, 05:45"
-  // },
-  // {
-  //   "id": 18,
-  //   "rating": [0,1,2,3,4],
-  //   "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam architecto nostrum veniam suscipit deserunt possimus, ea ipsam incidunt laboriosam cupiditate, nemo qui eum eos, quasi velit veritatis numquam a quod.",
-  //   "author": "Mark",
-  //   "createdAt": "2024-01-05, 05:45"
-  // },
-  // {
-  //   "id": 19,
-  //   "rating": [0,1,2,3],
-  //   "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam architecto nostrum veniam suscipit deserunt possimus, ea ipsam incidunt laboriosam cupiditate, nemo qui eum eos, quasi velit veritatis numquam a quod.",
-  //   "author": "Sandra",
-  //   "createdAt": "2024-01-05, 05:45"
-  // },
-  // {
-  //   "id": 20,
-  //   "rating": [0,1,2,3,4],
-  //   "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam architecto nostrum veniam suscipit deserunt possimus, ea ipsam incidunt laboriosam cupiditate, nemo qui eum eos, quasi velit veritatis numquam a quod.",
-  //   "author": "Obinna",
-  //   "createdAt": "2024-01-05, 05:45"
-  // },
-  // {
-  //   "id": 21,
-  //   "rating": [1,2,3],
-  //   "content": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam architecto nostrum veniam suscipit deserunt possimus, ea ipsam incidunt laboriosam cupiditate, nemo qui eum eos, quasi velit veritatis numquam a quod.",
-  //   "author": "Chukwuma",
-  //   "createdAt": "2024-11-05, 05:45"
-  // }
+
+export const orderTable = [
+  {
+    "orderId": "#452154",
+    "date": new Date("05-12-2023"),
+    "status": "Pending" as OrderStatusType,
+    "customer": "Peter T"
+  },
+  {
+    "orderId": "#457854",
+    "date": new Date("07-07-2023"),
+    "status": "Pending" as OrderStatusType,
+    "customer": "Peter T"
+  },
+  {
+    "orderId": "#456954",
+    "date": new Date("04-21-2024"),
+    "status": "Completed" as OrderStatusType,
+    "customer": "Peter T"
+  },
+  {
+    "orderId": "#441154",
+    "date": new Date("05-12-2024"),
+    "status": "Pending" as OrderStatusType,
+    "customer": "Peter T"
+  },
+  {
+    "orderId": "#423554",
+    "date": new Date("03-28-2023"),
+    "status": "In progress" as OrderStatusType,
+    "customer": "Peter T"
+  },
+  {
+    "orderId": "#123154",
+    "date": new Date("05-08-2024"),
+    "status": "Pending" as OrderStatusType,
+    "customer": "Peter T"
+  },
+  {
+    "orderId": "#455874",
+    "date": new Date("08-05-2023"),
+    "status": "Pending" as OrderStatusType,
+    "customer": "Peter T"
+  },
+  {
+    "orderId": "#4527794",
+    "date": new Date("11-23-2023"),
+    "status": "Pending" as OrderStatusType,
+    "customer": "Peter T"
+  },
+  {
+    "orderId": "#452214",
+    "date": new Date("06-12-2024"),
+    "status": "Pending" as OrderStatusType,
+    "customer": "Peter T"
+  },
+  {
+    "orderId": "#452225",
+    "date": new Date("05-02-2024"),
+    "status": "Pending" as OrderStatusType,
+    "customer": "Peter T"
+  },
+]

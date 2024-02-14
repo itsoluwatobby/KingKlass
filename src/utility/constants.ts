@@ -155,3 +155,5 @@ export const orderProps: OrderPropsTypes = {
     width: "w-[100%]"
   }
 }
+export const hoverClass = "hover:opacity-90 active:opacity-100 transition-opacity"
+export const OrderTableLabel = ['Order ID', 'Date', 'Status', 'Customer']

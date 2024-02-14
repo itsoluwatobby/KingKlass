@@ -23,6 +23,7 @@ import AboutUs from './pages/AboutUs';
 import { AdminAccountSetting } from './components/modals/AdminAccountSetting';
 import { PaymentCheckout } from './components/modals/PaymentCheckout';
 import { Orders } from './pages/Orders';
+import Dashboard from './pages/Dashboard';
 
 let prevPathname = '/';
 function App() {
@@ -79,7 +80,8 @@ function App() {
           <Route path='aboutus' element={<AboutUs />} />
           <Route path='products' element={<Products />} />
           <Route path='products/:productId' element={<ProductPage />} />
-          <Route path='orders/' element={<Orders />} />
+          <Route path='orders' element={<Orders />} />
+          <Route path='dashboard' element={<Dashboard />} />
         </Route>
         <Route path='*' element={<NotFound />} />
       </Routes>

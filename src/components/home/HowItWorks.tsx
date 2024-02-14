@@ -2,9 +2,11 @@ import { Motto } from "../../svgs/Motto";
 import { HowKingClassWorks } from "../../utility/constants";
 import { ImageCard } from "./ImageCard";
 import { Buttons } from '../appComponents/Buttons';
+import { useDesignerContext } from "../../hooks/useDesignerContext";
 
 
 export default function HowItWorks() {
+  const { setAppModals } = useDesignerContext() as DesignerContextProps;
   const Previews = [
     { image: '/image1.png', title: 'AGBADA' },
     { image: '/image2.png', title: 'SENATOR' },
@@ -58,9 +60,9 @@ export default function HowItWorks() {
       </div>
 
       <Buttons
-        onClick={() => { }}
+        onClick={() => setAppModals(prev => ({ ...prev, signin: 'OPEN' }))}
         px='' py='py-3'
-        classNames="text-[#842415] font-medium text-black bg-[#fffff5] border-2 border-orange-700 border-opacity-40 w-36 rounded-md cursor-default"
+        classNames="text-[#842415] self-center mt-2 font-medium text-black bg-[#fffff5] border-2 border-orange-700 border-opacity-40 w-36 rounded-md cursor-default"
       >
         Get Started
       </Buttons>
