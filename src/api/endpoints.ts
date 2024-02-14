@@ -1,95 +1,105 @@
 
 export const urlPath = '/api/v1' as const;
 
-export const Endpoints = ({ orderId='', userId='', reviewId='', productId='', categoryId='', status='Pending' }) => {
+type EndpointParams = {
+  orderId?: string; 
+  userId?: string; 
+  reviewId?: string; 
+  productId?: string; 
+  categoryId?: string;
+  status?: OrderStatusType;
+}
+type Method = 'get' | 'post' | 'put' | 'delete' | 'patch';
+type Paths = 'login' | 'users' | 'createUser' | 'getUser' | 'getUserOrders' | 'createUserOrder' | 'getUserOrder' | 'updateUserOrder' | 'deleteUserOrder' | 'createCategory' | 'getCategories' | 'getCategory' | 'getOrders' | 'getOrdersStatus' | 'getOrder' | 'updateOrder' | 'deleteOrder' | 'getProducts' | 'getProduct' | 'createProduct' | 'updateProduct' | 'deleteProduct' | 'getReviews' | 'getReview' | 'deleteReview' | 'getAllReviews' | 'createReview' | 'updateReview' | 'getProductReview';
+export const Endpoints = ({ orderId='', userId='', reviewId='', productId='', categoryId='', status='Pending' }: EndpointParams): Record<Paths, {method: Method, url: string}> => {
 
   return {
     users: {
-      method: 'GET',  url:'/users'
+      method: 'get',  url: urlPath+'/users'
     },
     login: {
-      method: 'POST',  url: '/login'
+      method: 'get',  url: '/login'
     },
     createUser: {
-      method: 'POST', url: `/users` // all users
+      method: 'post', url: `${urlPath}/users` // all users
     },
     getUser: {
-      method: 'GET', url: `/users/${userId}` // single user
+      method: 'get', url: `${urlPath}/users/${userId}` // single user
     },
     getUserOrders: {
-      method: 'GET', url: `/users/${userId}/orders` // single user orders
+      method: 'get', url: `${urlPath}/users/${userId}/orders` // single user orders
     },
     createUserOrder: {// to be corrected
-      method: 'POST', url: `/users/${userId}/orders` // create user order
+      method: 'post', url: `${urlPath}/users/${userId}/orders` // create user order
     },
     getUserOrder: {
-      method: 'GET', url: `/users/${userId}/orders/${orderId}` // single user target order
+      method: 'get', url: `${urlPath}/users/${userId}/orders/${orderId}` // single user target order
     },
     updateUserOrder: {
-      method: 'PUT', url: `/order/${orderId}` // update order
+      method: 'put', url: `${urlPath}/order/${orderId}` // update order
     },
     deleteUserOrder: {
-      method: 'DELETE', url: `/order/${orderId}` // update order
+      method: 'delete', url: `${urlPath}/order/${orderId}` // update order
     },
     createCategory: {
-      method: 'POST',  url: '/categories'
+      method: 'post',  url: '${urlPath}/categories'
     }, // CATEGORY ROUTES
     getCategories: {
-      method: 'GET',  url: '/categories'
+      method: 'get',  url: '${urlPath}/categories'
     },
     getCategory: {
-      method: 'GET', url: `/categories/${categoryId}/products`
+      method: 'get', url: `${urlPath}/categories/${categoryId}/products`
     },
     getOrders: {
-      method: 'GET', url: '/orders'
+      method: 'get', url: '${urlPath}/orders'
     }, // ORDER ROUTES
     getOrdersStatus: {
-      method: 'GET', url: `/orders/${status}`
+      method: 'get', url: `${urlPath}/orders/${status}`
     },
     getOrder: {
-      method: 'GET', url: `/orders/${orderId}`
+      method: 'get', url: `${urlPath}/orders/${orderId}`
     },
     updateOrder: {
-      method: 'PUT', url: `/orders/${orderId}`
+      method: 'put', url: `${urlPath}/orders/${orderId}`
     },
     deleteOrder: {
-      method: 'DELETE', url: `/orders/${orderId}`
+      method: 'delete', url: `${urlPath}/orders/${orderId}`
     },
     getProducts: {
-      method: 'GET', url: '/products'
+      method: 'get', url: '${urlPath}/products'
     }, // PRODUCTS ROUTES
     getProduct: {
-      method: 'GET', url: `/products/${productId}`
+      method: 'get', url: `${urlPath}/products/${productId}`
     },
     createProduct: {
-      method: 'POST', url: `/products`
+      method: 'post', url: `${urlPath}/products`
     },
     updateProduct: {
-      method: 'PUT', url: `/products/${productId}`
+      method: 'put', url: `${urlPath}/products/${productId}`
     },
     deleteProduct: {
-      method: 'DELETE', url: `/products/${productId}`
+      method: 'delete', url: `${urlPath}/products/${productId}`
     },
     getReviews: {
-      method: 'GET', url: `/products/${productId}/reviews` // all product reviews
+      method: 'get', url: `${urlPath}/products/${productId}/reviews` // product reviews
     },
     getReview: {
-      method: 'GET', url: `/reviews/${reviewId}` // single review
+      method: 'get', url: `${urlPath}/reviews/${reviewId}` // single review
     },
     deleteReview: {
-      method: 'DELETE', url: `/reviews/${reviewId}` // delete single review
+      method: 'delete', url: `${urlPath}/reviews/${reviewId}` // delete single review
     },
     getAllReviews: {
-      method: 'GET', url: `/reviews` // all reviews
+      method: 'get', url: `${urlPath}/reviews` // all reviews
     },
     createReview: {
-      method: 'POST', url: `/products/${productId}/reviews`
+      method: 'post', url: `${urlPath}/products/${productId}/reviews`
     },
     updateReview: {
-      method: 'PUT', url: `/reviews/${reviewId}` // update review
+      method: 'put', url: `${urlPath}/reviews/${reviewId}` // update review
     },
     getProductReview: {
-      method: 'GET', url: `/reviews/${reviewId}/product` // get product review
+      method: 'get', url: `${urlPath}/reviews/${reviewId}/product` // get product review
     }
   }
 };
