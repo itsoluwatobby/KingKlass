@@ -1,9 +1,8 @@
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useLocation } from "react-router-dom";
 import HomeLayout from "../layout/HomeLayout";
-import { useState } from "react";
 
 export default function DashboardLayout() {
-  const [isActive, setIsActive] = useState<string>('Dashboard');
+  const { pathname } = useLocation()
   const AdminNavLinks = [
     { name: 'Dashboard', link: '/dashboard' },
     { name: 'Upload product', link: '/uploadProduct' },
@@ -18,8 +17,7 @@ export default function DashboardLayout() {
           {
             AdminNavLinks.map(nav => (
               <Link to={nav.link} key={nav.name} 
-              onClick={() => setIsActive(nav.name)}
-              className={`${nav.name === isActive ? 'bg-[#8B4513] text-white' : ''} py-2 px-1 text-left min-w-36 rounded-[3px]`}>
+              className={`${nav.link === pathname ? 'bg-[#8B4513] text-white' : ''} py-2 px-1 text-left min-w-36 rounded-[3px]`}>
                  {nav.name} 
               </Link>
             ))
