@@ -1,30 +1,77 @@
-# React + TypeScript + Vite
+# KING KLASS
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![King Klass Landing page](/public/kingklass.png)
 
-Currently, two official plugins are available:
+### Developed by:
+1. [Obimba Smart](https://github.com/obimbasmart)
+2. [Akinola Oluwatobi](https://github.com/itsoluwatobby)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Developed with:
+* React
+* Python
+* SQLAlchemy
+* Flask
 
-## Expanding the ESLint configuration
+---
+#### About
+User Story:
+"As a fashion-conscious customer (Role):
+I want to effortlessly order a custom-tailored suit and stay informed throughout the tailoring process (Goal). 
+And also enjoy a personalized and stress-free tailoring experience (Benefit).
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
 
-- Configure the top-level `parserOptions` property like this:
+Product Walkthrough:
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+* Image 1: 
+![King Klass Landing page](/public/kingklass.png)
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+As fashion-conscious customers exploring the tailoring platform.
+
+Upon visiting the platform, the customer is greeted with a visually appealing homepage showcasing the latest designs and promotions.
+
+
+* Image 2: 
+![How It Works](/public/howto.png)
+The platform‘s homepage is equipped with featured designs and promotions.
+
+In the “How It Works' section, Explains the step by step on to use the platform.
+
+
+* Image 3: 
+Designing a custom outfit with the customer desired style.
+
+After finalizing the design, the customer receives an order confirmation with a unique order number.
+
+
+* Image 4: 
+An order confirmation screen with a unique order number.
+
+In the Track Order' section, the customer can view the status of their pending order, right from design stage to fitting.
+
+
+* Image 5: 
+Tracking the suit's production stages.
+
+The customer is notified by the tailor to place a fitting appointment, with options of picking a schedule.
+
+
+* Image 6: 
+Notification for a scheduled fitting appointment.
+
+After the fitting, the customer receives an update on any adjustments made and the expected completion date.
+
+
+* Image 7: 
+Update after the fitting appointment, including adjustments.
+
+Once the suit is ready, the customer receives a pickup confirmation.
+
+
+* Image 8: 
+Pickup confirmation with details.
+
+The app prompts the customer to leave feedback, ensuring a continuous improvement in tailoring services.
+
+
+* Image 9: 
+Prompt to leave feedback for the tailored garment and overall experience.
