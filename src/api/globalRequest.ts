@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { Endpoints } from './endpoints'
 
-const BASEURL = 'http://web-02.obimbasmart.tech/'
+const BASEURL = 'http://web-02.obimbasmart.tech'
 
 const requests = axios.create(
   {
