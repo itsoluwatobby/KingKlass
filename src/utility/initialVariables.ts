@@ -28,11 +28,11 @@ export const initUserDetail: UserDetails = {
 }
 
 export const initUser: User = {
-  isSignedIn: true, isAdmin: true, token: '', id: ''
+  isSignedIn: false, isAdmin: true, token: '', id: ''
 }
 
 export const inputValidation: Validations = {
-  validEmail: false, validPassword: false, matchingPassword: false
+  validEmail: true, validPassword: false, matchingPassword: false
 }
 
 export const initMeasurements: MeasurementProps = { 

@@ -46,7 +46,7 @@ export default function OrderProgress({ orderId, orderStatus }: OrderProgressPro
 
       <LiaTimesSolid
         onClick={() => setToggleNav({ modalType: "pass" })}
-        className='absolute right-0 top-0.5 z-30 p-0.5 font-bold bg-white shadow-sm shadow-slate-500 rounded-full text-2xl hover:text-gray-700 active:text-gray-900 cursor-pointer transition-colors'
+        className='absolute right-0 top-0.5 z-30 p-0.5 font-bold bg-white shadow-sm shadow-slate-500 rounded-full text-2xl hover:text-gray-700 active:text-gray-900 cursor-pointer transition-colors md:hidden'
       />
 
 

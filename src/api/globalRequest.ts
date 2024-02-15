@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { Endpoints } from './endpoints'
 
-const BASEURL = 'http://web-02.obimbasmart.tech/'
+const BASEURL = 'http://web-02.obimbasmart.tech'
 
 const requests = axios.create(
   {
@@ -25,7 +25,6 @@ export const register = async(user: Partial<UserInfo>) => {
   const userCredential = await requests[path.createUser.method](path.createUser.url, user);
   return userCredential.data;
 }
-
 export const getUser = async(userId: string) => {
   const path = Endpoints({ userId });
   const user = await requests[path.getUser.method](path.getUser.url, {
@@ -53,7 +52,7 @@ export const getUserOrders = async(userId: string) => {
   });
   return userOrders.data;
 }
-export const createUserOrder = async(userId: string, newOrder: object) => {
+export const createUserOrder = async<T extends object>(userId: string, newOrder: T) => {
   const path = Endpoints({ userId });
   const newUserOrder = await requests[path.createUserOrder.method](path.createUserOrder.url, {...newOrder}, {
     headers: {
@@ -71,7 +70,7 @@ export const getUserOrder = async(userId: string, orderId: string) => {
   });
   return userOrder.data;
 }
-export const updateUserOrder = async(orderId: string, updatedOrder: object) => {
+export const updateUserOrder = async<T extends object>(orderId: string, updatedOrder: T) => {
   const path = Endpoints({ orderId });
   const userOrder = await requests[path.updateUserOrder.method](path.updateUserOrder.url, {...updatedOrder}, {
     headers: {
@@ -89,7 +88,7 @@ export const deleteUserOrder = async(orderId: string) => {
   });
   return userOrder.data;
 }
-export const createCategory = async(newCategory: object) => {
+export const createCategory = async<T extends object>(newCategory: T) => {
   const path = Endpoints({});
   const category = await requests[path.createCategory.method](path.createCategory.url, {...newCategory}, {
     headers: {
@@ -143,7 +142,7 @@ export const getOrder = async(orderId: string) => {
   });
   return order.data;
 }
-export const updateOrder = async(orderId: string, updatedOrder: object) => {
+export const updateOrder = async<T extends object>(orderId: string, updatedOrder: T) => {
   const path = Endpoints({ orderId });
   const order = await requests[path.updateOrder.method](path.updateOrder.url, {...updatedOrder}, {
     headers: {
@@ -179,7 +178,7 @@ export const getProduct = async(productId: string) => {
   });
   return product.data;
 }
-export const createProduct = async(newProduct: object) => {
+export const createProduct = async<T extends object>(newProduct: T) => {
   const path = Endpoints({});
   const product = await requests[path.createProduct.method](path.createProduct.url, {...newProduct}, {
     headers: {
@@ -188,7 +187,7 @@ export const createProduct = async(newProduct: object) => {
   });
   return product.data;
 }
-export const updateProduct = async(productId: string, updatedProduct: object) => {
+export const updateProduct = async<T extends object>(productId: string, updatedProduct: T) => {
   const path = Endpoints({ productId });
   const product = await requests[path.updateProduct.method](path.updateProduct.url, {...updatedProduct}, {
     headers: {
@@ -242,7 +241,7 @@ export const getAllReviews = async() => {
   });
   return allReviews.data;
 }
-export const createReview = async(productId: string, newReview: object) => {
+export const createReview = async<T extends object>(productId: string, newReview: T) => {
   const path = Endpoints({ productId });
   const review = await requests[path.createReview.method](path.createReview.url, {...newReview}, {
     headers: {
@@ -251,7 +250,7 @@ export const createReview = async(productId: string, newReview: object) => {
   });
   return review.data;
 }
-export const updateReview = async(reviewId: string, updatedReview: object) => {
+export const updateReview = async<T extends object>(reviewId: string, updatedReview: T) => {
   const path = Endpoints({ reviewId });
   const review = await requests[path.updateReview.method](path.updateReview.url, {...updatedReview}, {
     headers: {

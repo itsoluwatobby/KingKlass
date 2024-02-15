@@ -24,6 +24,9 @@ import { AdminAccountSetting } from './components/modals/AdminAccountSetting';
 import { PaymentCheckout } from './components/modals/PaymentCheckout';
 import { Orders } from './pages/Orders';
 import Dashboard from './pages/Dashboard';
+import DashboardLayout from './layout/DashboardLayout';
+import AdminOrders from './pages/AdminOrders';
+import UploadProduct from './pages/UploadProduct';
 
 let prevPathname = '/';
 function App() {
@@ -81,7 +84,12 @@ function App() {
           <Route path='products' element={<Products />} />
           <Route path='products/:productId' element={<ProductPage />} />
           <Route path='orders' element={<Orders />} />
-          <Route path='dashboard' element={<Dashboard />} />
+
+          <Route element={<DashboardLayout />}>
+            <Route path='dashboard' element={<Dashboard />} />
+            <Route path='adminOrders' element={<AdminOrders />} />
+            <Route path='uploadProduct' element={<UploadProduct />} />
+          </Route>
         </Route>
         <Route path='*' element={<NotFound />} />
       </Routes>

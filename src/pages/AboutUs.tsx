@@ -60,6 +60,29 @@ export default function AboutUs() {
             }
           />
         </div>
+
+        <div className="flex self-center flex-col gap-y-3">
+          <h4>Project developed by:</h4>
+          <div className="flex items-center gap-5 self-center mobile:flex-row">
+            <div className="flex flex-col gap-y-2">
+              <figure className="w-20 h-20 rounded-full bg-slate-100">
+                <img src="/tobby.png" alt="" className="w-full h-full rounded-full object-cover" />
+              </figure>
+
+              <span>Oluwatobi Akinola Samuel</span>
+              <span>Frontend developer</span>
+            </div>
+            
+            <div className="flex flex-col gap-y-2">
+              <figure className="w-20 h-20 rounded-full bg-slate-100">
+                <img src="/smart.jpg" alt="" className="w-full h-full rounded-full object-cover" />
+              </figure>
+
+              <span>Obimba Smart</span>
+              <span>Backend developer</span>
+            </div>
+          </div>
+        </div>
       </div>
     </HomeLayout>
   )

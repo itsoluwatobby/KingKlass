@@ -9,13 +9,48 @@ import { Buttons } from "../components/appComponents/Buttons";
 import Ratings from "../components/Ratings";
 import { SlArrowLeft, SlArrowRight } from "react-icons/sl";
 import DisplayCard from "../components/DisplayCard";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import PurchasePrompt from "../components/modalPrompts/PurchasePrompt";
 import { useDesignerContext } from "../hooks/useDesignerContext";
+import { useParams } from "react-router-dom";
+import { initAppState } from "../utility/initialVariables";
+import { getProduct, getReviews } from "../api/globalRequest";
 
 
 export default function ProductPage() {
   const refContainer = useRef<HTMLDivElement>(null);
+  const prod = useParams() as { productId: string };
+  const [appState, setAppState] = useState<AppStateType>(initAppState)
+  const [product, setProduct] = useState<object>({ product: Object, reviews: [] })
+
+  // const { isLoading, isError } = appState;
+
+  useEffect(() => {
+    let isMounted = true;
+    const fetchProduct = async () => {
+      try{
+        setAppState(prev => ({ ...prev, isLoading: true }))
+        const res = await getProduct(prod?.productId)
+        const productReview = await getReviews(prod?.productId)
+        console.log(res)
+        console.log(product, appState)
+        console.log(productReview)
+        setProduct(prev => ({ ...prev, product: res, reviews: [...productReview] }));
+      }
+      catch(err: any) {
+        console.log(err)
+        setAppState(prev => ({...prev, isError: true }))
+      }
+      finally{
+        setAppState(prev => ({ ...prev, isLoading: false }))
+      }
+    }
+    isMounted ? fetchProduct() : null;
+    return () => {
+      isMounted = false
+    }
+  }, [prod.productId])
+
   const reviews = [
     {
       "id": 0,
@@ -206,7 +241,6 @@ export default function ProductPage() {
     </HomeLayout>
   )
 }
-
 
 type ReviewsProps = {
   review: {

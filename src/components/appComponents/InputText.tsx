@@ -45,6 +45,7 @@ export default function InputText<K>({ value, id, pattern, placeholder, classNam
           <Warning text={WarningTexts[textMsg]} />
           : null
       }
+      
     </div>
   )
 }

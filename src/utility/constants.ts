@@ -119,9 +119,9 @@ export const HomeNavLinks = [
 ]
 
 export const AdminNavLinks = [
-  { name: 'Dasboard', link: '/dashboard' },
+  { name: 'Dashboard', link: '/dashboard' },
   { name: 'Upload product', link: '/uploadProduct' },
-  { name: 'Manage orders', link: '/manageOrder' },
+  { name: 'Manage orders', link: '/adminOrders' },
   { name: 'Contacts', link: '#contactUs' },
 ]
 
@@ -157,3 +157,4 @@ export const orderProps: OrderPropsTypes = {
 }
 export const hoverClass = "hover:opacity-90 active:opacity-100 transition-opacity"
 export const OrderTableLabel = ['Order ID', 'Date', 'Status', 'Customer']
+export const CustomerTableLabel = ['Customer', 'Phone Number', 'Email Address', 'Measurement']
