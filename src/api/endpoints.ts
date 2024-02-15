@@ -1,5 +1,4 @@
 
-export const urlPath = '/api/v1' as const;
 
 type EndpointParams = {
   orderId?: string; 
@@ -12,6 +11,7 @@ type EndpointParams = {
 type Method = 'get' | 'post' | 'put' | 'delete' | 'patch';
 type Paths = 'login' | 'users' | 'createUser' | 'getUser' | 'getUserOrders' | 'createUserOrder' | 'getUserOrder' | 'updateUserOrder' | 'deleteUserOrder' | 'createCategory' | 'getCategories' | 'getCategory' | 'getOrders' | 'getOrdersStatus' | 'getOrder' | 'updateOrder' | 'deleteOrder' | 'getProducts' | 'getProduct' | 'createProduct' | 'updateProduct' | 'deleteProduct' | 'getReviews' | 'getReview' | 'deleteReview' | 'getAllReviews' | 'createReview' | 'updateReview' | 'getProductReview';
 export const Endpoints = ({ orderId='', userId='', reviewId='', productId='', categoryId='', status='Pending' }: EndpointParams): Record<Paths, {method: Method, url: string}> => {
+  const urlPath = '/api/v1' as const;
 
   return {
     users: {
@@ -42,16 +42,16 @@ export const Endpoints = ({ orderId='', userId='', reviewId='', productId='', ca
       method: 'delete', url: `${urlPath}/order/${orderId}` // update order
     },
     createCategory: {
-      method: 'post',  url: '${urlPath}/categories'
+      method: 'post',  url: `${urlPath}/categories`
     }, // CATEGORY ROUTES
     getCategories: {
-      method: 'get',  url: '${urlPath}/categories'
+      method: 'get',  url: `${urlPath}/categories`
     },
     getCategory: {
       method: 'get', url: `${urlPath}/categories/${categoryId}/products`
     },
     getOrders: {
-      method: 'get', url: '${urlPath}/orders'
+      method: 'get', url: `${urlPath}/orders`
     }, // ORDER ROUTES
     getOrdersStatus: {
       method: 'get', url: `${urlPath}/orders/${status}`
@@ -66,7 +66,7 @@ export const Endpoints = ({ orderId='', userId='', reviewId='', productId='', ca
       method: 'delete', url: `${urlPath}/orders/${orderId}`
     },
     getProducts: {
-      method: 'get', url: '${urlPath}/products'
+      method: 'get', url: `${urlPath}/products`
     }, // PRODUCTS ROUTES
     getProduct: {
       method: 'get', url: `${urlPath}/products/${productId}`

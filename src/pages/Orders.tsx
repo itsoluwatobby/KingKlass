@@ -1,8 +1,41 @@
 import HomeLayout from "../layout/HomeLayout";
 import { Order } from "../components/modals/order/Order";
 import OrderProgress from "../components/modals/OrderProgress";
+import { useEffect, useState } from "react";
+import { initAppState } from "../utility/initialVariables";
+import { getOrders } from "../api/globalRequest";
 
 export const Orders = () => {
+  const [appState, setAppState] = useState<AppStateType>(initAppState)
+  const [order, setOrder] = useState<[]>()
+
+  // const { isLoading, isError } = appState;
+
+  useEffect(() => {
+    let isMounted = true;
+    const fetchOrders = async () => {
+      try{
+        setAppState(prev => ({ ...prev, isLoading: true }))
+        const res = await getOrders();
+        console.log(res)
+        setOrder(res);
+        console.log(order, appState)
+      }
+      catch(err: any) {
+        console.log(err)
+        setAppState(prev => ({...prev, isError: true }))
+      }
+      finally{
+        setAppState(prev => ({ ...prev, isLoading: false }))
+      }
+    }
+    isMounted ? fetchOrders() : null;
+    return () => {
+      isMounted = false
+    }
+  }, [])
+
+
 
   const orders = [
     {

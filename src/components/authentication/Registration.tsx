@@ -10,6 +10,7 @@ import UserInputDetails from "../modals/userModal/UserInputDetails";
 import { FcGoogle } from "react-icons/fc";
 import { Validation_RegExp } from "../../utility/regexExpConfig";
 import FadedBGWrapper from "../../layout/FadedBGWrapper";
+import { register } from "../../api/globalRequest";
 
 
 export const Registration = () => {
@@ -24,13 +25,15 @@ export const Registration = () => {
   const { isLoading, isError } = appState;
   const canSubmit = [email, password, confirm_password, validEmail, validPassword, matchingPassword].every(Boolean);
 
-  const handleSubmit = () => {
+  const handleSubmit = async() => {
     if (!canSubmit || isLoading) return
-    setAppState(prev => ({ ...prev, loading: true }))
+    setAppState(prev => ({ ...prev, isLoading: true }))
     try {
       const userDetails = sanitizeEntries(
-        { email, firstName: name, password, confirm_password });
+        { email, firstName: name, password });
       console.log(userDetails)
+      const res = await register(userDetails)
+      console.log(res)
       setAppState(prev => ({ ...prev, success: true }))
       setUserCredentials(initSignUpInfo)
       toast.success('Registration successful!')
@@ -43,7 +46,7 @@ export const Registration = () => {
       toast.error('error message')
     }
     finally {
-      setAppState(prev => ({ ...prev, loading: false }))
+      setAppState(prev => ({ ...prev, isLoading: false }))
     }
   }
 
@@ -51,10 +54,13 @@ export const Registration = () => {
     if (email) {
       setValidation(prev => ({ ...prev, validEmail: Validation_RegExp['EMAIL_REG'].test(email) }))
     }
-    else if (password) {
+  }, [email])
+  
+  useEffect(() => {
+    if (password) {
       setValidation(prev => ({ ...prev, validPassword: Validation_RegExp['PASS_REG'].test(password) }))
     }
-  }, [email, password])
+  }, [password])
 
   useEffect(() => {
     if (password && confirm_password) {

@@ -9,11 +9,12 @@ import { LiaTimesSolid } from "react-icons/lia";
 import UserInputDetails from "../modals/userModal/UserInputDetails";
 import { FcGoogle } from "react-icons/fc";
 import FadedBGWrapper from "../../layout/FadedBGWrapper";
+import { login } from "../../api/globalRequest";
 
 
 export const Login = () => {
   const [appState, setAppState] = useState<AppStateType>(initAppState)
-  const { appModals, setAppModals } = useDesignerContext() as DesignerContextProps;
+  const { appModals, setAppModals, setUser } = useDesignerContext() as DesignerContextProps;
   const [userCredentials, setUserCredentials] = useState<UserInfo>(initSignInInfo);
   const navigate = useNavigate();
   const location = useLocation();
@@ -23,13 +24,15 @@ export const Login = () => {
   const { isLoading, isError } = appState;
   const canSubmit = [email, password].every(Boolean)
 
-  const handleSubmit = () => {
+  const handleSubmit = async() => {
     if (!canSubmit || isLoading) return
-    setAppState(prev => ({ ...prev, loading: true }))
+    setAppState(prev => ({ ...prev, isLoading: true }))
     try {
       const userDetails = sanitizeEntries({ email, password });
       console.log(userDetails)
-
+      const res = await login(userDetails)
+      console.log(res)
+      void(setUser)
       setAppState(prev => ({ ...prev, success: true }))
       setUserCredentials(initSignInInfo)
       toast.success('Welcome!!!')
@@ -41,7 +44,7 @@ export const Login = () => {
       toast.error('error message')
     }
     finally {
-      setAppState(prev => ({ ...prev, loading: false }))
+      setAppState(prev => ({ ...prev, isLoading: false }))
     }
   }
 
