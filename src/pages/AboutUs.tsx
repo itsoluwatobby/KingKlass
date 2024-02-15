@@ -61,25 +61,31 @@ export default function AboutUs() {
           />
         </div>
 
-        <div className="flex self-center flex-col gap-y-3">
-          <h4>Project developed by:</h4>
-          <div className="flex items-center gap-5 self-center mobile:flex-row">
-            <div className="flex flex-col gap-y-2">
-              <figure className="w-20 h-20 rounded-full bg-slate-100">
+        <div className="flex self-center flex-col gap-y-3 mt-5">
+          <h4 className="font-bold text-xl">Project developed by:</h4>
+          <div className="flex items-center gap-10 self-center mobile:flex-col">
+            <div className="flex flex-col gap-y-1 items-center">
+              <figure className="w-32 h-32 rounded-full bg-slate-100">
                 <img src="/tobby.png" alt="" className="w-full h-full rounded-full object-cover" />
               </figure>
 
               <span>Oluwatobi Akinola Samuel</span>
               <span>Frontend developer</span>
+              <a href="https://github.com/itsoluwatobby" target="_blank"
+              className='text-blue-500 font-semibold underline'
+              >Github Profile</a>
             </div>
             
-            <div className="flex flex-col gap-y-2">
-              <figure className="w-20 h-20 rounded-full bg-slate-100">
+            <div className="flex flex-col gap-y-1 items-center">
+              <figure className="w-32 h-32 rounded-full bg-slate-100">
                 <img src="/smart.jpg" alt="" className="w-full h-full rounded-full object-cover" />
               </figure>
 
               <span>Obimba Smart</span>
               <span>Backend developer</span>
+              <a href="https://github.com/obimbasmart" target="_blank"
+              className='text-blue-500 font-semibold underline'
+              >Github Profile</a>
             </div>
           </div>
         </div>
