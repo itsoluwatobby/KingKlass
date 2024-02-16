@@ -8,6 +8,10 @@
   width: 1px;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 a, a:link a:visited {
   color: #000;
 }

@@ -150,7 +150,7 @@ export default function UploadProduct() {
                   </figure>
                 ))
               }
-              <label htmlFor="productImages" className="border w-14 h-12 rounded-[3px] text-4xl hover:scale-[1.05] active:scale-[1] transition-transform cursor-default text-gray-300 grid place-content-center">
+              <label htmlFor="productImages" className="border border-gray-300 w-14 h-12 rounded-[3px] text-4xl hover:scale-[1.05] active:scale-[1] transition-transform cursor-default text-gray-400 grid place-content-center">
                 +
               </label>
               <input type="file" hidden id="productImages" multiple onChange={handleFile} />
