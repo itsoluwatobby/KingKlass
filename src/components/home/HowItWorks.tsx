@@ -82,7 +82,7 @@ type StepsProps = {
 const Steps = ({ index, title, content, textDirection, position, padding }: StepsProps) => {
 
   return (
-    <article className={`midscreen:relative flex flex-col  md:items-center gap-y-2 ${textDirection} ${padding}`}>
+    <article className={`midscreen:relative flex flex-col  md:even:items-end md:odd:items-start gap-y-2 ${textDirection} ${padding}`}>
       <div className={`midscreen:absolute w-fit -top-5 ${position} border-[1px] border-gray-300 font-sans rounded-sm text-2xl text-gray-400 py-0.5 px-2.5`}>
         {index}
       </div>
