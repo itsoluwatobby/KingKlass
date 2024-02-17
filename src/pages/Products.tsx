@@ -1,41 +1,41 @@
 import { LuSettings2 } from "react-icons/lu";
 import SearchBar from "../components/SeacrhBar";
-import DisplayCard from "../components/DisplayCard";
+import DisplayCard from "../components/ProductCard";
 import HomeLayout from "../layout/HomeLayout";
 import { getProducts } from "../api/globalRequest";
 import { useEffect, useState } from "react";
 import { initAppState } from "../utility/initialVariables";
-
+import { ProductCardProps } from "../components/ProductCard";
 
 export default function Products() {
-  const [appState, setAppState] = useState<AppStateType>(initAppState)
-  const [products, setProducts] = useState<object>()
+  const [appState, setAppState] = useState<AppStateType>(initAppState);
+  const [products, setProducts] = useState<ProductCardProps[]>([]);
 
   // const { isLoading, isError } = appState;
 
   useEffect(() => {
     let isMounted = true;
     const fetchProduct = async () => {
-      try{
-        setAppState(prev => ({ ...prev, isLoading: true }))
-        const res = await getProducts()
+      try {
+        setAppState((prev) => ({ ...prev, isLoading: true }));
+        const res = await getProducts();
+        console.log(products);
         setProducts(res);
-        console.log(products, appState)
+        console.log(products, appState);
+      } catch (err: any) {
+        console.log(err);
+        setAppState((prev) => ({ ...prev, isError: true }));
+      } finally {
+        setAppState((prev) => ({ ...prev, isLoading: false }));
       }
-      catch(err: any) {
-        console.log(err)
-        setAppState(prev => ({...prev, isError: true }))
-      }
-      finally{
-        setAppState(prev => ({ ...prev, isLoading: false }))
-      }
-    }
+    };
     isMounted ? fetchProduct() : null;
     return () => {
-      isMounted = false
-    }
-  }, [])
+      isMounted = false;
+    };
+  }, []);
 
+  console.log(products)
   return (
     <HomeLayout>
       <>
@@ -45,19 +45,16 @@ export default function Products() {
         </div>
 
         <div className="px-2 h-full self-center grid grid-cols-3 lg:grid-cols-4 mobile:grid-cols-2 gap-x-6 md:gap-x-16 gap-y-10">
-          {
-            [...Array(25).keys()].map(index => (
-              <DisplayCard key={index}
-                designInfo={{
-                  image: `/image${index}.png`, price: 10_500,
-                  createdAt: new Date().toUTCString(),
-                  name: "King Klass trouser, custom"
-                }}
-              />
-            ))
-          }
+          {products.map((item) => (
+            <DisplayCard
+              img_url={item.img_url}
+              name={item.name}
+              price={item.price}
+              estimated={item.estimated}
+            />
+          ))}
         </div>
       </>
     </HomeLayout>
-  )
+  );
 }

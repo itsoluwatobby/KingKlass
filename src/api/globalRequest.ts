@@ -9,7 +9,7 @@ const requests = axios.create(
     headers: {
       'Content-Type': 'application/json'
     },
-    withCredentials: true
+    // withCredentials: true
   }
 )
 
@@ -162,13 +162,10 @@ export const deleteOrder = async(orderId: string) => {
 }
 export const getProducts = async() => {
   const path = Endpoints({});
-  const products = await requests[path.getProducts.method](path.getProducts.url, {
-    headers: {
-      'Authorization': `Bearer ${Authorization_token}`
-    }
-  });
+  const products = await requests[path.getProducts.method](path.getProducts.url);
   return products.data;
 }
+
 export const getProduct = async(productId: string) => {
   const path = Endpoints({ productId });
   const product = await requests[path.getProduct.method](path.getProduct.url, {

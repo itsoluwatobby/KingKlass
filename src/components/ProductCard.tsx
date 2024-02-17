@@ -6,17 +6,14 @@ import { reduceTextLength } from "../utility/truncateTextLength";
 import { Link } from "react-router-dom";
 
 
-type DisplayCardProps = {
-  designInfo: {
-    image: string;
+export type ProductCardProps = {
+    img_url: string;
     price: string | number;
-    createdAt: string;
+    estimated: number;
     name: string; 
-  }
 }
 
-export default function DisplayCard({ designInfo }: DisplayCardProps) {
-  const { image, price, createdAt, name } = designInfo;
+export default function DisplayCard( { img_url, price, estimated, name } : ProductCardProps) {
   
   return (
     <Link to={'/products/fahj357622i7sdh23'}>
@@ -24,7 +21,7 @@ export default function DisplayCard({ designInfo }: DisplayCardProps) {
         >
         <span className="bg-red-300 bg-opacity-40 text-red-600 font-medium text-xs absolute top-1.5 left-1.5 rounded-sm p-1">New</span>
         <div
-        style={setCustomBackgroundImage(image)}
+        style={setCustomBackgroundImage(img_url)}
         className="flex-none h-[85%] w-full bg-slate-300 rounded-sm"
         >
         </div>
@@ -33,7 +30,7 @@ export default function DisplayCard({ designInfo }: DisplayCardProps) {
             <span className="font-medium">&#x20A6;{formatPrice(price)}</span>
             <p className="flex items-center text-[11px]">
               <PiTimer />
-              <span>{reduceTextLength(format(createdAt), 10)}</span>
+              <span>{reduceTextLength(format(estimated), 10)}</span>
             </p>
           </div>
           <p className="text-[13px]">{reduceTextLength(name)}</p>
