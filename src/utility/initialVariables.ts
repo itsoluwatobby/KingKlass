@@ -3,7 +3,7 @@ export const initContactVar: Record<string, string> = {
 }
 
 export const initAppState: AppStateType = {
-  isLoading: false, isError: false, error: ''
+  isLoading: false, isError: false, error: '', isSuccess: false
 }
 
 export const initSignUpInfo: UserInfo = {

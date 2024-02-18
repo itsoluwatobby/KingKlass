@@ -42,6 +42,7 @@ type DesignerContextProps = {
 type AppStateType = {
   isLoading: boolean;
   isError: boolean;
+  isSuccess?: boolean;
   error: any;
 }
 type UserInfo = {
@@ -82,3 +83,13 @@ type OrderStatusType = 'Pending' | 'In progress' | 'Completed';
 
 type OrderPropsTypes = Record<OrderStatusType, { 
   bgColor: string, color: string, width: string }>;
+
+type ProductType = {
+  id: string;
+  img_url: string;
+  price: string | number;
+  estimated: number;
+  name: string;
+  created_at: string;
+  description?: string;
+}

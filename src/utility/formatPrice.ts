@@ -6,7 +6,8 @@
 
 export const formatPrice = (price: (number | string)) => {
   let formattedPrice;
-  const priceToString =typeof price === 'number' ? price?.toString() : price;
+  const priceToStr =typeof price === 'number' ? price?.toString() : price;
+  const [priceToString, dotNotation] = priceToStr?.split('.')
   const length = priceToString?.length
   length === 4 
       ? formattedPrice = `${priceToString?.substring(0,1)},${priceToString?.substring(1)}` 
@@ -19,7 +20,7 @@ export const formatPrice = (price: (number | string)) => {
                                : length === 11 ? formattedPrice = `${priceToString?.substring(0,2)},${priceToString?.substring(2,5)},${priceToString?.substring(5,8)},${priceToString?.substring(8)}`
                                   : length === 12 ? formattedPrice = `${priceToString?.substring(0,3)},${priceToString?.substring(3,6)},${priceToString?.substring(6,9)},${priceToString?.substring(9)}`
                                       :  formattedPrice = `${priceToString}`
-  return formattedPrice
+  return dotNotation ? `${formattedPrice}.${dotNotation}` : formattedPrice;
 }
 
 export const refindedReview = <T>(reviews: T[], count=2): T[][] => {
