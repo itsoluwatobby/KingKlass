@@ -36,10 +36,7 @@ export type ProductCardProps = {
           alt="product image"
           className="product--card--image"
         />
-        {/* <span className="bg-black  rounded bg-opacity-2 text-white font-medium text-xs absolute top-1.5 left-1.5 rounded-sm p-2">
-          New
-        </span> */}
-  
+
         <span className="absolute top-0 left-0 m-2 rounded-lg bg-black p-1 px-2 text-center text-sm font-medium text-white">30% OFF</span>
   
         <div className="product--card--info">
@@ -50,13 +47,13 @@ export type ProductCardProps = {
               </span>
   
               <p className="flex gap-1 items-center text-[14px]">
-                <TfiTimer style={{fontSize: "1rem"}} />
+                <TfiTimer className="flex justify-center" />
                 <span>{estimated} days</span>
               </p>
   
           </div>
           <h5 className="product--card--name">
-            Casual senator with banga stripe
+            {name}
           </h5>
   
         </div>

@@ -69,7 +69,7 @@ export default function Navbar() {
         {
           HomeNavLinks?.map(nav => (
             <Link to={nav.link} key={nav.name}
-              className={`hover:text-gray-600 flex flex-col items-center font-medium ${pathname === nav.link ? 'font-bold' : ''}`}
+              className={`hover:text-gray-600 flex flex-col items-center font-regular ${pathname === nav.link ? 'font-bold' : ''}`}
             >
               {nav.name}
               <div className={`${pathname === nav.link ? 'scale-[1]' : 'scale-0'} w-1.5 h-1.5 rounded-full bg-red-700`} />

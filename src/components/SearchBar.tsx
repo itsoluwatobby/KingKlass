@@ -1,22 +1,23 @@
-import { CiSearch } from "react-icons/ci"
+import { Form } from "react-bootstrap";
+import "bootstrap/dist/css/bootstrap.css";
 import { useNavigate } from "react-router-dom";
-
+import { placeholder } from "@babel/types";
 
 type SeacrhBarProps = {
+  placeholder: string;
   search: string;
-}
-export default function SearchBar({ search }: SeacrhBarProps) {
-  const navigate = useNavigate()
+};
+
+export default function SearchBar({ search, placeholder }: SeacrhBarProps) {
+  const navigate = useNavigate();
 
   return (
-    <div className="w-full rounded-[3px] bg-slate-100 relative">
-      <input type="text" 
-        value={search}
-        placeholder="Search"
-        className="w-full p-3 text-xs placeholder:text-gray-700 focus:outline-0 border-0 bg-inherit rounded-[3px]"
-        onChange={e => navigate(`/products?search=${e.target.value}`)}
-      />
-      <CiSearch className="absolute text-xl right-2 top-2" />
-    </div>
-  )
+    <Form.Control
+      className="h-12 search--bar bg-light"
+      type="search"
+      value={search}
+      placeholder={placeholder}
+      onChange={(e) => navigate(`/products?search=${e.target.value}`)}
+    />
+  );
 }

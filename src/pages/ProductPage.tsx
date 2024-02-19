@@ -1,6 +1,6 @@
 import HomeLayout from "../layout/HomeLayout";
 import { setCustomBackgroundImage } from "../utility/setBackGroundImage";
-import { formatPrice, refindedReview } from "../utility/formatPrice";
+import { currencyFormat, refindedReview } from "../utility/formatPrice";
 import { PiTimer } from "react-icons/pi";
 import { checkCount, reduceTextLength } from "../utility/truncateTextLength";
 import { format } from "timeago.js";
@@ -19,30 +19,37 @@ import { randomizedProducts } from "../utility/helpers";
 import ProductReviews from "../components/products/ProductReviews";
 
 const initProductPreview = {
-  product: {} as ProductType, productReviews: [] as Reviews[], productsPreview: [] as ProductType[]
-}
+  product: {} as ProductType,
+  productReviews: [] as Reviews[],
+  productsPreview: [] as ProductType[],
+};
 export default function ProductPage() {
   const refContainer = useRef<HTMLDivElement>(null);
   const prod = useParams() as { productId: string };
   const [appState, setAppState] = useState<AppStateType>(initAppState);
-  const [productRes, setProductRes] = useState<typeof initProductPreview>(initProductPreview);
+  const [productRes, setProductRes] =
+    useState<typeof initProductPreview>(initProductPreview);
 
   const { isLoading, isError, isSuccess } = appState;
   const { product, productReviews, productsPreview } = productRes;
 
   useEffect(() => {
     let isMounted = true;
-    const fetchProduct = async () => { 
+    const fetchProduct = async () => {
       try {
         setAppState((prev) => ({ ...prev, isLoading: true }));
-        const res = await getProduct(prod?.productId) as ProductType;
+        const res = (await getProduct(prod?.productId)) as ProductType;
         const productReview = await getReviews(prod?.productId);
-        const previews = randomizedProducts(await getProducts() as ProductType[]);
+        const previews = randomizedProducts(
+          (await getProducts()) as ProductType[]
+        );
 
-        setProductRes(prev => ({ 
-          ...prev, product: { ...res }, productsPreview: previews,
-          productReviews: [...productReview] 
-         }));
+        setProductRes((prev) => ({
+          ...prev,
+          product: { ...res },
+          productsPreview: previews,
+          productReviews: [...productReview],
+        }));
         setAppState((prev) => ({ ...prev, isSuccess: true }));
       } catch (err: any) {
         console.log(err);
@@ -70,10 +77,15 @@ export default function ProductPage() {
   return (
     <HomeLayout>
       <div className="relative flex flex-col gap-y-4 md:px-7 h-full">
-        <RequestStages useRelative={true}
-          isLoading={isLoading} isError={isError}
-          targetVal={product} isSuccess={isSuccess as boolean} errorText="Error Fetching Product" warnText="Product not found"
-          >
+        <RequestStages
+          useRelative={true}
+          isLoading={isLoading}
+          isError={isError}
+          targetVal={product}
+          isSuccess={isSuccess as boolean}
+          errorText="Error Fetching Product"
+          warnText="Product not found"
+        >
           <div className="flex flex-col gap-y-4 md:flex-row md:gap-x-2">
             <article className="shadow-sm flex-none md:w-1/2 cursor-default transition-all h-96 w-full relative flex flex-col gap-y-2">
               <span className="bg-red-300 bg-opacity-40 text-red-600 font-medium text-xs absolute top-4 left-4 rounded-sm p-1 px-3">
@@ -90,16 +102,16 @@ export default function ProductPage() {
 
             <div className="flex-none md:w-[50%] flex flex-col gap-y-4 w-full">
               <div className="px-3 flex flex-col gap-y-1.5">
-                <p className="text-sm">
-                  {product.name}
-                </p>
+                <p className="text-sm">{product.name}</p>
                 <span className="font-sans font-medium text-xs">
-                  &#x20A6;{formatPrice(product.price ?? '')}
+                  &#x20A6;{currencyFormat(product.price)}
                 </span>
                 <div className="flex items-center justify-between">
                   <p className="flex items-center text-[11px]">
                     <PiTimer />
-                    <span>{reduceTextLength(format(product.created_at), 15)}</span>
+                    <span>
+                      {reduceTextLength(format(product.created_at), 15)}
+                    </span>
                   </p>
                   {/* make it copy product link */}
                   <IoShareSocialOutline className="text-2xl" />
@@ -127,9 +139,7 @@ export default function ProductPage() {
 
               <div className="flex flex-col px-3 text-xs">
                 <h4 className="font-semibold text-[13px]">Description</h4>
-                <p>
-                  {product.description}
-                </p>
+                <p>{product.description}</p>
               </div>
             </div>
           </div>
@@ -146,10 +156,12 @@ export default function ProductPage() {
                 </span>
               </div>
 
-              <ProductReviews 
-              refContainer={refContainer} isLoading={isLoading}
-              isError={isError} productReviews={userReviews}
-              isSuccess={isSuccess as boolean}
+              <ProductReviews
+                refContainer={refContainer}
+                isLoading={isLoading}
+                isError={isError}
+                productReviews={userReviews}
+                isSuccess={isSuccess as boolean}
               />
 
               <div className="flex items-center -mt-5 gap-x-4 self-end">
@@ -175,17 +187,16 @@ export default function ProductPage() {
             <div className="flex flex-col items-start">
               <h3 className="font-bold text-sm">Popular</h3>
               <div className="px-3 overflow-x-scroll flex items-center gap-x-3 flex-none h-[14.5rem] w-full">
-                {
-                  productsPreview.map((product) => (
-                    <ProductCard key={product.id}
-                      id={product.id}
-                      img_url={product.img_url} 
-                      price={product.price} created_at={product.created_at}
-                      estimated={product.estimated}
-                      name={product.name}
-                    />
-                  ))
-                }
+                {productsPreview.map((product) => (
+                  <ProductCard
+                    key={product.id}
+                    id={product.id}
+                    img_url={product.img_url}
+                    price={product.price}
+                    estimated={product.estimated}
+                    name={product.name}
+                  />
+                ))}
               </div>
             </div>
           </div>
