@@ -1,6 +1,6 @@
 import HomeLayout from "../layout/HomeLayout";
 import { setCustomBackgroundImage } from "../utility/setBackGroundImage";
-import { formatPrice, refindedReview } from "../utility/formatPrice";
+import { currencyFormat, refindedReview } from "../utility/formatPrice";
 import { PiTimer } from "react-icons/pi";
 import { checkCount, reduceTextLength } from "../utility/truncateTextLength";
 import { format } from "timeago.js";
@@ -154,7 +154,7 @@ export default function ProductPage() {
                 KingKlass Trouser and Shirt and blue cap with..
               </p>
               <span className="font-sans font-medium text-xs">
-                #{formatPrice(10_500)}
+                #{currencyFormat(10_500)}
               </span>
               <div className="flex items-center justify-between">
                 <p className="flex items-center text-[11px]">
@@ -249,13 +249,14 @@ export default function ProductPage() {
             <div className="px-3 overflow-x-scroll flex items-center gap-x-3 flex-none h-[14.5rem] w-full">
               {[1, 2, 5, 5, 5, 5].map((index) => (
                 <DisplayCard
-                  key={index}
-                  designInfo={{
-                    image: "",
-                    price: 10_500,
-                    createdAt: new Date().toUTCString(),
-                    name: "King Klass trouser, custom",
-                  }}
+                  key={Math.random()}
+        
+                    img_url = {""}
+                    price = {10500}
+                    estimated = {44}
+                    name = "King Klass trouser, custom"
+                    id = {""}
+      
                 />
               ))}
             </div>

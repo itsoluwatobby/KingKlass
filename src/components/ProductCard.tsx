@@ -1,41 +1,63 @@
 import { format } from "timeago.js";
-import { formatPrice } from "../utility/formatPrice";
+import { currencyFormat } from "../utility/formatPrice";
 import { setCustomBackgroundImage } from "../utility/setBackGroundImage";
-import { PiTimer } from "react-icons/pi";
-import { reduceTextLength } from "../utility/truncateTextLength";
+// import { PiTimer } from "react-icons/pi";
+import { TfiTimer } from "react-icons/tfi";
 import { Link } from "react-router-dom";
-
+import "./styles/ProductCard.css";
+import { reduceTextLength } from "../utility/truncateTextLength";
 
 export type ProductCardProps = {
-    img_url: string;
-    price: string | number;
-    estimated: number;
-    name: string; 
-}
+  img_url: string;
+  price: number;
+  estimated: number;
+  name: string;
+  id: string
+};
 
-export default function DisplayCard( { img_url, price, estimated, name } : ProductCardProps) {
-  
+export default function ProductCard({
+  img_url,
+  price,
+  estimated,
+  name,
+  id
+}: ProductCardProps) {
+  console.log(id)
   return (
-    <Link to={'/products/fahj357622i7sdh23'}>
-      <article className="flex-none cursor-pointer hover:skew-y-1 hover:opacity-95 transition-all h-44 w-[9.8rem] lg:w-36 relative flex flex-col gap-y-2"
-        >
-        <span className="bg-red-300 bg-opacity-40 text-red-600 font-medium text-xs absolute top-1.5 left-1.5 rounded-sm p-1">New</span>
-        <div
+    <Link
+      to={`/products/${id}`}
+      className="product--card relative w-full overflow-hidden bg-white shadow-md"
+    >
+      <img
+        src={img_url}
         style={setCustomBackgroundImage(img_url)}
-        className="flex-none h-[85%] w-full bg-slate-300 rounded-sm"
-        >
-        </div>
-        <div className="text-xs w-full flex flex-col gap-y-1 font-sans">
-          <div className="flex items-center justify-between">
-            <span className="font-medium">&#x20A6;{formatPrice(price)}</span>
-            <p className="flex items-center text-[11px]">
-              <PiTimer />
-              <span>{reduceTextLength(format(estimated), 10)}</span>
+        alt="product image"
+        className="product--card--image"
+      />
+      {/* <span className="bg-black  rounded bg-opacity-2 text-white font-medium text-xs absolute top-1.5 left-1.5 rounded-sm p-2">
+        New
+      </span> */}
+
+      <span className="absolute top-0 left-0 m-2 rounded-lg bg-black p-1 px-2 text-center text-sm font-medium text-white">30% OFF</span>
+
+      <div className="product--card--info">
+      
+        <div className="mb-2 flex items-center justify-between">
+            <span className="product--card--price roboto-bold text-slate-900">
+            {currencyFormat(price)}
+            </span>
+
+            <p className="flex gap-1 items-center text-[14px]">
+              <TfiTimer style={{fontSize: "1rem"}} />
+              <span>{estimated} days</span>
             </p>
-          </div>
-          <p className="text-[13px]">{reduceTextLength(name)}</p>
+
         </div>
-      </article>
+        <h5 className="product--card--name">
+          Casual senator with banga stripe
+        </h5>
+
+      </div>
     </Link>
-  )
+  );
 }
