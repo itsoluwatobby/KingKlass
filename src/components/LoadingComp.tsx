@@ -6,6 +6,6 @@ type LoadingCompProps = {
 export const LoadingComp = ({ isLoading, classNames }: LoadingCompProps) => {
 
   return (
-    <div className={`${isLoading ? 'block' : 'hidden'} absolute w-6 h-6 rounded-full bg-gray-100 border-2 border-x-gray-700 border-y-green-200 animate-spin ${classNames}`}></div>
+    <div className={`${isLoading ? 'block' : 'hidden'} absolute rounded-full bg-gray-100 border-2 border-x-gray-700 border-y-green-200 animate-spin ${classNames}`}></div>
   )
 }

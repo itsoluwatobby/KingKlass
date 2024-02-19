@@ -15,17 +15,17 @@ const requests = axios.create(
 
 const Authorization_token = typeof window !== 'undefined' ? window.localStorage.getItem('King_Klass_Pass') : null;
 
-export const login = async(user: Partial<UserInfo>) => {
+export const login = async<T extends object>(user: Partial<UserInfo>): Promise<T> => {
   const path = Endpoints({});
   const userCredential = await requests[path.login.method](path.login.url, user);
   return userCredential.data;
 }
-export const register = async(user: Partial<UserInfo>) => {
+export const register = async<T>(user: Partial<UserInfo>): Promise<T> => {
   const path = Endpoints({});
-  const userCredential = await requests[path.createUser.method](path.createUser.url, user);
+  const userCredential = await requests[path.register.method](path.register.url, user);
   return userCredential.data;
 }
-export const getUser = async(userId: string) => {
+export const getUser = async<T extends object>(userId: string): Promise<T> => {
   const path = Endpoints({ userId });
   const user = await requests[path.getUser.method](path.getUser.url, {
     headers: {
@@ -34,7 +34,7 @@ export const getUser = async(userId: string) => {
   });
   return user.data;
 }
-export const getUsers = async() => {
+export const getUsers = async<T extends []>(): Promise<T> => {
   const path = Endpoints({});
   const user = await requests[path.users.method](path.users.url, {
     headers: {
@@ -43,7 +43,7 @@ export const getUsers = async() => {
   });
   return user.data;
 }
-export const getUserOrders = async(userId: string) => {
+export const getUserOrders = async<T extends []>(userId: string): Promise<T> => {
   const path = Endpoints({ userId });
   const userOrders = await requests[path.getUserOrders.method](path.getUserOrders.url, {
     headers: {
@@ -52,7 +52,7 @@ export const getUserOrders = async(userId: string) => {
   });
   return userOrders.data;
 }
-export const createUserOrder = async<T extends object>(userId: string, newOrder: T) => {
+export const createUserOrder = async<T extends object>(userId: string, newOrder: T): Promise<T> => {
   const path = Endpoints({ userId });
   const newUserOrder = await requests[path.createUserOrder.method](path.createUserOrder.url, {...newOrder}, {
     headers: {
@@ -61,7 +61,7 @@ export const createUserOrder = async<T extends object>(userId: string, newOrder:
   });
   return newUserOrder.data;
 }
-export const getUserOrder = async(userId: string, orderId: string) => {
+export const getUserOrder = async<T extends []>(userId: string, orderId: string): Promise<T> => {
   const path = Endpoints({ userId, orderId });
   const userOrder = await requests[path.getUserOrder.method](path.getUserOrder.url, {
     headers: {
@@ -70,7 +70,7 @@ export const getUserOrder = async(userId: string, orderId: string) => {
   });
   return userOrder.data;
 }
-export const updateUserOrder = async<T extends object>(orderId: string, updatedOrder: T) => {
+export const updateUserOrder = async<T extends object>(orderId: string, updatedOrder: T): Promise<T> => {
   const path = Endpoints({ orderId });
   const userOrder = await requests[path.updateUserOrder.method](path.updateUserOrder.url, {...updatedOrder}, {
     headers: {
@@ -79,7 +79,7 @@ export const updateUserOrder = async<T extends object>(orderId: string, updatedO
   });
   return userOrder.data;
 }
-export const deleteUserOrder = async(orderId: string) => {
+export const deleteUserOrder = async<T>(orderId: string): Promise<T> => {
   const path = Endpoints({ orderId });
   const userOrder = await requests[path.deleteUserOrder.method](path.deleteUserOrder.url, {
     headers: {
@@ -88,7 +88,7 @@ export const deleteUserOrder = async(orderId: string) => {
   });
   return userOrder.data;
 }
-export const createCategory = async<T extends object>(newCategory: T) => {
+export const createCategory = async<T extends object>(newCategory: T): Promise<T> => {
   const path = Endpoints({});
   const category = await requests[path.createCategory.method](path.createCategory.url, {...newCategory}, {
     headers: {
@@ -97,7 +97,7 @@ export const createCategory = async<T extends object>(newCategory: T) => {
   });
   return category.data;
 }
-export const getCategories = async() => {
+export const getCategories = async<T extends []>(): Promise<T> => {
   const path = Endpoints({});
   const categories = await requests[path.getCategories.method](path.getCategories.url, {
     headers: {
@@ -106,7 +106,7 @@ export const getCategories = async() => {
   });
   return categories.data;
 }
-export const getCategory = async(categoryId: string) => {
+export const getCategory = async<T>(categoryId: string): Promise<T> => {
   const path = Endpoints({ categoryId });
   const category = await requests[path.getCategory.method](path.getCategory.url, {
     headers: {
@@ -115,7 +115,7 @@ export const getCategory = async(categoryId: string) => {
   });
   return category.data;
 }
-export const getOrders = async() => {
+export const getOrders = async<T extends []>(): Promise<T> => {
   const path = Endpoints({});
   const orders = await requests[path.getOrders.method](path.getOrders.url, {
     headers: {
@@ -124,7 +124,7 @@ export const getOrders = async() => {
   });
   return orders.data;
 }
-export const getOrdersStatus = async(status: OrderStatusType) => {
+export const getOrdersStatus = async<T>(status: OrderStatusType): Promise<T> => {
   const path = Endpoints({ status });
   const orderStatus = await requests[path.getOrdersStatus.method](path.getOrdersStatus.url, {
     headers: {
@@ -133,7 +133,7 @@ export const getOrdersStatus = async(status: OrderStatusType) => {
   });
   return orderStatus.data;
 }
-export const getOrder = async(orderId: string) => {
+export const getOrder = async<T extends object>(orderId: string): Promise<T> => {
   const path = Endpoints({ orderId });
   const order = await requests[path.getOrder.method](path.getOrder.url, {
     headers: {
@@ -142,7 +142,7 @@ export const getOrder = async(orderId: string) => {
   });
   return order.data;
 }
-export const updateOrder = async<T extends object>(orderId: string, updatedOrder: T) => {
+export const updateOrder = async<T extends object>(orderId: string, updatedOrder: T): Promise<T> => {
   const path = Endpoints({ orderId });
   const order = await requests[path.updateOrder.method](path.updateOrder.url, {...updatedOrder}, {
     headers: {
@@ -151,7 +151,7 @@ export const updateOrder = async<T extends object>(orderId: string, updatedOrder
   });
   return order.data;
 }
-export const deleteOrder = async(orderId: string) => {
+export const deleteOrder = async<T>(orderId: string): Promise<T> => {
   const path = Endpoints({ orderId });
   const deletedOrder = await requests[path.deleteOrder.method](path.deleteOrder.url, {
     headers: {
@@ -160,13 +160,13 @@ export const deleteOrder = async(orderId: string) => {
   });
   return deletedOrder.data;
 }
-export const getProducts = async() => {
+export const getProducts = async<T extends []>(): Promise<T>=> {
   const path = Endpoints({});
   const products = await requests[path.getProducts.method](path.getProducts.url);
   return products.data;
 }
 
-export const getProduct = async(productId: string) => {
+export const getProduct = async<T extends object>(productId: string): Promise<T> => {
   const path = Endpoints({ productId });
   const product = await requests[path.getProduct.method](path.getProduct.url, {
     headers: {
@@ -175,7 +175,7 @@ export const getProduct = async(productId: string) => {
   });
   return product.data;
 }
-export const createProduct = async<T extends object>(newProduct: T) => {
+export const createProduct = async<T extends object>(newProduct: T): Promise<T> => {
   const path = Endpoints({});
   const product = await requests[path.createProduct.method](path.createProduct.url, {...newProduct}, {
     headers: {
@@ -184,7 +184,7 @@ export const createProduct = async<T extends object>(newProduct: T) => {
   });
   return product.data;
 }
-export const updateProduct = async<T extends object>(productId: string, updatedProduct: T) => {
+export const updateProduct = async<T extends object>(productId: string, updatedProduct: T): Promise<T> => {
   const path = Endpoints({ productId });
   const product = await requests[path.updateProduct.method](path.updateProduct.url, {...updatedProduct}, {
     headers: {
@@ -193,7 +193,7 @@ export const updateProduct = async<T extends object>(productId: string, updatedP
   });
   return product.data;
 }
-export const deleteProduct = async(productId: string) => {
+export const deleteProduct = async<T extends object | string>(productId: string): Promise<T> => {
   const path = Endpoints({ productId });
   const product = await requests[path.deleteProduct.method](path.deleteProduct.url, {
     headers: {
@@ -202,7 +202,7 @@ export const deleteProduct = async(productId: string) => {
   });
   return product.data;
 }
-export const getReviews = async(productId: string) => {
+export const getReviews = async<T extends []>(productId: string): Promise<T> => {
   const path = Endpoints({ productId });
   const productReviews = await requests[path.getReviews.method](path.getReviews.url, {
     headers: {
@@ -211,7 +211,7 @@ export const getReviews = async(productId: string) => {
   });
   return productReviews.data;
 }
-export const getReview = async(reviewId: string) => {
+export const getReview = async<T extends object>(reviewId: string): Promise<T> => {
   const path = Endpoints({ reviewId });
   const review = await requests[path.getReview.method](path.getReview.url, {
     headers: {
@@ -220,7 +220,7 @@ export const getReview = async(reviewId: string) => {
   });
   return review.data;
 }
-export const deleteReview = async(reviewId: string) => {
+export const deleteReview = async<T extends object | string>(reviewId: string): Promise<T> => {
   const path = Endpoints({ reviewId });
   const review = await requests[path.deleteReview.method](path.deleteReview.url, {
     headers: {
@@ -229,7 +229,7 @@ export const deleteReview = async(reviewId: string) => {
   });
   return review.data;
 }
-export const getAllReviews = async() => {
+export const getAllReviews = async<T extends []>(): Promise<T> => {
   const path = Endpoints({});
   const allReviews = await requests[path.getAllReviews.method](path.getAllReviews.url, {
     headers: {
@@ -238,7 +238,7 @@ export const getAllReviews = async() => {
   });
   return allReviews.data;
 }
-export const createReview = async<T extends object>(productId: string, newReview: T) => {
+export const createReview = async<T extends object>(productId: string, newReview: T): Promise<T> => {
   const path = Endpoints({ productId });
   const review = await requests[path.createReview.method](path.createReview.url, {...newReview}, {
     headers: {
@@ -247,7 +247,7 @@ export const createReview = async<T extends object>(productId: string, newReview
   });
   return review.data;
 }
-export const updateReview = async<T extends object>(reviewId: string, updatedReview: T) => {
+export const updateReview = async<T extends object>(reviewId: string, updatedReview: T): Promise<T> => {
   const path = Endpoints({ reviewId });
   const review = await requests[path.updateReview.method](path.updateReview.url, {...updatedReview}, {
     headers: {
@@ -256,7 +256,7 @@ export const updateReview = async<T extends object>(reviewId: string, updatedRev
   });
   return review.data;
 }
-export const getProductReview = async(reviewId: string) => {
+export const getProductReview = async<T extends []>(reviewId: string): Promise<T> => {
   const path = Endpoints({ reviewId });
   const review = await requests[path.getProductReview.method](path.getProductReview.url, {
     headers: {

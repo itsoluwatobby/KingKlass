@@ -9,7 +9,7 @@ type EndpointParams = {
   status?: OrderStatusType;
 }
 type Method = 'get' | 'post' | 'put' | 'delete' | 'patch';
-type Paths = 'login' | 'users' | 'createUser' | 'getUser' | 'getUserOrders' | 'createUserOrder' | 'getUserOrder' | 'updateUserOrder' | 'deleteUserOrder' | 'createCategory' | 'getCategories' | 'getCategory' | 'getOrders' | 'getOrdersStatus' | 'getOrder' | 'updateOrder' | 'deleteOrder' | 'getProducts' | 'getProduct' | 'createProduct' | 'updateProduct' | 'deleteProduct' | 'getReviews' | 'getReview' | 'deleteReview' | 'getAllReviews' | 'createReview' | 'updateReview' | 'getProductReview';
+type Paths = 'login' | 'users' | 'register' | 'createUser' | 'getUser' | 'getUserOrders' | 'createUserOrder' | 'getUserOrder' | 'updateUserOrder' | 'deleteUserOrder' | 'createCategory' | 'getCategories' | 'getCategory' | 'getOrders' | 'getOrdersStatus' | 'getOrder' | 'updateOrder' | 'deleteOrder' | 'getProducts' | 'getProduct' | 'createProduct' | 'updateProduct' | 'deleteProduct' | 'getReviews' | 'getReview' | 'deleteReview' | 'getAllReviews' | 'createReview' | 'updateReview' | 'getProductReview';
 export const Endpoints = ({ orderId='', userId='', reviewId='', productId='', categoryId='', status='Pending' }: EndpointParams): Record<Paths, {method: Method, url: string}> => {
   const urlPath = '/api/v1' as const;
 
@@ -18,7 +18,10 @@ export const Endpoints = ({ orderId='', userId='', reviewId='', productId='', ca
       method: 'get',  url: urlPath+'/users'
     },
     login: {
-      method: 'get',  url: '/login'
+      method: 'post',  url: '/login'
+    },
+    register: {
+      method: 'post',  url: urlPath+'/register'
     },
     createUser: {
       method: 'post', url: `${urlPath}/users` // all users
