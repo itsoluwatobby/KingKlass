@@ -48,7 +48,7 @@ export default function Products() {
     <HomeLayout>
       <>
         <div className="px-2 bg-white self-center flex items-center sticky top-0 gap-x-4 z-20 w-full md:w-1/2">
-          <SearchBar search={search?.split('=')[1]} />
+          <SearchBar placeholder={search?.split('=')[1]} />
           <LuSettings2 className="flex-none text-4xl bg-slate-200 p-1 font-normal" />
         </div>
 

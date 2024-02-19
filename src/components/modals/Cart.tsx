@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useDesignerContext } from "../../hooks/useDesignerContext";
-import { formatPrice } from "../../utility/formatPrice";
+import { currencyFormat } from "../../utility/formatPrice";
 import { CiTrash } from "react-icons/ci";
 import { Buttons } from "../appComponents/Buttons";
 import ModalLayout from "../../layout/ModalLayout";
@@ -35,7 +35,7 @@ export const Carts = () => {
         <div className="border border-gray-300 rounded-sm flex flex-col gap-y-8 items-center py-5">
           <div className="px-6 font-bold flex items-center justify-between text-xs w-full">
             <span>Total</span>
-            <span className="font-sans">&#x20A6;{formatPrice(20_400)}.00</span>
+            <span className="font-sans">&#x20A6;{currencyFormat(20_400)}.00</span>
           </div>
           <Buttons
             onClick={() => setToggleNav({ modalType: "paymentCheckout" })}
@@ -56,7 +56,7 @@ type CartProps = {
   cartObj: {
     image: string;
     productName: string;
-    price: string | number;
+    price: number;
   };
 }
 const Cart = ({ cartObj }: CartProps) => {
@@ -69,7 +69,7 @@ const Cart = ({ cartObj }: CartProps) => {
         </figure>
         <div className="flex items-center flex-col gap-y-1 px-3">
           <span>{cartObj.productName}</span>
-          <span className="font-sans font-semibold text-[12px]">&#x20A6;{formatPrice(cartObj.price)}</span>
+          <span className="font-sans font-semibold text-[12px]">&#x20A6;{currencyFormat(cartObj.price)}</span>
         </div>
       </Link>
      

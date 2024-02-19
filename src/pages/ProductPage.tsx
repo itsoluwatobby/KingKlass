@@ -1,6 +1,6 @@
 import HomeLayout from "../layout/HomeLayout";
 import { setCustomBackgroundImage } from "../utility/setBackGroundImage";
-import { formatPrice, refindedReview } from "../utility/formatPrice";
+import { currencyFormat, refindedReview } from "../utility/formatPrice";
 import { PiTimer } from "react-icons/pi";
 import { checkCount, reduceTextLength } from "../utility/truncateTextLength";
 import { format } from "timeago.js";
@@ -189,7 +189,77 @@ export default function ProductPage() {
               </div>
             </div>
           </div>
+<<<<<<< HEAD
+        </div>
+
+        <div className="flex flex-col gap-y-4 midscreen:px-3 text-xs">
+          <div className="flex flex-col gap-y-3">
+            <h4 className="text-[13px] font-semibold">Reviews</h4>
+            <div className="flex items-center gap-x-1 text-xs border-0 border-b-2 pb-0.5">
+              <p className="border border-yellow-200 text-yellow-500 w-fit font-medium font-sans p-0.5 rounded-sm">
+                4.4/5
+              </p>
+              <span className="font-sans text-gray-600">
+                {checkCount(64)} ratings
+              </span>
+            </div>
+
+            <div
+              ref={refContainer}
+              className="px-2 scroll-smooth flex items-center gap-x-4 overflow-x-scroll"
+            >
+              {userReviews?.map((splittedReviews, index) => (
+                <div
+                  key={index}
+                  className="flex flex-col min-w-full md:flex-row md:gap-x-4"
+                >
+                  {splittedReviews?.map((eachReview) => (
+                    <Reviews key={eachReview["id"]} review={eachReview} />
+                  ))}
+                </div>
+              ))}
+            </div>
+            <div className="flex items-center -mt-5 gap-x-4 self-end">
+              <Buttons
+                onClick={() => toggleScroll("LEFT")}
+                px=""
+                py=""
+                classNames="rounded-full grid text-sm place-content-center w-6 h-6 bg-white hover:bg-gray-200 active:bg-gray-100 transition-colors"
+              >
+                <SlArrowLeft className="text-sm" />
+              </Buttons>
+              <Buttons
+                onClick={() => toggleScroll("RIGHT")}
+                px=""
+                py=""
+                classNames="rounded-full grid place-content-center w-6 h-6 bg-white hover:bg-gray-200 active:bg-gray-100 transition-colors"
+              >
+                <SlArrowRight className="text-sm" />
+              </Buttons>
+            </div>
+          </div>
+
+          <div className="flex flex-col items-start">
+            <h3 className="font-bold text-sm">Popular</h3>
+            <div className="px-3 overflow-x-scroll flex items-center gap-x-3 flex-none h-[14.5rem] w-full">
+              {[1, 2, 5, 5, 5, 5].map((index) => (
+                <DisplayCard
+                  key={Math.random()}
+        
+                    img_url = {""}
+                    price = {10500}
+                    estimated = {44}
+                    name = "King Klass trouser, custom"
+                    id = {""}
+      
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+=======
         </RequestStages>
+>>>>>>> 526c7ce7c05da0b52bf9a240527b6022ea758fae
       </div>
       <PurchasePrompt productName="" />
     </HomeLayout>
