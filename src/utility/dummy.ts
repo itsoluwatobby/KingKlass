@@ -1,4 +1,4 @@
-export const reviews: Reviews[] = [
+export const reviews: ReviewsType[] = [
     {
       "id": 0,
       "rating": [0,1,2],

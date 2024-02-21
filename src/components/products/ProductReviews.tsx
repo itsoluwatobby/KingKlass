@@ -7,7 +7,7 @@ type ProductReviewsProps = {
   isLoading: boolean; 
   isError: boolean;
   isSuccess: boolean;
-  productReviews: Reviews[][];
+  productReviews: ReviewsType[][];
 }
 
 export default function ProductReviews({ refContainer, productReviews, isLoading, isError, isSuccess }: ProductReviewsProps) {
