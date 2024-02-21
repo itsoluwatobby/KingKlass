@@ -68,12 +68,12 @@ export default function Navbar() {
       <div className='hidden md:flex justify-between items-center flex-none w-[55%] text-sm'>
         {
           HomeNavLinks?.map(nav => (
-            <Link to={nav.link} key={nav.name}
-              className={`hover:text-gray-600 flex flex-col items-center roboto-regular ${pathname === nav.link ? 'font-bold' : ''}`}
-            >
+
+            <a href={nav.link} key={nav.name}
+              className={`hover:text-gray-600 flex flex-col items-center font-medium ${pathname === nav.link ? 'font-bold' : ''}`>
               {nav.name}
               <div className={`${pathname === nav.link ? 'scale-[1]' : 'scale-0'} w-1.5 h-1.5 rounded-full bg-red-700`} />
-            </Link>
+            </a>
           ))
         }
       </div>
@@ -100,7 +100,7 @@ export default function Navbar() {
         <DropdownModal
           openDropdown={openDropdown}
           username={username}
-          isSignedIn={true}
+          setOpenDropdown={setOpenDropdown}
         />
       </div>
     </header>

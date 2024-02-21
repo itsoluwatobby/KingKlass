@@ -59,24 +59,7 @@ function App() {
 
   return (
     <main className='w-full md:m-auto h-scre scroll-smooth overflow-y-scroll transition-all'>
-      {/* APP MODALS */}
-      <UserNavModal />
-      <NavModal />
-      <Notifications />
-      <Measurements />
-      <Carts />
-      <CartPreview />
-      <AdminAccountSetting />
-      <PaymentCheckout />
 
-      {/* Authentication Modals */}
-      <Login />
-      <Registration />
-
-      {/* Modal Prompts */}
-      <PaymentPrompt />
-
-      {/* ROUTES */}
       <Routes>
         <Route path='/' element={<DesignerLayout />}>
           <Route index element={<Home />} />
@@ -94,6 +77,22 @@ function App() {
         <Route path='*' element={<NotFound />} />
       </Routes>
 
+      {/* APP MODALS */}
+      <UserNavModal />
+      <NavModal />
+      <Notifications />
+      <Measurements />
+      <Carts />
+      <CartPreview />
+      <AdminAccountSetting />
+      <PaymentCheckout />
+
+      {/* Authentication Modals */}
+      <Login />
+      <Registration />
+
+      {/* Modal Prompts */}
+      <PaymentPrompt />
 
       <ToastContainer />
     </main>

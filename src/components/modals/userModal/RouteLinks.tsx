@@ -36,7 +36,7 @@ export const RouteLinks = ({ values }: RouteLinksProps) => {
               link.name === 'Settings' ?
                 <p 
                 onClick={() => setToggleNav(prev => ({...prev, modalType: "adminAccountSetting", prevModal: "userNavModal" }))}
-                className={`flex hover:bg-gray-100 transition-colors py-1 items-center justify-between cursor-pointer`}>  
+                className={`${user.isAdmin ? 'flex' : 'hidden'} hover:bg-gray-100 transition-colors py-1 items-center justify-between cursor-pointer`}>  
                   {link.name}
                 </p>
                 :

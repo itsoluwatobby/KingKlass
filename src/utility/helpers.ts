@@ -13,9 +13,12 @@ export const formmatTime = (date: number | Date) => {
 export const randomizedProducts = (products: ProductType[], numberOfProducts=10): ProductType[] => {
   const randomProducts = [] as ProductType[];
   const productLength = products.length - 1;
-  for (let i = 0; i < numberOfProducts; i++) {
+  for (let i = 0; i < productLength; i++) {
+    if (randomProducts.length === numberOfProducts) break;
     const randomIndex = Math.floor(Math.random() * productLength);
-    randomProducts.push(products[randomIndex]);
+    const prod = products[randomIndex]
+    if (randomProducts.find(product => product.id === prod.id)) continue;
+    else randomProducts.push(prod);
   }
   return randomProducts;
 }

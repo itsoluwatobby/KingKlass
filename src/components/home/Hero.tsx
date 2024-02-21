@@ -1,8 +1,10 @@
+import { useNavigate } from "react-router-dom"
 import { Motto } from "../../svgs/Motto"
 import { Buttons } from "../appComponents/Buttons"
 import { DesignImage } from "../appComponents/Image"
 
 export const Hero = () => {
+  const navigate = useNavigate()
 
   // min-h-[90vh]
   return (
@@ -16,7 +18,7 @@ export const Hero = () => {
         </p>
 
         <Buttons
-          onClick={() => {}}
+          onClick={() => navigate('/aboutus')}
           px='px-8' py='py-3'
           classNames="text-white maxmobile:self-start bg-[#8B4513] rounded-[3px] md:w-[65%]"
         >

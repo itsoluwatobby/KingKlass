@@ -85,7 +85,7 @@ export const Registration = () => {
     expected="OPEN"
     enlarge={true}
     >
-      <div className={`mx-auto mt-20 relative bg-white w-[90%] sm:w-[25rem] rounded-md p-5 h-fit`}>
+      <div className={`mx-auto mt-16 relative bg-white w-[90%] sm:w-[25rem] rounded-md p-5 h-fit`}>
         <div className="w-full flex flex-col py-3 items-center gap-y-3">
           <h3 className="font-medium text-xl">Register</h3>
 
@@ -93,7 +93,7 @@ export const Registration = () => {
             <span>Do you have an account? </span>
             <button
               onClick={() => setAppModals({ signup: 'CLOSE', signin: 'OPEN' })}
-              className="border-0 focus:outline-0 hover:opacity-90 underline underline-offset-2">Sign in</button>
+              className="border-0 font-semibold focus:outline-0 hover:opacity-90 underline underline-offset-2">Sign in</button>
           </div>
 
           <UserInputDetails

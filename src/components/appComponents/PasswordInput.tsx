@@ -6,6 +6,7 @@ import { WarningTexts } from "../../utility/regexExpConfig";
 import Warning from "./Warning";
 
 type InputTextProps<T> = {
+  id: string;
   value: string;
   name: string;
   required?: boolean;
@@ -17,7 +18,7 @@ type InputTextProps<T> = {
   setInputText: React.Dispatch<React.SetStateAction<T>>
 }
 
-export default function PasswordInput<K>({ value, pattern, classNames, name, setInputText, validPassword, matchingPassword, required = false, disabled=false }: InputTextProps<K>) {
+export default function PasswordInput<K>({ value, id, pattern, classNames, name, setInputText, validPassword, matchingPassword, required = false, disabled=false }: InputTextProps<K>) {
   const [revealPass, setRevealPass] = useState<Toggle>('CLOSE');
   const { appModals } = useDesignerContext() as DesignerContextProps;
 
@@ -33,6 +34,7 @@ export default function PasswordInput<K>({ value, pattern, classNames, name, set
       <input
         type={revealPass === 'OPEN' ? "text" : 'password'}
         name={name}
+        id={id}
         value={value}
         placeholder='*********************'
         pattern={(pattern ?? '')}
