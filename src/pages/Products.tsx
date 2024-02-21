@@ -1,12 +1,21 @@
 import { LuSettings2 } from "react-icons/lu";
+<<<<<<< HEAD
+import SearchBar from "../components/SeacrhBar";
+=======
 import SearchBar from "../components/SearchBar";
+>>>>>>> 526c7ce7c05da0b52bf9a240527b6022ea758fae
 import ProductCard from "../components/ProductCard";
 import HomeLayout from "../layout/HomeLayout";
 import { getProducts } from "../api/globalRequest";
 import { useEffect, useState } from "react";
 import { initAppState } from "../utility/initialVariables";
+<<<<<<< HEAD
+import { ProductCardProps } from "../components/ProductCard";
+import "./styles/Products.css"
+=======
 import RequestStages from "../components/RequestStage";
 import { useLocation } from "react-router-dom";
+>>>>>>> 526c7ce7c05da0b52bf9a240527b6022ea758fae
 
 export default function Products() {
   const [appState, setAppState] = useState<AppStateType>(initAppState);
@@ -42,6 +51,28 @@ export default function Products() {
     };
   }, []);
 
+<<<<<<< HEAD
+  console.log(products);
+  return (
+    <HomeLayout>
+      <>
+        <div className="filters mt-4 mb-4 px-2 bg-white self-center flex items-center sticky top-0 gap-x-4 z-20 w-full md:w-1/2">
+          <SearchBar placeholder="Search" />
+          <LuSettings2 className="bg-light text-secondary flex-none text-4xl bg-slate-200 p-1 font-normal rounded" />
+        </div>
+
+        <div className="product--container">
+          {products.map((item) => (
+            <ProductCard
+              img_url={item.img_url}
+              name={item.name}
+              price={item.price}
+              estimated={item.estimated}
+              id={item.id}
+            />
+          ))}
+        </div>
+=======
   // const sortedProducts = products?.sort((a,b) => b.created_at.localeCompare(a.created_at));
 
   return (
@@ -71,6 +102,7 @@ export default function Products() {
               }
             </RequestStages>
           </div>
+>>>>>>> 526c7ce7c05da0b52bf9a240527b6022ea758fae
       </>
     </HomeLayout>
   );
