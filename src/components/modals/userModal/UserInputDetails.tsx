@@ -23,7 +23,7 @@ export default function UserInputDetails<T>({ name, id, title, setUserDetails, t
 
   return (
     <div className="flex flex-col gap-y-0.5 w-full">
-      <label htmlFor={name} className='text-xs mobile:text-[13px] flex items-center gap-x-3'>{title} 
+      <label htmlFor={id} className='text-xs mobile:text-[13px] flex items-center gap-x-3'>{title} 
       {
         (appModals.signup === 'OPEN' && title === 'Password') ?
         (
@@ -61,7 +61,7 @@ export default function UserInputDetails<T>({ name, id, title, setUserDetails, t
       {
         type === 'password' ?
           <PasswordInput
-            name={name} disabled={disabled}
+            name={name} disabled={disabled} id={id}
             validPassword={validPassword}
             matchingPassword={matchingPassword}
             value={value} setInputText={setUserDetails} classNames="border-gray-200"

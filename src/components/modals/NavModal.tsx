@@ -23,7 +23,8 @@ export const NavModal = () => {
     modalType={toggleNav.modalType}
     expected="openNavModal"
     enlarge={true}
-    extraClasses="px-3 py-1"
+    classNames="md:hidden"
+    extraClasses="px-3 py-1 top-4"
     >
       <header className={`${user.isSignedIn ? 'flex' : 'hidden'} items-center justify-between`}>
         <div className="flex items-center gap-x-2">
@@ -45,10 +46,12 @@ export const NavModal = () => {
       {
         user.isAdmin ? 
           <RouteLinks
+            setToggleNav={setToggleNav}
             values={AdminNavLinks}
           />
         :
           <RouteLinks
+            setToggleNav={setToggleNav}
             values={NavLinks}
           />
       }
@@ -90,14 +93,17 @@ type RouteLinksProps = {
     name: string;
     link: string;
   }[];
+  setToggleNav: React.Dispatch<React.SetStateAction<ToggleOption>>
 }
-const RouteLinks = ({ values }: RouteLinksProps) => {
+const RouteLinks = ({ values, setToggleNav }: RouteLinksProps) => {
 
   return (
     <div className="flex flex-col gap-y-3 font-semibold text-[12px] mt-5 w-full">
       {
         values?.map(link => (
-          <a href={link.link} key={link.name} className="hover:scale-[0.99] transition-all w-full p-3 pr-0 border-0 border-b border-b-gray-300">{link.name}</a>
+          <a href={link.link} key={link.name} 
+          onClick={() => setToggleNav({ modalType: "pass" })}
+          className="hover:scale-[0.99] transition-all w-full p-3 pr-0 border-0 border-b border-b-gray-300">{link.name}</a>
         ))
       }
     </div>

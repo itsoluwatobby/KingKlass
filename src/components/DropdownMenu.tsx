@@ -1,29 +1,35 @@
 import { getInitials } from "../utility/getInitials"
-import { DesktopDropdown } from "../utility/constants";
+import { AdminNavLinks, DesktopDropdown } from "../utility/constants";
 import { reduceTextLength } from "../utility/truncateTextLength";
 import { useDesignerContext } from "../hooks/useDesignerContext";
-import { Link } from "react-router-dom";
 import { useSignout } from "../hooks/useSignout";
+import { Buttons } from "./appComponents/Buttons";
 
 
 type DropdownModalProps = {
-  isSignedIn: boolean;
   username: string;
   openDropdown: boolean;
+  setOpenDropdown: React.Dispatch<React.SetStateAction<boolean>>
 }
-export const DropdownModal = ({ isSignedIn, openDropdown, username }: DropdownModalProps) => {
-  // const { setToggleNav, setAppModals } = useDesignerContext() as DesignerContextProps;
+export const DropdownModal = ({ openDropdown, setOpenDropdown, username }: DropdownModalProps) => {
+  const [signout] = useSignout();
+  const { setToggleNav, setAppModals, user } = useDesignerContext() as DesignerContextProps;
 
-  // const actionButton = (type: 'LOGIN' | 'REGISTER') => {
-  //   setToggleNav({ modalType: "pass" })
-  //   if (type === 'LOGIN') setAppModals(prev => ({...prev, signin: 'OPEN'}))
-  //   else if (type === 'REGISTER') setAppModals(prev => ({...prev, signup: 'OPEN'}))
-  //   else return
-  // }
+  const actionButton = (type: 'LOGIN' | 'REGISTER') => {
+    setToggleNav({ modalType: "pass" })
+    setOpenDropdown(false)
+    if (type === 'LOGIN') setAppModals(prev => ({...prev, signin: 'OPEN'}))
+    else if (type === 'REGISTER') setAppModals(prev => ({...prev, signup: 'OPEN'}))
+    else return
+  }
 
+  const close = () => {
+    setOpenDropdown(false)
+    signout()
+  }
   return (
     <div className={`${openDropdown ? 'flex' : 'hidden'} animate-rollin absolute top-12 -right-5 px-3 py-1 bg-white flex-col w-60 rounded-bl-lg shadow-lg transition-all duration-300`}>
-      <header className={`cursor-default border-0 border-b-[1px] border-gray-300 py-3 ${isSignedIn ? 'flex' : 'hidden'} items-center justify-between`}>
+      <header className={`cursor-default border-0 border-b-[1px] border-gray-300 py-3 ${user.isSignedIn ? 'flex' : 'hidden'} items-center justify-between`}>
         <div className="flex items-center gap-x-2">
           <p className={`relative after:absolute after:bg-[#FF3E30] after:content-[""] after:w-2 after:h-2 after:rounded-full after:right-1 after:top-1 font-bold text-2xl bg-[#D69203] text-white rounded-full w-12 h-12 grid place-content-center`}>{getInitials(username)}</p>
           <div className="flex flex-col font-semibold gap-y-0.5">
@@ -33,9 +39,50 @@ export const DropdownModal = ({ isSignedIn, openDropdown, username }: DropdownMo
         </div>
       </header>
 
-      <RouteLinks
-        values={DesktopDropdown}
-      />
+      {
+        user.isAdmin ? 
+          <RouteLinks
+            signout={close}
+            setOpenDropdown={setOpenDropdown}
+            isSignedIn={user.isSignedIn}
+            values={AdminNavLinks}
+          />
+        :
+          <RouteLinks
+            signout={close}
+            setOpenDropdown={setOpenDropdown}
+            isSignedIn={user.isSignedIn}
+            values={DesktopDropdown}
+          />
+      }
+
+    {
+      user.isSignedIn ?
+        <Buttons
+          onClick={close}
+          px='' py=''
+          classNames='self-center -mt-14 rounded-[3px] font-semibold bg-[#8B4513] text-white grid place-content-center w-fit py-2 px-4 hover:bg-[#8B4413] active:bg-[#8B4513] transition-colors'
+          >
+          Sign out
+        </Buttons>
+        :
+        <div className="-mt-14 self-center w-fit flex flex-col items-center gap-y-4">
+            <Buttons
+            onClick={() => actionButton('REGISTER')}
+            px='' py=''
+            classNames='rounded-[3px] font-semibold bg-[#8B4513] text-white grid place-content-center w-fit py-2 px-4 hover:bg-[#8B4413] active:bg-[#8B4513] transition-colors'
+            >
+            Register
+          </Buttons>
+            <Buttons
+            onClick={() => actionButton('LOGIN')}
+            px='' py=''
+            classNames='rounded-[3px] font-semibold border-[1px] border-[#8B4513] text-[#8B4513] bg-white grid place-content-center w-fit py-2 px-6 hover:bg-opacity-80 active:bg-opacity-90 transition-colors'
+            >
+            Login
+          </Buttons>
+        </div>
+      }
     </div>
   )
 }
@@ -45,10 +92,17 @@ type RouteLinksProps = {
     name: string;
     link: string;
   }[];
+  signout: () => void;
+  isSignedIn: boolean;
+  setOpenDropdown: React.Dispatch<React.SetStateAction<boolean>>
 }
-const RouteLinks = ({ values }: RouteLinksProps) => {
-  const [signout] = useSignout();
+const RouteLinks = ({ values, setOpenDropdown, signout, isSignedIn }: RouteLinksProps) => {
   const { setToggleNav } = useDesignerContext() as DesignerContextProps;
+
+  const toggle = (type: ToggleNav) => {
+    setOpenDropdown(false)
+    setToggleNav({ modalType: type })
+  }
 
   return (
     <div className="py-3 flex flex-col gap-y-6 font-semibold text-sm mt-1 w-full">
@@ -60,8 +114,8 @@ const RouteLinks = ({ values }: RouteLinksProps) => {
             {
               link.name === 'Notifications' ?
                 <p
-                  onClick={() => setToggleNav({ modalType: "notifications" })}
-                  className="flex hover:bg-gray-100 transition-colors items-center justify-between cursor-pointer">
+                  onClick={() => toggle("notifications")}
+                  className={`${isSignedIn ? 'flex' : 'hidden'} hover:bg-gray-100 transition-colors items-center justify-between cursor-pointer`}>
                   <span>
                     {link.name}
                   </span>
@@ -71,7 +125,7 @@ const RouteLinks = ({ values }: RouteLinksProps) => {
                 link.name === 'Logout' ?
                   <p
                     onClick={signout}
-                    className="flex hover:bg-gray-100 transition-colors items-center justify-between cursor-pointer">
+                    className={`${isSignedIn ? 'flex' : 'hidden'} hover:bg-gray-100 transition-colors items-center justify-between cursor-pointer`}>
                     <span>
                       {link.name}
                     </span>
@@ -79,12 +133,14 @@ const RouteLinks = ({ values }: RouteLinksProps) => {
                   :
                   link.name === 'My Measurement' ?
                     <p
-                      onClick={() => setToggleNav({ modalType: "measurements" })}
-                      className="flex hover:bg-gray-100 transition-colors items-center justify-between cursor-pointer">
+                      onClick={() => toggle("measurements" )}
+                      className={`${isSignedIn ? 'flex' : 'hidden'} hover:bg-gray-100 transition-colors items-center justify-between cursor-pointer`}>
                       {link.name}
                     </p>
                     :
-                    <Link to={link.link} className="hover:bg-gray-100 w-full">{link.name}</Link>
+                    <a href={link.link} 
+                    onClick={() => setOpenDropdown(false)}
+                    className="hover:bg-gray-100 w-full">{link.name}</a>
             }
           </div>
         ))
