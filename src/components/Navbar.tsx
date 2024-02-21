@@ -5,7 +5,7 @@ import { useCallback, useState } from 'react';
 import { useDesignerContext } from '../hooks/useDesignerContext';
 import { LiaTimesCircle } from 'react-icons/lia';
 import { initAppModals } from '../utility/initialVariables';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { HomeNavLinks } from '../utility/constants';
 import { getInitials } from '../utility/getInitials';
 import { MdKeyboardArrowDown } from 'react-icons/md';
@@ -16,6 +16,7 @@ import { GoBell } from 'react-icons/go';
 export default function Navbar() {
   const username = "Okereke Ugo";
   const { pathname } = useLocation();
+  const navigate = useNavigate();
   const [openDropdown, setOpenDropdown] = useState<boolean>(false)
   const { toggleNav, user, setToggleNav, setAppModals } = useDesignerContext() as DesignerContextProps;
 
@@ -69,11 +70,19 @@ export default function Navbar() {
       <div className='hidden md:flex justify-between items-center flex-none w-[55%] text-sm'>
         {
           HomeNavLinks?.map(nav => (
+            nav.name.startsWith("Contact") ?
             <a href={nav.link} key={nav.name}
               className={`hover:text-gray-600 flex flex-col items-center font-medium ${pathname === nav.link ? 'font-bold' : ''} `}>
               {nav.name}
               <div className={`${pathname === nav.link ? 'scale-[1]' : 'scale-0'} w-1.5 h-1.5 rounded-full bg-red-700`} />
             </a>
+            :
+            <div key={nav.name}
+              onClick={() => navigate(nav.link)}
+              className={`hover:text-gray-600 flex flex-col items-center font-medium ${pathname === nav.link ? 'font-bold' : ''} cursor-pointer`}>
+              {nav.name}
+              <div className={`${pathname === nav.link ? 'scale-[1]' : 'scale-0'} w-1.5 h-1.5 rounded-full bg-red-700`} />
+            </div>
           ))
         }
       </div>

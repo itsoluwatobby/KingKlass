@@ -5,6 +5,7 @@ import { Buttons } from "../appComponents/Buttons";
 import { useDesignerContext } from "../../hooks/useDesignerContext";
 import { useSignout } from "../../hooks/useSignout";
 import ModalLayout from "../../layout/ModalLayout";
+import { useNavigate } from "react-router-dom";
 
 
 export const NavModal = () => {
@@ -96,14 +97,23 @@ type RouteLinksProps = {
   setToggleNav: React.Dispatch<React.SetStateAction<ToggleOption>>
 }
 const RouteLinks = ({ values, setToggleNav }: RouteLinksProps) => {
+  const navigate = useNavigate();
 
   return (
     <div className="flex flex-col gap-y-3 font-semibold text-[12px] mt-5 w-full">
       {
         values?.map(link => (
+          link.name.startsWith("Contact") ?
           <a href={link.link} key={link.name} 
           onClick={() => setToggleNav({ modalType: "pass" })}
           className="hover:scale-[0.99] transition-all w-full p-3 pr-0 border-0 border-b border-b-gray-300">{link.name}</a>
+          :
+          <div key={link.name} 
+          onClick={() => {
+            setToggleNav({ modalType: "pass" })
+            navigate(link.link)
+          }}
+          className="cursor-pointer hover:scale-[0.99] transition-all w-full p-3 pr-0 border-0 border-b border-b-gray-300">{link.name}</div>
         ))
       }
     </div>

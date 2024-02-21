@@ -9,6 +9,7 @@ import { initAppState } from "../../utility/initialVariables";
 import { deleteImage, imageUpload } from "../../utility/imageMutation";
 import { ChangeEvent, useState } from "react";
 import { LoadingComp } from "../LoadingComp";
+import { currencyFormat } from "../../utility/formatPrice";
 
 export const PaymentCheckout = () => {
   const [appState, setAppState] = useState<AppStateType>(initAppState);
@@ -52,7 +53,7 @@ export const PaymentCheckout = () => {
       expected="paymentCheckout"
       classNames="p-3"
       enlarge={true}
-      extraClasses="p-4 pb-6 md:-mt-1 justify-between"
+      extraClasses="p-4 pb-6 md:top-1 justify-between"
     >
       <div className="self-center flex flex-col items-center gap-y-4">
         <div className="flex items-center w-36 py-2 font-sans text-sm justify-between transition-all">
@@ -77,8 +78,8 @@ export const PaymentCheckout = () => {
           <BsBank className="text-2xl text-gray-500" />
           <CopyComponent
             classNames="font-medium"
-            // element={<b>Pay &#x20A6;{currencyFormat(paymentAmount)}</b>}
-            text={paymentAmount}
+            element={<b>Pay {currencyFormat(+paymentAmount)}</b>}
+            text=''
             msg="Amount copied"
           />
         </div>
@@ -93,7 +94,7 @@ export const PaymentCheckout = () => {
           </div>
         </div>
       ) : (
-        <div className="flex flex-col self-center items-center w-full">
+        <div className="flex flex-col self-center items-center w-full mt-3">
           <figure className="w-20 h-12">
             <img src="/bank.png" className="w-full h-full object-contain" />
           </figure>
@@ -129,7 +130,9 @@ export const PaymentCheckout = () => {
                 "Click to insert receipt"
               )}
             </div>
-            <LoadingComp isLoading={isLoading} />
+            <LoadingComp isLoading={isLoading}
+              classNames="size-6"
+            />
           </label>
         </div>
       )}
@@ -163,7 +166,7 @@ export const PaymentCheckout = () => {
                 ? "bg-[#8B4513] hover:bg-[#8B4413] active:bg-[#8B4513]"
                 : "bg-gray-500"
               : "bg-[#8B4513] hover:bg-[#8B4413] active:bg-[#8B4513]"
-          } text-sm text-white w-[95%] md:w-1/2 py-3 hover:bg-[#8B4513] active:bg-[#8B4513] transition-colors tracking-wide`}
+          } text-sm text-white w-[95%] md:w-1/2 py-3 transition-colors tracking-wide`}
         >
           {paymentProgress.progress === "completed" ? "Paid" : "Proceed"}
         </Buttons>

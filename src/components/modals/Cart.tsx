@@ -15,7 +15,7 @@ export const Carts = () => {
     expected="carts"
     classNames="p-3"
     enlarge={true}
-    extraClasses="justify-between py-4 px-2"
+    extraClasses="justify-between py-4 px-2 md:top-1"
     >
       {/* <div className={`flex-none -mt-7 md:-mt-4 min-h-fit sm:rounded-md mx-auto sm:w-[25rem] py-4 bg-white relative flex flex-col justify-between w-full`}> */}
         <div className="globalScrollbar w-full flex flex-col gap-y-1 max-h-[70%] overflow-y-scroll px-1">
@@ -35,7 +35,7 @@ export const Carts = () => {
         <div className="border border-gray-300 rounded-sm flex flex-col gap-y-8 items-center py-5">
           <div className="px-6 font-bold flex items-center justify-between text-xs w-full">
             <span>Total</span>
-            <span className="font-sans">&#x20A6;{currencyFormat(20_400)}.00</span>
+            <span className="font-sans">{currencyFormat(20_400)}.00</span>
           </div>
           <Buttons
             onClick={() => setToggleNav({ modalType: "paymentCheckout" })}
@@ -69,7 +69,7 @@ const Cart = ({ cartObj }: CartProps) => {
         </figure>
         <div className="flex items-center flex-col gap-y-1 px-3">
           <span>{cartObj.productName}</span>
-          <span className="font-sans font-semibold text-[12px]">&#x20A6;{currencyFormat(cartObj.price)}</span>
+          <span className="font-sans font-semibold text-[12px]">{currencyFormat(cartObj.price)}</span>
         </div>
       </Link>
      

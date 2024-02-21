@@ -54,7 +54,7 @@ export const Order = ({ orderObj }: OrderProps) => {
           <div className="flex flex-col gap-y-1 px-3">
             <span>{orderObj.productName}</span>
             <span className="font-sans font-semibold text-[12px]">
-              &#x20A6;{currencyFormat(orderObj.price)}
+              {currencyFormat(orderObj.price)}
             </span>
           </div>
         </div>

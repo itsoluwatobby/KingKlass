@@ -87,7 +87,7 @@ export const NavLinks = [
   { name: 'Products', link: '/products' },
   { name: 'Orders', link: '/orders' },
   { name: 'About Us', link: '/aboutus' },
-  { name: 'Contact Us', link: '#contactUs' },
+  { name: 'Contact Us', link: '/#contactUs' },
 ]
 
 export const FooterLinks = {
@@ -115,14 +115,14 @@ export const HomeNavLinks = [
   { name: 'Home', link: '/' },
   { name: 'Products', link: '/products' },
   { name: 'About Us', link: '/aboutus' },
-  { name: 'Contact Us', link: '#contactUs' },
+  { name: 'Contact Us', link: '/#contactUs' },
 ]
 
 export const AdminNavLinks = [
   { name: 'Dashboard', link: '/dashboard' },
   { name: 'Upload product', link: '/uploadProduct' },
   { name: 'Manage orders', link: '/adminOrders' },
-  { name: 'Contacts', link: '#contactUs' },
+  { name: 'Contacts', link: '/#contactUs' },
 ]
 
 export const DesktopDropdown = [
