@@ -107,7 +107,7 @@ export default function OrderProgress({
             <div className="flex flex-col gap-y-1 px-3">
               <span>{"White Agbada with one kufi cap"}</span>
               <span className="font-sans font-semibold text-[12px]">
-                &#x20A6;{currencyFormat(25_000)}
+                {currencyFormat(25_000)}
               </span>
               <p
                 className={`${

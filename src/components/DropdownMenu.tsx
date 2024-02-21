@@ -4,6 +4,7 @@ import { reduceTextLength } from "../utility/truncateTextLength";
 import { useDesignerContext } from "../hooks/useDesignerContext";
 import { useSignout } from "../hooks/useSignout";
 import { Buttons } from "./appComponents/Buttons";
+import { useNavigate } from "react-router-dom";
 
 
 type DropdownModalProps = {
@@ -58,13 +59,7 @@ export const DropdownModal = ({ openDropdown, setOpenDropdown, username }: Dropd
 
     {
       user.isSignedIn ?
-        <Buttons
-          onClick={close}
-          px='' py=''
-          classNames='self-center -mt-14 rounded-[3px] font-semibold bg-[#8B4513] text-white grid place-content-center w-fit py-2 px-4 hover:bg-[#8B4413] active:bg-[#8B4513] transition-colors'
-          >
-          Sign out
-        </Buttons>
+        null
         :
         <div className="-mt-14 self-center w-fit flex flex-col items-center gap-y-4">
             <Buttons
@@ -98,6 +93,7 @@ type RouteLinksProps = {
 }
 const RouteLinks = ({ values, setOpenDropdown, signout, isSignedIn }: RouteLinksProps) => {
   const { setToggleNav } = useDesignerContext() as DesignerContextProps;
+  const navigate = useNavigate();
 
   const toggle = (type: ToggleNav) => {
     setOpenDropdown(false)
@@ -138,9 +134,22 @@ const RouteLinks = ({ values, setOpenDropdown, signout, isSignedIn }: RouteLinks
                       {link.name}
                     </p>
                     :
-                    <a href={link.link} 
-                    onClick={() => setOpenDropdown(false)}
-                    className="hover:bg-gray-100 w-full">{link.name}</a>
+                    (
+                      link.name.startsWith("Contact") ?
+                        <a href={link.link} key={link.name} 
+                        onClick={() =>{
+                          setToggleNav({ modalType: "pass" })
+                          setOpenDropdown(false)
+                        }}
+                        className="hover:scale-[0.99] transition-all w-full p-3 pr-0 border-0 border-b border-b-gray-300">{link.name}</a>
+                      :
+                        <div 
+                        onClick={() => {
+                          setOpenDropdown(false)
+                          navigate(link.link)
+                        }}
+                        className="hover:bg-gray-100 w-full cursor-pointer">{link.name}</div>
+                    )
             }
           </div>
         ))

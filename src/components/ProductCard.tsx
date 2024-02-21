@@ -3,7 +3,7 @@ import { currencyFormat } from "../utility/formatPrice";
 import { setCustomBackgroundImage } from "../utility/setBackGroundImage";
 // import { PiTimer } from "react-icons/pi";
 import { TfiTimer } from "react-icons/tfi";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./styles/ProductCard.css";
 // import { reduceTextLength } from "../utility/truncateTextLength";
 
@@ -22,10 +22,11 @@ export default function ProductCard({
   // name,
   id
 }: ProductCardProps) {
-  console.log(id)
+  const navigate = useNavigate()
+  
   return (
-    <Link
-      to={`/products/${id}`}
+    <article
+      onClick={() => navigate(`/products/${id}`)}
       className="product--card relative w-full overflow-hidden bg-white shadow-md"
     >
       <img
@@ -58,6 +59,6 @@ export default function ProductCard({
         </h5>
 
       </div>
-    </Link>
+    </article>
   );
 }

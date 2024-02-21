@@ -16,7 +16,7 @@ export const CopyComponent = ({ text, element, msg, classNames }: CopyComponentP
   }
 
   return (
-    <div className={`flex mobile:text-xl items-center gap-x-4 font-sans`}>
+    <div className={`flex mobile:text-xl items-center gap-x-3 font-sans`}>
       <h4 className={`${classNames}`}>{element ?? text}</h4>
       <GoCopy 
       title="copy"
