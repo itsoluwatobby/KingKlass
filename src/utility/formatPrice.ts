@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 /**
  * @desc formatPrice: function to format price into human readable form
  * @param {*} price
@@ -25,7 +23,6 @@ export const formatPrice = (price: (number | string)) => {
   return dotNotation ? `${formattedPrice}.${dotNotation}` : formattedPrice;
 }
 
->>>>>>> 526c7ce7c05da0b52bf9a240527b6022ea758fae
 export const refindedReview = <T>(reviews: T[], count=2): T[][] => {
     const refindedResult = [];
     for (let index = 0; index < reviews?.length; index += count) {
@@ -37,5 +34,5 @@ export const refindedReview = <T>(reviews: T[], count=2): T[][] => {
 
 export const  currencyFormat = function (num: number, decimalPlace: number = 0) {
     return '₦' + num.toFixed(decimalPlace).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
- }
+}
  

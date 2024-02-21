@@ -6,7 +6,7 @@ import { checkCount } from "../../utility/truncateTextLength";
 type TrackCardsProps = {
   title: string;
   Icon: IconType;
-  count: number;
+  count: number | string;
   updatedAt: string;
 };
 export const TrackCards = ({
@@ -29,7 +29,7 @@ export const TrackCards = ({
         {typeof count === "number" ? (
           checkCount(count)
         ) : (
-          <span>&#x20A6;{currencyFormat(count)}</span>
+          <span>{currencyFormat(+count)}</span>
         )}
       </h4>
 
@@ -44,7 +44,7 @@ export const TrackCards = ({
           {typeof count === "number" ? (
             checkCount(count)
           ) : (
-            <span>&#x20A6;{currencyFormat(count)}</span>
+            <span>{currencyFormat(+count)}</span>
           )}
         </h4>
         <span className="text-xs whitespace-nowrap font-sans text-[#6E6E6E]">

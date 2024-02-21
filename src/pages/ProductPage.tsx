@@ -19,7 +19,7 @@ import { randomizedProducts } from "../utility/helpers";
 import ProductReviews from "../components/products/ProductReviews";
 
 const initProductPreview = {
-  product: {} as ProductType, productReviews: [] as Reviews[], productsPreview: [] as ProductType[]
+  product: {} as ProductType, productReviews: [] as ReviewsType[], productsPreview: [] as ProductType[]
 }
 export default function ProductPage() {
   const refContainer = useRef<HTMLDivElement>(null);
@@ -57,7 +57,7 @@ export default function ProductPage() {
     };
   }, [prod.productId]);
 
-  const [userReviews] = useState<Reviews[][]>(refindedReview(productReviews));
+  const [userReviews] = useState<ReviewsType[][]>(refindedReview(productReviews));
   const { setToggleNav } = useDesignerContext() as DesignerContextProps;
 
   const toggleScroll = (direction: "RIGHT" | "LEFT") => {
@@ -69,30 +69,6 @@ export default function ProductPage() {
 
   return (
     <HomeLayout>
-<<<<<<< HEAD
-      <div className="flex flex-col gap-y-4 md:px-7">
-        <div className="flex flex-col gap-y-4 md:flex-row md:gap-x-2">
-          <article className="shadow-sm flex-none md:w-1/2 cursor-default transition-all h-96 w-full relative flex flex-col gap-y-2">
-            <span className="bg-red-300 bg-opacity-40 text-red-600 font-medium text-xs absolute top-4 left-4 rounded-sm p-1 px-3">
-              New
-            </span>
-            <div
-              style={setCustomBackgroundImage("")}
-              className="flex-none h-full w-full bg-slate-200 rounded-sm"
-            ></div>
-            <span className="bg-gray-600 bg-opacity-40 text-white font-medium text-xs absolute bottom-5 right-4 font-sans rounded-sm px-2.5 p-0.5">
-              1/1
-            </span>
-          </article>
-
-          <div className="flex-none md:w-[50%] flex flex-col gap-y-4 w-full">
-            <div className="px-3 flex flex-col gap-y-1.5">
-              <p className="text-sm">
-                KingKlass Trouser and Shirt and blue cap with..
-              </p>
-              <span className="font-sans font-medium text-xs">
-                #{currencyFormat(10_500)}
-=======
       <div className="relative flex flex-col gap-y-4 md:px-7 h-full">
         <RequestStages useRelative={true}
           isLoading={isLoading} isError={isError}
@@ -102,7 +78,6 @@ export default function ProductPage() {
             <article className="shadow-sm flex-none md:w-1/2 cursor-default transition-all h-96 w-full relative flex flex-col gap-y-2">
               <span className="bg-red-300 bg-opacity-40 text-red-600 font-medium text-xs absolute top-4 left-4 rounded-sm p-1 px-3">
                 New
->>>>>>> 526c7ce7c05da0b52bf9a240527b6022ea758fae
               </span>
               <div
                 style={setCustomBackgroundImage(product.img_url)}
@@ -119,7 +94,7 @@ export default function ProductPage() {
                   {product.name}
                 </p>
                 <span className="font-sans font-medium text-xs">
-                  &#x20A6;{formatPrice(product.price ?? '')}
+                  {currencyFormat(+product.price)}
                 </span>
                 <div className="flex items-center justify-between">
                   <p className="flex items-center text-[11px]">
@@ -205,86 +180,17 @@ export default function ProductPage() {
                     <ProductCard key={product.id}
                       id={product.id}
                       img_url={product.img_url} 
-                      price={product.price} created_at={product.created_at}
+                      price={product.price} 
+                      // created_at={product.created_at}
                       estimated={product.estimated}
-                      name={product.name}
+                      // name={product.name}
                     />
                   ))
                 }
               </div>
             </div>
           </div>
-<<<<<<< HEAD
-        </div>
-
-        <div className="flex flex-col gap-y-4 midscreen:px-3 text-xs">
-          <div className="flex flex-col gap-y-3">
-            <h4 className="text-[13px] font-semibold">Reviews</h4>
-            <div className="flex items-center gap-x-1 text-xs border-0 border-b-2 pb-0.5">
-              <p className="border border-yellow-200 text-yellow-500 w-fit font-medium font-sans p-0.5 rounded-sm">
-                4.4/5
-              </p>
-              <span className="font-sans text-gray-600">
-                {checkCount(64)} ratings
-              </span>
-            </div>
-
-            <div
-              ref={refContainer}
-              className="px-2 scroll-smooth flex items-center gap-x-4 overflow-x-scroll"
-            >
-              {userReviews?.map((splittedReviews, index) => (
-                <div
-                  key={index}
-                  className="flex flex-col min-w-full md:flex-row md:gap-x-4"
-                >
-                  {splittedReviews?.map((eachReview) => (
-                    <Reviews key={eachReview["id"]} review={eachReview} />
-                  ))}
-                </div>
-              ))}
-            </div>
-            <div className="flex items-center -mt-5 gap-x-4 self-end">
-              <Buttons
-                onClick={() => toggleScroll("LEFT")}
-                px=""
-                py=""
-                classNames="rounded-full grid text-sm place-content-center w-6 h-6 bg-white hover:bg-gray-200 active:bg-gray-100 transition-colors"
-              >
-                <SlArrowLeft className="text-sm" />
-              </Buttons>
-              <Buttons
-                onClick={() => toggleScroll("RIGHT")}
-                px=""
-                py=""
-                classNames="rounded-full grid place-content-center w-6 h-6 bg-white hover:bg-gray-200 active:bg-gray-100 transition-colors"
-              >
-                <SlArrowRight className="text-sm" />
-              </Buttons>
-            </div>
-          </div>
-
-          <div className="flex flex-col items-start">
-            <h3 className="font-bold text-sm">Popular</h3>
-            <div className="px-3 overflow-x-scroll flex items-center gap-x-3 flex-none h-[14.5rem] w-full">
-              {[1, 2, 5, 5, 5, 5].map((index) => (
-                <DisplayCard
-                  key={Math.random()}
-        
-                    img_url = {""}
-                    price = {10500}
-                    estimated = {44}
-                    name = "King Klass trouser, custom"
-                    id = {""}
-      
-                />
-              ))}
-            </div>
-          </div>
-        </div>
-=======
         </RequestStages>
->>>>>>> 526c7ce7c05da0b52bf9a240527b6022ea758fae
       </div>
       <PurchasePrompt productName="" />
     </HomeLayout>

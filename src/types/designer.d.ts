@@ -63,7 +63,7 @@ type Validations = {
   validPassword: boolean; 
   matchingPassword: boolean;
 }
-type Reviews = {
+type ReviewsType = {
   id?: number;
   rating: number[];
   content: string;

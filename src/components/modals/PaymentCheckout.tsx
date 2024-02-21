@@ -1,5 +1,4 @@
 import { useDesignerContext } from "../../hooks/useDesignerContext";
-import { currencyFormat } from "../../utility/formatPrice";
 import { CiCloud } from "react-icons/ci";
 import { Buttons } from "../appComponents/Buttons";
 import ModalLayout from "../../layout/ModalLayout";
