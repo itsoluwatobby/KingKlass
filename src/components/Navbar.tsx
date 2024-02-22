@@ -35,7 +35,7 @@ export default function Navbar() {
   }
 
   return (
-    <header className="z-30 bg-white shadow-sm rounded-b-sm w-full md:px-8 px-6 pt-4 pb-2 fixed top-0 flex items-end justify-between">
+    <header className="z-30 bg-white lg:shadow-sm rounded-b-sm w-full md:px-8 px-6 pt-4 pb-2 fixed top-0 flex items-end justify-between">
       <>
       {
         toggleNav.modalType === 'openNavModal' ?

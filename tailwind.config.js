@@ -3,6 +3,21 @@ export default {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
+      colors: {
+        "fdt-brown-dark" : "#68340E",
+        "fdt-brown-normal" : "#8B4513",
+        "fdt-brown-darker" : "#311807"
+      },
+
+      fontSize: {
+        "sm": ["0.85rem", "16.8px"],
+        "3xl": ["1.75rem", "42px"]
+      },
+
+      fontFamily: {
+        "playfair-display" : "Playfair Display"
+      },
+
       Keyframes: {
         rollout: {
           "0%": { transform: 'translateY(100%)' },
@@ -19,7 +34,7 @@ export default {
       },
     },
     screens:{
-      'xsm': '580px',
+      'xsm': '400px',
       // => @media (min-width: 580px) { ... }
       'sm': '640px',
       // => @media (min-width: 640px) { ... }
