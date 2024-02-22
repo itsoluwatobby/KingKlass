@@ -34,6 +34,15 @@ export const getUser = async<T extends object>(userId: string): Promise<T> => {
   });
   return user.data;
 }
+export const getUserMeasurement = async<T extends object>(userId: string): Promise<T> => {
+  const path = Endpoints({ userId });
+  const user = await requests[path.getUserMeasurement.method](path.getUserMeasurement.url, {
+    headers: {
+      'Authorization': `Bearer ${Authorization_token}`
+    }
+  });
+  return user.data;
+}
 export const getUsers = async<T extends []>(): Promise<T> => {
   const path = Endpoints({});
   const user = await requests[path.users.method](path.users.url, {
@@ -46,6 +55,15 @@ export const getUsers = async<T extends []>(): Promise<T> => {
 export const getUserOrders = async<T extends []>(userId: string): Promise<T> => {
   const path = Endpoints({ userId });
   const userOrders = await requests[path.getUserOrders.method](path.getUserOrders.url, {
+    headers: {
+      'Authorization': `Bearer ${Authorization_token}`
+    }
+  });
+  return userOrders.data;
+}
+export const getOrderWithMeasurement = async<T extends []>(orderId: string): Promise<T> => {
+  const path = Endpoints({ orderId });
+  const userOrders = await requests[path.getOrderWithMeasurement.method](path.getOrderWithMeasurement.url, {
     headers: {
       'Authorization': `Bearer ${Authorization_token}`
     }

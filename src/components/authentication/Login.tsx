@@ -41,7 +41,7 @@ export const Login = () => {
     catch (error: unknown) {
       console.log(error)
       setAppState(prev => ({ ...prev, isError: true }))
-      toast.error('error message')
+      toast.error('An error occurred')
     }
     finally {
       setAppState(prev => ({ ...prev, isLoading: false }))

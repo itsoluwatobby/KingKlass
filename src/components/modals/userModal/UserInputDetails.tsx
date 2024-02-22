@@ -23,7 +23,7 @@ export default function UserInputDetails<T>({ name, id, title, setUserDetails, t
 
   return (
     <div className="flex flex-col gap-y-0.5 w-full">
-      <label htmlFor={id} className='text-xs mobile:text-[13px] flex items-center gap-x-3'>{title} 
+      <label htmlFor={id} className='relative text-xs mobile:text-[13px] flex items-center gap-x-3'>{title} 
       {
         (appModals.signup === 'OPEN' && title === 'Password') ?
         (
@@ -35,16 +35,16 @@ export default function UserInputDetails<T>({ name, id, title, setUserDetails, t
           {
             <ul 
             onClick={() => setDisplayInstruction(true)}
-            className={`${displayInstruction ? 'hidden' : 'flex'} font-sans px-3 gap-x-3 bg-slate-900 rounded-md text-xs w-fit self-center mt-0.5 overflow-x-auto`}>
-              <li className='flex flex-col'>
+            className={`${displayInstruction ? 'hidden' : 'flex'} mobile:flex-col mobile:absolute mobile:left-20 -top-28 shadow-md mobile:gap-y-0.5 mobile:p-2 font-sans px-3 gap-x-3 bg-slate-900 rounded-md text-xs w-fit self-center mt-0.5 overflow-x-auto`}>
+              <li className='flex flex-col mobile:gap-y-0.5'>
                 <span className={`before:content-['*'] flex items-center gap-1 ${!value ? 'text-white' : /[a-z]/.test(value) ? 'text-green-500' : 'text-red-500'}`}>lowercase</span>
                 <span className={`before:content-['*'] flex items-center gap-1 ${!value ? 'text-white' : /[A-Z]/.test(value) ? 'text-green-500' : 'text-red-500'}`}>uppercase</span>
               </li>
-              <li className='flex flex-col'>
+              <li className='flex flex-col mobile:gap-y-0.5'>
                 <span className={`before:content-['*'] flex items-center gap-1 ${!value ? 'text-white' : /[@£$!%*?&]/.test(value) ? 'text-green-500' : 'text-red-500'}`}>a symbol</span>
                 <span className={`before:content-['*'] flex items-center gap-1 ${!value ? 'text-white' : /[\d]/.test(value) ? 'text-green-500' : 'text-red-500'}`}>number</span>
               </li>
-              <li className='flex flex-col'>
+              <li className='flex flex-col mobile:gap-y-0.5'>
                 <span className={`before:content-['*'] flex items-center gap-1 ${!value ? 'text-white' : value.length >= 9 ? 'text-green-500' : 'text-red-500'}`}>
                   minimum 9
                 </span>

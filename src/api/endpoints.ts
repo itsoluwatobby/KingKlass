@@ -6,11 +6,12 @@ type EndpointParams = {
   reviewId?: string; 
   productId?: string; 
   categoryId?: string;
+  categoryName?: string;
   status?: OrderStatusType;
 }
 type Method = 'get' | 'post' | 'put' | 'delete' | 'patch';
-type Paths = 'login' | 'users' | 'register' | 'createUser' | 'getUser' | 'getUserOrders' | 'createUserOrder' | 'getUserOrder' | 'updateUserOrder' | 'deleteUserOrder' | 'createCategory' | 'getCategories' | 'getCategory' | 'getOrders' | 'getOrdersStatus' | 'getOrder' | 'updateOrder' | 'deleteOrder' | 'getProducts' | 'getProduct' | 'createProduct' | 'updateProduct' | 'deleteProduct' | 'getReviews' | 'getReview' | 'deleteReview' | 'getAllReviews' | 'createReview' | 'updateReview' | 'getProductReview';
-export const Endpoints = ({ orderId='', userId='', reviewId='', productId='', categoryId='', status='Pending' }: EndpointParams): Record<Paths, {method: Method, url: string}> => {
+type Paths = 'login' | 'users' | 'register' | 'createUser' | 'getUser' | 'getUserMeasurement' | 'getUserOrders' | 'createUserOrder' | 'getUserOrder' | 'updateUserOrder' | 'getOrderWithMeasurement' | 'deleteUserOrder' | 'createCategory' | 'getCategories' | 'getCategory' | 'getOrders' | 'getOrdersStatus' | 'getOrder' | 'updateOrder' | 'deleteOrder' | 'getProducts' | 'getProduct' | 'createProduct' | 'updateProduct' | 'deleteProduct' | 'getReviews' | 'getReview' | 'deleteReview' | 'getAllReviews' | 'createReview' | 'updateReview' | 'getProductReview';
+export const Endpoints = ({ orderId='', userId='', reviewId='', productId='', categoryId='', status='Pending', categoryName='' }: EndpointParams): Record<Paths, {method: Method, url: string}> => {
   const urlPath = '/api/v1' as const;
 
   return {
@@ -21,8 +22,8 @@ export const Endpoints = ({ orderId='', userId='', reviewId='', productId='', ca
       method: 'post',  url: '/login'
     },
     register: {
-      method: 'post',  url: urlPath+'/register'
-    },
+      method: 'post',  url: '/register'
+    },// user
     createUser: {
       method: 'post', url: `${urlPath}/users` // all users
     },
@@ -35,6 +36,9 @@ export const Endpoints = ({ orderId='', userId='', reviewId='', productId='', ca
     createUserOrder: {// to be corrected
       method: 'post', url: `${urlPath}/users/${userId}/orders` // create user order
     },
+    getUserMeasurement: { // new
+      method: 'get', url: `${urlPath}/users/${userId}/measurement` // single user target order
+    },
     getUserOrder: {
       method: 'get', url: `${urlPath}/users/${userId}/orders/${orderId}` // single user target order
     },
@@ -45,19 +49,22 @@ export const Endpoints = ({ orderId='', userId='', reviewId='', productId='', ca
       method: 'delete', url: `${urlPath}/order/${orderId}` // update order
     },
     createCategory: {
-      method: 'post',  url: `${urlPath}/categories`
+      method: 'post',  url: `${urlPath}/categories/${categoryName}`
     }, // CATEGORY ROUTES
     getCategories: {
       method: 'get',  url: `${urlPath}/categories`
     },
     getCategory: {
       method: 'get', url: `${urlPath}/categories/${categoryId}/products`
-    },
+    }, // ORDER ROUTES
     getOrders: {
       method: 'get', url: `${urlPath}/orders`
-    }, // ORDER ROUTES
+    }, 
     getOrdersStatus: {
       method: 'get', url: `${urlPath}/orders/${status}`
+    },// to add
+    getOrderWithMeasurement: {
+      method: 'get', url: `${urlPath}/orders/${orderId}/measurements`
     },
     getOrder: {
       method: 'get', url: `${urlPath}/orders/${orderId}`
@@ -98,7 +105,7 @@ export const Endpoints = ({ orderId='', userId='', reviewId='', productId='', ca
     createReview: {
       method: 'post', url: `${urlPath}/products/${productId}/reviews`
     },
-    updateReview: {
+    updateReview: { 
       method: 'put', url: `${urlPath}/reviews/${reviewId}` // update review
     },
     getProductReview: {

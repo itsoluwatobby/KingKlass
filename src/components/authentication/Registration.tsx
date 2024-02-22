@@ -11,7 +11,7 @@ import { FcGoogle } from "react-icons/fc";
 import { Validation_RegExp } from "../../utility/regexExpConfig";
 import FadedBGWrapper from "../../layout/FadedBGWrapper";
 import { register } from "../../api/globalRequest";
-
+import axios from 'axios'
 
 export const Registration = () => {
   const [appState, setAppState] = useState<AppStateType>(initAppState)
@@ -24,15 +24,20 @@ export const Registration = () => {
 
   const { isLoading, isError } = appState;
   const canSubmit = [email, password, confirm_password, validEmail, validPassword, matchingPassword].every(Boolean);
-
+// firstName: name
   const handleSubmit = async() => {
     if (!canSubmit || isLoading) return
     setAppState(prev => ({ ...prev, isLoading: true }))
     try {
       const userDetails = sanitizeEntries(
-        { email, firstName: name, password });
+        { email, password });
       console.log(userDetails)
-      const res = await register(userDetails)
+      // const res = await register(userDetails)
+      const res = await axios.post('http://web-02.obimbasmart.tech/register', userDetails, {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
       console.log(res)
       setAppState(prev => ({ ...prev, success: true }))
       setUserCredentials(initSignUpInfo)
@@ -43,7 +48,7 @@ export const Registration = () => {
     catch (error: unknown) {
       console.log(error)
       setAppState(prev => ({ ...prev, isError: true }))
-      toast.error('error message')
+      toast.error('An error occurred')
     }
     finally {
       setAppState(prev => ({ ...prev, isLoading: false }))
