@@ -101,7 +101,7 @@ export default function Navbar() {
                 className={`md:mr-2.5 ${toggleNav.modalType !== "notifications" ? 'visible' : 'invisible'} cursor-pointer text-3xl hover:opacity-70 active:opacity-100 transition-opacity flex-none`} />
           ) : <div />
         }
-        <p className={`relative after:absolute after:bg-red-700 after:content-[""] after:w-2 after:h-2 after:rounded-full after:right-0 after:top-1 font-bold text-xl bg-[#8B4513] text-white rounded-full w-10 h-10 grid place-content-center`}>{getInitials(username)}</p>
+        <p className={`relative after:absolute after:bg-red-700 after:content-[""] after:w-2 after:h-2 after:rounded-full after:right-0 after:top-1 font-bold text-xl bg-[#8B4513] text-white rounded-full w-10 h-10 grid place-content-center`}>{user.isSignedIn ? getInitials(username) : ''}</p>
         <MdKeyboardArrowDown
           onClick={() => setOpenDropdown(prev => !prev)}
           className={`text-3xl hover:bg-gray-200 transition-colors cursor-pointer rounded-full ${openDropdown ? 'rotate-180' : ''} transition-transform p-0.5`} />

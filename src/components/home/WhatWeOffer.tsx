@@ -3,8 +3,6 @@ import { Icon2 } from "./icons/Icon2";
 import { Icon3 } from "./icons/Icon3";
 import { Icon4 } from "./icons/Icon4";
 
-
-
 export default function WhatWeOffer() {
   return (
     <div className='lg:pl-16 md:pl-10 h-80 flex flex-col w-full transition-all'>

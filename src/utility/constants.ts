@@ -94,7 +94,7 @@ export const FooterLinks = {
   QuickLinks: {
     name: "Quick Links",
     values: [...NavLinks]
-  }, 
+  },
   Support: {
     name: "Support",
     values: [

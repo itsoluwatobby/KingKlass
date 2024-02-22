@@ -141,7 +141,7 @@ const RouteLinks = ({ values, setOpenDropdown, signout, isSignedIn }: RouteLinks
                           setToggleNav({ modalType: "pass" })
                           setOpenDropdown(false)
                         }}
-                        className="hover:scale-[0.99] transition-all w-full p-3 pr-0 border-0 border-b border-b-gray-300">{link.name}</a>
+                        className="hover:scale-[0.99] transition-all w-full py-3 pr-0 ">{link.name}</a>
                       :
                         <div 
                         onClick={() => {
