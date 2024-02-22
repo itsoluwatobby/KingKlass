@@ -11,7 +11,6 @@ import { FcGoogle } from "react-icons/fc";
 import { Validation_RegExp } from "../../utility/regexExpConfig";
 import FadedBGWrapper from "../../layout/FadedBGWrapper";
 import { register } from "../../api/globalRequest";
-import axios from 'axios'
 
 export const Registration = () => {
   const [appState, setAppState] = useState<AppStateType>(initAppState)
@@ -32,12 +31,7 @@ export const Registration = () => {
       const userDetails = sanitizeEntries(
         { email, password });
       console.log(userDetails)
-      // const res = await register(userDetails)
-      const res = await axios.post('http://web-02.obimbasmart.tech/register', userDetails, {
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      })
+      const res = await register(userDetails)
       console.log(res)
       setAppState(prev => ({ ...prev, success: true }))
       setUserCredentials(initSignUpInfo)
