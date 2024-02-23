@@ -11,7 +11,8 @@ export default {
         "fdt-grey-normal" : "#939393",
         "fdt-grey-light" : "#F4F4F4",
         "fdt-grey-light-hover" : "#EFEFEF",
-        "fdt-brown-light-active" : "#DBC5B6"
+        "fdt-brown-light-active" : "#DBC5B6",
+        "fdt-brown-light-hover" : "#EEE3DC"
       },
 
       fontSize: {
