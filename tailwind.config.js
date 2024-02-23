@@ -6,7 +6,9 @@ export default {
       colors: {
         "fdt-brown-dark" : "#68340E",
         "fdt-brown-normal" : "#8B4513",
-        "fdt-brown-darker" : "#311807"
+        "fdt-brown-darker" : "#311807",
+        "fdt-grey-light-active" : "#DEDEDE",
+        "fdt-grey-normal" : "#939393"
       },
 
       fontSize: {

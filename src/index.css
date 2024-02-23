@@ -9,6 +9,9 @@
   width: 1px;
 }
 
+.stats {
+  box-shadow: 0px 1px 14.1px 0px rgba(0, 0, 0, 0.06);
+}
 
 .search--bar {
   border-radius: 4px!important;
@@ -20,18 +23,24 @@
   box-sizing: border-box;
 }
 
+#root {
+  /* border: 1px solid red; */
+}
+
 .hero {
   /* border: 1px solid black; */
   /* padding: 0; */
+  /* border: 1px solid black; */
 }
 
-body {
+body,html {
   background-color: #F8F8F8;
   margin: 0;
   padding: 0;
-  font-family: "Roboto"
+  font-family: "Roboto";
+  overflow-x: hidden;
+  /* border: 1px solid red; */
 }
-
 
 a, a:link a:visited {
   color: #000;

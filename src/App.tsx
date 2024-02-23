@@ -58,7 +58,7 @@ function App() {
   }, [pathname, signin, signup, setAppModals])
 
   return (
-    <main className='w-full md:m-auto h-scre scroll-smooth overflow-y-scroll transition-all'>
+    <main className='w-full'>
 
       <Routes>
         <Route path='/' element={<DesignerLayout />}>
