@@ -8,16 +8,21 @@ export default {
         "fdt-brown-normal" : "#8B4513",
         "fdt-brown-darker" : "#311807",
         "fdt-grey-light-active" : "#DEDEDE",
-        "fdt-grey-normal" : "#939393"
+        "fdt-grey-normal" : "#939393",
+        "fdt-grey-light" : "#F4F4F4",
+        "fdt-grey-light-hover" : "#EFEFEF",
+        "fdt-brown-light-active" : "#DBC5B6"
       },
 
       fontSize: {
-        "sm": ["0.85rem", "16.8px"],
+        "sm": ["0.875rem", "16.8px"],
+        "xl" : ["1.125rem", "18px"],
         "3xl": ["1.75rem", "42px"]
       },
 
       fontFamily: {
-        "playfair-display" : "Playfair Display"
+        "playfair-display" : "Playfair Display",
+        "Roboto" : "Roboto"
       },
 
       Keyframes: {

@@ -1,93 +1,70 @@
-import { Motto } from "../../svgs/Motto";
-import { HowKingClassWorks } from "../../utility/constants";
-import { ImageCard } from "./ImageCard";
-import { Buttons } from '../appComponents/Buttons';
-import { useDesignerContext } from "../../hooks/useDesignerContext";
-
-
-export default function HowItWorks() {
-  const { setAppModals } = useDesignerContext() as DesignerContextProps;
-  const Previews = [
-    { image: '/image1.png', title: 'AGBADA' },
-    { image: '/image2.png', title: 'SENATOR' },
-    { image: '/image3.png', title: 'SUITS' }
-  ]
-  //75vh
-  return (
-    <section className="relative md:mt-10 lg:px-44 md:px-32 p-4 flex flex-col gap-y-6 transition-all min-h-">
-
-      <div className="relative flex flex-col items-center gap-y-2 w-full">
-          <h3 className="text-[#842415] text-sm">TAILORED ASSISTANCE</h3>
-
-          <h4 className="font-semibold text-xl">HOW CAN WE HELP YOU?</h4>
-
-        <div className="relative px-4 p-1 overflow-x-scroll flex items-center md:justify-center gap-x-7 maxmobile:gap-x-2 w-full lg:gap-x-10">
-          {
-            Previews.map(preview => (
-              <ImageCard key={preview.title} 
-                image={preview.image} title={preview.title}
-              />
-            ))
-          }
-          <div className="absolute w-fit bottom-2 left-[28%] maxmobile:left-[34%] md:left-[28%]">
-            <Motto size={{ width: "90", height: "89" }} />
-          </div>
-        </div>
-      </div>
-
-      {/* <KingKlass 
-        size={{width: '165', height: '85'}} 
-        classNames="opacity-20 self-center"
-      /> */}
-
-      <div className="flex flex-col gap-y-2 pb-2">
-        <h3 className="text-[#842415] text-sm text-center">SERVICES</h3>
-        <h1 className="text-3xl font-bold text-center">How It Works</h1>
-      </div>
-
-      <div className='lg:px-36 flex flex-col gap-y-10'>
-        {
-          HowKingClassWorks.map((howTo, index) => (
-            <Steps key={index}
-              index={index+1} title={howTo.title}
-              content={howTo.content}
-              textDirection={howTo.textDirection}
-              position={howTo.position}
-              padding={howTo.padding}
-            />
-           ))
-        }
-      </div>
-
-      <Buttons
-        onClick={() => setAppModals(prev => ({ ...prev, signin: 'OPEN' }))}
-        px='' py='py-3'
-        classNames="text-[#842415] self-center mt-2 font-medium text-black bg-[#fffff5] border-2 border-orange-700 border-opacity-40 w-36 rounded-md cursor-default"
-      >
-        Get Started
-      </Buttons>
-    </section>
-  )
-}
-
-
-type StepsProps = {
-  index: number;
+interface StepProp {
+  number: string;
   title: string;
-  content: string;
-  textDirection: string;
-  padding: string;
-  position: string;
+  desc: string;
 }
-const Steps = ({ index, title, content, textDirection, position, padding }: StepsProps) => {
+
+function Step({ number, desc, title }: StepProp) {
+  return (
+    <div className="px-6 relative min-w-[150px] max-w-[210px]">
+      <span className="text-fdt-brown-light-active font-normal text-3xl absolute top-4 left-1 right-1">
+        {number}
+      </span>
+      <h4 className="mb-0 text-fdt-brown-normal font-normal text-[18px] w-full">
+        {title}
+      </h4>
+      <p className="text-fdt-brown-darker font-light font-inherit mt-2">
+        {desc}
+      </p>
+    </div>
+  );
+}
+
+function HowItWorks() {
+  const howItWork = [
+    {
+      number: "1",
+      title: "Explore Categories",
+      desc: "Browse through our diverse collections, including Agbada, Suits, and Native Attire",
+    },
+
+    {
+      number: "2",
+      title: "Personalize Your Order",
+      desc: "Customize your selection by choosing fabrics, styles, and adding personal details",
+    },
+
+    {
+      number: "3",
+      title: "Place Your Order",
+      desc: "Effortlessly place your order through our user-friendly platform",
+    },
+
+    {
+      number: "4",
+      title: "Track Progress",
+      desc: "Keep track of your order's journey from creation to completion",
+    },
+  ];
 
   return (
-    <article className={`midscreen:relative flex flex-col  md:even:items-end md:odd:items-start gap-y-2 ${textDirection} ${padding}`}>
-      <div className={`midscreen:absolute w-fit -top-5 ${position} border-[1px] border-gray-300 font-sans rounded-sm text-2xl text-gray-400 py-0.5 px-2.5`}>
-        {index}
+    <section className="w-full pb-5 bg-fdt-grey-light-hover flex flex-col justify-center items-center">
+      <div className="flex flex-col justify-center items-center">
+        <h3 className="text-base mb-0 font-normal text-fdt-brown-normal">
+          OUR SERVICES
+        </h3>
+        <h3 className="text-[1.25rem] mt-2 font-normal font-playfair-display text-fdt-brown-dark">
+          HOW IT WORKS
+        </h3>
       </div>
-      <h4 className="z-20 font-medium text-xl capitalize">{title}</h4>
-      <p className="text-gray-700 text-xs">{content}</p>
-    </article>
-  )
+
+      <section className="max-w-[520px] rounded-[8px] bg-[#F8F8F8]  mx-2 flex flex-row flex-wrap justify-center">
+        {howItWork.map((step) => (
+          <Step number={step.number} title={step.title} desc={step.desc} />
+        ))}
+      </section>
+    </section>
+  );
 }
+
+export default HowItWorks;
