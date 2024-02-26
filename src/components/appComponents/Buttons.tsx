@@ -20,7 +20,7 @@ export const Buttons = ({
     <button
       disabled={disabled}
       onClick={onClick}
-      className={`rounded-[4px] text-sm hover:opacity-90 active:opactiy-100 focus:outline-0 transition-opacity ${px} ${py} ${classNames}`}
+      className={`rounded-[4px] border-0 text-base hover:opacity-90 active:opactiy-100 focus:outline-0 transition-opacity ${px} ${py} ${classNames}`}
     >
       {isLoading ? "In Progress..." : children}
     </button>

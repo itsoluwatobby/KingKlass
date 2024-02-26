@@ -7,6 +7,8 @@ import { useEffect, useState } from "react";
 import { initAppState } from "../utility/initialVariables";
 import RequestStages from "../components/RequestStage";
 import { useLocation } from "react-router-dom";
+import { MdClear } from "react-icons/md";
+
 
 export default function Products() {
   const [appState, setAppState] = useState<AppStateType>(initAppState);
@@ -47,12 +49,17 @@ export default function Products() {
   return (
     <HomeLayout>
       <>
-        <div className="px-2 bg-white self-center flex items-center sticky top-0 gap-x-4 z-20 w-full md:w-1/2">
+        <div className="px-3 self-center flex items-center sticky top-0 gap-x-4 z-20 w-full md:w-1/2">
           <SearchBar search={search?.split('=')[1]} />
-          <LuSettings2 className="flex-none text-4xl bg-slate-200 p-1 font-normal" />
+          <MdClear className="flex-none text-3xl  p-1 font-normal text-black hover:cursor-pointer" />
         </div>
 
-          <div className="relative px-2 h-full self-center grid grid-cols-3 lg:grid-cols-4 mobile:grid-cols-2 gap-x-6 md:gap-x-16 gap-y-10">
+        <div className="text-fdt-grey-darker flex justify-center items-center gap-2 self-end mx-3 mt-4 mb-2 text-base font-montserrat px-4 py-1 rounded-full border-[0.5px] border-solid border-fdt-grey-normal">
+          Filter
+          <LuSettings2 className="text-2xl"/>
+        </div>
+
+          <div className="w-full px-1 h-full flex flex-row flex-wrap gap-8 mobile:gap-4 justify-center">
             <RequestStages useRelative={true}
             isLoading={isLoading} isError={isError}
             targetVal={products} isSuccess={isSuccess as boolean} errorText="Error Fetching Products" warnText="No products available"
@@ -62,10 +69,9 @@ export default function Products() {
                   <ProductCard key={item.id}
                     img_url={item.img_url}
                     id={item.id}
-                    // name={item.name}
                     price={item.price}
                     estimated={item.estimated}
-                    // created_at={item.created_at}
+                    name={item.name}
                   />
                 )) 
               }
