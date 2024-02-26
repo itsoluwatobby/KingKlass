@@ -41,7 +41,7 @@ export default function PasswordInput<K>({ value, id, pattern, classNames, name,
         required={required}
         autoComplete="off"
         disabled={disabled}
-        className={`rounded-[8px] font-sans w-full text-base bg-fdt-grey-light-hover focus:outline-0 border placeholder:text-[#939393] ${defaultClassNames} p-2`}
+        className={`rounded-md font-sans w-full text-base bg-fdt-grey-light-hover focus:outline-0 border placeholder:text-[#939393] ${defaultClassNames} p-2`}
         onChange={e => setInputText((prev: any) => (
           { ...prev, [e.target.name]: e.target.value })
         )}

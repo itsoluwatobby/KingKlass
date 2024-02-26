@@ -28,7 +28,7 @@ export default {
         "playfair-display" : ["Playfair Display", "serif"],
         "Roboto" : "Roboto",
         "montserrat" : ["Montserrat", "sans-serif"],
-        "montserra-alternates" : ["Montserrat Alternates", "sans-serif"]
+        "montserrat-alternates" : ["Montserrat Alternates", "sans-serif"]
       },
 
       Keyframes: {
