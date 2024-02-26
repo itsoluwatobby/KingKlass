@@ -25,7 +25,7 @@ export const NavModal = () => {
     expected="openNavModal"
     enlarge={true}
     classNames="md:hidden"
-    extraClasses="px-3 py-1 top-1"
+    extraClasses="px-3 py-1 top-0 border flex flex-col gap-y-12"
     >
       <header className={`${user.isSignedIn ? 'flex' : 'hidden'} items-center justify-between`}>
         <div className="flex items-center gap-x-2">
@@ -67,18 +67,18 @@ export const NavModal = () => {
           Sign out
         </Buttons>
         :
-        <div className="absolute bottom-10 w-[95%] flex flex-col items-center gap-y-4">
+        <div className="flex flex-col gap-y-4">
             <Buttons
             onClick={() => actionButton('REGISTER')}
             px='' py=''
-            classNames='rounded-[3px] font-semibold bg-[#8B4513] text-white grid place-content-center w-[95%] md:w-1/2 py-3 hover:bg-[#8B4413] active:bg-[#8B4513] transition-colors'
+            classNames='rounded-[8px] w-full font-semibold bg-[#8B4513] text-white grid place-content-center w-[95%] md:w-1/2 py-3 hover:bg-[#8B4413] active:bg-[#8B4513] transition-colors'
             >
             Register
           </Buttons>
             <Buttons
             onClick={() => actionButton('LOGIN')}
             px='' py=''
-            classNames='rounded-[3px] font-semibold border-[1px] border-[#8B4513] text-[#8B4513] bg-white grid place-content-center w-[95%] md:w-1/2 py-3 hover:bg-opacity-80 active:bg-opacity-90 transition-colors'
+            classNames='rounded-[8px] w-full font-semibold border-[1px] border-[#8B4513] text-[#8B4513] bg-white grid place-content-center w-[95%] md:w-1/2 py-3 hover:bg-opacity-80 active:bg-opacity-90 transition-colors'
             >
             Login
           </Buttons>
@@ -100,20 +100,20 @@ const RouteLinks = ({ values, setToggleNav }: RouteLinksProps) => {
   const navigate = useNavigate();
 
   return (
-    <div className="flex flex-col gap-y-3 font-semibold text-[12px] mt-5 w-full">
+    <div className="bg-inherit flex flex-col gap-y-3 font-semibold text-[12px] mt-5 w-full">
       {
         values?.map(link => (
           link.name.startsWith("Contact") ?
           <a href={link.link} key={link.name} 
           onClick={() => setToggleNav({ modalType: "pass" })}
-          className="hover:scale-[0.99] transition-all w-full p-3 pr-0 border-0 border-b border-b-gray-300">{link.name}</a>
+          className="text-lg font-medium pl-1 hover:scale-[0.99] transition-all w-full py-3  pr-0 border-0 border-b border-b-gray-300">{link.name}</a>
           :
           <div key={link.name} 
           onClick={() => {
             setToggleNav({ modalType: "pass" })
             navigate(link.link)
           }}
-          className="cursor-pointer hover:scale-[0.99] transition-all w-full p-3 pr-0 border-0 border-b border-b-gray-300">{link.name}</div>
+          className="font-medium text-fdt-grey-darker text-lg cursor-pointer hover:scale-[0.99] transition-all w-full py-3 pl-1 pr-0 border-0 border-b border-b-fdt-grey-normal">{link.name}</div>
         ))
       }
     </div>

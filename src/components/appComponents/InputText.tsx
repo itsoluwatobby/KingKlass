@@ -34,7 +34,7 @@ export default function InputText<K>({ value, id, pattern, placeholder, classNam
         required={required}
         autoComplete="off"
         disabled={disabled}
-        className={`w-full text-[13px] bg-inherit focus:outline-0 border placeholder:text-gray-400 ${defaultClassNames} p-2`}
+        className={`rounded-[8px] w-full text-base bg-fdt-grey-light-hover focus:outline-0  placeholder:text-fdt-grey-light-darker ${defaultClassNames} p-2`}
         onChange={e => setInputText((prev: any) => (
           { ...prev, [e.target.name]: e.target.value })
         )}

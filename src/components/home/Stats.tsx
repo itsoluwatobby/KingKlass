@@ -8,8 +8,8 @@ interface StatsProp {
 
 function Stat({name, value, className} : StatsProp) {
   return (
-    <div className={`px-5 flex flex-col justify-center items-center gap-1 ${className}`}>
-        <h3 className="text-fdt-brown-normal text-2xl font-normal my-0 ">{value}+</h3>
+    <div className={`px-5 flex flex-col my-1 justify-center items-center -gap-1 ${className}`}>
+        <h3 className="text-fdt-brown-normal text-xl font-normal my-0 ">{value}+</h3>
         <p className="text-base my-0">{name}</p>
     </div>
   )

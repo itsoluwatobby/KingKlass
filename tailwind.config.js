@@ -25,7 +25,7 @@ export default {
       },
 
       fontFamily: {
-        "playfair-display" : "Playfair Display",
+        "playfair-display" : ["Playfair Display", "serif"],
         "Roboto" : "Roboto",
         "montserrat" : ["Montserrat", "sans-serif"],
         "montserra-alternates" : ["Montserrat Alternates", "sans-serif"]

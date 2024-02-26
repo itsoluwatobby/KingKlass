@@ -51,7 +51,7 @@ function HowItWorks() {
 
   return (
     <section className="w-full pb-5 bg-fdt-grey-light-hover flex flex-col justify-center items-center">
-      <div className="w-full flex flex-col justify-center items-center">
+      <div className="w-full flex flex-col justify-center items-center py-5">
         <h3 className="text-base mb-0 font-normal text-fdt-brown-normal">
           OUR SERVICES
         </h3>
@@ -59,7 +59,7 @@ function HowItWorks() {
           HOW IT WORKS
         </h3>
         <Buttons
-          classNames="mb-4 rounded-[8px] font-bold  text-white bg-fdt-brown-normal"
+          classNames="mb-0 mt-2 rounded-[8px] font-bold  text-white bg-fdt-brown-normal"
           px="px-[24px]"
           py="py-[12px]"
           onClick={() => console.log("Get started")}

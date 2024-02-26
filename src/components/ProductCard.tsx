@@ -42,7 +42,7 @@ export default function ProductCard({
 
       <div className="m-0 lg:px-3 mobile:px-1 py-1 pb-0 font-montserrat">
         <h5 className="text-base mobile:text-[14px]  m-0 font-normal">
-          {reduceTextLength("White Senator with Kofu cap", 15)}
+          {reduceTextLength(name, 16)}
         </h5>
 
         <div className="mt-2.5 mb-0 flex items-center">
@@ -96,12 +96,12 @@ export default function ProductCard({
           </svg>
         </div>
 
-        <div className="mb-2 flex items-center justify-between p-0 m-o">
+        <div className="mb-2 flex items-center justify-between p-0 m-o mt-2">
           <span className="m-0 p-0 text-lg font-montserra-alternates font-semibold">
             {currencyFormat(+price)}
           </span>
 
-          <p className="flex gap-1 items-center text-[14px]">
+          <p className="flex gap-[.2rem] items-center text-[14px]">
             <TfiTimer style={{ fontSize: "1rem" }} />
             <span>{estimated}days</span>
           </p>

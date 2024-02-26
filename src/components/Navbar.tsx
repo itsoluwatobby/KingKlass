@@ -3,7 +3,6 @@ import { KingKlass } from '../svgs/Logo'
 import { RxHamburgerMenu } from "react-icons/rx";
 import { useCallback, useState } from 'react';
 import { useDesignerContext } from '../hooks/useDesignerContext';
-import { LiaTimesCircle } from 'react-icons/lia';
 import { initAppModals } from '../utility/initialVariables';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { HomeNavLinks } from '../utility/constants';
@@ -11,6 +10,8 @@ import { getInitials } from '../utility/getInitials';
 import { MdKeyboardArrowDown } from 'react-icons/md';
 import { DropdownModal } from './DropdownMenu';
 import { GoBell } from 'react-icons/go';
+import { MdClear } from "react-icons/md";
+
 
 
 export default function Navbar() {
@@ -39,7 +40,7 @@ export default function Navbar() {
       <>
       {
         toggleNav.modalType === 'openNavModal' ?
-          <LiaTimesCircle
+          <MdClear
             onClick={() => toggleModal('close')}
             className={iconClass('Cancel')}
           />

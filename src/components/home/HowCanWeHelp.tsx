@@ -19,8 +19,8 @@ function ImgCard({ name, src }: ImgCardProp) {
 
 function HowCanWeHelp() {
   return (
-    <section className="mt-3 pb-10 flex flex-col justify-center items-center">
-      <h3 className="text-[1.25rem] font-normal font-playfair-display text-fdt-brown-dark">
+    <section className="mt-10 pb-10 flex flex-col justify-center items-center">
+      <h3 className="text-[1.25rem] font-normal font-playfair-display text-fdt-brown-dark mb-4">
         HOW CAN WE HELP YOU ?
       </h3>
 

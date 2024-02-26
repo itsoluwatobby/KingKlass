@@ -183,7 +183,7 @@ export default function ProductPage() {
                       price={product.price} 
                       // created_at={product.created_at}
                       estimated={product.estimated}
-                      // name={product.name}
+                      name={product.name}
                     />
                   ))
                 }
