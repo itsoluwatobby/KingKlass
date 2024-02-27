@@ -36,7 +36,7 @@ export default function ProductCard({
         className="object-cover aspect-[0.9/1] rounded-tr-[6px] rounded-tl-[4px]"
       />
 
-      <span className="absolute top-0 left-0 m-2 rounded-[2px] bg-[#585858] p-1 px-2 text-center text-[12px] font-normal text-white font-montserrat">
+      <span className="absolute top-2 left-0 m-2 rounded-[2px] bg-[#585858] p-1 px-2 text-center text-[12px] font-normal text-white font-montserrat">
         New
       </span>
 

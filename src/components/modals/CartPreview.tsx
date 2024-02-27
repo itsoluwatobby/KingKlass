@@ -20,7 +20,7 @@ export const CartPreview = () => {
       classNames="p-3"
       enlarge={true}
       noFullScreen={true}
-      extraClasses="py-4 -mt-1.5 justify-between"
+      extraClasses="py-4 -mt-4 h-[92%] sm:shadow-2xl justify-between"
     >
       <LiaTimesSolid
         onClick={() => setToggleNav({ modalType: "pass" })}

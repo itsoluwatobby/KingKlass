@@ -8,7 +8,7 @@ export default function AdminOrders({}: Props) {
   const rowClass = "text-center p-2 self-center";
 
   return (
-    <div className="overflow-y-scroll flex flex-col gap-5 w-full h-full">
+    <div className="overflow-y-scroll flex flex-col gap-5 w-full h-[90vh] pt-8">
 
       <div className="px-3 flex flex-col gap-y-3">
         <div className="flex items-center justify-between">

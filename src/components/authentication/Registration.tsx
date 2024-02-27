@@ -17,10 +17,8 @@ import { register } from "../../api/globalRequest";
 
 export const Registration = () => {
   const [appState, setAppState] = useState<AppStateType>(initAppState);
-  const { appModals, setAppModals } =
-    useDesignerContext() as DesignerContextProps;
-  const [userCredentials, setUserCredentials] =
-    useState<UserInfo>(initSignUpInfo);
+  const { appModals, setAppModals } = useDesignerContext() as DesignerContextProps;
+  const [userCredentials, setUserCredentials] = useState<UserInfo>(initSignUpInfo);
   const [validation, setValidation] = useState<Validations>(inputValidation);
 
   const { email, name, password, confirm_password } = userCredentials;
@@ -41,16 +39,13 @@ export const Registration = () => {
     setAppState((prev) => ({ ...prev, isLoading: true }));
     try {
       const userDetails = sanitizeEntries({ email, password });
-      console.log(userDetails);
-      const res = await register(userDetails);
-      console.log(res);
+      await register(userDetails);
       setAppState((prev) => ({ ...prev, success: true }));
       setUserCredentials(initSignUpInfo);
       toast.success("Registration successful!");
       setValidation(inputValidation);
       setAppModals({ signup: "CLOSE", signin: "OPEN" });
     } catch (error: unknown) {
-      console.log(error);
       setAppState((prev) => ({ ...prev, isError: true }));
       toast.error("An error occurred");
     } finally {
@@ -182,7 +177,7 @@ export const Registration = () => {
               px=""
               py=""
               isLoading={isLoading}
-              classNames="rounded-lg self-center w-full  font-semibold bg-blue-600 text-white w-[95%] md:w-1/2 py-2 hover:bg-blue-700 grid place-content-center active:bg-blue-800 transition-colors"
+              classNames="rounded-lg self-center w-full  font-semibold bg-blue-600 text-white w-[95%] md:w-fit md:px-4  py-2 hover:bg-blue-700 grid place-content-center active:bg-blue-800 transition-colors"
             >
               <div className="flex items-center gap-x-4 ">
                 <FcGoogle className="text-3xl bg-white rounded-full p-2" />

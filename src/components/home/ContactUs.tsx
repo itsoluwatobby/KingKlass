@@ -61,13 +61,13 @@ export const ContactUs = () => {
           name="name"
           value={name}
           id="yourName"
-          classNames="py-3 px-3 text-xl placeholder:text-fdt-grey-light-active text-fdt-grey-light-active font-normal rounded-[6px] border-white-500 border border-solid"
+          classNames="py-3 px-3 text-xl placeholder:text-fdt-grey-light-active text-fdt-grey-light-active font-normal rounded-[6px] border-white-500 border bg-inherit border-solid"
           setInputText={setContactMessage}
         />
         <InputText
           placeholder="Email"
           id="yourEmail"
-          classNames="py-3 px-3 text-xl placeholder:text-fdt-grey-light-active text-fdt-grey-light-active font-normal rounded-[6px] border-white-500 border border-solid"
+          classNames="py-3 px-3 text-xl placeholder:text-fdt-grey-light-active text-fdt-grey-light-active font-normal rounded-[6px] border-white-500 border bg-inherit border-solid"
           name="emails"
           value={emails}
           setInputText={setContactMessage}
@@ -83,10 +83,10 @@ export const ContactUs = () => {
 
         <Buttons
           onClick={handleSubmit}
-          py="py-2"
+          py="py-3"
           px="px-14"
           isLoading={isLoading}
-          classNames="bg-[#F2F2F2] rounded-[8px] text-fdt-brown-normal font-bold mt-1 w-full w-fit self-center"
+          classNames="bg-[#F2F2F2] rounded-[8px] text-fdt-brown-normal font-bold mt-1 w-64 w-fit self-center"
         >
           Send
         </Buttons>

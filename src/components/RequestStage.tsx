@@ -19,7 +19,7 @@ export default function RequestStages<T>({ children, targetVal, isLoading, isSuc
       {
         isLoading ?
           <LoadingComp isLoading={isLoading} 
-            classNames="w-14 h-14 left-1/2 top-10"
+            classNames="w-16 h-16 left-1/2 top-40"
           /> 
           :
           isError ? 

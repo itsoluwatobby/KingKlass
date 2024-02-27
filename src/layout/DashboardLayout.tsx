@@ -13,7 +13,7 @@ export default function DashboardLayout() {
   return (
     <HomeLayout>
       <div className="flex gap-x-6 w-full h-full overflow-hidden">
-        <aside className="hidden md:flex sticky top-0 flex-col h-[88vh] px-3 text-[14px] gap-y-2 whitespace-nowrap border-0 border-r-[1px]">
+        <aside className="hidden md:flex sticky top-0 flex-col h-[91vh] px-3 pt-5 text-[14px] gap-y-2 whitespace-nowrap border-0 border-r-[1px]">
           {
             AdminNavLinks.map(nav => (
               <Link to={nav.link} key={nav.name} 

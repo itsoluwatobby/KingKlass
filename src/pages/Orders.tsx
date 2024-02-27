@@ -99,7 +99,7 @@ export const Orders = () => {
   return (
     <HomeLayout
     >
-      <div className="md:flex w-full">
+      <div className="md:flex w-full md:px-5 md:py-7">
         <div className="scrollbar shadow-sm w-full flex flex-col gap-y-2 px-3 md:min-h-[85vh] md:max-h-[85vh] overflow-y-scroll">
           {
             orders.map((order) => (

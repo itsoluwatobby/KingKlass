@@ -9,7 +9,7 @@ import { LiaTimesSolid } from "react-icons/lia";
 import UserInputDetails from "../modals/userModal/UserInputDetails";
 import { FcGoogle } from "react-icons/fc";
 import FadedBGWrapper from "../../layout/FadedBGWrapper";
-import { login } from "../../api/globalRequest";
+import { getUser, login } from "../../api/globalRequest";
 
 export const Login = () => {
   const [appState, setAppState] = useState<AppStateType>(initAppState);
@@ -19,7 +19,7 @@ export const Login = () => {
     useState<UserInfo>(initSignInInfo);
   const navigate = useNavigate();
   const location = useLocation();
-  const pathname = location.state ?? "/";
+  const pathname = location.state ?? "/products";
 
   const { email, password, remember_me } = userCredentials;
   const { isLoading, isError } = appState;
@@ -30,18 +30,19 @@ export const Login = () => {
     setAppState((prev) => ({ ...prev, isLoading: true }));
     try {
       const userDetails = sanitizeEntries({ email, password });
-      console.log(userDetails);
       const res = await login(userDetails);
-      console.log(res);
+      typeof window !== 'undefined' ? window.localStorage.setItem('King_Klass_Pass', res.token) : null;
+      const loggedIn = await getUser(res.id);
+      console.log(loggedIn)
       void setUser;
       setAppState((prev) => ({ ...prev, success: true }));
       setUserCredentials(initSignInInfo);
       toast.success("Welcome!!!");
+      setAppModals({ signup: "CLOSE", signin: "CLOSE" });
       navigate(pathname, { replace: true });
-    } catch (error: unknown) {
-      console.log(error);
+    } catch (error: any) {
       setAppState((prev) => ({ ...prev, isError: true }));
-      toast.error("An error occurred");
+      toast.error(error.response.data.error);
     } finally {
       setAppState((prev) => ({ ...prev, isLoading: false }));
     }
@@ -61,7 +62,7 @@ export const Login = () => {
   return (
     <FadedBGWrapper modalType={appModals.signin} expected="OPEN" enlarge={true}>
       <div
-        className={`mx-auto mt-20 relative bg-[#F8F8F8] flex flex-col gap-y-4 w-[100%] sm:w-[25rem] rounded-md p-5 h-fit`}
+        className={`mx-auto mt-16 relative bg-[#F8F8F8] flex flex-col gap-y-4 w-[100%] sm:w-[25rem] rounded-md p-5 h-fit`}
       >
         <div className="w-full flex flex-col py-8 items-center gap-y-5">
           <h3 className="font-medium text-2xl">Login</h3>
@@ -131,8 +132,8 @@ export const Login = () => {
               onClick={handleSubmit}
               px=""
               py=""
-              isLoading={isLoading}
-              classNames="self-center rounded-md font-semibold bg-blue-600 text-white w-full  md:w-1/2 py-3 hover:bg-blue-700 grid place-content-center active:bg-blue-800 transition-colors"
+              isLoading={false}
+              classNames="self-center rounded-md font-semibold bg-blue-600 text-white w-full md:w-fit md:px-4 py-3 hover:bg-blue-700 grid place-content-center active:bg-blue-800 transition-colors"
             >
               <div className="flex items-center gap-x-4 text-xs">
                 <FcGoogle className="text-3xl bg-white rounded-full p-2" />

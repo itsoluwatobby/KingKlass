@@ -1,5 +1,3 @@
-
-
 type EndpointParams = {
   orderId?: string; 
   userId?: string; 
@@ -11,12 +9,13 @@ type EndpointParams = {
 }
 type Method = 'get' | 'post' | 'put' | 'delete' | 'patch';
 type Paths = 'login' | 'users' | 'register' | 'createUser' | 'getUser' | 'getUserMeasurement' | 'getUserOrders' | 'createUserOrder' | 'getUserOrder' | 'updateUserOrder' | 'getOrderWithMeasurement' | 'deleteUserOrder' | 'createCategory' | 'getCategories' | 'getCategory' | 'getOrders' | 'getOrdersStatus' | 'getOrder' | 'updateOrder' | 'deleteOrder' | 'getProducts' | 'getProduct' | 'createProduct' | 'updateProduct' | 'deleteProduct' | 'getReviews' | 'getReview' | 'deleteReview' | 'getAllReviews' | 'createReview' | 'updateReview' | 'getProductReview';
+
 export const Endpoints = ({ orderId='', userId='', reviewId='', productId='', categoryId='', status='Pending', categoryName='' }: EndpointParams): Record<Paths, {method: Method, url: string}> => {
   const urlPath = '/api/v1' as const;
 
   return {
     users: {
-      method: 'get',  url: urlPath+'/users'
+      method: 'get',  url: `${urlPath}/users`
     },
     login: {
       method: 'post',  url: '/login'

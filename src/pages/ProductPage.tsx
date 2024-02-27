@@ -1,7 +1,6 @@
 import HomeLayout from "../layout/HomeLayout";
 import { currencyFormat, refindedReview } from "../utility/formatPrice";
 import { checkCount } from "../utility/truncateTextLength";
-import { format } from "timeago.js";
 import { IoShareSocialOutline } from "react-icons/io5";
 import { Buttons } from "../components/appComponents/Buttons";
 import { SlArrowLeft, SlArrowRight } from "react-icons/sl";
@@ -27,8 +26,8 @@ export default function ProductPage() {
   const refContainer = useRef<HTMLDivElement>(null);
   const prod = useParams() as { productId: string };
   const [appState, setAppState] = useState<AppStateType>(initAppState);
-  const [productRes, setProductRes] =
-    useState<typeof initProductPreview>(initProductPreview);
+  const [productRes, setProductRes] = useState<typeof initProductPreview>(initProductPreview);
+  const { user, setAppModals } = useDesignerContext() as DesignerContextProps;
 
   const { isLoading, isError, isSuccess } = appState;
   const { product, productReviews, productsPreview } = productRes;
@@ -187,7 +186,12 @@ export default function ProductPage() {
                   {currencyFormat(10500)}
                 </h2>
                 <Buttons
-                  onClick={() => setToggleNav({ modalType: "purchasePrompt" })}
+                  onClick={() => {
+                    user.isSignedIn ? 
+                    setToggleNav({ modalType: "purchasePrompt" })
+                    :
+                    setAppModals(prev => ({ ...prev, signin: 'OPEN' }))
+                  }}
                   px="px-6"
                   py="py-3"
                   classNames="font-semibold text-base font-bold bg-fdt-brown-normal text-white hover:opacity-95 transition-opacity  rounded-md cursor-pointer"
@@ -256,7 +260,7 @@ export default function ProductPage() {
 
             <div className="flex flex-col items-start">
               <h3 className="font-bold text-sm">Popular</h3>
-              <div className="px-3 overflow-x-scroll flex items-center gap-x-3 flex-none h-[14.5rem] w-full">
+              <div className="px-3 overflow-x-scroll flex items-center gap-x-3 flex-none h-[16.5rem] w-full">
                 {productsPreview.map((product) => (
                   <ProductCard
                     key={product.id}

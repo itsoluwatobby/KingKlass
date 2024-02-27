@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { AiOutlineEye } from "react-icons/ai";
 import { PiEyeClosed } from "react-icons/pi";
 import { useDesignerContext } from "../../hooks/useDesignerContext";
@@ -9,17 +8,19 @@ type InputTextProps<T> = {
   id: string;
   value: string;
   name: string;
+  revealPass: Toggle;
   required?: boolean;
   classNames?: string;
   pattern?: string;
   validPassword?: boolean;
   matchingPassword?: boolean;
   disabled?: boolean;
-  setInputText: React.Dispatch<React.SetStateAction<T>>
+  setRevealPass: React.Dispatch<React.SetStateAction<Toggle>>;
+  setInputText: React.Dispatch<React.SetStateAction<T>>;
 }
 
-export default function PasswordInput<K>({ value, id, pattern, classNames, name, setInputText, validPassword, matchingPassword, required = false, disabled=false }: InputTextProps<K>) {
-  const [revealPass, setRevealPass] = useState<Toggle>('CLOSE');
+export default function PasswordInput<K>({ revealPass, setRevealPass, value, id, pattern, classNames, name, setInputText, validPassword, matchingPassword, required = false, disabled=false }: InputTextProps<K>) {
+  // const [revealPass, setRevealPass] = useState<Toggle>('CLOSE');
   const { appModals } = useDesignerContext() as DesignerContextProps;
 
   const defaultClassNames = classNames ?? 'p-2 border-gray-300'

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import InputText from "../../appComponents/InputText";
 import PasswordInput from "../../appComponents/PasswordInput";
 
@@ -28,7 +29,7 @@ export default function UserInputDetails<T>({
   matchingPassword,
   validEmail,
 }: UserInputDetailsProps<T>) {
-  // const [displayInstruction, setDisplayInstruction] = useState<boolean>(false)
+  const [revealPass, setRevealPass] = useState<Toggle>('CLOSE')
   // const { appModals } = useDesignerContext() as DesignerContextProps;
 
   return (
@@ -44,6 +45,8 @@ export default function UserInputDetails<T>({
           name={name}
           disabled={disabled}
           id={id}
+          revealPass={revealPass} 
+          setRevealPass={setRevealPass}
           validPassword={validPassword}
           matchingPassword={matchingPassword}
           value={value}

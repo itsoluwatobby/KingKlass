@@ -53,7 +53,7 @@ export const PaymentCheckout = () => {
       expected="paymentCheckout"
       classNames="p-3"
       enlarge={true}
-      extraClasses="p-4 pb-6 md:top-1 justify-between"
+      extraClasses="p-4 pb-6 md:top-1 sm:shadow-2xl h-[88%] justify-between"
     >
       <div className="self-center flex flex-col items-center gap-y-4">
         <div className="flex items-center w-36 py-2 font-sans text-sm justify-between transition-all">

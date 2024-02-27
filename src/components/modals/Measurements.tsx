@@ -50,7 +50,7 @@ export const Measurements = () => {
       modalType={toggleNav.modalType}
       expected="measurements"
       enlarge={true}
-      extraClasses="px-3 py-2 md:pb-6 md:mt-2 gap-y-6 h-fit"
+      extraClasses="px-3 py-2 pb-12 md:mt-2 sm:shadow-2xl sm:bg-gray-50 gap-y-6 h-fit"
     >
       <LiaTimesSolid
         onClick={() => setToggleNav({ modalType: "pass" })}
