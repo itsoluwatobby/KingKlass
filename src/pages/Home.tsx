@@ -19,7 +19,7 @@ export const Home = () => {
       <Hero />
       <section className="w-full max-w-[800px] flex flex-row justify-evenly items-center mt-0 mb-6">
         <Buttons
-          onClick={() => navigate("/aboutus")}
+          onClick={() => navigate("/products")}
           px="px-3"
           py="py-2"
           classNames="mobile:text-[12px] border-0 text-white  bg-fdt-brown-normal font-bold"

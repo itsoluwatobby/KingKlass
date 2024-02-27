@@ -1,96 +1,105 @@
-import Paragraph from "../components/appComponents/Paragraph";
 import HomeLayout from "../layout/HomeLayout";
-import { setCustomBackgroundImage } from "../utility/setBackGroundImage";
-
+import { FiGithub } from "react-icons/fi";
+import { CiMail } from "react-icons/ci";
+import { FaLinkedinIn } from "react-icons/fa";
 
 export default function AboutUs() {
+  const devs = [
+    {
+      name: "Obimba Smart",
+      img: "https://avatars.githubusercontent.com/u/67028610?v=4",
+      role: "Backend",
+      linkedin: "https://www.linkedin.com/in/obimba-smart/",
+      email: "obimbasmartchukwunenye@gmail.com",
+      github: "https://github.com/obimbasmart",
+    },
 
+    {
+      name: "Oluwatobi Akinola",
+      img: "https://avatars.githubusercontent.com/u/74466699?v=4",
+      role: "Frontend",
+      linkedin: "https://linkedin.com/in/itsoluwatobby",
+      email: "itsoluwatobby@gmail.com",
+      github: "https://github.com/itsoluwatobby",
+    },
+  ];
   return (
     <HomeLayout>
-      <div className="md:mx-auto md:w-[65%] flex flex-col gap-y-3 items-center px-4">
-        <h3 className="text-3xl">About Us</h3>
-
-        <div className="flex flex-col gap-y-3">
-          <Paragraph 
-            content={
-              <p>
-                The name &quot;<b>King Klass</b>&quot; is a reflection of our commitment to royalty in craftsmanship and a celebration of the enduring class in tailored fashion. 'King' symbolizes superiority, leadership, and the utmost quality, while 'Klass' speaks to the enduring style and classic sophistication that define our creations
-              </p>
-            }
-          />
-
-          <div className="flex-none flex w-full items-center h-40 md:h-52 md:px-4 md:gap-x-3">
-            <div className="flex-auto flex flex-col items-center gap-y-2">
-              <h4 className="font-medium text-[#8B4513] text-sm">ABOUT US</h4>
-              <span className="font-semibold">Your Personal Tailor</span>
-              <p className="text-[#6E6E6E] text-sm text-center">
-                Merging traditional craftsmanship with contemporary flair, we craft bespoke garments that celebrate individuality and timeless style. 
-              </p>
-            </div>
-            <div 
-              style={setCustomBackgroundImage('/aboutus.png')}
-              className="flex-none h-full w-[40%]"
-            />
-          </div>
-
-          <Paragraph 
-            content={
-              <p className="flex flex-col">
-                <b>Crafting Identity:</b>
-                We believe that fashion is a powerful form of self-expression, and at King Klass, we empower individuals to craft their unique identity through exceptional and personalized fashion. Every stitch we make is a brushstroke on the canvas of individuality, creating garments that resonate with the essence of the wearer.
-              </p>
-            }
-          />
-
-          <Paragraph 
-            content={
-              <p className="flex flex-col">
-                <b>Timeless Elegance:</b>
-                Our vision is rooted in the pursuit of a world where every garment transcends fleeting trends, embodying timeless elegance. King Klass envisions a wardrobe that stands the test of time, where each piece tells a story of craftsmanship, passion, and the pursuit of excellence.
-              </p>
-            }
-          />
-
-          <Paragraph 
-            content={
-              <p className="flex flex-col">
-                <b>Commitment to Craftsmanship:</b>
-                Our brand is not just about fashion; it's about the artistry and skill invested in every garment. King Klass Designs redefines the fashion experience by seamlessly blending traditional craftsmanship with contemporary flair. We are dedicated to providing unparalleled tailoring services, ensuring that each garment not only fits flawlessly but also reflects the unique personality and aspirations of its wearer.
-              </p>
-            }
-          />
+      <div className="md:mx-auto md:w-[65%] flex flex-col gap-y-3 items-center">
+        <div className="w-full flex justify-center items-center bg-[url('/aboutus.png')] aspect-[2.87/1] bg-cover">
+          <h3 className="text-2xl font-playfair-display font-medium text-fdt-brown-dark">
+            ABOUT US
+          </h3>
         </div>
 
-        <div className="flex self-center flex-col gap-y-3 mt-5">
-          <h4 className="font-bold text-xl">Project developed by:</h4>
-          <div className="flex items-center gap-10 self-center mobile:flex-col">
-            <div className="flex flex-col gap-y-1 items-center">
-              <figure className="w-32 h-32 rounded-full bg-slate-100">
-                <img src="/tobby.png" alt="" className="w-full h-full rounded-full object-cover" />
-              </figure>
+        <p className="font-montserrat mx-4 my-8 selection:text-base font-normal text-fdt-grey-darker leading-7">
+          <span className="block text-fdt-brown-normal mb-5">WHO WE ARE</span>
+          The name "King Klass" is a reflection of our commitment to royalty in
+          craftsmanship and a celebration of the enduring class in tailored
+          fashion. 'King' symbolizes superiority, leadership, and the utmost
+          quality, while 'Klass' speaks to the enduring style and classic
+          sophistication that define our creations
+          <br /> <br className="m-0 p-0" />
+          At King Klass, we believe fashion is more than just clothing—it's a
+          canvas for self-expression. Through personalized fashion, we empower
+          individuals to craft their unique identity, stitch by stitch. Our
+          vision is simple: to create garments that transcend trends, embodying
+          timeless elegance and telling a story of craftsmanship, passion, and
+          excellence, ensuring a wardrobe that stands the test of time. At King
+          Klass Designs, we blend traditional craftsmanship with contemporary
+          flair, redefining the fashion experience. With unparalleled tailoring
+          services, each garment fits flawlessly, reflecting the wearer's
+          personality and aspirations.
+        </p>
 
-              <span>Oluwatobi Akinola Samuel</span>
-              <span>Frontend developer</span>
-              <a href="https://github.com/itsoluwatobby" target="_blank"
-              className='text-blue-500 font-semibold underline'
-              >Github Profile</a>
-            </div>
-            
-            <div className="flex flex-col gap-y-1 items-center">
-              <figure className="w-32 h-32 rounded-full bg-slate-100">
-                <img src="/smart.jpg" alt="" className="w-full h-full rounded-full object-cover" />
-              </figure>
-
-              <span>Obimba Smart</span>
-              <span>Backend developer</span>
-              <a href="https://github.com/obimbasmart" target="_blank"
-              className='text-blue-500 font-semibold underline'
-              >Github Profile</a>
-            </div>
-          </div>
-        </div>
+        <section className="flex flex-col justify-center items-center gap-4">
+          {devs.map((dev) => (
+            <Dev key={dev.name} {...dev} />
+          ))}
+        </section>
       </div>
     </HomeLayout>
-  )
+  );
 }
 
+interface DevProps {
+  name: string;
+  github: string;
+  linkedin: string;
+  img: string;
+  email: string;
+  role: string;
+}
+
+function Dev({ ...attrs}: DevProps) {
+  return (
+    <div className="flex w-[92%] aspect-[5/1] px-4 py-3 gap-2 bg-white rounded-md font-sans shadow-md">
+      <img
+        className="w-[30%] aspect-square object-fill rounded-md"
+        src={attrs.img}
+        alt=""
+      />
+
+      <div className="flex flex-col justify-between font-montserrat">
+        <div className="flex flex-col gap-1">
+          <h3 className="text-base font-medium">{attrs.name}</h3>
+          <span className="block w-fit rounded-sm text-fdt-grey-dark-active bg-fdt-brown-light font-normal px-2 py-1 text-xs italic">
+            {attrs.role}
+          </span>
+        </div>
+
+        <div className="flex justify-evenly text-xl mb-1">
+          <CiMail
+            onClick={() => (window.location.href = `mailto:${attrs.email}`)}
+          />
+          <a href={attrs.github}>
+            <FiGithub />
+          </a>
+          <a href={attrs.linkedin}>
+            <FaLinkedinIn />
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+}
