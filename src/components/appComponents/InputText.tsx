@@ -19,7 +19,7 @@ type InputTextProps<T> = {
 export default function InputText<K>({ value, id, pattern, placeholder, classNames, name, setInputText, required = false, type = 'text', disabled = false, validEmail }: InputTextProps<K>) {
   const { appModals } = useDesignerContext() as DesignerContextProps;
 
-  const defaultClassNames = classNames ?? 'p-2 border-gray-300'
+  const defaultClassNames = classNames ?? 'p-2'
   const textMsg = !validEmail ? 'invalid-email': 'conflict';
 
   return (
@@ -34,7 +34,7 @@ export default function InputText<K>({ value, id, pattern, placeholder, classNam
         required={required}
         autoComplete="off"
         disabled={disabled}
-        className={`rounded-md w-full text-base bg-fdt-grey-light-hover focus:outline-0  placeholder:text-fdt-grey-light-darker ${defaultClassNames} p-2`}
+        className={`rounded-sm w-full text-base bg-fdt-grey-light-hover focus:outline-0  placeholder:text-fdt-grey-light-darker ${defaultClassNames} p-2`}
         onChange={e => setInputText((prev: any) => (
           { ...prev, [e.target.name]: e.target.value })
         )}

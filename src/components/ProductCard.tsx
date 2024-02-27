@@ -97,7 +97,7 @@ export default function ProductCard({
         </div>
 
         <div className="mb-2 flex items-center justify-between p-0 m-o mt-2">
-          <span className="m-0 p-0 text-lg font-montserrat-alternates font-semibold">
+          <span className="m-0 p-0 text-lg font-montserrat-alternates font-medium">
             {currencyFormat(+price)}
           </span>
 

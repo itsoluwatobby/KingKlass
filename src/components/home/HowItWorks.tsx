@@ -70,7 +70,7 @@ function HowItWorks() {
 
       <section className="py-4 max-w-[800px] rounded-[8px] bg-[#F8F8F8]  mx-2 flex flex-row flex-wrap justify-evenly gap-1">
         {howItWork.map((step) => (
-          <Step number={step.number} title={step.title} desc={step.desc} />
+          <Step key={step.number} number={step.number} title={step.title} desc={step.desc} />
         ))}
       </section>
     </section>

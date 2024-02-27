@@ -99,7 +99,7 @@ export const Registration = () => {
   return (
     <FadedBGWrapper modalType={appModals.signup} expected="OPEN" enlarge={true}>
       <div
-        className={`mx-auto mt-16 relative bg-[#F8F8F8] w-[100%] rounded-md sm:w-[25rem]  p-5 h-fit`}
+        className={`mx-auto mt-16 relative bg-[#F8F8F8] w-[100%] rounded-sm sm:w-[25rem]  p-5 h-fit`}
       >
         <div className="w-full flex flex-col py-3 items-center gap-y-3">
           <h3 className="font-medium text-2xl">Register</h3>
@@ -166,7 +166,7 @@ export const Registration = () => {
               px=""
               py=""
               isLoading={isLoading}
-              classNames={`rounded-[8px] text-base self-center font-semibold bg-[#8B4513] text-white w-full md:w-1/2 py-3 ${
+              classNames={`rounded-sm text-base self-center font-semibold bg-[#8B4513] text-white w-full md:w-1/2 py-3 ${
                 canSubmit
                   ? "hover:bg-orange-700 active:bg-orange-800"
                   : "bg-slate-600"
@@ -182,7 +182,7 @@ export const Registration = () => {
               px=""
               py=""
               isLoading={isLoading}
-              classNames="rounded-lg self-center w-full  font-semibold bg-blue-600 text-white w-[95%] md:w-1/2 py-2 hover:bg-blue-700 grid place-content-center active:bg-blue-800 transition-colors"
+              classNames="rounded-sm self-center w-full  font-semibold bg-blue-600 text-white w-[95%] md:w-1/2 py-2 hover:bg-blue-700 grid place-content-center active:bg-blue-800 transition-colors"
             >
               <div className="flex items-center gap-x-4 ">
                 <FcGoogle className="text-3xl bg-white rounded-full p-2" />

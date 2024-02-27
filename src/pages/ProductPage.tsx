@@ -1,7 +1,7 @@
 import HomeLayout from "../layout/HomeLayout";
 import { currencyFormat, refindedReview } from "../utility/formatPrice";
 import { checkCount } from "../utility/truncateTextLength";
-import { format } from "timeago.js";
+// import { format } from "timeago.js";
 import { IoShareSocialOutline } from "react-icons/io5";
 import { Buttons } from "../components/appComponents/Buttons";
 import { SlArrowLeft, SlArrowRight } from "react-icons/sl";
@@ -103,11 +103,11 @@ export default function ProductPage() {
 
             <div className="font-montserrat flex-none md:w-[50%] gap-y-2 flex flex-col p-4 mt-0 w-full">
               <div className="flex flex-row justify-between">
-                <div className="flex flex-row gap-2 text-sm text-fdt-grey-light">
+                <div className="flex flex-row gap-1 text-sm text-fdt-grey-light items-center">
                   <span className="bg-fdt-grey-dark font-bold  top-4 left-4 rounded-sm p-1 px-1.5 backdrop-blur-md">
                     New
                   </span>
-                  <GoDotFill />
+
                   <span className="bg-[#FD5757]  font-bold  top-4 rounded-sm py-1 px-1.5 backdrop-blur-md">
                     -60%
                   </span>
@@ -115,65 +115,17 @@ export default function ProductPage() {
                 <IoShareSocialOutline className="text-2xl" />
               </div>
 
-              <div className="flex flex-row gap-2 text-base text-fdt-grey-darker">
-                <span>Senator, </span>
+              <div className="flex flex-row gap-1.5 text-base text-fdt-grey-darker items-center">
+                <span>Senator</span>
+                <GoDotFill className="text-sm text-black" />
                 <span>Chinos</span>
+                <GoDotFill className="text-sm text-black" />
+                <span>Lace</span>
               </div>
 
               <h3 className="text-2xl font-medium text-wrap">
                 KingsKalss Trouser and Shirt and blue cap with
               </h3>
-
-              <div className="mt-1 mb-0 flex items-center">
-                <span className="mr-2 rounded bg-[#EFBF13] px-2.5 py-0.5 text-xs font-normal font-montserrat">
-                  5.0
-                </span>
-                <svg
-                  aria-hidden="true"
-                  className="h-5 w-5 text-[#EFBF13]"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                </svg>
-                <svg
-                  aria-hidden="true"
-                  className="h-5 w-5 text-[#EFBF13]"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                </svg>
-                <svg
-                  aria-hidden="true"
-                  className="h-5 w-5 text-[#EFBF13]"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                </svg>
-                <svg
-                  aria-hidden="true"
-                  className="h-5 w-5 text-[#EFBF13]"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                </svg>
-                <svg
-                  aria-hidden="true"
-                  className="h-5 w-5 text-[#EFBF13]"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                </svg>
-              </div>
 
               <p className="flex gap-[.2rem] items-center text-base mt-1 text-fdt-grey-darker">
                 <TfiTimer style={{ fontSize: "1rem" }} />
@@ -201,27 +153,26 @@ export default function ProductPage() {
               <div className="flex flex-col gap-2 font-montserrat">
                 <h4 className="font-medium text-xl">Description</h4>
                 <p className="text-base font-normal text-fdt-grey-dark-active text-wrap">
-                  Handcrafted with care, this garment
-                  reflects Nigeria's rich cultural heritage, adding a touch of
-                  authenticity to your wardrobe. Perfect for any occasion, from
-                  formal events to casual outings, the Senator cloth offers
-                  versatility without compromising on comfort or quality.
-                  Elevate your look, embrace your roots, and make a statement
-                  with our Senator cloth – because true style knows no
-                  boundaries.
+                  Handcrafted with care, this garment reflects Nigeria's rich
+                  cultural heritage, adding a touch of authenticity to your
+                  wardrobe. Perfect for any occasion, from formal events to
+                  casual outings, the Senator cloth offers versatility without
+                  compromising on comfort or quality. Elevate your look, embrace
+                  your roots, and make a statement with our Senator cloth –
+                  because true style knows no boundaries.
                 </p>
               </div>
             </div>
           </div>
 
-          <div className="flex flex-col gap-y-4 midscreen:px-3 text-xs">
+          <div className="flex flex-col gap-y-4 midscreen:px-3 font-montserrat">
             <div className="flex flex-col gap-y-3">
-              <h4 className="text-[13px] font-semibold">Reviews</h4>
-              <div className="flex items-center gap-x-1 text-xs border-0 border-b-2 pb-0.5">
-                <p className="border border-yellow-200 text-yellow-500 w-fit font-medium font-sans p-0.5 rounded-sm">
+              <h4 className="text-xl font-medium">Reviews</h4>
+              <div className="flex items-center gap-x-2 text-sm border-b border-b-0.5 pb-1 border-fdt-grey-normal">
+                <p className=" bg-[#F1CB43] text-fdt-grey-darker p-1  rounded-sm">
                   4.4/5
                 </p>
-                <span className="font-sans text-gray-600">
+                <span className="text-fdt-grey-darker">
                   {checkCount(64)} ratings
                 </span>
               </div>
@@ -254,9 +205,9 @@ export default function ProductPage() {
               </div>
             </div>
 
-            <div className="flex flex-col items-start">
-              <h3 className="font-bold text-sm">Popular</h3>
-              <div className="px-3 overflow-x-scroll flex items-center gap-x-3 flex-none h-[14.5rem] w-full">
+            <div className="flex flex-col gap-y-3 items-start  font-montserrat ">
+              <h4 className="font-medium text-xl">Similar Products</h4>
+              <div className="overflow-x-scroll flex justify-start items-center pt-3 gap-x-3 bg-[#F8F8F8] h-full w-full">
                 {productsPreview.map((product) => (
                   <ProductCard
                     key={product.id}
