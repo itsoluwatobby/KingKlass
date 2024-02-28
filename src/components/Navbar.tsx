@@ -1,7 +1,7 @@
 import { BsCart3 } from 'react-icons/bs';
 import { KingKlass } from '../svgs/Logo'
 import { RxHamburgerMenu } from "react-icons/rx";
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useDesignerContext } from '../hooks/useDesignerContext';
 import { initAppModals } from '../utility/initialVariables';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -15,7 +15,7 @@ import { MdClear } from "react-icons/md";
 
 
 export default function Navbar() {
-  const username = "Okereke Ugo";
+  const [username, setUsername] = useState<string>('');
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const [openDropdown, setOpenDropdown] = useState<boolean>(false)
@@ -24,6 +24,15 @@ export default function Navbar() {
   const iconClass = useCallback((type: 'Burger' | 'Cancel') => {
     return `${type} cursor-pointer text-3xl hover:opacity-70 active:opacity-100 transition-opacity flex-none md:hidden`
   }, [])
+
+  useEffect(() => {
+    let isMounted = true;
+    if (isMounted) setUsername(user.first_name as string ?? user.email?.split('@')[0]);
+
+    return () => {
+      isMounted = false
+    }
+  }, [user.first_name, user.email])
 
   const toggleModal = (type: 'open' | 'close') => {
     if (type === 'open') {

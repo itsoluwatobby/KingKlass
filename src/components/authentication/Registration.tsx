@@ -154,7 +154,7 @@ export const Registration = () => {
             type="password"
           />
 
-          <div className="flex flex-col w-full gap-y-3 mt-2">
+          <div className="flex flex-col w-full gap-y-3 mt-8">
             <Buttons
               onClick={handleSubmit}
               disabled={!canSubmit}

@@ -2,38 +2,38 @@ import UserInputDetails from "./UserInputDetails"
 
 
 type UserDetailFormProps = {
-  userDetails: UserDetails;
+  userDetails: User;
   disabled: boolean;
-  setUserDetails: React.Dispatch<React.SetStateAction<UserDetails>>
+  setUserDetails: React.Dispatch<React.SetStateAction<User>>
 }
 
 export default function UserDetailForm({ setUserDetails, disabled, userDetails }: UserDetailFormProps) {
-  const { email, name, mobileNumber, password, username } = userDetails;
+  const { email, first_name, last_name, phone_no } = userDetails;
 
   return (
     <>
        <UserInputDetails
           type="text"
-          title="Full Name" value={name as string} name='name' disabled={disabled} id='fullName'
+          title="First Name" value={first_name as string} name='first_name' disabled={disabled} id='fullName'
           setUserDetails={setUserDetails}
         />
         <UserInputDetails
-          title=" Mobile Number" value={mobileNumber} name='mobileNumber' type='tel' disabled={disabled}
-          setUserDetails={setUserDetails} id='mobileNumber'
-        />
-        <UserInputDetails
-          title="Username" value={username} type='text' name='username' disabled={disabled}
+          title="Last Name" value={last_name as string} type='text' name='last_name' disabled={disabled}
           setUserDetails={setUserDetails} id='userUsername'
         />
         <UserInputDetails
-          placeholder="iamuser@jj.com" id='userEmail'
-          title="Email" value={email} name='email' disabled={disabled}
-          setUserDetails={setUserDetails} type='email'
+          title=" Mobile Number" value={phone_no as string} name='phone_no' type='tel' disabled={disabled}
+          setUserDetails={setUserDetails} id='mobileNumber'
         />
         <UserInputDetails
+          placeholder="iamuser@jj.com" id='userEmail'
+          title="Email" value={email as string} name='email' disabled={true}
+          setUserDetails={setUserDetails} type='email'
+        />
+        {/* <UserInputDetails
           title="Password" value={password} name='password' disabled={disabled} id="userPassword"
           setUserDetails={setUserDetails} type='password'
-        />
+        /> */}
     </>
   )
 }

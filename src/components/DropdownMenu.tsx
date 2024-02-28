@@ -46,14 +46,14 @@ export const DropdownModal = ({ openDropdown, setOpenDropdown, username }: Dropd
             signout={close}
             setOpenDropdown={setOpenDropdown}
             isSignedIn={user.isSignedIn}
-            values={AdminNavLinks}
+            values={AdminNavLinks} user={user}
           />
         :
           <RouteLinks
             signout={close}
             setOpenDropdown={setOpenDropdown}
             isSignedIn={user.isSignedIn}
-            values={DesktopDropdown}
+            values={DesktopDropdown} user={user}
           />
       }
 
@@ -89,9 +89,10 @@ type RouteLinksProps = {
   }[];
   signout: () => void;
   isSignedIn: boolean;
+  user: User;
   setOpenDropdown: React.Dispatch<React.SetStateAction<boolean>>
 }
-const RouteLinks = ({ values, setOpenDropdown, signout, isSignedIn }: RouteLinksProps) => {
+const RouteLinks = ({ values, setOpenDropdown, user, signout, isSignedIn }: RouteLinksProps) => {
   const { setToggleNav } = useDesignerContext() as DesignerContextProps;
   const navigate = useNavigate();
 
@@ -142,13 +143,17 @@ const RouteLinks = ({ values, setOpenDropdown, signout, isSignedIn }: RouteLinks
                           setOpenDropdown(false)
                         }}
                         className="hover:scale-[0.99] transition-all w-full py-3 pr-0 ">{link.name}</a>
-                      :
+                      : (
+                        (link.name.startsWith('Orders') || link.name.startsWith('Manage')) && !user.isSignedIn ?
+                        null
+                        :
                         <div 
                         onClick={() => {
                           setOpenDropdown(false)
                           navigate(link.link)
                         }}
                         className="hover:bg-gray-100 w-full cursor-pointer">{link.name}</div>
+                      )
                     )
             }
           </div>

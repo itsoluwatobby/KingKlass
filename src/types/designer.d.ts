@@ -17,9 +17,10 @@ type ToggleOption = {
 
 type UserResponse = {
   id: string;
+  file?: string;
   is_admin: boolean,
   created_at: string,
-  email: string,
+  email: string;
   first_name?: string,
   last_name: string,
   phone_no: string,
@@ -27,6 +28,7 @@ type UserResponse = {
 }
 
 type User = {
+  file?: string;
   isSignedIn: boolean;
   isAdmin: boolean;
   access_token?: string;

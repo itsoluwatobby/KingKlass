@@ -6,13 +6,13 @@ import { useDesignerContext } from "../../hooks/useDesignerContext";
 import { useSignout } from "../../hooks/useSignout";
 import ModalLayout from "../../layout/ModalLayout";
 import { useNavigate } from "react-router-dom";
+import { reduceTextLength } from "../../utility/truncateTextLength";
 
 
 export const NavModal = () => {
   const [signout] = useSignout();
   const { toggleNav, user, setToggleNav, setAppModals } = useDesignerContext() as DesignerContextProps;
-  const username = "Okereke";
-
+console.log(user.email?.split('@')[0])
   const actionButton = (type: 'LOGIN' | 'REGISTER') => {
     setToggleNav({ modalType: "pass" })
     if (type === 'LOGIN') setAppModals(prev => ({...prev, signin: 'OPEN'}))
@@ -29,9 +29,9 @@ export const NavModal = () => {
     >
       <header className={`${user.isSignedIn ? 'flex' : 'hidden'} items-center justify-between`}>
         <div className="flex items-center gap-x-2">
-          <p className={`relative after:absolute after:bg-[#FF3E30] after:content-[""] after:w-2 after:h-2 after:rounded-full after:right-1 after:top-1 font-bold text-3xl bg-[#D69203] text-white rounded-full w-14 h-14 grid place-content-center`}>{getInitials(username)}</p>
+          <p className={`relative after:absolute after:bg-[#FF3E30] after:content-[""] after:w-2 after:h-2 after:rounded-full after:right-1 after:top-1 font-bold text-3xl bg-[#D69203] text-white rounded-full w-14 h-14 grid place-content-center`}>{getInitials(user.first_name as string ?? user.email?.split('@')[0])}</p>
           <div className="flex flex-col font-semibold gap-y-0.5">
-            <h3 className="text-[15px] whitespace-pre-wrap w-24 leading-5">Hi, {username}</h3>
+            <h3 className="text-[15px] whitespace-pre-wrap w-24 leading-5">Hi, {reduceTextLength(user.first_name as string ?? user.email?.split('@')[0])}</h3>
             <span className="font-normal text-xs">Welcome back</span>
           </div>
         </div>
@@ -49,11 +49,12 @@ export const NavModal = () => {
           <RouteLinks
             setToggleNav={setToggleNav}
             values={AdminNavLinks}
+            user={user}
           />
         :
           <RouteLinks
             setToggleNav={setToggleNav}
-            values={NavLinks}
+            values={NavLinks} user={user}
           />
       }
 
@@ -94,9 +95,10 @@ type RouteLinksProps = {
     name: string;
     link: string;
   }[];
+  user: User;
   setToggleNav: React.Dispatch<React.SetStateAction<ToggleOption>>
 }
-const RouteLinks = ({ values, setToggleNav }: RouteLinksProps) => {
+const RouteLinks = ({ values, setToggleNav, user }: RouteLinksProps) => {
   const navigate = useNavigate();
 
   return (
@@ -107,13 +109,17 @@ const RouteLinks = ({ values, setToggleNav }: RouteLinksProps) => {
           <a href={link.link} key={link.name} 
           onClick={() => setToggleNav({ modalType: "pass" })}
           className="text-lg font-medium pl-1 hover:scale-[0.99] transition-all w-full py-3  pr-0 border-0 border-b border-b-gray-300">{link.name}</a>
-          :
-          <div key={link.name} 
-          onClick={() => {
-            setToggleNav({ modalType: "pass" })
-            navigate(link.link)
-          }}
-          className="font-medium text-fdt-grey-darker text-lg cursor-pointer hover:scale-[0.99] transition-all w-full py-3 pl-1 pr-0 border-0 border-b border-b-fdt-grey-normal">{link.name}</div>
+          : (
+            (link.name.startsWith('Orders') || link.name.startsWith('Manage')) && !user.isSignedIn ?
+            null
+            :
+            <div key={link.name} 
+            onClick={() => {
+              setToggleNav({ modalType: "pass" })
+              navigate(link.link)
+            }}
+            className="font-medium text-fdt-grey-darker text-lg cursor-pointer hover:scale-[0.99] transition-all w-full py-3 pl-1 pr-0 border-0 border-b border-b-fdt-grey-normal">{link.name}</div>
+          )
         ))
       }
     </div>
