@@ -86,7 +86,7 @@ export const UserNavModal = () => {
       modalType={toggleNav.modalType}
       expected="userNavModal"
       enlarge={true}
-
+      extraClasses="sm:shadow-2xl h-[88%]"
     >
       <header className="relative flex items-center justify-center w-full bg-opacity-95 bg-[#EEE3DC] pt-3 p-2">
         {toggleModal === "Profile" ? (
@@ -121,7 +121,7 @@ export const UserNavModal = () => {
         onClick={() => setToggleModal("Profile")}
         className={`${
           toggleModal === "Profile" ? "hidden" : "block"
-        } absolute right-2 top-11 hover:bg-slate-200 active:bg-inherit transition-colors p-1 cursor-default rounded-sm font-semibold flex items-center w-fit`}
+        } absolute right-2 top-11 hover:bg-slate-200 active:bg-inherit transition-colors p-1 cursor-pointer z-10 rounded-sm font-semibold flex items-center w-fit`}
       >
         <span className="underline text-xs">Edit</span>
         <CiEdit className="text-lg" />

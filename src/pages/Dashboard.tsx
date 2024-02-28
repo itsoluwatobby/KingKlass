@@ -9,7 +9,7 @@ export default function Dashboard() {
   const rowClass = "text-center p-2 self-center";
 
   return (
-    <div className="overflow-y-scroll flex flex-col gap-5 w-full h-full">
+    <div className="overflow-y-scroll h-[90vh] flex flex-col gap-5 w-full pt-3">
       <div className="p-3 flex maxmobile:flex-col flex-row gap-3 md:flex-wrap">
         <TrackCards
           title="Total customers"

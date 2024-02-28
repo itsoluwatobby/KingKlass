@@ -15,7 +15,7 @@ export const Carts = () => {
     expected="carts"
     classNames="p-3"
     enlarge={true}
-    extraClasses="justify-between py-4 px-2 md:top-1"
+    extraClasses="justify-between py-4 h-[90%] sm:shadow-2xl px-2 md:top-1"
     >
       {/* <div className={`flex-none -mt-7 md:-mt-4 min-h-fit sm:rounded-md mx-auto sm:w-[25rem] py-4 bg-white relative flex flex-col justify-between w-full`}> */}
         <div className="globalScrollbar w-full flex flex-col gap-y-1 max-h-[70%] overflow-y-scroll px-1">

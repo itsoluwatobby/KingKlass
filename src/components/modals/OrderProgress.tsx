@@ -47,7 +47,7 @@ export default function OrderProgress({
         toggleNav.modalType === "orderProgress"
           ? "midscreen:fixed flex"
           : "md:flex hidden"
-      } bottom-0 midscreen:bg-gray-700 midscreen:bg-opacity-40 midscreen:w-full w-full h-[90%] md:min-h-[90vh] md:max-h-[90vh] -mt-3 mobile:-mt-1 z-20 duration-300 midscreen:pt-10 pb-4 p-3`}
+      } bottom-0 midscreen:bg-gray-700 midscreen:bg-opacity-40 midscreen:w-full w-full h-[90%] md:min-h-[90vh] md:max-h-[90vh] -mt-2 mobile:-mt-1 z-20 duration-300 midscreen:pt-10 pb-4 p-3`}
     >
       <div
         className={`relative flex-none border border-gray-300 -mt-7 min-h-fit rounded-md mx-auto sm:w-[25rem] midscreen:bg-white md:bg-slate-50 flex flex-col w-full p-4 pb-6 md:-mt-1 md-hidden justify-between overflow-y-scroll`}

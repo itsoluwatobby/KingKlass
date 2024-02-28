@@ -15,7 +15,7 @@ const requests = axios.create(
 
 const Authorization_token = typeof window !== 'undefined' ? window.localStorage.getItem('King_Klass_Pass') : null;
 
-export const login = async<T extends object>(user: Partial<UserInfo>): Promise<T> => {
+export const login = async(user: Partial<UserInfo>): Promise<{ id: string, token: string }> => {
   const path = Endpoints({});
   const userCredential = await requests[path.login.method](path.login.url, user);
   return userCredential.data;

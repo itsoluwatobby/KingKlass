@@ -48,7 +48,7 @@ export default function Products() {
   return (
     <HomeLayout>
       <>
-        <div className="px-3 self-center flex items-center sticky top-0 gap-x-4 z-20 w-full md:w-1/2">
+        <div className="px-3 self-center flex items-center sticky top-0 gap-x-4 z-20 w-full md:w-1/2 py-2">
           <SearchBar query={query} handleInputChange={handleInputChange} />
           <MdClear onClick={() => setQuery("")} className="flex-none text-3xl  p-1 font-normal text-black hover:cursor-pointer" />
         </div>

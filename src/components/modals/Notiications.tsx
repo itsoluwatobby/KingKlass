@@ -13,7 +13,7 @@ export const Notifications = () => {
     modalType={toggleNav.modalType}
     expected="notifications"
     enlarge={true}
-    extraClasses="px-3 py-2 gap-y-6"
+    extraClasses="px-3 py-2 gap-y-6 sm:shadow-2xl h-[86%] sm:mt-2"
     >
 
       {/* <div className={`flex-none -mt-7 md:-mt-4 min-h-fit sm:rounded-md mx-auto sm:w-[25rem] bg-white px-3 py-2 relative flex flex-col gap-y-6 w-full`}> */}

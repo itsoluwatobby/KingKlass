@@ -50,7 +50,7 @@ export default function UploadProduct() {
   };
 
   return (
-    <div className="h-full w-full p-3">
+    <div className="overflow-y-scroll h-[90vh] w-full p-3 py-8">
       <div className="flex w-full h-full gap-x-4 gap-y-8 lg:flex-row flex-col">
         <section className="flex flex-col lg:w-1/2 w-full gap-y-7">
           <h3 className="font-semibold text-xl">Products</h3>
@@ -232,7 +232,7 @@ const Product = ({ productObj }: ProductProps) => {
         <div className="flex items-center flex-col gap-y-1 px-3">
           <span>{productObj.productName}</span>
           <span className="font-sans font-semibold text-[12px]">
-            &#x20A6;{currencyFormat(productObj.price)}
+            {currencyFormat(productObj.price)}
           </span>
         </div>
       </Link>

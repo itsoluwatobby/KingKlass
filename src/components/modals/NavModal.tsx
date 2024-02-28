@@ -25,7 +25,7 @@ export const NavModal = () => {
     expected="openNavModal"
     enlarge={true}
     classNames="md:hidden"
-    extraClasses="px-3 py-1 top-0 border flex flex-col gap-y-12"
+    extraClasses="px-3 py-1 top-0 h-[90%] border flex flex-col gap-y-6"
     >
       <header className={`${user.isSignedIn ? 'flex' : 'hidden'} items-center justify-between`}>
         <div className="flex items-center gap-x-2">
