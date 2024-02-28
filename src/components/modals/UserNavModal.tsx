@@ -7,7 +7,6 @@ import {
   initAppModals,
   initAppState,
   initUser,
-  initUserDetail,
 } from "../../utility/initialVariables";
 import { RouteLinks } from "./userModal/RouteLinks";
 import { CiEdit } from "react-icons/ci";
