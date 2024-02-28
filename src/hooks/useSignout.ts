@@ -1,11 +1,11 @@
 import { useNavigate } from "react-router-dom"
 import { toast } from "react-toastify";
 import { useDesignerContext } from "./useDesignerContext";
-import { initAppModals, initNavModals } from "../utility/initialVariables";
+import { initAppModals, initNavModals, initUser } from "../utility/initialVariables";
 
 export const useSignout = () => {
   const navigate = useNavigate();
-  const { setAppModals, setToggleNav } = useDesignerContext() as DesignerContextProps;
+  const { setAppModals, setToggleNav, setUser } = useDesignerContext() as DesignerContextProps;
 
   const signout = () => {
     try{
@@ -13,6 +13,7 @@ export const useSignout = () => {
       window.localStorage.clear();
       setAppModals(initAppModals);
       setToggleNav(initNavModals)
+      setUser(initUser);
       toast.success("Sign out successful!!");
       navigate('/');
     }

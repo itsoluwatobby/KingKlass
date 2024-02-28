@@ -10,7 +10,7 @@ import { useDesignerContext } from "../../hooks/useDesignerContext";
 import { LiaTimesSolid } from "react-icons/lia";
 import { Buttons } from "../appComponents/Buttons";
 import UserInputDetails from "../modals/userModal/UserInputDetails";
-import { FcGoogle } from "react-icons/fc";
+// import { FcGoogle } from "react-icons/fc";
 import { Validation_RegExp } from "../../utility/regexExpConfig";
 import FadedBGWrapper from "../../layout/FadedBGWrapper";
 import { register } from "../../api/globalRequest";
@@ -45,9 +45,9 @@ export const Registration = () => {
       toast.success("Registration successful!");
       setValidation(inputValidation);
       setAppModals({ signup: "CLOSE", signin: "OPEN" });
-    } catch (error: unknown) {
+    } catch (error: any) {
       setAppState((prev) => ({ ...prev, isError: true }));
-      toast.error("An error occurred");
+      toast.error(error.response.data.error ?? error.message);
     } finally {
       setAppState((prev) => ({ ...prev, isLoading: false }));
     }
@@ -170,7 +170,7 @@ export const Registration = () => {
               Continue
             </Buttons>
 
-            <span className="text-[#646464] self-center">or</span>
+            {/* <span className="text-[#646464] self-center">or</span>
 
             <Buttons
               onClick={handleSubmit}
@@ -183,7 +183,7 @@ export const Registration = () => {
                 <FcGoogle className="text-3xl bg-white rounded-full p-2" />
                 <span className="text-base">Continue with Google</span>
               </div>
-            </Buttons>
+            </Buttons> */}
           </div>
         </div>
 

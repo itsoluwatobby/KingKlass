@@ -62,12 +62,12 @@ export const NavModal = () => {
         <Buttons
           onClick={signout}
           px='' py=''
-          classNames='self-center mt-32 rounded-[3px] font-semibold bg-[#8B4513] text-white grid place-content-center w-[95%] md:w-1/2 py-3 hover:bg-[#8B4413] active:bg-[#8B4513] transition-colors'
+          classNames='self-center mt-14 rounded-[3px] font-semibold bg-[#8B4513] text-white grid place-content-center w-[95%] md:w-1/2 py-3 hover:bg-[#8B4413] active:bg-[#8B4513] transition-colors'
           >
           Sign out
         </Buttons>
         :
-        <div className="flex flex-col gap-y-4">
+        <div className="flex flex-col gap-y-4 mt-12">
             <Buttons
             onClick={() => actionButton('REGISTER')}
             px='' py=''

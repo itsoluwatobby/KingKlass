@@ -15,11 +15,28 @@ type ToggleOption = {
   prevModal?: ToggleNav;
 }
 
+type UserResponse = {
+  id: string;
+  is_admin: boolean,
+  created_at: string,
+  email: string,
+  first_name?: string,
+  last_name: string,
+  phone_no: string,
+  updated_at: string
+}
+
 type User = {
   isSignedIn: boolean;
   isAdmin: boolean;
-  token?: string;
-  id?: string
+  access_token?: string;
+  id?: string;
+  created_at?: string,
+  email?: string,
+  first_name?: string,
+  last_name?: string,
+  phone_no?: string,
+  updated_at?: string
 }
 
 type ProgressType = 'pending' | 'completed';
