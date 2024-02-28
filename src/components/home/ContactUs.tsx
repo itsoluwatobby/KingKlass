@@ -61,12 +61,15 @@ export const ContactUs = () => {
           name="name"
           value={name}
           id="yourName"
+
           classNames="py-3 px-3 text-xl placeholder:text-fdt-grey-light-active text-fdt-grey-light-active font-normal rounded-[6px] border-white-500 border bg-inherit border-solid"
+
           setInputText={setContactMessage}
         />
         <InputText
           placeholder="Email"
           id="yourEmail"
+
           classNames="py-3 px-3 text-xl placeholder:text-fdt-grey-light-active text-fdt-grey-light-active font-normal rounded-[6px] border-white-500 border bg-inherit border-solid"
           name="emails"
           value={emails}
@@ -74,7 +77,7 @@ export const ContactUs = () => {
         />
 
         <TextArea
-          classNames="py-3 px-3 text-xl placeholder:text-fdt-grey-light-active text-fdt-grey-light-active font-normal rounded-[6px] border-white-500 border border-solid"
+          classNames="py-3 px-3 text-xl placeholder:text-fdt-grey-light-active text-fdt-grey-light-active font-normal rounded-[2px] border-white-500 border-[0.5px] border-solid"
           value={message}
           placeholder="Message"
           name="message"
