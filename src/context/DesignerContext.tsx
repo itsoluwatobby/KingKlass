@@ -26,11 +26,11 @@ export const DesignerDataProvider = ({ children }: ChildrenNode) => {
     const fetchUser = async () => {
       try {
         const access_token = window.localStorage.getItem('King_Klass_Pass') as string;
+        if (!access_token) return;
         const id = window.localStorage.getItem('pass_id') as string;
-        const loggedIn = await getUser(id);
-        console.log('he')
-        const { first_name, last_name, is_admin, email: userEmail, phone_no, updated_at, created_at } = loggedIn;
-        setUser(prev => ({...prev, isSignedIn: true, id, access_token, isAdmin: is_admin, first_name, last_name, phone_no, created_at, updated_at, email: userEmail}))
+        const loggedIn = await getUser(id, access_token);
+        const { first_name, last_name, is_admin, file, email: userEmail, phone_no, updated_at, created_at } = loggedIn;
+        setUser(prev => ({...prev, isSignedIn: true, file, id, access_token, isAdmin: is_admin, first_name, last_name, phone_no, created_at, updated_at, email: userEmail}))
       } catch (error: any) {
         toast.error(error.response.data.error ?? error.message);
       }

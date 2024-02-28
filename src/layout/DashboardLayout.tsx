@@ -13,7 +13,7 @@ export default function DashboardLayout() {
   return (
     <HomeLayout>
       <div className="flex gap-x-6 w-full h-full overflow-hidden">
-        <aside className="hidden md:flex sticky top-0 flex-col h-[91vh] px-3 pt-5 text-[14px] gap-y-2 whitespace-nowrap border-0 border-r-[1px]">
+        <aside className="hidden bg-[#8B4513] md:flex sticky top-0 flex-col h-[91vh] px-3 pt-5 text-[14px] gap-y-2 whitespace-nowrap border-0 border-r-[1px]">
           {
             AdminNavLinks.map(nav => (
               <Link to={nav.link} key={nav.name} 
@@ -23,7 +23,10 @@ export default function DashboardLayout() {
             ))
           }
         </aside>
-        <Outlet />
+        <div className="w-full">
+          <Outlet />
+          {/* <CgMenuGridO className="fixed top-[25%] h-14 w-6 bg-[#6E6E6E] rounded-r-md" /> */}
+        </div>
       </div>
     </HomeLayout>
   )

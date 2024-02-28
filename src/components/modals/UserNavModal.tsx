@@ -6,6 +6,7 @@ import { ChangeEvent, useEffect, useState } from "react";
 import {
   initAppModals,
   initAppState,
+  initUser,
   initUserDetail,
 } from "../../utility/initialVariables";
 import { RouteLinks } from "./userModal/RouteLinks";
@@ -22,7 +23,7 @@ export const UserNavModal = () => {
   const { toggleNav, user, setToggleNav, setAppModals } =
     useDesignerContext() as DesignerContextProps;
   const [appState, setAppState] = useState<AppStateType>(initAppState);
-  const [userDetails, setUserDetails] = useState<UserDetails>(initUserDetail);
+  const [userDetails, setUserDetails] = useState<User>(initUser);
   const [toggleModal, setToggleModal] =
     useState<ActiveModalType>("UserNavModal");
   const [loading, setLoading] = useState<boolean>(false);
@@ -49,6 +50,15 @@ export const UserNavModal = () => {
     }
   };
 
+  useEffect(() => {
+    let isMounted = true;
+    if (isMounted) setUserDetails({...user});
+
+    return () => {
+      isMounted = false
+    }
+  }, [user.email])
+
   const { isLoading, isError } = appState;
 
   const handleSubmit = () => {
@@ -59,7 +69,7 @@ export const UserNavModal = () => {
       console.log(result);
 
       setAppState((prev) => ({ ...prev, success: true }));
-      setUserDetails(initUserDetail);
+      setUserDetails(initUser);
       toast.success("Profile Updated!!");
       setToggleModal("UserNavModal");
     } catch (error: unknown) {
