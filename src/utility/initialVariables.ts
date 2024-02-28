@@ -28,7 +28,7 @@ export const initUserDetail: UserDetails = {
 }
 
 export const initUser: User = {
-  isSignedIn: false, isAdmin: false, token: '', id: ''
+  isSignedIn: false, isAdmin: false, access_token: '', id: ''
 }
 
 export const inputValidation: Validations = {

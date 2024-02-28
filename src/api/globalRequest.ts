@@ -15,9 +15,9 @@ const requests = axios.create(
 
 const Authorization_token = typeof window !== 'undefined' ? window.localStorage.getItem('King_Klass_Pass') : null;
 
-export const login = async(user: Partial<UserInfo>): Promise<{ id: string, token: string }> => {
+export const login = async(user: Partial<UserInfo>): Promise<{ id: string, access_token: string }> => {
   const path = Endpoints({});
-  const userCredential = await requests[path.login.method](path.login.url, user);
+  const userCredential = await requests[path.login.method](path.login.url, { ...user });
   return userCredential.data;
 }
 export const register = async<T>(user: Partial<UserInfo>): Promise<T> => {
@@ -25,7 +25,7 @@ export const register = async<T>(user: Partial<UserInfo>): Promise<T> => {
   const userCredential = await requests[path.register.method](path.register.url, user);
   return userCredential.data;
 }
-export const getUser = async<T extends object>(userId: string): Promise<T> => {
+export const getUser = async(userId: string): Promise<UserResponse> => {
   const path = Endpoints({ userId });
   const user = await requests[path.getUser.method](path.getUser.url, {
     headers: {

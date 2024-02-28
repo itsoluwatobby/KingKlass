@@ -7,7 +7,7 @@ import { useDesignerContext } from "../../hooks/useDesignerContext";
 import { Buttons } from "../appComponents/Buttons";
 import { LiaTimesSolid } from "react-icons/lia";
 import UserInputDetails from "../modals/userModal/UserInputDetails";
-import { FcGoogle } from "react-icons/fc";
+// import { FcGoogle } from "react-icons/fc";
 import FadedBGWrapper from "../../layout/FadedBGWrapper";
 import { getUser, login } from "../../api/globalRequest";
 
@@ -31,18 +31,19 @@ export const Login = () => {
     try {
       const userDetails = sanitizeEntries({ email, password });
       const res = await login(userDetails);
-      typeof window !== 'undefined' ? window.localStorage.setItem('King_Klass_Pass', res.token) : null;
+      typeof window !== 'undefined' ? window.localStorage.setItem('King_Klass_Pass', res.access_token) : null;
+      typeof window !== 'undefined' ? window.localStorage.setItem('pass_id', res.id) : null;
       const loggedIn = await getUser(res.id);
-      console.log(loggedIn)
-      void setUser;
+      const { first_name, last_name, is_admin, email: userEmail, phone_no, updated_at, created_at } = loggedIn;
+      setUser(prev => ({...prev, isSignedIn: true, id: res.id, access_token: res.access_token, isAdmin: is_admin, first_name, last_name, phone_no, created_at, updated_at, email: userEmail}))
       setAppState((prev) => ({ ...prev, success: true }));
       setUserCredentials(initSignInInfo);
       toast.success("Welcome!!!");
       setAppModals({ signup: "CLOSE", signin: "CLOSE" });
-      navigate(pathname, { replace: true });
+      navigate(pathname, { replace: true }); //dashboard
     } catch (error: any) {
       setAppState((prev) => ({ ...prev, isError: true }));
-      toast.error(error.response.data.error);
+      toast.error(error.response.data.error ?? error.message);
     } finally {
       setAppState((prev) => ({ ...prev, isLoading: false }));
     }
@@ -127,9 +128,9 @@ export const Login = () => {
               Login
             </Buttons>
 
-            <span className="text-[#646464] self-center">or</span>
+            {/* <span className="text-[#646464] self-center">or</span> */}
 
-            <Buttons
+            {/* <Buttons
               onClick={handleSubmit}
               px=""
               py=""
@@ -140,7 +141,7 @@ export const Login = () => {
                 <FcGoogle className="text-3xl bg-white rounded-full p-2" />
                 <span className="text-base">Continue with Google</span>
               </div>
-            </Buttons>
+            </Buttons> */}
           </div>
         </div>
 
