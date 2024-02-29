@@ -87,6 +87,7 @@ export const NavLinks = [
   { name: 'Products', link: '/products' },
   { name: 'Orders', link: '/orders' },
   { name: 'About Us', link: '/aboutus' },
+  { name: "How It Works", link: "/#howItWorks"},
   { name: 'Contact Us', link: '/#contactUs' },
 ]
 

@@ -8,7 +8,7 @@ interface StepProp {
 
 function Step({ number, desc, title }: StepProp) {
   return (
-    <div className="pl-6 min-w-[150px] max-w-[300px] relative mobile:max-w-[150px]">
+    <div className="pl-6 min-w-[150px] max-w-[300px] relative mobile:max-w-[150px]" id="howItWorks">
       <span className="text-fdt-brown-light-active font-normal text-3xl absolute top-[50%] -left-2 mobile:left-1 right-1">
         {number}
       </span>

@@ -13,6 +13,7 @@ import { useNavigate } from "react-router-dom"
 export const Home = () => {
 
   const navigate = useNavigate();
+  const contactSection : HTMLElement = document.getElementById('contactUs');
 
   return (
     <main className="border-black items-center w-full flex flex-col mt-16">
@@ -28,7 +29,7 @@ export const Home = () => {
         </Buttons>
 
         <Buttons
-          onClick={() => navigate("/aboutus")}
+          onClick={() => contactSection.scrollIntoView({ behavior: 'smooth' })}
           px="px-3"
           py="py-2"
           classNames="mobile:text-[12px] border-[1px] border-fdt-brown-normal text-fdt-brown-normal  bg-inherit font-bold"

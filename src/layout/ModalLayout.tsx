@@ -13,9 +13,18 @@ type ModalLayoutProps = {
   enlarge?: boolean;
   extraClasses?: string;
   isAdminPage?: boolean;
-  noFullScreen?:boolean;
-}
-export default function ModalLayout({ children, modalType, expected, classNames, noFullScreen=false, isAdminPage=false, extraClasses='gap-y-4', enlarge=false }: ModalLayoutProps) {
+  noFullScreen?: boolean;
+};
+export default function ModalLayout({
+  children,
+  modalType,
+  expected,
+  classNames,
+  noFullScreen = false,
+  isAdminPage = false,
+  extraClasses = "gap-y-4",
+  enlarge = false,
+}: ModalLayoutProps) {
   const { user } = useDesignerContext() as DesignerContextProps;
   const navigate = useNavigate();
 
@@ -23,20 +32,33 @@ export default function ModalLayout({ children, modalType, expected, classNames,
     let isMounted = true;
     // console.log(isAdminPage)
     if (isMounted && isAdminPage && !user.isAdmin) {
-      toast.warn('UnAuthorized')
-      navigate('/')
-    }
-    else return
+      toast.warn("UnAuthorized");
+      navigate("/");
+    } else return;
     return () => {
-      isMounted = false
-    }
-  }, [isAdminPage, user.isAdmin])
+      isMounted = false;
+    };
+  }, [isAdminPage, user.isAdmin]);
 
   return (
-    <section className={`${modalType === expected ? 'fixed' : 'hidden'} h-full py-0 top-16 bottom-0 midscreen:w-full flex ${enlarge ? 'w-full h-[100vh] mobile:-mt-2' : 'w-full md:w-[60%] min-h-[95vh] mt14'} z-50 duration-300 p-4 ${noFullScreen ? 'py-8' : 'maxscreen:px-0'} ${classNames}`}>
-      <div className={`bg-[#F8F8F8]  sm:rounded-md ${noFullScreen ? 'rounded-md -mt-1 p-5' : ''} mx-auto sm:w-[25rem]  bg-white relative flex flex-col w-full ${extraClasses}`}>
+    <section
+      className={`${
+        modalType === expected ? "fixed" : "hidden"
+      } h-full py-0 top-16 bottom-0 midscreen:w-full flex ${
+        enlarge
+          ? "w-full h-[100vh] mobile:-mt-2"
+          : "w-full md:w-[60%] min-h-[95vh] mt14"
+      } z-50 duration-300 p-4 ${
+        noFullScreen ? "py-8" : "maxscreen:px-0"
+      } ${classNames}`}
+    >
+      <div
+        className={`bg-[#F8F8F8]  sm:rounded-md ${
+          noFullScreen ? "rounded-md -mt-1 p-5" : ""
+        } mx-auto sm:w-[25rem]  bg-white relative flex flex-col w-full ${extraClasses}`}
+      >
         {children}
       </div>
     </section>
-  )
+  );
 }

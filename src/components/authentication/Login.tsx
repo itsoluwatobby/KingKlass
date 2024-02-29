@@ -31,18 +31,44 @@ export const Login = () => {
     try {
       const userDetails = sanitizeEntries({ email, password });
       const res = await login(userDetails);
-      typeof window !== 'undefined' ? window.localStorage.setItem('King_Klass_Pass', res.access_token) : null;
-      typeof window !== 'undefined' ? window.localStorage.setItem('pass_id', res.id) : null;
+      typeof window !== "undefined"
+        ? window.localStorage.setItem("King_Klass_Pass", res.access_token)
+        : null;
+      typeof window !== "undefined"
+        ? window.localStorage.setItem("pass_id", res.id)
+        : null;
       const loggedIn = await getUser(res.id, res.access_token);
-      const { first_name, last_name, file, is_admin, email: userEmail, phone_no, updated_at, created_at } = loggedIn as UserResponse;
-      setUser(prev => ({...prev, isSignedIn: true, id: res.id, access_token: res.access_token, isAdmin: is_admin, first_name, last_name, phone_no, created_at, updated_at, email: userEmail, file}))
+      const {
+        first_name,
+        last_name,
+        file,
+        is_admin,
+        email: userEmail,
+        phone_no,
+        updated_at,
+        created_at,
+      } = loggedIn as UserResponse;
+      setUser((prev) => ({
+        ...prev,
+        isSignedIn: true,
+        id: res.id,
+        access_token: res.access_token,
+        isAdmin: is_admin,
+        first_name,
+        last_name,
+        phone_no,
+        created_at,
+        updated_at,
+        email: userEmail,
+        file,
+      }));
       setAppState((prev) => ({ ...prev, success: true }));
       setUserCredentials(initSignInInfo);
       toast.success("Welcome!!!");
       setAppModals({ signup: "CLOSE", signin: "CLOSE" });
       navigate(pathname, { replace: true }); //dashboard
     } catch (error: any) {
-      console.log(error)
+      console.log(error);
       setAppState((prev) => ({ ...prev, isError: true }));
       toast.error(error.response.data.error ?? error.message);
     } finally {
@@ -64,8 +90,7 @@ export const Login = () => {
   return (
     <FadedBGWrapper modalType={appModals.signin} expected="OPEN" enlarge={true}>
       <div
-
-        className={`mx-auto mt-16 relative bg-[#F8F8F8] flex flex-col gap-y-4 w-[100%] sm:w-[25rem] rounded-md p-5 h-[80%]`}
+        className={`mx-auto mt-16 relative bg-[#F8F8F8] flex flex-col gap-y-4 w-[100%] sm:w-[25rem] rounded-md p-5 h-fit`}
       >
         <div className="w-full flex flex-col py-8 items-center gap-y-5">
           <h3 className="font-medium text-2xl">Login</h3>
