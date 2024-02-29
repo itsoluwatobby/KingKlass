@@ -4,7 +4,6 @@ import { checkCount } from "../utility/truncateTextLength";
 
 import { ChangeEvent } from "react";
 import { GoPlus } from "react-icons/go";
-import { IoIosRadioButtonOff } from "react-icons/io";
 
 import { IoShareSocialOutline } from "react-icons/io5";
 import { Buttons } from "../components/appComponents/Buttons";
@@ -21,7 +20,6 @@ import { randomizedProducts } from "../utility/helpers";
 import ProductReviews from "../components/products/ProductReviews";
 import { TfiTimer } from "react-icons/tfi";
 import { GoDotFill } from "react-icons/go";
-import { FaHeartPulse } from "react-icons/fa6";
 
 type SelectionProps = {
   name: string;
@@ -57,6 +55,7 @@ export default function ProductPage() {
     newMeasurement: false,
   });
 
+  void measurementType;
   // handle measurement selection
   const handleCheck = (e: ChangeEvent<HTMLInputElement>) => {
     const eName = e.target.name;
@@ -279,7 +278,7 @@ export default function ProductPage() {
 
             <div className="flex flex-col gap-y-3 items-start  font-montserrat ">
               <h4 className="font-medium text-xl">Similar Products</h4>
-              <div className="px-3 overflow-x-scroll flex justify-start items-center bg-[#F4F4F4] pt-3 gap-x-3   w-full">
+              <div className="px-1 overflow-x-scroll flex justify-start items-center bg-[#F4F4F4] pt-3 gap-x-3   w-full">
                 {productsPreview.map((product) => (
                   <ProductCard
                     key={product.id}

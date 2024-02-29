@@ -13,7 +13,7 @@ import { useNavigate } from "react-router-dom"
 export const Home = () => {
 
   const navigate = useNavigate();
-  const contactSection : HTMLElement = document.getElementById('contactUs');
+  const contactSection: HTMLElement = document.getElementById('contactUs') as HTMLElement;
 
   return (
     <main className="border-black items-center w-full flex flex-col mt-16">

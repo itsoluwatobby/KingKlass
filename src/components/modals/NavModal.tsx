@@ -123,7 +123,7 @@ const RouteLinks = ({ values, setToggleNav, user }: RouteLinksProps) => {
             href={link.link}
             key={link.name}
             onClick={() => setToggleNav({ modalType: "pass" })}
-            className="text-lg font-medium pl-1 hover:scale-[0.99] transition-all w-full py-3  pr-0 border-0 border-b border-b-gray-300"
+            className="text-lg text-fdt-grey-darker font-medium pl-1 hover:scale-[0.99] transition-all w-full py-3  pr-0 border-0 border-b border-fdt-grey-normal"
           >
             {link.name}
           </a>
