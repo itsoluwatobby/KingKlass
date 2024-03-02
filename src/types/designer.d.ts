@@ -58,6 +58,7 @@ type DesignerContextProps = {
   setAppModals: React.Dispatch<React.SetStateAction<AppModals>>;
   setToggleNav: React.Dispatch<React.SetStateAction<ToggleOption>>;
 }
+
 type AppStateType = {
   isLoading: boolean;
   isError: boolean;

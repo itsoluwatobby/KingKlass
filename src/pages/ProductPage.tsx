@@ -2,8 +2,6 @@ import HomeLayout from "../layout/HomeLayout";
 import { currencyFormat, refindedReview } from "../utility/formatPrice";
 import { checkCount } from "../utility/truncateTextLength";
 
-import { ChangeEvent } from "react";
-import { GoPlus } from "react-icons/go";
 
 import { IoShareSocialOutline } from "react-icons/io5";
 import { Buttons } from "../components/appComponents/Buttons";
@@ -21,17 +19,7 @@ import ProductReviews from "../components/products/ProductReviews";
 import { TfiTimer } from "react-icons/tfi";
 import { GoDotFill } from "react-icons/go";
 
-type SelectionProps = {
-  name: string;
-  title: string;
-  onSelectionChange: (e: ChangeEvent<HTMLInputElement>) => void;
-  // setSelectionType: React.Dispatch<React.SetStateAction<SelectionTypes>>;
-};
 
-type SelectionTypes = {
-  savedMeasurement: boolean;
-  newMeasurement: boolean;
-};
 
 const initProductPreview = {
   product: {} as ProductType,
@@ -49,28 +37,7 @@ export default function ProductPage() {
   const { isLoading, isError, isSuccess } = appState;
   const { product, productReviews, productsPreview } = productRes;
 
-  // added for selection measurement
-  const [measurementType, setMeasurementType] = useState<SelectionTypes>({
-    savedMeasurement: false,
-    newMeasurement: false,
-  });
 
-  void measurementType;
-  // handle measurement selection
-  const handleCheck = (e: ChangeEvent<HTMLInputElement>) => {
-    const eName = e.target.name;
-    if (eName === "new") {
-      setMeasurementType({
-        savedMeasurement: false,
-        newMeasurement: e.target.checked,
-      });
-    } else if (eName === "saved") {
-      setMeasurementType({
-        newMeasurement: false,
-        savedMeasurement: e.target.checked,
-      });
-    }
-  };
 
   useEffect(() => {
     let isMounted = true;
@@ -193,33 +160,6 @@ export default function ProductPage() {
 
               <DemarcationLine />
 
-              <section className="font-montserrat flex flex-col gap-1.5">
-                <span className="font-medium text-xl mb-1">
-                  Select a measurement
-                </span>
-
-                {/* <Selection
-                    name="new"
-                    checked={selectionType.newMeasurement}
-                    title={"Add new measurement"}
-                    setSelectionType={measurementType}
-                  /> */}
-
-                <MeasurementSelection
-                  name="saved"
-                  title="Use my saved measurements"
-                  // setSelectionType={measurementType}
-                  onSelectionChange={handleCheck}
-                />
-
-                <MeasurementSelection
-                  name="new"
-                  title="New measurements"
-                  onSelectionChange={handleCheck}
-                />
-              </section>
-
-              <DemarcationLine />
 
               <div className="flex flex-col gap-2 font-montserrat">
                 <h4 className="font-medium text-xl">Description</h4>
@@ -301,30 +241,4 @@ export default function ProductPage() {
 
 const DemarcationLine = () => {
   return <hr className="border-t-0.5 mx-7 border-fdt-grey-normal my-4" />;
-};
-
-const MeasurementSelection = ({
-  name,
-  title,
-  onSelectionChange,
-}: SelectionProps) => {
-  return (
-    <div className="relative flex items-center  w-fit  justify-center">
-      <input
-        type="radio"
-        name={name}
-        id={"name"}
-        checked
-        onChange={onSelectionChange}
-        className="z-10 cursor-pointer w-5 h-5 checked:accent-fdt-brown-normal mr-1.5 bg-red-500 border border-red-500"
-        hidden={name === "new" && true}
-      />
-      <label htmlFor={name} className={``}>
-        {name === "new" && (
-          <GoPlus className="text-fdt-brown-normal w-8 h-8  -ml-1.5 cursor-pointer" />
-        )}
-      </label>
-      <span className="font-normal text-sm ml-2">{title}</span>
-    </div>
-  );
 };

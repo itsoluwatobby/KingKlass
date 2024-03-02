@@ -32,6 +32,10 @@ export default {
         "montserrat-alternates" : ["Montserrat Alternates", "sans-serif"]
       },
 
+      borderWidth : {
+        "1" : "1px"
+      },
+
       Keyframes: {
         rollout: {
           "0%": { transform: 'translateY(100%)' },
