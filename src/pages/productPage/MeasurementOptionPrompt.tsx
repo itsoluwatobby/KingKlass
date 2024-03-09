@@ -1,6 +1,6 @@
 import { useDesignerContext } from "../../hooks/useDesignerContext";
 import FadedBGWrapper from "../../layout/FadedBGWrapper";
-import { Buttons } from "../appComponents/Buttons";
+import { Buttons } from "../../components/appComponents/Buttons";
 import { ChangeEvent, useEffect, useState } from "react";
 
 type PurchasePromptProps = {
@@ -23,7 +23,7 @@ export default function PurchasePrompt({ productName }: PurchasePromptProps) {
 
   const handleCheck = (e: ChangeEvent<HTMLInputElement>) => {
     const eName = e.target.name;
-    console.log(measurementType)
+    console.log(measurementType);
     if (eName === "new") {
       setMeasurementType({
         savedMeasurement: false,
@@ -36,7 +36,7 @@ export default function PurchasePrompt({ productName }: PurchasePromptProps) {
       });
     }
 
-    console.log(measurementType)
+    console.log(measurementType);
   };
 
   useEffect(() => {
@@ -47,8 +47,6 @@ export default function PurchasePrompt({ productName }: PurchasePromptProps) {
         prevModal: "purchasePrompt",
       }));
     }
-
-
   }, [measurementType.newMeasurement]);
 
   const canClick = [...Object.values(measurementType)].some(Boolean);
@@ -62,7 +60,9 @@ export default function PurchasePrompt({ productName }: PurchasePromptProps) {
       isButtomSheet={true}
     >
       <div className="w-full flex flex-col p-1 text-sm gap-y-4 font-montserrat">
-        <span className="font-medium text-xl mb-1">Select a measurement {productName}</span>
+        <span className="font-medium text-xl mb-1">
+          Select a measurement {productName}
+        </span>
 
         <MeasurementSelection
           name="saved"

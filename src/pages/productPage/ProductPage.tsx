@@ -1,25 +1,22 @@
-import HomeLayout from "../layout/HomeLayout";
-import { currencyFormat, refindedReview } from "../utility/formatPrice";
-import { checkCount } from "../utility/truncateTextLength";
-
+import HomeLayout from "../../layout/HomeLayout";
+import { currencyFormat, refindedReview } from "../../utility/formatPrice";
+import { checkCount } from "../../utility/truncateTextLength";
 
 import { IoShareSocialOutline } from "react-icons/io5";
-import { Buttons } from "../components/appComponents/Buttons";
+import { Buttons } from "../../components/appComponents/Buttons";
 import { SlArrowLeft, SlArrowRight } from "react-icons/sl";
-import ProductCard from "../components/ProductCard";
+import ProductCard from "../../components/ProductCard";
 import { useEffect, useRef, useState } from "react";
-import PurchasePrompt from "../components/modalPrompts/PurchasePrompt";
-import { useDesignerContext } from "../hooks/useDesignerContext";
+import PurchasePrompt from "./MeasurementOptionPrompt";
+import { useDesignerContext } from "../../hooks/useDesignerContext";
 import { useParams } from "react-router-dom";
-import { initAppState } from "../utility/initialVariables";
-import { getProduct, getProducts, getReviews } from "../api/globalRequest";
-import RequestStages from "../components/RequestStage";
-import { randomizedProducts } from "../utility/helpers";
-import ProductReviews from "../components/products/ProductReviews";
+import { initAppState } from "../../utility/initialVariables";
+import { getProduct, getProducts, getReviews } from "../../api/globalRequest";
+import RequestStages from "../../components/RequestStage";
+import { randomizedProducts } from "../../utility/helpers";
+import ProductReviews from "../../components/products/ProductReviews";
 import { TfiTimer } from "react-icons/tfi";
 import { GoDotFill } from "react-icons/go";
-
-
 
 const initProductPreview = {
   product: {} as ProductType,
@@ -36,8 +33,6 @@ export default function ProductPage() {
   const { user, setAppModals } = useDesignerContext() as DesignerContextProps;
   const { isLoading, isError, isSuccess } = appState;
   const { product, productReviews, productsPreview } = productRes;
-
-
 
   useEffect(() => {
     let isMounted = true;
@@ -159,7 +154,6 @@ export default function ProductPage() {
               </div>
 
               <DemarcationLine />
-
 
               <div className="flex flex-col gap-2 font-montserrat">
                 <h4 className="font-medium text-xl">Description</h4>
