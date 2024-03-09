@@ -17,6 +17,7 @@ import { randomizedProducts } from "../../utility/helpers";
 import ProductReviews from "../../components/products/ProductReviews";
 import { TfiTimer } from "react-icons/tfi";
 import { GoDotFill } from "react-icons/go";
+import DemarcationLine from "../../components/appComponents/DemarcationLine";
 
 const initProductPreview = {
   product: {} as ProductType,
@@ -133,7 +134,7 @@ export default function ProductPage() {
                 <span>{product.estimated}days</span>
               </p>
 
-              <DemarcationLine />
+              <DemarcationLine classNames="border-t-0.5 mx-7 border-fdt-grey-normal my-4"/>
 
               <div className="flex w-full items-center justify-between text-xs">
                 <h2 className="text-3xl font-montserrat-alternates font-medium text-fdt-brown-normal">
@@ -153,7 +154,7 @@ export default function ProductPage() {
                 </Buttons>
               </div>
 
-              <DemarcationLine />
+              <DemarcationLine classNames="border-t-0.5 mx-7 border-fdt-grey-normal my-4"/>
 
               <div className="flex flex-col gap-2 font-montserrat">
                 <h4 className="font-medium text-xl">Description</h4>
@@ -232,7 +233,3 @@ export default function ProductPage() {
     </HomeLayout>
   );
 }
-
-const DemarcationLine = () => {
-  return <hr className="border-t-0.5 mx-7 border-fdt-grey-normal my-4" />;
-};

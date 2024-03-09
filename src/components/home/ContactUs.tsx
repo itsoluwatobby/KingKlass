@@ -89,7 +89,7 @@ export const ContactUs = () => {
           py="py-3"
           px="px-14"
           isLoading={isLoading}
-          classNames="bg-[#F2F2F2] rounded-[8px] text-fdt-brown-normal font-bold mt-1 w-64 w-fit self-center"
+          classNames="bg-[#F2F2F2] rounded-[8px] text-fdt-brown-normal font-bold mt-1 w-full w-fit self-center"
         >
           Send
         </Buttons>

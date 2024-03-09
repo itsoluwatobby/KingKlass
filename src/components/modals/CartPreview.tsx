@@ -18,8 +18,8 @@ export const CartPreview = () => {
       classNames="!h-[85%] !w-[75%] !ml-[25%] !rounded-tr-[0] !rounded-tl-[12px]"
       isButtomSheet={true}
     >
-      <>
-        <div className="flex flex-col gap-y-5 max-h-[75%]">
+      <div className="h-full flex flex-col justify-between">
+        <div className="flex flex-col gap-y-5">
           <div className="flex items-center gap-x-4">
             <FaCheck className="text-5xl bg-fdt-brown-light-active rounded-full p-2 text-fdt-brown-normal" />
             <span className="text-fdt-brown-normal text-base font-montserrat font-semibold">
@@ -39,7 +39,7 @@ export const CartPreview = () => {
             ))}
           </div>
         </div>
-        <div className="flex-none rounded-sm flex flex-col gap-y-4 items-center py-5">
+        <div className="flex-none rounded-sm flex flex-col gap-y-4 items-center py-5 justify-self-end">
           <Buttons
             onClick={() =>
               setToggleNav((prev) => ({
@@ -51,7 +51,7 @@ export const CartPreview = () => {
             px=""
             py=""
             // isLoading={isLoading}
-            classNames="self-center rounded-md font-semibold bg-[#8B4513] text-base text-montserrat text-white w-[95%] md:w-1/2 py-3 hover:bg-[#8B4513] active:bg-[#8B4513] transition-colors"
+            classNames="self-center rounded-md font-semibold bg-[#8B4513] text-base text-montserrat text-white w-[95%] md:w-1/2 py-2 hover:bg-[#8B4513] active:bg-[#8B4513] transition-colors"
           >
             View cart
           </Buttons>
@@ -60,12 +60,12 @@ export const CartPreview = () => {
             px=""
             py=""
             // isLoading={isLoading}
-            classNames="self-center rounded-md font-semibold border-[1px] border-[#8B4513] text-base text-montserrat text-[#8B4513] w-[95%] md:w-1/2 py-2.5 hover:bg-opacity-95 active:bg-opacity-100 transition-opacity"
+            classNames="self-center rounded-md font-semibold border-[1px] border-fdt-brown-normal text-base text-montserrat text-fdt-brown-normal w-[95%] md:w-1/2 py-2 hover:bg-opacity-95 active:bg-opacity-100 transition-opacity"
           >
             Continue Shopping
           </Buttons>
         </div>{" "}
-      </>
+      </div>
     </FadedBGWrapper>
   );
 };
@@ -91,7 +91,9 @@ const CartItem = ({ cartObj }: CartItemProps) => {
           />
         </figure>
         <div className="flex items-start flex-col gap-y-2 px-3 text-fdt-grey-darker">
-          <span className="font-montserrat text-sm font-normal">{"KingsKlass shirt"}</span>
+          <span className="font-montserrat text-sm font-normal">
+            {"KingsKlass shirt"}
+          </span>
           <span className="font-semibold text-[12px] font-montserrat-alternates">
             {currencyFormat(cartObj.price)}
           </span>

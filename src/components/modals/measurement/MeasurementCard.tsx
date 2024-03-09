@@ -25,7 +25,6 @@ export const MeasurementCard = ({
         name={keyName}
         value={value}
         min={0.00}
-        defaultValue={0.00}
         placeholder="cm"
         onChange={handleEntry}
         className={`border-b-1 text-xl pb-1 text-center  bg-inherit w-full focus:outline-0 placeholder:text-fdt-grey-dark placeholder:text-xs`}

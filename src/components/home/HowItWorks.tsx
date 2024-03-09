@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { Buttons } from "../appComponents/Buttons";
 
 interface StepProp {
@@ -49,6 +50,8 @@ function HowItWorks() {
     },
   ];
 
+  const navigate = useNavigate()
+
   return (
     <section className="w-full pb-5 bg-fdt-grey-light-hover flex flex-col justify-center items-center">
       <div className="w-full flex flex-col justify-center items-center py-5">
@@ -62,7 +65,7 @@ function HowItWorks() {
           classNames="mb-0 mt-2 rounded-[8px] font-bold  text-white bg-fdt-brown-normal"
           px="px-[24px]"
           py="py-[12px]"
-          onClick={() => console.log("Get started")}
+          onClick={() => navigate("/products")}
         >
           Get Started
         </Buttons>

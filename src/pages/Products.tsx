@@ -15,7 +15,7 @@ export default function Products() {
   const [query, setQuery] = useState("");
   const [products, setProducts] = useState<ProductType[]>([]);
 
-  const { toggleNav, setToggleNav } = useDesignerContext();
+  const { setToggleNav } = useDesignerContext();
 
   const { isLoading, isError, isSuccess } = appState;
 
@@ -65,7 +65,7 @@ export default function Products() {
             setToggleNav({ modalType: "productFilterPanel" });
           }}
 
-          className="bg-red-500 text-fdt-grey-darker flex justify-center items-center gap-2 self-end mx-3 mt-4 mb-2 text-base font-montserrat px-4 py-1 rounded-full border-[0.5px] border-solid border-fdt-grey-normal"
+          className="text-fdt-grey-darker flex justify-center items-center gap-2 self-end mx-3 mt-4 mb-2 text-base font-montserrat px-4 py-1 rounded-full border-[0.5px] border-solid border-fdt-grey-normal"
         >
           Filter
           <LuSettings2 className="text-2xl" />

@@ -27,13 +27,13 @@ export default function ProductCard({
   return (
     <article
       onClick={() => navigate(`/products/${id}`)}
-      className="bg-[#F8F8F8] w-[45%] max-w-[300px]  flex flex-col relative shadow-md rounded-[4px]"
+      className="bg-[#F8F8F8] w-[45%] max-w-[300px]  flex flex-col relative shadow-md rounded-[4px]  transition-transform duration-300 transform active:scale-105"
     >
       <img
         src={img_url}
         style={setCustomBackgroundImage(img_url)}
         alt="product image"
-        className="object-cover aspect-[0.9/1] rounded-tr-[6px] rounded-tl-[4px]"
+        className="object-cover aspect-[0.9/1] rounded-tr-[6px] rounded-tl-[6px]"
       />
 
       <span className="absolute top-2 left-0 m-2 rounded-[2px] bg-[#585858] p-1 px-2 text-center text-[12px] font-normal text-white font-montserrat">

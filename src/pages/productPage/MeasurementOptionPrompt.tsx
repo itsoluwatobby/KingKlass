@@ -118,9 +118,9 @@ const MeasurementSelection = ({
   return (
     <div className="flex   flex-row w-fit  justify-center items-center">
       <input
+        id={name}
         type="radio"
         name={name}
-        id={"name"}
         checked={checked}
         onChange={handleSelectionChange}
         className="cursor-pointer w-4 h-4 checked:accent-fdt-brown-normal mr-1.5 "

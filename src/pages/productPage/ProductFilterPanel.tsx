@@ -1,7 +1,7 @@
 import FadedBGWrapper from "../../layout/FadedBGWrapper";
 import { useDesignerContext } from "../../hooks/useDesignerContext";
 import { Buttons } from "../../components/appComponents/Buttons";
-import { FaCheck } from "react-icons/fa6";
+import DemarcationLine from "../../components/appComponents/DemarcationLine";
 
 function ProductFilterPanel() {
   const { toggleNav, setToggleNav } =
@@ -11,25 +11,27 @@ function ProductFilterPanel() {
     <FadedBGWrapper
       modalType={toggleNav.modalType}
       expected="productFilterPanel"
-      classNames="!h-[85%] !w-[75%] !mr-[25%] !rounded-tr-none !rounded-tl-none !bottom-5 font-montserrat"
+      classNames="!h-[85%] !w-[75%] !mr-[25%] !rounded-tr-none !rounded-tl-none font-montserrat"
       isButtomSheet={true}
     >
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col h-full justify-between pb-6">
         <form
           action=""
-          className="flex flex-col border-t border-gray-200 lg:border-t-0 gap-5"
+          className="flex flex-col border-t border-gray-200 lg:border-t-0 gap-y-3 text-sm"
         >
-          <fieldset className="w-full text-base">
+          <fieldset className="w-full text-sm">
             <legend className="block w-full  px-5 py-2  font-medium">
               Category
             </legend>
 
-            <div className="px-5 py-1 flex flex-col gap-4 text-fdt-grey-darker font-normal">
+            <div className="px-5 py-1 flex flex-col gap-5 text-fdt-grey-darker font-normal">
               {["Agbada", "Senator", "Chinos", "Suits"].map((category) => (
                 <FilterCategory key={category} category={category} />
               ))}
-            </div >
+            </div>
           </fieldset>
+
+          <DemarcationLine classNames="" />
 
           <fieldset className="w-full">
             <legend className="block w-full  px-5 py-2  font-medium">
@@ -74,10 +76,10 @@ const FilterCategory = function ({ category }: FilterCheckboxProps) {
         id={category}
         type="checkbox"
         name={`type[${category}]`}
-        className="cursor-pointer checked:accent-fdt-brown-normal h-5 w-5"
+        className="cursor-pointer checked:accent-fdt-brown-normal h-4 w-4"
       />
 
-      <label htmlFor="New" className="ml-3">
+      <label htmlFor="New" className="ml-2">
         {category}
       </label>
     </div>
@@ -95,11 +97,14 @@ const FilterRating = function ({ rating }: FilterRatingProps) {
         type="radio"
         name="rating"
         value={rating}
-        className="cursor-pointer checked:accent-fdt-brown-normal h-5 w-5"
+        className="cursor-pointer checked:accent-fdt-brown-normal h-4 w-4"
       />
 
-      <label htmlFor={`${rating}`} className="ml-3 flex items-center gap-x-2">
-        {rating}{" "}
+      <label
+        htmlFor={`${rating}`}
+        className="ml-2 flex items-center gap-x-1 justify-center"
+      >
+        <p className="text-center leading-5">{rating}</p>
         <span>
           <svg
             aria-hidden="true"

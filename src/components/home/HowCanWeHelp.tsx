@@ -5,9 +5,9 @@ interface ImgCardProp {
 
 function ImgCard({ name, src }: ImgCardProp) {
   return (
-    <figure className="w-[45%] m-0 rounded-lg drop-shadow-lg">
+    <figure className="w-[45%] m-0  drop-shadow-lg">
       <img
-        className="w-full mb-0 object-cover rounded-tr-lg rounded-tl-lg"
+        className="w-full mb-0 object-cover"
         src={src}
       />
       <figcaption className="bg-fdt-brown-darker  mt-[-4px] text-fdt-grey-light py-1 text-center text-sm font-medium">
