@@ -4,8 +4,9 @@ import { useEffect, useState } from "react";
 import { MeasurementCard } from "./measurement/MeasurementCard";
 import { Buttons } from "../appComponents/Buttons";
 import { toast } from "react-toastify";
-import { sanitizeEntries } from "../../utility/sanitizeEntries"
+import { sanitizeEntries } from "../../utility/sanitizeEntries";
 import FadedBGWrapper from "../../layout/FadedBGWrapper";
+import { PiWarning } from "react-icons/pi";
 
 export const Measurements = () => {
   const [appState, setAppState] = useState<AppStateType>(initAppState);
@@ -48,10 +49,12 @@ export const Measurements = () => {
       modalType={toggleNav.modalType}
       expected="measurements"
       enlarge={true}
-      // extraClasses="px-3 py-2 pb-12 md:mt-2 sm:shadow-2xl sm:bg-gray-50 gap-y-6 h-fit"
+      isButtomSheet={true}
+      classNames=""
+      title="Measurements"
     >
-      <>
-        <div className="w-full grid grid-cols-2 gap-4 transition-all border-3 px-4 py-2">
+      <div className="flex flex-col gap-y-2">
+        <div className="h-[60vh] w-full grid grid-cols-2 gap-y-3 gap-x-4  transition-all border-3 px-4 py-2">
           {Object.entries(userMeasurements).map(([key, value]) => (
             <MeasurementCard
               key={key}
@@ -62,16 +65,22 @@ export const Measurements = () => {
           ))}
         </div>
 
+        <p className="text-sm text-fdt-grey-dark-active font-normal flex justify-center gap-x-1 items-center p-1 mt-0">
+          <span>
+            <PiWarning className=" text-sm -mt-[2.3px]"/>
+          </span>
+          All measurement are in cm
+        </p>
         <Buttons
           onClick={handleSave}
           px=""
           py=""
           isLoading={isLoading}
-          classNames="font-montserrat self-center mb-2 text-base font-semibold bg-fdt-brown-normal py-2.5  text-white w-[95%] tracking-wide md:w-1/2 py-3 active:bg-orange-800 transition-colors"
+          classNames="font-montserrat self-center mb-1 text-base font-semibold bg-fdt-brown-normal py-2.5  text-white w-[95%] tracking-wide md:w-1/2 py-3 active:bg-orange-800 transition-colors"
         >
           Save and Exit
         </Buttons>
-      </>
+      </div>
     </FadedBGWrapper>
   );
 };

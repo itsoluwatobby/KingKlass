@@ -40,12 +40,15 @@ export default function PurchasePrompt({ productName }: PurchasePromptProps) {
   };
 
   useEffect(() => {
-    if (measurementType.newMeasurement)
+    if (measurementType.newMeasurement) {
       setToggleNav((prev) => ({
         ...prev,
         modalType: "measurements",
-        prevModal: "pass",
+        prevModal: "purchasePrompt",
       }));
+    }
+
+
   }, [measurementType.newMeasurement]);
 
   const canClick = [...Object.values(measurementType)].some(Boolean);
@@ -56,6 +59,7 @@ export default function PurchasePrompt({ productName }: PurchasePromptProps) {
       enlarge={true}
       expected="purchasePrompt"
       classNames=""
+      isButtomSheet={true}
     >
       <div className="w-full flex flex-col p-1 text-sm gap-y-4 font-montserrat">
         <span className="font-medium text-xl mb-1">Select a measurement {productName}</span>
@@ -112,7 +116,7 @@ const MeasurementSelection = ({
   handleSelectionChange,
 }: SelectionProps) => {
   return (
-    <div className="flex items-center  flex-row w-fit  justify-center items-center">
+    <div className="flex   flex-row w-fit  justify-center items-center">
       <input
         type="radio"
         name={name}

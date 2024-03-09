@@ -1,12 +1,10 @@
 import { Link } from "react-router-dom";
 import { useDesignerContext } from "../../hooks/useDesignerContext";
 import { currencyFormat } from "../../utility/formatPrice";
-import { CiTrash } from "react-icons/ci";
 import { Buttons } from "../appComponents/Buttons";
-import ModalLayout from "../../layout/ModalLayout";
 import { FaCheck } from "react-icons/fa6";
-import { LiaTimesSolid } from "react-icons/lia";
 import { useNavigate } from "react-router-dom";
+import FadedBGWrapper from "../../layout/FadedBGWrapper";
 
 export const CartPreview = () => {
   const { toggleNav, setToggleNav } =
@@ -14,94 +12,93 @@ export const CartPreview = () => {
   const navigate = useNavigate();
 
   return (
-    <ModalLayout
+    <FadedBGWrapper
       modalType={toggleNav.modalType}
       expected="cartPreview"
-      classNames="p-3"
-      enlarge={true}
-      noFullScreen={true}
-      extraClasses="py-4 -mt-4 h-[92%] sm:shadow-2xl justify-between"
+      classNames="!h-[85%] !w-[75%] !ml-[25%] !rounded-tr-[0] !rounded-tl-[12px]"
+      isButtomSheet={true}
     >
-      <LiaTimesSolid
-        onClick={() => setToggleNav({ modalType: "pass" })}
-        className="absolute -right-2 -top-2 p-0.5 font-bold bg-white shadow-sm shadow-slate-500 rounded-full text-2xl hover:text-gray-700 active:text-gray-900 cursor-pointer transition-colors"
-      />
-      <div className="flex flex-col gap-y-5 max-h-[75%]">
-        <div className="flex items-center gap-x-4">
-          <FaCheck className="text-4xl bg-[#DBC5B6] rounded-full p-2 text-[#8B4513]" />
-          <span className="text-[#8B4513] text-sm">Item added to Cart</span>
+      <>
+        <div className="flex flex-col gap-y-5 max-h-[75%]">
+          <div className="flex items-center gap-x-4">
+            <FaCheck className="text-5xl bg-fdt-brown-light-active rounded-full p-2 text-fdt-brown-normal" />
+            <span className="text-fdt-brown-normal text-base font-montserrat font-semibold">
+              Item added to Cart
+            </span>
+          </div>
+          <div className="globalScrollbar w-full flex flex-col gap-y-2 max-h-[80%] overflow-y-scroll px-1 pb-4">
+            {[0, 1, 2, 3].map((i) => (
+              <CartItem
+                key={i}
+                cartObj={{
+                  productName: "Gown",
+                  image: "new Date('2024 01 25')",
+                  price: 10_500,
+                }}
+              />
+            ))}
+          </div>
         </div>
-        <div className="globalScrollbar w-full flex flex-col gap-y-1 max-h-[80%] overflow-y-scroll px-1 pb-4">
-          {[0, 1, 2, 3].map((i) => (
-            <Cart
-              key={i}
-              cartObj={{
-                productName: "Gown",
-                image: "new Date('2024 01 25')",
-                price: 10_500,
-              }}
-            />
-          ))}
-        </div>
-      </div>
-
-      <div className="flex-none rounded-sm flex flex-col gap-y-4 items-center py-5">
-        <Buttons
-          onClick={() =>
-            setToggleNav((prev) => ({
-              ...prev,
-              modalType: "carts",
-              prevModal: "cartPreview",
-            }))
-          }
-          px=""
-          py=""
-          // isLoading={isLoading}
-          classNames="self-center rounded-sm font-semibold bg-[#8B4513] text-xs text-white w-[95%] md:w-1/2 py-3 hover:bg-[#8B4513] active:bg-[#8B4513] transition-colors"
-        >
-          View cart
-        </Buttons>
-        <Buttons
-          onClick={() => navigate("/products")}
-          px=""
-          py=""
-          // isLoading={isLoading}
-          classNames="self-center rounded-sm font-semibold border-[1px] border-[#8B4513] text-sm text-[#8B4513] w-[95%] md:w-1/2 py-2.5 hover:bg-opacity-95 active:bg-opacity-100 transition-opacity"
-        >
-          Continue Shopping
-        </Buttons>
-      </div>
-    </ModalLayout>
+        <div className="flex-none rounded-sm flex flex-col gap-y-4 items-center py-5">
+          <Buttons
+            onClick={() =>
+              setToggleNav((prev) => ({
+                ...prev,
+                modalType: "carts",
+                prevModal: "cartPreview",
+              }))
+            }
+            px=""
+            py=""
+            // isLoading={isLoading}
+            classNames="self-center rounded-md font-semibold bg-[#8B4513] text-base text-montserrat text-white w-[95%] md:w-1/2 py-3 hover:bg-[#8B4513] active:bg-[#8B4513] transition-colors"
+          >
+            View cart
+          </Buttons>
+          <Buttons
+            onClick={() => navigate("/products")}
+            px=""
+            py=""
+            // isLoading={isLoading}
+            classNames="self-center rounded-md font-semibold border-[1px] border-[#8B4513] text-base text-montserrat text-[#8B4513] w-[95%] md:w-1/2 py-2.5 hover:bg-opacity-95 active:bg-opacity-100 transition-opacity"
+          >
+            Continue Shopping
+          </Buttons>
+        </div>{" "}
+      </>
+    </FadedBGWrapper>
   );
 };
 
-type CartProps = {
+type CartItemProps = {
   cartObj: {
     image: string;
     productName: string;
     price: number;
   };
 };
-const Cart = ({ cartObj }: CartProps) => {
+const CartItem = ({ cartObj }: CartItemProps) => {
   return (
-    <div className="hover:opacity-80 transition-opacity font-sans flex items-center p-2 border-[1px] even:bg-slate-50 odd:bg-slate-100 justify-between text-[12px] w-full">
+    <div className="hover:opacity-80 transition-opacity font-sans flex items-center rounded-md p-1 border-[1px] justify-between w-full">
       <Link to={``} className="flex-none w-[85%] flex items-center">
-        <figure className="w-10 h-10 rounded-[3px] flex-none border">
+        <figure className="w-11 h-11 rounded-[3px] flex-none border">
           <img
-            src={cartObj.image}
+            src={
+              "https://images.unsplash.com/photo-1493455198445-863243d88564?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            }
             alt={cartObj.productName}
-            className="object-cover h-full w-full rounded-[3px]"
+            className="object-cover h-full w-full rounded-sm"
           />
         </figure>
-        <div className="flex items-center flex-col gap-y-1 px-3">
-          <span>{cartObj.productName}</span>
-          <span className="font-sans font-semibold text-[12px]">
-            #{currencyFormat(cartObj.price)}
+        <div className="flex items-start flex-col gap-y-2 px-3 text-fdt-grey-darker">
+          <span className="font-montserrat text-sm font-normal">{"KingsKlass shirt"}</span>
+          <span className="font-semibold text-[12px] font-montserrat-alternates">
+            {currencyFormat(cartObj.price)}
           </span>
         </div>
       </Link>
 
-      <CiTrash className="text-xl cursor-pointer hover::sacle-[1.002] active:scale-[1] transition-transform" />
+      {/* <CiTrash className="text-xl cursor-pointer hover::sacle-[1.002] active:scale-[1] transition-transform" /> */}
     </div>
   );
 };

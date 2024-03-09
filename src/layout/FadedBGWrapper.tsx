@@ -6,13 +6,17 @@ type FadedBGWrapperProps = {
   modalType: Toggle | ToggleNav;
   expected: ToggleNav | Toggle;
   classNames?: string;
-  enlarge?: boolean
+  enlarge?: boolean,
+  isButtomSheet?: boolean;
+  title?: string;
+
 }
-export default function FadedBGWrapper({ children, expected, modalType, classNames, enlarge=false }: FadedBGWrapperProps) {
+
+export default function FadedBGWrapper({ title, children, expected, modalType, classNames, enlarge=false, isButtomSheet=false }: FadedBGWrapperProps) {
   
-  if (modalType === "purchasePrompt" || modalType === "measurements")
+  if (isButtomSheet && modalType === expected)
     return (
-          <BottomSheet classNames={`pb-2${classNames}`}>{children}</BottomSheet>
+          <BottomSheet title={title} classNames={`pb-2 ${classNames}`}>{children}</BottomSheet>
       )
   
   return (

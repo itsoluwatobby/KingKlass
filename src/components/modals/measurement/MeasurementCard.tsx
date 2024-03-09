@@ -16,8 +16,8 @@ export const MeasurementCard = ({
   };
 
   return (
-    <div className="border-b-1  border-red font-montserrat  flex flex-col justify-center items-center p-1.5 bg-inherit gap-y-3  w-full">
-      <p className="font-normal text-fdt-grey-dark capitalize">{keyName}</p>
+    <div className="pb-0 py-0 font-montserrat  flex flex-col justify-center items-center p-1.5 bg-inherit gap-y-1.5  w-full">
+      <p className="font-normal text-fdt-grey-darker capitalize text-sm">{keyName}</p>
 
       <input
         type="number"
@@ -28,7 +28,7 @@ export const MeasurementCard = ({
         defaultValue={0.00}
         placeholder="cm"
         onChange={handleEntry}
-        className={`text-xl text-center  bg-inherit w-full focus:outline-0 placeholder:text-fdt-grey-dark placeholder:text-xs`}
+        className={`border-b-1 text-xl pb-1 text-center  bg-inherit w-full focus:outline-0 placeholder:text-fdt-grey-dark placeholder:text-xs`}
       />
     </div>
   );

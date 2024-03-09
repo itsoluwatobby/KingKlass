@@ -44,9 +44,9 @@ export default function ModalLayout({
     <section
       className={`${
         modalType === expected ? "fixed" : "hidden"
-      } h-full py-0 top-16 bottom-0 midscreen:w-full flex ${
+      } h-[100vh] border  py-0 top-16 bottom-0 midscreen:w-full flex ${
         enlarge
-          ? "w-full h-[100vh] mobile:-mt-2"
+          ? "w-full h-[100vh] mobile:-mt-0"
           : "w-full md:w-[60%] min-h-[95vh] mt14"
       } z-50 duration-300 p-4 ${
         noFullScreen ? "py-8" : "maxscreen:px-0"
@@ -55,7 +55,7 @@ export default function ModalLayout({
       <div
         className={`bg-[#F8F8F8]  sm:rounded-md ${
           noFullScreen ? "rounded-md -mt-1 p-5" : ""
-        } mx-auto sm:w-[25rem]  bg-white relative flex flex-col w-full ${extraClasses}`}
+        } mx-auto sm:w-[25rem]  relative flex flex-col w-full ${extraClasses}`}
       >
         {children}
       </div>

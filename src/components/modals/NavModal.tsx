@@ -25,12 +25,13 @@ export const NavModal = () => {
       modalType={toggleNav.modalType}
       expected="openNavModal"
       enlarge={true}
+      noFullScreen={false}
       classNames="md:hidden"
-      extraClasses="px-3 py-1 top-0 h-[90%] border flex flex-col gap-y-6"
+      extraClasses="px-3 py-1 top-0 border flex flex-col gap-y-6"
     >
       <header
         className={`${
-          user.isSignedIn ? "flex" : "hidden"
+          user.isSignedIn ? "flex mt-3 mb-0" : "hidden"
         } items-center justify-between`}
       >
         <div className="flex items-center gap-x-2">
@@ -41,14 +42,14 @@ export const NavModal = () => {
               (user.first_name as string) ?? user.email?.split("@")[0]
             )}
           </p>
-          <div className="flex flex-col font-semibold gap-y-0.5">
-            <h3 className="text-[15px] whitespace-pre-wrap w-24 leading-5">
+          <div className="flex flex-col font-semibold gap-y-1">
+            <h3 className="text-2xl font-medium whitespace-pre-wrap">
               Hi,{" "}
               {reduceTextLength(
-                (user.first_name as string) ?? user.email?.split("@")[0]
+                (user.first_name as string) ?? "Gechy"
               )}
             </h3>
-            <span className="font-normal text-xs">Welcome back</span>
+            <span className="text-[#A8A8A8] font-normal text-sm">Welcome back</span>
           </div>
         </div>
         <Buttons
@@ -116,7 +117,7 @@ const RouteLinks = ({ values, setToggleNav, user }: RouteLinksProps) => {
   const navigate = useNavigate();
 
   return (
-    <div className="bg-inherit flex flex-col gap-y-3 font-semibold text-[12px] mt-5 w-full">
+    <div className="bg-inherit flex flex-col gap-y-3 font-semibold text-[12px] mt-1 w-full">
       {values?.map((link) =>
         link.name.startsWith("Contact") ? (
           <a

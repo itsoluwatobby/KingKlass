@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { Endpoints } from './endpoints'
 
-const BASEURL = 'http://web-02.obimbasmart.tech'
+const BASEURL = 'http://kingsklass.shop'
 
 const requests = axios.create(
   {
@@ -32,6 +32,7 @@ export const getUser = async(userId: string, token=''): Promise<UserResponse> =>
       'Authorization': `Bearer ${Authorization_token ?? token}`
     }
   });
+  console.log(user.data)
   return user.data;
 }
 export const getUserMeasurement = async<T extends object>(userId: string, token=''): Promise<T> => {
