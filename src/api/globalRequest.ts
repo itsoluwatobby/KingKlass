@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { Endpoints } from './endpoints'
 
-const BASEURL = 'http://kingsklass.shop'
+const BASEURL = 'https://kingsklass.shop'
 
 const requests = axios.create(
   {
