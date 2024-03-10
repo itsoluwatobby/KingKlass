@@ -6,18 +6,20 @@ type RouteLinksProps = {
     name: string;
     link: string;
   }[];
+
+  classNames?: string;
 };
-export const RouteLinks = ({ values }: RouteLinksProps) => {
+export const RouteLinks = ({ values, classNames }: RouteLinksProps) => {
   const { setToggleNav, user } = useDesignerContext() as DesignerContextProps;
 
   return (
     <div
-      className={`flex flex-col ${
-        user.isAdmin ? "gap-y-2 mt-0 px-3" : "gap-y-5 mt-1 p-3"
-      }  font-semibold text-sm w-full`}
+      className={`flex flex-col font-montserrat text-xl text-fdt-grey-darker font-medium gap-y-2 ${
+        user.isAdmin ? "gap-y-2 mt-0 px-3" : "gap-y-4 mt-1 p-3"
+      }  font-semibold text-sm w-full ${classNames}`}
     >
       {values?.map((link) => (
-        <div key={link.name}>
+        <div key={link.name} className="py-2">
           {link.name === "Notifications" ? (
             <p
               onClick={() =>

@@ -1,4 +1,6 @@
 import { SlArrowLeft } from "react-icons/sl";
+import { GoArrowLeft } from "react-icons/go";
+
 import { MagicNumbers, UserNavigation } from "../../utility/constants";
 import { Buttons } from "../appComponents/Buttons";
 import { useDesignerContext } from "../../hooks/useDesignerContext";
@@ -9,7 +11,7 @@ import {
   initUser,
 } from "../../utility/initialVariables";
 import { RouteLinks } from "./userModal/RouteLinks";
-import { CiEdit } from "react-icons/ci";
+import { FiEdit3 } from "react-icons/fi";
 import UserDetailForm from "./userModal/UserDetailForm";
 import { sanitizeEntries } from "../../utility/sanitizeEntries";
 import { toast } from "react-toastify";
@@ -51,12 +53,12 @@ export const UserNavModal = () => {
 
   useEffect(() => {
     let isMounted = true;
-    if (isMounted) setUserDetails({...user});
+    if (isMounted) setUserDetails({ ...user });
 
     return () => {
-      isMounted = false
-    }
-  }, [user.email])
+      isMounted = false;
+    };
+  }, [user.email]);
 
   const { isLoading, isError } = appState;
 
@@ -95,15 +97,15 @@ export const UserNavModal = () => {
       modalType={toggleNav.modalType}
       expected="userNavModal"
       enlarge={true}
-      extraClasses="sm:shadow-2xl h-[88%]"
+      extraClasses="sm:shadow-2xl h-[100vh]"
     >
-      <header className="relative flex items-center justify-center w-full bg-opacity-95 bg-[#EEE3DC] pt-3 p-2">
+      <header className="flex items-center justify-between w-full  p-3 my-2">
         {toggleModal === "Profile" ? (
           <Buttons
             onClick={() => setToggleModal("UserNavModal")}
             px=""
             py=""
-            classNames="rounded-full absolute left-4 grid place-content-center w-8 h-8 hover:bg-gray-200 active:bg-gray-100 transition-colors"
+            classNames="rounded-full absolute  w-8 h-8 hover:bg-gray-200 active:bg-gray-100 transition-colors"
           >
             <SlArrowLeft className="text-lg" />
           </Buttons>
@@ -115,28 +117,28 @@ export const UserNavModal = () => {
             }}
             px=""
             py=""
-            classNames="rounded-full absolute left-4 grid place-content-center w-8 h-8 hover:bg-gray-200 active:bg-gray-100 transition-colors"
+            classNames="rounded-full transition-colors"
           >
-            <SlArrowLeft className="text-lg" />
+            <GoArrowLeft className="text-2xl" />
           </Buttons>
         )}
 
         <h3 className="text-base text-center font-semibold w-fit leading-5">
-          {toggleModal === "Profile" ? "Profile" : "Menu"}
+          {toggleModal === "Profile" ? "Profile" : ""} &nbsp; 
         </h3>
+
+        <div
+          onClick={() => setToggleModal("Profile")}
+          className={`${
+            toggleModal === "Profile" ? "hidden" : "block"
+          }  hover:bg-slate-200 active:bg-inherit gap-x-1 transition-colors p-1 cursor-pointer z-10 rounded-sm font-semibold flex items-center w-fit`}
+        >
+          <span className="underline text-sm text-fdt-grey-dark font-Roboto font-normal">edit</span>
+          <FiEdit3 className="text-xl text-fdt-grey-dark" />
+        </div>
       </header>
 
-      <div
-        onClick={() => setToggleModal("Profile")}
-        className={`${
-          toggleModal === "Profile" ? "hidden" : "block"
-        } absolute right-2 top-11 hover:bg-slate-200 active:bg-inherit transition-colors p-1 cursor-pointer z-10 rounded-sm font-semibold flex items-center w-fit`}
-      >
-        <span className="underline text-xs">Edit</span>
-        <CiEdit className="text-lg" />
-      </div>
-
-      <div className="flex flex-col gap-y-3 px-3 py-1 text-[13px] font-medium">
+      <div className="flex flex-col gap-y-3 px-3 py-1 font-medium">
         {user.isAdmin ? (
           <>
             <label
@@ -188,10 +190,11 @@ export const UserNavModal = () => {
           />
         ) : (
           // for profile view
-          <UserDetailForm
-            userDetails={userDetails}
-            disabled={true}
-            setUserDetails={setUserDetails}
+          <UserDetails
+            firstName={userDetails.first_name}
+            lastName={userDetails.last_name}
+            email={userDetails.email}
+            mobileNumber={userDetails.phone_no}
           />
         )}
       </div>
@@ -209,8 +212,46 @@ export const UserNavModal = () => {
           Save
         </Buttons>
       ) : (
-        <RouteLinks values={UserNavigation} />
+        <RouteLinks values={UserNavigation} classNames="mt-2"/>
       )}
     </ModalLayout>
+  );
+};
+
+interface UserDetailProps {
+  firstName: string | undefined;
+  lastName: string | undefined;
+  email: string | undefined;
+  mobileNumber: string | undefined;
+}
+
+const UserDetails = ({}: // firstName,
+// lastName,
+// email,
+// mobileNumber,
+UserDetailProps) => {
+  return (
+    <div className="flex flex-col gap-4">
+      <UserInfo title={`Full name`} value={"Okereke Uzochukwu"} />
+      <UserInfo title={`Mobile number`} value={"07033734183"} />
+
+      {/* <UserInfo title={`Username`} value={username && username} /> */}
+
+      <UserInfo title={`Email`} value={"okerekeuzochukwu0316@gmail.com"} />
+    </div>
+  );
+};
+
+interface UserInfoProps {
+  title: string;
+  value: string | undefined;
+}
+
+const UserInfo = ({ title, value }: UserInfoProps) => {
+  return (
+    <div className="flex text-fdt-grey-darker flex-col pb-2 text-base gap-2 border-b-[0.5px] font-montserrat border-fdt-grey-normal">
+      <h3 className="font-medium capitalize">{title.replace("_", " ")}</h3>
+      <p className="font-normal px-1">{value}</p>
+    </div>
   );
 };
