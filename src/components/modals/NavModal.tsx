@@ -6,13 +6,12 @@ import { useDesignerContext } from "../../hooks/useDesignerContext";
 import { useSignout } from "../../hooks/useSignout";
 import ModalLayout from "../../layout/ModalLayout";
 import { useNavigate } from "react-router-dom";
-import { reduceTextLength } from "../../utility/truncateTextLength";
 
 export const NavModal = () => {
   const [signout] = useSignout();
   const { toggleNav, user, setToggleNav, setAppModals } =
     useDesignerContext() as DesignerContextProps;
-  console.log(user.email?.split("@")[0]);
+    console.log(user)
   const actionButton = (type: "LOGIN" | "REGISTER") => {
     setToggleNav({ modalType: "pass" });
     if (type === "LOGIN") setAppModals((prev) => ({ ...prev, signin: "OPEN" }));
@@ -44,12 +43,11 @@ export const NavModal = () => {
           </p>
           <div className="flex flex-col font-semibold gap-y-1">
             <h3 className="text-2xl font-medium whitespace-pre-wrap">
-              Hi,{" "}
-              {reduceTextLength(
-                (user.first_name as string) ?? "Gechy"
-              )}
+              Hi, {user.username}
             </h3>
-            <span className="text-[#A8A8A8] font-normal text-sm">Welcome back</span>
+            <span className="text-[#A8A8A8] font-normal text-sm">
+              Welcome back
+            </span>
           </div>
         </div>
         <Buttons

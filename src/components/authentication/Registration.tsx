@@ -21,7 +21,7 @@ export const Registration = () => {
   const [userCredentials, setUserCredentials] = useState<UserInfo>(initSignUpInfo);
   const [validation, setValidation] = useState<Validations>(inputValidation);
 
-  const { email, name, password, confirm_password } = userCredentials;
+  const { email, username, password, confirm_password } = userCredentials;
   const { validEmail, validPassword, matchingPassword } = validation;
 
   const { isLoading, isError } = appState;
@@ -33,12 +33,14 @@ export const Registration = () => {
     validPassword,
     matchingPassword,
   ].every(Boolean);
-  // firstName: name
+
   const handleSubmit = async () => {
+    console.log(username)
     if (!canSubmit || isLoading) return;
     setAppState((prev) => ({ ...prev, isLoading: true }));
     try {
-      const userDetails = sanitizeEntries({ email, password });
+      const userDetails = sanitizeEntries({ email, password, username});
+      console.log(userDetails)
       await register(userDetails);
       setAppState((prev) => ({ ...prev, success: true }));
       setUserCredentials(initSignUpInfo);
@@ -61,6 +63,15 @@ export const Registration = () => {
       }));
     }
   }, [email]);
+
+  useEffect(() => {
+    if (username) {
+      setValidation((prev) => ({
+        ...prev,
+        username: username,
+      }));
+    }
+  }, [username]);
 
   useEffect(() => {
     if (password) {
@@ -111,10 +122,10 @@ export const Registration = () => {
 
           <UserInputDetails
             placeholder="Username"
-            title="Username (optional)"
-            value={name as string}
+            title="Username"
+            value={username as string}
             id="username"
-            name="name"
+            name="username"
             disabled={false}
             setUserDetails={setUserCredentials}
             type="text"

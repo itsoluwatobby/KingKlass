@@ -1,23 +1,23 @@
-import { SlArrowLeft } from "react-icons/sl";
 import { GoArrowLeft } from "react-icons/go";
+import { SlArrowLeft } from "react-icons/sl";
 
-import { MagicNumbers, UserNavigation } from "../../utility/constants";
-import { Buttons } from "../appComponents/Buttons";
-import { useDesignerContext } from "../../hooks/useDesignerContext";
 import { ChangeEvent, useEffect, useState } from "react";
+import { FiEdit3 } from "react-icons/fi";
+import { toast } from "react-toastify";
+import { useDesignerContext } from "../../hooks/useDesignerContext";
+import ModalLayout from "../../layout/ModalLayout";
+import { MagicNumbers, UserNavigation } from "../../utility/constants";
+import { deleteImage, imageUpload } from "../../utility/imageMutation";
 import {
   initAppModals,
   initAppState,
   initUser,
 } from "../../utility/initialVariables";
-import { RouteLinks } from "./userModal/RouteLinks";
-import { FiEdit3 } from "react-icons/fi";
-import UserDetailForm from "./userModal/UserDetailForm";
 import { sanitizeEntries } from "../../utility/sanitizeEntries";
-import { toast } from "react-toastify";
-import ModalLayout from "../../layout/ModalLayout";
-import { deleteImage, imageUpload } from "../../utility/imageMutation";
 import { LoadingComp } from "../LoadingComp";
+import { Buttons } from "../appComponents/Buttons";
+import { RouteLinks } from "./userModal/RouteLinks";
+import UserDetailForm from "./userModal/UserDetailForm";
 
 type ActiveModalType = "UserNavModal" | "Profile";
 export const UserNavModal = () => {
@@ -124,7 +124,7 @@ export const UserNavModal = () => {
         )}
 
         <h3 className="text-base text-center font-semibold w-fit leading-5">
-          {toggleModal === "Profile" ? "Profile" : ""} &nbsp; 
+          {toggleModal === "Profile" ? "Profile" : ""} &nbsp;
         </h3>
 
         <div
@@ -133,7 +133,9 @@ export const UserNavModal = () => {
             toggleModal === "Profile" ? "hidden" : "block"
           }  hover:bg-slate-200 active:bg-inherit gap-x-1 transition-colors p-1 cursor-pointer z-10 rounded-sm font-semibold flex items-center w-fit`}
         >
-          <span className="underline text-sm text-fdt-grey-dark font-Roboto font-normal">edit</span>
+          <span className="underline text-sm text-fdt-grey-dark font-Roboto font-normal">
+            edit
+          </span>
           <FiEdit3 className="text-xl text-fdt-grey-dark" />
         </div>
       </header>
@@ -195,6 +197,7 @@ export const UserNavModal = () => {
             lastName={userDetails.last_name}
             email={userDetails.email}
             mobileNumber={userDetails.phone_no}
+            username={userDetails.username}
           />
         )}
       </div>
@@ -212,7 +215,7 @@ export const UserNavModal = () => {
           Save
         </Buttons>
       ) : (
-        <RouteLinks values={UserNavigation} classNames="mt-2"/>
+        <RouteLinks values={UserNavigation} classNames="mt-2" />
       )}
     </ModalLayout>
   );
@@ -223,21 +226,29 @@ interface UserDetailProps {
   lastName: string | undefined;
   email: string | undefined;
   mobileNumber: string | undefined;
+  username: string;
 }
 
-const UserDetails = ({}: // firstName,
-// lastName,
-// email,
-// mobileNumber,
-UserDetailProps) => {
+const UserDetails = ({
+  email,
+  username,
+  firstName,
+  mobileNumber,
+}: UserDetailProps) => {
   return (
     <div className="flex flex-col gap-4">
-      <UserInfo title={`Full name`} value={"Okereke Uzochukwu"} />
-      <UserInfo title={`Mobile number`} value={"07033734183"} />
+      <UserInfo
+        title={`Full name`}
+        value={firstName ? firstName : "-- -- -- -- -- -- -- --"}
+      />
+      <UserInfo
+        title={`Mobile number`}
+        value={mobileNumber ? firstName : "-- -- -- -- -- -- -- --"}
+      />
 
-      {/* <UserInfo title={`Username`} value={username && username} /> */}
+      <UserInfo title={`Username`} value={username} />
 
-      <UserInfo title={`Email`} value={"okerekeuzochukwu0316@gmail.com"} />
+      <UserInfo title={`Email`} value={email} />
     </div>
   );
 };

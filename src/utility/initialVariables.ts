@@ -7,7 +7,7 @@ export const initAppState: AppStateType = {
 }
 
 export const initSignUpInfo: UserInfo = {
-  name: '', email: '', password: '', confirm_password: ''
+  username: '', email: '', password: '', confirm_password: ''
 }
 
 export const initSignInInfo: UserInfo = {
@@ -24,12 +24,12 @@ export const initNavModals: ToggleOption = {
 }
 
 export const initUserDetail: UserDetails = {
-  name: '', username: '', email: '', password: '', mobileNumber: '', file: ''
+  username: '', email: '', password: '', mobileNumber: '', file: ''
 }
 
 export const initUser: User = {
   isSignedIn: false, isAdmin: false, access_token: '', id: '', email: '', first_name: '',
-  last_name: '', created_at: '', updated_at: '', phone_no: '', file: ''
+  last_name: '', created_at: '', updated_at: '', phone_no: '', file: '', username: ''
 }
 
 export const inputValidation: Validations = {

@@ -22,9 +22,10 @@ type UserResponse = {
   created_at: string,
   email: string;
   first_name?: string,
-  last_name: string,
+  last_name?: string,
   phone_no: string,
-  updated_at: string
+  updated_at: string,
+  username: string
 }
 
 type User = {
@@ -38,7 +39,8 @@ type User = {
   first_name?: string,
   last_name?: string,
   phone_no?: string,
-  updated_at?: string
+  updated_at?: string,
+  username: string
 }
 
 type ProgressType = 'pending' | 'completed';
@@ -66,7 +68,7 @@ type AppStateType = {
   error: any;
 }
 type UserInfo = {
-  name?: string,
+  username?: string,
   email: string;
   password: string;
   confirm_password?: string;

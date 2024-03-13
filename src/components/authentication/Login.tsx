@@ -47,6 +47,7 @@ export const Login = () => {
         phone_no,
         updated_at,
         created_at,
+        username
       } = loggedIn as UserResponse;
       setUser((prev) => ({
         ...prev,
@@ -56,6 +57,7 @@ export const Login = () => {
         isAdmin: is_admin,
         first_name,
         last_name,
+        username,
         phone_no,
         created_at,
         updated_at,
